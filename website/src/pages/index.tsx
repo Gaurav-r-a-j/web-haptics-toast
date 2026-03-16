@@ -1,5 +1,6 @@
 import React from 'react';
 import { Toaster } from 'web-haptics-toast';
+import { Header } from '@/src/components/Header';
 import { Installation } from '@/src/components/Installation';
 import { Hero } from '@/src/components/Hero';
 import { Types } from '@/src/components/Types/Types';
@@ -23,6 +24,7 @@ export default function Home() {
   return (
     <div className="wrapper light">
       <Head />
+      <Header />
       <Toaster
         theme="light"
         richColors={richColors}
@@ -36,19 +38,35 @@ export default function Home() {
       <main className="container">
         <Hero />
         <div className="content">
-          <Installation />
-          <Usage />
-          <Haptics
+          <section className="section block" id="install">
+            <Installation />
+          </section>
+          <section className="section block" id="usage">
+            <Usage />
+          </section>
+          <section className="section block" id="haptics">
+            <Haptics
             haptics={haptics}
             hapticsDebug={hapticsDebug}
             setHaptics={setHaptics}
             setHapticsDebug={setHapticsDebug}
           />
-          <Types />
-          <Position position={position} setPosition={setPosition} />
-          <ExpandModes expand={expand} setExpand={setExpand} />
-          <Other setCloseButton={setCloseButton} setRichColors={setRichColors} />
-          <How />
+          </section>
+          <section className="section block" id="types">
+            <Types />
+          </section>
+          <section className="section block" id="position">
+            <Position position={position} setPosition={setPosition} />
+          </section>
+          <section className="section block" id="expand">
+            <ExpandModes expand={expand} setExpand={setExpand} />
+          </section>
+          <section className="section block" id="other">
+            <Other setCloseButton={setCloseButton} setRichColors={setRichColors} />
+          </section>
+          <section className="section block" id="how">
+            <How />
+          </section>
         </div>
       </main>
       <Footer />

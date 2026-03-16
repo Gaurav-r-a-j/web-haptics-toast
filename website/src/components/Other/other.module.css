@@ -9,34 +9,34 @@ ol[dir='rtl'] .headlessClose {
 }
 
 .headless {
-  padding: 16px;
+  padding: 1rem;
   width: 356px;
   box-sizing: border-box;
-  border-radius: 8px;
-  background: var(--gray1);
-  border: 1px solid var(--gray4);
+  border-radius: var(--radius);
+  background: var(--bg-secondary);
+  border: 1px solid var(--border);
   position: relative;
 }
 
 .headless .headlessDescription {
   margin: 0;
-  color: var(--gray10);
-  font-size: 14px;
-  line-height: 1;
+  color: var(--text-secondary);
+  font-size: 0.875rem;
+  line-height: 1.4;
 }
 
 .headless .headlessTitle {
-  font-size: 14px;
-  margin: 0 0 8px;
-  color: var(--gray12);
+  font-size: 0.875rem;
+  margin: 0 0 0.5rem;
+  color: var(--text-primary);
   font-weight: 500;
-  line-height: 1;
+  line-height: 1.3;
 }
 
 .headlessClose {
   position: absolute;
   cursor: pointer;
-  top: 6px;
+  top: 0.5rem;
   height: 24px;
   width: 24px;
   display: flex;
@@ -44,13 +44,13 @@ ol[dir='rtl'] .headlessClose {
   align-items: center;
   left: var(--headless-close-start);
   right: var(--headless-close-end);
-  color: var(--gray10);
+  color: var(--text-secondary);
   padding: 0;
   background: transparent;
   border: none;
-  transition: color 200ms;
+  transition: color 0.2s;
 }
 
 .headlessClose:hover {
-  color: var(--gray12);
+  color: var(--text-primary);
 }

@@ -1,41 +1,40 @@
 .root {
-  padding: 16px;
+  padding: 1rem;
   margin: 0;
-  background: var(--gray1);
-  border-radius: 0;
+  background: var(--bg-secondary);
+  border-radius: var(--radius-sm);
   position: relative;
-  line-height: 17px;
+  line-height: 1.5;
   white-space: pre-wrap;
-  background: linear-gradient(to top, var(--gray2), var(--gray1) 16px);
 }
 
 .wrapper {
   overflow: hidden;
   margin: 0;
   position: relative;
-  border-radius: 6px;
-  margin-top: 16px;
-  border: 1px solid var(--gray3);
+  border-radius: var(--radius);
+  margin-top: 1rem;
+  border: 1px solid var(--border);
   padding: 0 !important;
 }
 
 .copyButton {
   position: absolute;
-  top: 12px;
-  right: 12px;
+  top: 0.75rem;
+  right: 0.75rem;
   z-index: 1;
-  width: 26px;
-  height: 26px;
-  border: 1px solid var(--gray4);
-  border-radius: 6px;
+  width: 28px;
+  height: 28px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
   display: flex;
   align-items: center;
   justify-content: center;
-  background: var(--gray0);
+  background: var(--bg-primary);
   cursor: pointer;
   opacity: 0;
-  color: var(--gray12);
-  transition: background 200ms, box-shadow 200ms, opacity 200ms;
+  color: var(--text-primary);
+  transition: background 0.2s, box-shadow 0.2s, opacity 0.2s;
 }
 
 .copyButton:focus-visible {
@@ -43,11 +42,11 @@
 }
 
 .copyButton:hover {
-  background: var(--gray1);
+  background: var(--neutral-2);
 }
 
 .copyButton:focus-visible {
-  box-shadow: 0 0 0 1px var(--gray4);
+  box-shadow: 0 0 0 2px var(--accent);
 }
 
 .copyButton > div {

@@ -24,6 +24,7 @@ export const Installation = () => {
 
   return (
     <div>
+      <p className="section-label" aria-hidden>Quick start</p>
       <h2>Installation</h2>
       <code className={styles.code} onClick={onCopy}>
         npm install web-haptics-toast{' '}

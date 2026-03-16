@@ -1,39 +1,45 @@
-import { toast } from 'web-haptics-toast';
+'use client';
 
+import { toast } from 'web-haptics-toast';
 import styles from './hero.module.css';
-import Link from 'next/link';
 
 export const Hero = () => {
   return (
-    <div className={styles.wrapper}>
-      <div className={styles.toastWrapper}>
-        <div className={styles.toast} />
-        <div className={styles.toast} />
-        <div className={styles.toast} />
-      </div>
-      <h1 className={styles.heading}>web-haptics-toast</h1>
-      <p style={{ marginTop: 0, fontSize: 18, textAlign: 'center' }}>
-        Toast component for React with haptic feedback by default.
+    <section className={styles.hero} aria-label="Introduction">
+      <span className={styles.badge}>React · Haptics</span>
+      <h1 className={styles.title}>
+        web-haptics-toast
+      </h1>
+      <p className={styles.subtitle}>
+        Toasts with haptic feedback by default. Drop-in replacement for Sonner.
       </p>
-      <div className={styles.buttons}>
+      <div className={styles.actions}>
         <button
-          data-primary=""
-          onClick={() => {
-            toast('web-haptics-toast', {
-              description: 'Toast with haptics by default.',
-            });
-          }}
-          className={styles.button}
+          type="button"
+          onClick={() =>
+            toast('Hello', {
+              description: 'Haptics on supported devices.',
+            })
+          }
+          className={styles.cta}
         >
-          Render a toast
+          Try a toast
         </button>
-        <a className={styles.button} href="https://github.com/designbyte-official/web-haptics-toast" target="_blank" rel="noopener noreferrer">
+        <a href="#install" className={styles.secondary}>
+          Get started
+        </a>
+        <a
+          href="https://github.com/designbyte-official/web-haptics-toast"
+          target="_blank"
+          rel="noopener noreferrer"
+          className={styles.gh}
+        >
           GitHub
         </a>
       </div>
-      <Link href="/getting-started" className={styles.link}>
-        Documentation
-      </Link>
-    </div>
+      <div className={styles.preview} aria-hidden>
+        <div className={styles.toast} />
+      </div>
+    </section>
   );
 };

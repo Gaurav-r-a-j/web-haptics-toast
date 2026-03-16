@@ -13,7 +13,7 @@ const variants = {
 
 const theme = {
   plain: {
-    color: 'var(--gray12)',
+    color: 'var(--text-primary)',
     fontSize: 12,
     fontFamily: 'var(--font-mono)',
   },
@@ -21,25 +21,25 @@ const theme = {
     {
       types: ['comment'],
       style: {
-        color: 'var(--gray9)',
+        color: 'var(--text-secondary)',
       },
     },
     {
       types: ['atrule', 'keyword', 'attr-name', 'selector', 'string'],
       style: {
-        color: 'var(--gray11)',
+        color: 'var(--neutral-11)',
       },
     },
     {
       types: ['punctuation', 'operator'],
       style: {
-        color: 'var(--gray9)',
+        color: 'var(--text-secondary)',
       },
     },
     {
       types: ['class-name', 'function', 'tag'],
       style: {
-        color: 'var(--gray12)',
+        color: 'var(--text-primary)',
       },
     },
   ],

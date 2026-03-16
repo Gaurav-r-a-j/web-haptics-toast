@@ -7,11 +7,11 @@ export const Footer = () => {
     <footer className={styles.wrapper}>
       <div className="container">
         <p className={styles.p}>
-          <Image alt="Emil's profile picture" src={emil} height={24} width={24} />
+          <Image alt="DesignByte" src={emil} height={24} width={24} />
           <span>
             Made by{' '}
-            <a href="https://twitter.com/emilkowalski_" target="_blank">
-              Emil.
+            <a href="https://github.com/designbyte-official" target="_blank" rel="noopener noreferrer">
+              DesignByte
             </a>
           </span>
         </p>

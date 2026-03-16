@@ -19,9 +19,9 @@ const Head = () => (
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="author" content="DesignByte" />
 
-    {/* Favicons */}
-    <meta name="msapplication-TileColor" content="#ffffff" />
-    <meta name="theme-color" content="#ffffff" />
+    {/* Favicons — match theme.css --bg-primary when changing palette */}
+    <meta name="msapplication-TileColor" content="#FAF8F2" />
+    <meta name="theme-color" content="#FAF8F2" />
     <link rel="shortcut icon" href="favicon.ico" />
     <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png" />
   </NextHead>

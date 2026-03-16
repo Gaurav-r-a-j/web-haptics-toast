@@ -1,0 +1,82 @@
+/**
+ * Global theme — semantic color tokens only.
+ * Change the values below to retheme the entire website (e.g. switch to purple, dark, etc.).
+ * Use these token names everywhere; do not reference specific colors (e.g. "cream", "brown") in components.
+ */
+
+:root,
+.light {
+  /* Primary surfaces */
+  --bg-primary: #FAF8F2;
+  --bg-secondary: #FCF6EE;
+
+  /* Text */
+  --text-primary: #332C28;
+  --text-secondary: #5C4B3C;
+  --text-on-accent: #fff;
+
+  /* Actions & links */
+  --accent: #F9B234;
+  --accent-hover: #e5a020;
+
+  /* Borders */
+  --border: #EEDCC8;
+  --border-subtle: #EEDCC8;
+
+  /* States */
+  --success: #5CB85C;
+
+  /* Optional: alternate section (e.g. dark strip) */
+  --bg-inverse: #6D3E2E;
+  --text-inverse: #F5EFE3;
+
+  /* Neutrals for code blocks & UI that should stay theme-independent */
+  --neutral-0: #fff;
+  --neutral-1: hsl(0, 0%, 99%);
+  --neutral-2: hsl(0, 0%, 97.3%);
+  --neutral-3: hsl(0, 0%, 95.1%);
+  --neutral-4: hsl(0, 0%, 93%);
+  --neutral-5: hsl(0, 0%, 90.9%);
+  --neutral-6: hsl(0, 0%, 88.7%);
+  --neutral-7: hsl(0, 0%, 85.8%);
+  --neutral-8: hsl(0, 0%, 78%);
+  --neutral-9: hsl(0, 0%, 56.1%);
+  --neutral-10: hsl(0, 0%, 52.3%);
+  --neutral-11: hsl(0, 0%, 43.5%);
+  --neutral-12: hsl(0, 0%, 9%);
+
+  --font-sans: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Arial,
+    Noto Sans, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji;
+  --font-mono: 'SF Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, Liberation Mono, Courier New, monospace;
+  --radius: 8px;
+  --radius-sm: 6px;
+  --side-padding: 16px;
+}
+
+.dark {
+  --bg-primary: #0f0f0f;
+  --bg-secondary: #1a1a1a;
+  --text-primary: #f5f5f5;
+  --text-secondary: #a3a3a3;
+  --text-on-accent: #fff;
+  --accent: #a78bfa;
+  --accent-hover: #8b5cf6;
+  --border: #2a2a2a;
+  --border-subtle: #262626;
+  --success: #4ade80;
+  --bg-inverse: #1a1a1a;
+  --text-inverse: #f5f5f5;
+  --neutral-0: #000;
+  --neutral-1: hsl(0, 0%, 9.5%);
+  --neutral-2: hsl(0, 0%, 10.5%);
+  --neutral-3: hsl(0, 0%, 15.8%);
+  --neutral-4: hsl(0, 0%, 18.9%);
+  --neutral-5: hsl(0, 0%, 21.7%);
+  --neutral-6: hsl(0, 0%, 24.7%);
+  --neutral-7: hsl(0, 0%, 29.1%);
+  --neutral-8: hsl(0, 0%, 37.5%);
+  --neutral-9: hsl(0, 0%, 43%);
+  --neutral-10: hsl(0, 0%, 50.7%);
+  --neutral-11: hsl(0, 0%, 69.5%);
+  --neutral-12: hsl(0, 0%, 93.5%);
+}
