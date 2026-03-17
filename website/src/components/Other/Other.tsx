@@ -94,7 +94,8 @@ export const Other = ({
 
   return (
     <div>
-      <h2>Other</h2>
+      <p className="section-label" aria-hidden>Options</p>
+      <h2 id="other-heading">Other</h2>
       <div className="buttons">
         {allTypes.map((type) => (
           <button

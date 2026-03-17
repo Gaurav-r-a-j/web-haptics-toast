@@ -21,7 +21,8 @@ export const Position = ({
 
   return (
     <div>
-      <h2>Position</h2>
+      <p className="section-label" aria-hidden>Layout</p>
+      <h2 id="position-heading">Position</h2>
       <p>Swipe direction changes depending on the position.</p>
       <div className="buttons">
         {positions.map((position) => (

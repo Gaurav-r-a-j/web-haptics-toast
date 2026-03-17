@@ -9,7 +9,8 @@ export const Types = () => {
 
   return (
     <div>
-      <h2>Types</h2>
+      <p className="section-label" aria-hidden>API</p>
+      <h2 id="types-heading">Types</h2>
       <p>You can customize the type of toast you want to render, and pass an options object as the second argument.</p>
       <div className="buttons">
         {allTypes.map((type) => (

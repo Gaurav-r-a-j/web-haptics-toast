@@ -47,7 +47,7 @@ div > a:hover {
 }
 
 footer > div {
-  padding: 32px 24px !important;
+  padding: 1.5rem var(--side-padding) !important;
 }
 
 /* Shiki/code syntax uses neutrals so it works in both themes */

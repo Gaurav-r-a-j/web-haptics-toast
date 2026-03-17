@@ -10,7 +10,8 @@ export const ExpandModes = ({
 }) => {
   return (
     <div>
-      <h2>Expand</h2>
+      <p className="section-label" aria-hidden>Behavior</p>
+      <h2 id="expand-heading">Expand</h2>
       <p>
         You can change the amount of toasts visible through the <code>visibleToasts</code> prop.
       </p>

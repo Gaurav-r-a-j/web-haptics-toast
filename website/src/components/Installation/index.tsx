@@ -25,10 +25,10 @@ export const Installation = () => {
   return (
     <div>
       <p className="section-label" aria-hidden>Quick start</p>
-      <h2>Installation</h2>
+      <h2 id="install-heading">Installation</h2>
       <code className={styles.code} onClick={onCopy}>
         npm install web-haptics-toast{' '}
-        <button aria-label="Copy code" className={styles.copy}>
+        <button type="button" aria-label="Copy install command" className={styles.copy}>
           {mounted ? (
             <MotionConfig transition={{ duration: 0.15 }}>
               <AnimatePresence initial={false} mode="wait">

@@ -18,7 +18,7 @@ export const Haptics = ({
   return (
     <div>
       <p className="section-label" aria-hidden>Features</p>
-      <h2>Haptics</h2>
+      <h2 id="haptics-heading">Haptics</h2>
       <p style={{ marginTop: 0 }}>
         Toasts trigger haptic feedback by default on supported devices. Toggle below to test with haptics on or off.
         On desktop, enable <strong>Debug</strong> to hear the pattern as sound.

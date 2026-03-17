@@ -3,7 +3,8 @@ import { CodeBlock } from '../CodeBlock';
 export const Usage = () => {
   return (
     <div>
-      <h2>Usage</h2>
+      <p className="section-label" aria-hidden>Code</p>
+      <h2 id="usage-heading">Usage</h2>
       <p>Render the toaster in the root of your app.</p>
       <CodeBlock initialHeight={270}>{`import { Toaster, toast } from 'web-haptics-toast'
 import 'web-haptics-toast/dist/styles.css'

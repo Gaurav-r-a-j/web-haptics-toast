@@ -59,7 +59,7 @@ export const CodeBlock = ({ children, initialHeight = 0 }: { children: string; i
 
   return (
     <div className={styles.outerWrapper}>
-      <button className={styles.copyButton} onClick={onCopy} aria-label="Copy code">
+      <button type="button" className={styles.copyButton} onClick={onCopy} aria-label="Copy code">
         <MotionConfig transition={{ duration: 0.15 }}>
           <AnimatePresence initial={false} mode="wait">
             {copying ? (

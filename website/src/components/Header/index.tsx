@@ -14,6 +14,9 @@ const navLinks = [
 export const Header = () => {
   return (
     <header className={styles.header}>
+      <a href="#main" className={styles.skipLink}>
+        Skip to content
+      </a>
       <div className={styles.inner}>
         <a href="#" className={styles.logo} aria-label="Home">
           web-haptics-toast

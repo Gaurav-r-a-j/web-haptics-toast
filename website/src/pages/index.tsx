@@ -35,36 +35,36 @@ export default function Home() {
         haptics={haptics}
         hapticsDebug={hapticsDebug}
       />
-      <main className="container">
+      <main id="main" className="container" role="main" aria-label="Main content">
         <Hero />
         <div className="content">
-          <section className="section block" id="install">
+          <section className="section block" id="install" aria-labelledby="install-heading">
             <Installation />
           </section>
-          <section className="section block" id="usage">
+          <section className="section block" id="usage" aria-labelledby="usage-heading">
             <Usage />
           </section>
-          <section className="section block" id="haptics">
+          <section className="section block" id="haptics" aria-labelledby="haptics-heading">
             <Haptics
-            haptics={haptics}
-            hapticsDebug={hapticsDebug}
-            setHaptics={setHaptics}
-            setHapticsDebug={setHapticsDebug}
-          />
+              haptics={haptics}
+              hapticsDebug={hapticsDebug}
+              setHaptics={setHaptics}
+              setHapticsDebug={setHapticsDebug}
+            />
           </section>
-          <section className="section block" id="types">
+          <section className="section block" id="types" aria-labelledby="types-heading">
             <Types />
           </section>
-          <section className="section block" id="position">
+          <section className="section block" id="position" aria-labelledby="position-heading">
             <Position position={position} setPosition={setPosition} />
           </section>
-          <section className="section block" id="expand">
+          <section className="section block" id="expand" aria-labelledby="expand-heading">
             <ExpandModes expand={expand} setExpand={setExpand} />
           </section>
-          <section className="section block" id="other">
+          <section className="section block" id="other" aria-labelledby="other-heading">
             <Other setCloseButton={setCloseButton} setRichColors={setRichColors} />
           </section>
-          <section className="section block" id="how">
+          <section className="section block" id="how" aria-labelledby="how-heading">
             <How />
           </section>
         </div>

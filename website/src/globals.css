@@ -83,6 +83,11 @@ a:hover {
   text-decoration-color: var(--accent);
 }
 
+.link-external {
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
 code {
   font-size: 0.8125rem;
   line-height: 1.5;
@@ -176,7 +181,7 @@ code {
 }
 
 .wrapper footer .container {
-  padding: 2rem var(--side-padding) !important;
+  padding: 1.5rem var(--side-padding) !important;
 }
 
 .wrapper footer p {

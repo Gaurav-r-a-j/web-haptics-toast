@@ -6,6 +6,28 @@
   border-bottom: 1px solid var(--border);
 }
 
+.skipLink {
+  position: absolute;
+  top: -100%;
+  left: var(--side-padding);
+  padding: 0.5rem 0.75rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--text-primary);
+  background: var(--bg-secondary);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  text-decoration: none;
+  z-index: 100;
+  transition: top 0.15s;
+}
+
+.skipLink:focus {
+  top: 0.75rem;
+  outline: none;
+  box-shadow: 0 0 0 2px var(--accent);
+}
+
 .inner {
   max-width: 720px;
   margin: 0 auto;
