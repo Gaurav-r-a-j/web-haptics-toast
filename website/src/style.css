@@ -6,19 +6,65 @@
 
 body {
   padding-top: 0;
+  background: var(--bg-primary);
+  color: var(--text-primary);
 }
 
-.button {
-  margin: 1.5rem 0 0;
+/* Nextra docs theme — align surfaces with theme tokens */
+.nextra-nav-container {
+  background: var(--bg-primary) !important;
+  border-bottom: 1px solid var(--border) !important;
+}
+
+.nextra-sidebar-container {
+  background: var(--bg-secondary) !important;
+  border-right: 1px solid var(--border) !important;
+}
+
+.nextra-content {
+  background: var(--bg-primary) !important;
+}
+
+.nextra-sidebar-container a {
+  color: var(--text-secondary) !important;
+}
+
+.nextra-sidebar-container a:hover {
+  color: var(--text-primary) !important;
+}
+
+.nextra-sidebar-container a[aria-current='page'] {
+  color: var(--text-primary) !important;
+  background: var(--bg-primary) !important;
+  border: 1px solid var(--border) !important;
+  border-radius: var(--radius-sm) !important;
+}
+
+.nextra-toc {
+  border-left: 1px solid var(--border) !important;
+}
+
+.nextra-content a {
+  color: var(--text-primary);
+  text-decoration-color: var(--text-secondary);
+}
+
+.nextra-content a:hover {
+  text-decoration-color: var(--accent);
+}
+
+.nextra-code span,
+.nextra-code code {
+  font-family: var(--font-mono) !important;
 }
 
 aside li.active a {
-  background: var(--neutral-3) !important;
+  background: var(--bg-secondary) !important;
   color: var(--text-primary) !important;
 }
 
 aside li:not(.active) a:hover {
-  background: var(--neutral-2) !important;
+  background: var(--bg-secondary) !important;
 }
 
 pre {
@@ -29,7 +75,7 @@ pre {
 }
 
 button[title='Copy code'] {
-  background: var(--neutral-2);
+  background: var(--bg-secondary);
   color: var(--text-secondary);
 }
 
@@ -42,15 +88,11 @@ main > p {
   color: var(--text-primary) !important;
 }
 
-div > a:hover {
-  color: var(--text-primary) !important;
-}
-
 footer > div {
   padding: 1.5rem var(--side-padding) !important;
 }
 
-/* Shiki/code syntax uses neutrals so it works in both themes */
+/* Shiki token defaults */
 :root {
-  --shiki-token-comment: var(--neutral-11) !important;
+  --shiki-token-comment: var(--text-secondary) !important;
 }

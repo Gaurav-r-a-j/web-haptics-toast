@@ -84,7 +84,7 @@ export const Other = ({
         },
       },
     ],
-    [setRichColors],
+    [setRichColors, setCloseButton],
   );
 
   const [activeType, setActiveType] = React.useState(allTypes[0]);

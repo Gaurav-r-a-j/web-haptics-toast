@@ -42,7 +42,7 @@
 }
 
 .copyButton:hover {
-  background: var(--neutral-2);
+  background: var(--bg-secondary);
 }
 
 .copyButton:focus-visible {

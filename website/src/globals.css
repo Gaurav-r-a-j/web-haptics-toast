@@ -4,8 +4,24 @@ html {
   scroll-behavior: smooth;
 }
 
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
 ::selection {
-  background: var(--neutral-7);
+  background: var(--accent);
+  color: var(--text-on-accent);
 }
 
 .container {
@@ -153,7 +169,7 @@ code {
 }
 
 .button:hover {
-  background: var(--neutral-2);
+  background: var(--bg-primary);
   border-color: var(--text-secondary);
 }
 

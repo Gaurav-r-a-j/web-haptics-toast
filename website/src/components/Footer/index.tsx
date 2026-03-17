@@ -1,5 +1,3 @@
-import Image from 'next/image';
-import emil from 'public/emil.jpeg';
 import styles from './footer.module.css';
 
 export const Footer = () => {
@@ -7,12 +5,15 @@ export const Footer = () => {
     <footer className={styles.wrapper}>
       <div className="container">
         <p className={styles.p}>
-          <Image alt="DesignByte" src={emil} height={24} width={24} />
+          <span className={styles.mark} aria-hidden>
+            db
+          </span>
           <span>
-            Made by{' '}
+            Built by{' '}
             <a href="https://github.com/designbyte-official" target="_blank" rel="noopener noreferrer">
               DesignByte
             </a>
+            .
           </span>
         </p>
       </div>

@@ -104,17 +104,22 @@
 }
 
 .gh {
-  font-size: 0.875rem;
-  font-weight: 500;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: var(--radius);
   color: var(--text-secondary);
+  border: 1px solid transparent;
   text-decoration: none;
-  padding: 0 0.5rem;
-  line-height: 44px;
-  transition: color 0.2s;
+  transition: color 0.2s, background 0.2s, border-color 0.2s;
 }
 
 .gh:hover {
-  color: var(--accent);
+  color: var(--text-primary);
+  background: var(--bg-secondary);
+  border-color: var(--border);
 }
 
 .preview {

@@ -27,7 +27,7 @@ const theme = {
     {
       types: ['atrule', 'keyword', 'attr-name', 'selector', 'string'],
       style: {
-        color: 'var(--neutral-11)',
+        color: 'var(--text-secondary)',
       },
     },
     {

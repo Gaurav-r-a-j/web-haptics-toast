@@ -1,0 +1,61 @@
+import { Callout, Steps, Tabs, Tab } from 'nextra-theme-docs';
+
+# Haptics
+
+Haptics are **on by default**. On supported devices, each toast triggers a small vibration pattern to make feedback feel more “native”.
+
+<Callout type="info">
+  On desktop, haptics aren’t available—enable <strong>Debug</strong> to hear the pattern as sound.
+</Callout>
+
+## Quick usage
+
+```tsx
+import { Toaster } from 'web-haptics-toast';
+
+export function App() {
+  return <Toaster haptics />;
+}
+```
+
+## Props
+
+### `haptics`
+
+Enable/disable haptics for this toaster.
+
+```tsx
+<Toaster haptics={false} />
+```
+
+### `hapticsDebug`
+
+Debug mode. On desktop it plays the vibration pattern as audio so you can validate the “feel” while developing.
+
+```tsx
+<Toaster haptics hapticsDebug />
+```
+
+### `hapticPatternMap`
+
+Override which haptic pattern is used for each toast type.
+
+```tsx
+<Toaster
+  haptics
+  hapticPatternMap={{
+    success: 'success',
+    error: 'error',
+    warning: 'warning',
+    info: 'notification',
+    default: 'selection',
+  }}
+/>;
+```
+
+## Tips
+
+- Keep patterns subtle for frequent toasts (e.g. “selection”).
+- Use stronger patterns for “success” or “error”.
+- Always allow users to disable haptics if your product has accessibility settings.
+

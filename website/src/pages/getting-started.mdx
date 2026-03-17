@@ -11,23 +11,23 @@ web-haptics-toast is a toast component for React with haptic feedback by default
 <Tabs items={['pnpm', 'npm', 'yarn', 'bun']}>
   <Tab>
     ```bash
-    pnpm i sonner
+    pnpm i web-haptics-toast
     ```
 
   </Tab>
   <Tab>
     ```bash
-    npm i sonner
+    npm i web-haptics-toast
     ```
   </Tab>
   <Tab>
     ```bash
-    yarn add sonner
+    yarn add web-haptics-toast
     ```
   </Tab>
     <Tab>
     ```bash
-    bun add sonner
+    bun add web-haptics-toast
     ```
   </Tab>
 </Tabs>
@@ -37,7 +37,7 @@ web-haptics-toast is a toast component for React with haptic feedback by default
 It can be placed anywhere, even in server components such as `layout.tsx`.
 
 ```tsx
-import { Toaster } from 'sonner';
+import { Toaster } from 'web-haptics-toast';
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
@@ -54,10 +54,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 ### Render a toast
 
 ```tsx
-import { toast } from 'sonner';
+import { toast } from 'web-haptics-toast';
 
 function MyToast() {
-  return <button onClick={() => toast('This is a sonner toast')}>Render my toast</button>;
+  return <button onClick={() => toast('This is a toast')}>Render my toast</button>;
 }
 ```
 

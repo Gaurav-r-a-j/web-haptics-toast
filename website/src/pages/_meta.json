@@ -15,6 +15,10 @@
     "title": "Toaster",
     "href": "/toaster"
   },
+  "haptics": {
+    "title": "Haptics",
+    "href": "/haptics"
+  },
   "-- More": {
     "type": "separator",
     "title": "Guides"
