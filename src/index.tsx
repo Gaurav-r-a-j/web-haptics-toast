@@ -23,6 +23,8 @@ import {
   type ToasterProps,
   type ToastProps,
   type ToastT,
+  type ToastCloseReason,
+  type ToastSystemConfig,
   type ToastToDismiss,
   type ToastTypes,
 } from './types';
@@ -83,6 +85,7 @@ const Toast = (props: ToastProps) => {
     toasts,
     expanded,
     removeToast,
+    dismissReasonEnabled,
     defaultRichColors,
     closeButton: closeButtonFromToaster,
     style,
@@ -133,6 +136,7 @@ const Toast = (props: ToastProps) => {
   const offset = React.useRef(0);
   const lastCloseTimerStartTimeRef = React.useRef(0);
   const pointerStartRef = React.useRef<{ x: number; y: number } | null>(null);
+  const didFireOnCloseRef = React.useRef(false);
   const [y, x] = position.split('-');
   const toastsHeightBefore = React.useMemo(() => {
     return heights.reduce((prev, curr, reducerIndex) => {
@@ -171,6 +175,11 @@ const Toast = (props: ToastProps) => {
     }
   }, [setHeights, toast.id]);
 
+  // Reset "onClose" bookkeeping whenever a new toast is mounted.
+  React.useEffect(() => {
+    didFireOnCloseRef.current = false;
+  }, [toast.id]);
+
   React.useLayoutEffect(() => {
     // Keep height up to date with the content in case it updates
     if (!mounted) return;
@@ -192,16 +201,19 @@ const Toast = (props: ToastProps) => {
     });
   }, [mounted, toast.title, toast.description, setHeights, toast.id, toast.jsx, toast.action, toast.cancel]);
 
-  const deleteToast = React.useCallback(() => {
-    // Save the offset for the exit swipe animation
-    setRemoved(true);
-    setOffsetBeforeRemove(offset.current);
-    setHeights((h) => h.filter((height) => height.toastId !== toast.id));
+  const deleteToast = React.useCallback(
+    (reason?: ToastCloseReason) => {
+      // Save the offset for the exit swipe animation
+      setRemoved(true);
+      setOffsetBeforeRemove(offset.current);
+      setHeights((h) => h.filter((height) => height.toastId !== toast.id));
 
-    setTimeout(() => {
-      removeToast(toast);
-    }, TIME_BEFORE_UNMOUNT);
-  }, [toast, removeToast, setHeights, offset]);
+      setTimeout(() => {
+        removeToast(toast, reason);
+      }, TIME_BEFORE_UNMOUNT);
+    },
+    [toast, removeToast, setHeights, offset],
+  );
 
   React.useEffect(() => {
     if ((toast.promise && toastType === 'loading') || toast.duration === Infinity || toast.type === 'loading') return;
@@ -230,7 +242,7 @@ const Toast = (props: ToastProps) => {
       // Let the toast know it has started
       timeoutId = setTimeout(() => {
         toast.onAutoClose?.(toast);
-        deleteToast();
+        deleteToast('timeout');
       }, remainingTime.current);
     };
 
@@ -245,10 +257,15 @@ const Toast = (props: ToastProps) => {
 
   React.useEffect(() => {
     if (toast.delete) {
-      deleteToast();
+      const reason = toast.dismissReason ?? 'dismiss';
+      deleteToast(reason);
       toast.onDismiss?.(toast);
+      if (dismissReasonEnabled && !didFireOnCloseRef.current) {
+        didFireOnCloseRef.current = true;
+        toast.onClose?.(toast, reason);
+      }
     }
-  }, [deleteToast, toast.delete]);
+  }, [deleteToast, toast.delete, toast.dismissReason, toast.onDismiss, toast.onClose, dismissReasonEnabled]);
 
   function getLoadingIcon() {
     if (icons?.loading) {
@@ -353,7 +370,7 @@ const Toast = (props: ToastProps) => {
             setSwipeOutDirection(swipeAmountY > 0 ? 'down' : 'up');
           }
 
-          deleteToast();
+          deleteToast('swipe');
           setSwipeOut(true);
 
           return;
@@ -434,7 +451,7 @@ const Toast = (props: ToastProps) => {
             disabled || !dismissible
               ? () => {}
               : () => {
-                  deleteToast();
+                  deleteToast('close');
                   toast.onDismiss?.(toast);
                 }
           }
@@ -483,7 +500,7 @@ const Toast = (props: ToastProps) => {
             if (!isAction(toast.cancel)) return;
             if (!dismissible) return;
             toast.cancel.onClick?.(event);
-            deleteToast();
+            deleteToast('cancel');
           }}
           className={cn(classNames?.cancelButton, toast?.classNames?.cancelButton)}
         >
@@ -502,7 +519,7 @@ const Toast = (props: ToastProps) => {
             if (!isAction(toast.action)) return;
             toast.action.onClick?.(event);
             if (event.defaultPrevented) return;
-            deleteToast();
+            deleteToast('action');
           }}
           className={cn(classNames?.actionButton, toast?.classNames?.actionButton)}
         >
@@ -646,6 +663,7 @@ const Toaster = React.forwardRef<HTMLElement, ToasterProps>(function Toaster(pro
     hapticPatternMap,
     hapticsDebug = false,
     hapticsShowSwitch = false,
+    system,
   } = props;
   const hapticsRef = React.useRef<WebHaptics | null>(null);
   const [toasts, setToasts] = React.useState<ToastT[]>([]);
@@ -689,10 +707,18 @@ const Toaster = React.forwardRef<HTMLElement, ToasterProps>(function Toaster(pro
     };
   }, [haptics, hapticsDebug, hapticsShowSwitch]);
 
-  const removeToast = React.useCallback((toastToRemove: ToastT) => {
+  // Register system feature flags for this toaster.
+  React.useEffect(() => {
+    ToastState.setSystemConfig(id, system);
+    return () => {
+      ToastState.setSystemConfig(id, undefined);
+    };
+  }, [id, system]);
+
+  const removeToast = React.useCallback((toastToRemove: ToastT, reason?: ToastCloseReason) => {
     setToasts((toasts) => {
       if (!toasts.find((toast) => toast.id === toastToRemove.id)?.delete) {
-        ToastState.dismiss(toastToRemove.id);
+        ToastState.dismiss(toastToRemove.id, reason);
       }
 
       return toasts.filter(({ id }) => id !== toastToRemove.id);
@@ -704,7 +730,11 @@ const Toaster = React.forwardRef<HTMLElement, ToasterProps>(function Toaster(pro
       if ((toast as ToastToDismiss).dismiss) {
         // Prevent batching of other state updates
         requestAnimationFrame(() => {
-          setToasts((toasts) => toasts.map((t) => (t.id === toast.id ? { ...t, delete: true } : t)));
+          setToasts((toasts) =>
+            toasts.map((t) =>
+              t.id === toast.id ? { ...t, delete: true, dismissReason: (toast as ToastToDismiss).reason } : t,
+            ),
+          );
         });
         return;
       }
@@ -920,6 +950,7 @@ const Toaster = React.forwardRef<HTMLElement, ToasterProps>(function Toaster(pro
                   actionButtonStyle={toastOptions?.actionButtonStyle}
                   closeButtonAriaLabel={toastOptions?.closeButtonAriaLabel}
                   removeToast={removeToast}
+                  dismissReasonEnabled={system?.dismissReason?.enabled === true}
                   toasts={filteredToasts.filter((t) => t.position == toast.position)}
                   heights={heights.filter((h) => h.position == toast.position)}
                   setHeights={setHeights}
@@ -938,5 +969,5 @@ const Toaster = React.forwardRef<HTMLElement, ToasterProps>(function Toaster(pro
 
 export { toast, Toaster, useSonner, isHapticsSupported, triggerHaptic, WebHaptics, defaultPatterns };
 export type { TriggerHapticOptions } from './haptics';
-export type { ExternalToast, ToastT, ToasterProps, HapticPatternName, ToastTypes };
+export type { ExternalToast, ToastT, ToasterProps, ToastSystemConfig, HapticPatternName, ToastTypes };
 export { type ToastClassnames, type ToastToDismiss, type Action } from './types';

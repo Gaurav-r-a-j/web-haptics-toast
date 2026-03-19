@@ -4,6 +4,40 @@ html {
   scroll-behavior: smooth;
 }
 
+/* Subtle grain + top wash (site-wide) */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.06;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)' opacity='.35'/%3E%3C/svg%3E");
+  mix-blend-mode: multiply;
+}
+
+.wrapper::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 160px;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.12;
+  background: linear-gradient(90deg, transparent 0%, var(--accent) 35%, transparent 70%);
+  mask-image: linear-gradient(180deg, #000 0%, transparent 100%);
+}
+
+.wrapper,
+.nextra-content,
+.nextra-sidebar-container,
+.nextra-nav-container {
+  position: relative;
+  z-index: 1;
+}
+
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
@@ -25,7 +59,7 @@ html {
 }
 
 .container {
-  max-width: 680px;
+  max-width: 1120px;
   margin: 0 auto;
   padding-left: max(var(--side-padding), env(safe-area-inset-left));
   padding-right: max(var(--side-padding), env(safe-area-inset-right));
@@ -39,6 +73,50 @@ html {
   padding: 0;
   font-family: var(--font-sans);
   -webkit-font-smoothing: antialiased;
+}
+
+.particles {
+  z-index: 214748365;
+  position: fixed;
+  overflow: hidden;
+  inset: 0;
+  pointer-events: none;
+  user-select: none;
+  contain: strict;
+}
+
+@keyframes haptics_demo_shake {
+  0% {
+    transform: rotate(-3deg) translateX(0);
+  }
+  15% {
+    transform: rotate(-3deg) translateX(-6px);
+  }
+  30% {
+    transform: rotate(-3deg) translateX(6px);
+  }
+  45% {
+    transform: rotate(-3deg) translateX(-4px);
+  }
+  60% {
+    transform: rotate(-3deg) translateX(4px);
+  }
+  75% {
+    transform: rotate(-3deg) translateX(-2px);
+  }
+  100% {
+    transform: rotate(-3deg) translateX(0);
+  }
+}
+
+.hapticsDemoShake {
+  animation: haptics_demo_shake 1s ease-in-out;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hapticsDemoShake {
+    animation: none !important;
+  }
 }
 
 * {
@@ -139,54 +217,6 @@ code {
 @media (min-width: 640px) {
   .section.block {
     padding: 1.75rem 1.5rem;
-  }
-}
-
-/* Buttons */
-.buttons {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.5rem;
-  overflow: auto;
-  margin: 0 calc(-1 * var(--side-padding));
-  padding: 4px var(--side-padding);
-  position: relative;
-}
-
-.button {
-  padding: 0.5rem 0.875rem;
-  margin: 0;
-  background: var(--bg-secondary);
-  border: 1px solid var(--border);
-  white-space: nowrap;
-  border-radius: var(--radius);
-  font-size: 0.8125rem;
-  font-weight: 500;
-  font-family: var(--font-sans);
-  cursor: pointer;
-  color: var(--text-primary);
-  transition: border-color 0.2s, background 0.2s, box-shadow 0.2s;
-}
-
-.button:hover {
-  background: var(--bg-primary);
-  border-color: var(--text-secondary);
-}
-
-.button[data-active='true'] {
-  background: var(--accent);
-  border-color: var(--accent);
-  color: var(--text-on-accent);
-}
-
-.button:focus-visible {
-  outline: none;
-  box-shadow: 0 0 0 2px var(--bg-primary), 0 0 0 4px var(--accent);
-}
-
-@media (max-width: 600px) {
-  .buttons {
-    mask-image: linear-gradient(to right, transparent, black 16px, black calc(100% - 16px), transparent);
   }
 }
 

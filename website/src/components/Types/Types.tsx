@@ -12,10 +12,12 @@ export const Types = () => {
       <p className="section-label" aria-hidden>API</p>
       <h2 id="types-heading">Types</h2>
       <p>You can customize the type of toast you want to render, and pass an options object as the second argument.</p>
-      <div className="buttons">
+      <div
+        className="relative flex flex-wrap gap-2 overflow-auto py-[4px] mx-[calc(-1*var(--side-padding))] px-[var(--side-padding)] max-[600px]:[mask-image:linear-gradient(to_right,transparent,black_16px,black_calc(100%_-_16px),transparent)]"
+      >
         {allTypes.map((type) => (
           <button
-            className="button"
+            className="cursor-pointer whitespace-nowrap rounded-[var(--radius)] border border-[var(--border)] bg-[var(--bg-secondary)] px-[0.875rem] py-[0.5rem] text-[0.8125rem] font-medium text-[var(--text-primary)] transition-[border-color,background,box-shadow] duration-200 [font-family:var(--font-sans)] hover:bg-[var(--bg-primary)] hover:border-[var(--text-secondary)] data-[active='true']:bg-[var(--accent)] data-[active='true']:border-[var(--accent)] data-[active='true']:text-[var(--text-on-accent)] focus:outline-none focus-visible:shadow-[0_0_0_2px_var(--bg-primary),_0_0_0_4px_var(--accent)]"
             data-active={activeType.name === type.name}
             onClick={() => {
               type.action();

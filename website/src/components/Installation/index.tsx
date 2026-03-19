@@ -4,8 +4,6 @@ import React from 'react';
 import copy from 'copy-to-clipboard';
 import { motion, AnimatePresence, MotionConfig } from 'framer-motion';
 
-import styles from './installation.module.css';
-
 const variants = {
   visible: { opacity: 1, scale: 1 },
   hidden: { opacity: 0, scale: 0.5 },
@@ -26,9 +24,16 @@ export const Installation = () => {
     <div>
       <p className="section-label" aria-hidden>Quick start</p>
       <h2 id="install-heading">Installation</h2>
-      <code className={styles.code} onClick={onCopy}>
+      <code
+        className="relative flex h-[44px] cursor-copy items-center overflow-hidden rounded-[var(--radius-sm)] border border-[var(--border)] bg-[var(--bg-secondary)] px-[0.75rem] pr-[3rem] font-[var(--font-mono)] text-[0.875rem] leading-[1.5] text-[var(--text-primary)]"
+        onClick={onCopy}
+      >
         npm install web-haptics-toast{' '}
-        <button type="button" aria-label="Copy install command" className={styles.copy}>
+        <button
+          type="button"
+          aria-label="Copy install command"
+          className="absolute right-[0.5rem] top-1/2 flex h-[28px] w-[28px] -translate-y-1/2 cursor-pointer items-center justify-center rounded-[var(--radius-sm)] border border-[var(--border)] bg-[var(--bg-primary)] text-[var(--text-primary)] [&>div]:flex"
+        >
           {mounted ? (
             <MotionConfig transition={{ duration: 0.15 }}>
               <AnimatePresence initial={false} mode="wait">
@@ -68,7 +73,7 @@ export const Installation = () => {
               </AnimatePresence>
             </MotionConfig>
           ) : (
-            <span className={styles.copy} aria-hidden />
+            <span className="h-[28px] w-[28px]" aria-hidden />
           )}
         </button>
       </code>

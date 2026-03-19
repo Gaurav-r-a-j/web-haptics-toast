@@ -4,8 +4,6 @@ import useMeasure from 'react-use-measure';
 import copy from 'copy-to-clipboard';
 import { AnimatePresence, motion, MotionConfig } from 'framer-motion';
 
-import styles from './code-block.module.css';
-
 const variants = {
   visible: { opacity: 1, scale: 1 },
   hidden: { opacity: 0, scale: 0.5 },
@@ -58,8 +56,13 @@ export const CodeBlock = ({ children, initialHeight = 0 }: { children: string; i
   }, [children]);
 
   return (
-    <div className={styles.outerWrapper}>
-      <button type="button" className={styles.copyButton} onClick={onCopy} aria-label="Copy code">
+    <div className="relative group">
+      <button
+        type="button"
+        onClick={onCopy}
+        aria-label="Copy code"
+        className="absolute right-[0.75rem] top-[0.75rem] z-[1] flex h-[28px] w-[28px] items-center justify-center rounded-sm border border-[var(--border)] bg-[var(--bg-primary)] text-[var(--text-primary)] opacity-0 transition-[background,box-shadow,opacity] duration-200 hover:bg-[var(--bg-secondary)] group-hover:opacity-100 focus-visible:opacity-100 focus-visible:shadow-[0_0_0_2px_var(--accent)]"
+      >
         <MotionConfig transition={{ duration: 0.15 }}>
           <AnimatePresence initial={false} mode="wait">
             {copying ? (
@@ -102,11 +105,14 @@ export const CodeBlock = ({ children, initialHeight = 0 }: { children: string; i
       <Highlight {...defaultProps} theme={theme} code={children} language="jsx">
         {({ className, tokens, getLineProps, getTokenProps }) => (
           <motion.pre
-            className={styles.wrapper}
+            className="relative mt-[1rem] overflow-hidden rounded-[var(--radius)] border border-[var(--border)] !p-0"
             animate={{ height: bounds.height || initialHeight }}
             transition={{ type: 'easeOut', duration: 0.2 }}
           >
-            <div className={`${className} ${styles.root}`} ref={ref}>
+            <div
+              className={`${className} relative m-0 rounded-sm bg-[var(--bg-secondary)] p-4 leading-[1.5] whitespace-pre-wrap`}
+              ref={ref}
+            >
               <div />
               {tokens.map((line, i) => {
                 const { key: lineKey, ...rest } = getLineProps({ line, key: i });

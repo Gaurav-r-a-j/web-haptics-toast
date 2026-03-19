@@ -63,6 +63,17 @@ export interface Action {
 export interface ToastT {
   id: number | string;
   toasterId?: string;
+  /**
+   * When `Toaster` system.dedupe.enabled is true, toasts sharing the same
+   * `dedupeKey` (within the same toaster scope) will be updated instead of
+   * appended as a new toast.
+   */
+  dedupeKey?: string;
+  /**
+   * Internal-only: set when the toast is dismissed with a known reason.
+   * Powers `onClose` when that feature is enabled in `<Toaster system />`.
+   */
+  dismissReason?: ToastCloseReason;
   title?: (() => React.ReactNode) | React.ReactNode;
   type?: ToastTypes;
   icon?: React.ReactNode;
@@ -77,6 +88,11 @@ export interface ToastT {
   action?: Action | React.ReactNode;
   cancel?: Action | React.ReactNode;
   onDismiss?: (toast: ToastT) => void;
+  /**
+   * Called once when the toast is fully closed/dismissed, with a reason.
+   * Default: disabled (must be enabled in `<Toaster system />`).
+   */
+  onClose?: (toast: ToastT, reason: ToastCloseReason) => void;
   onAutoClose?: (toast: ToastT) => void;
   promise?: PromiseT;
   cancelButtonStyle?: React.CSSProperties;
@@ -162,6 +178,11 @@ export interface ToasterProps {
   customAriaLabel?: string;
   containerAriaLabel?: string;
   /**
+   * Central "system layer" feature flags for production behaviors.
+   * Defaults to all features OFF to avoid breaking existing Sonner-like behavior.
+   */
+  system?: ToastSystemConfig;
+  /**
    * Enable haptic feedback when toasts are shown (mobile / supported devices).
    * Uses web-haptics: success/error/warning/light patterns by toast type.
    * @default true
@@ -187,6 +208,26 @@ export interface ToasterProps {
 
 export type SwipeDirection = 'top' | 'right' | 'bottom' | 'left';
 
+export interface ToastSystemConfig {
+  /**
+   * Opinionated dedupe behavior. When enabled, any toast created with the same
+   * `dedupeKey` will map to the same internal toast `id`, so it updates cleanly.
+   *
+   * Default: disabled.
+   */
+  dedupe?: {
+    enabled?: boolean;
+  };
+
+  /**
+   * Lifecycle intelligence: provide a dismissal reason to `toast.onClose`.
+   * Default: disabled.
+   */
+  dismissReason?: {
+    enabled?: boolean;
+  };
+}
+
 export interface ToastProps {
   toast: ToastT;
   toasts: ToastT[];
@@ -196,7 +237,8 @@ export interface ToastProps {
   invert: boolean;
   heights: HeightT[];
   setHeights: React.Dispatch<React.SetStateAction<HeightT[]>>;
-  removeToast: (toast: ToastT) => void;
+  removeToast: (toast: ToastT, reason?: ToastCloseReason) => void;
+  dismissReasonEnabled: boolean;
   gap?: number;
   position: Position;
   visibleToasts: number;
@@ -228,9 +270,15 @@ export type Theme = 'light' | 'dark';
 export interface ToastToDismiss {
   id: number | string;
   dismiss: boolean;
+  reason?: ToastCloseReason;
 }
 
-export type ExternalToast = Omit<ToastT, 'id' | 'type' | 'title' | 'jsx' | 'delete' | 'promise'> & {
+export type ExternalToast = Omit<
+  ToastT,
+  'id' | 'type' | 'title' | 'jsx' | 'delete' | 'promise' | 'dismissReason'
+> & {
   id?: number | string;
   toasterId?: string;
 };
+
+export type ToastCloseReason = 'timeout' | 'swipe' | 'close' | 'cancel' | 'action' | 'dismiss';

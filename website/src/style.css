@@ -4,6 +4,11 @@
 
 /* Overrides that use theme tokens (see theme.css for token definitions) */
 
+html {
+  background: var(--bg-primary);
+  color: var(--text-primary);
+}
+
 body {
   padding-top: 0;
   background: var(--bg-primary);
@@ -11,6 +16,14 @@ body {
 }
 
 /* Nextra docs theme — align surfaces with theme tokens */
+.nextra-container {
+  background: var(--bg-primary) !important;
+}
+
+.nextra-main {
+  background: var(--bg-primary) !important;
+}
+
 .nextra-nav-container {
   background: var(--bg-primary) !important;
   border-bottom: 1px solid var(--border) !important;

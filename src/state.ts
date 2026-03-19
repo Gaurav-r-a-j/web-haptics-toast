@@ -6,6 +6,8 @@ import type {
   ToastT,
   ToastToDismiss,
   ToastTypes,
+  ToastCloseReason,
+  ToastSystemConfig,
 } from './types';
 
 import React from 'react';
@@ -18,12 +20,30 @@ class Observer {
   subscribers: Array<(toast: ExternalToast | ToastToDismiss) => void>;
   toasts: Array<ToastT | ToastToDismiss>;
   dismissedToasts: Set<string | number>;
+  systemConfigs: Map<string | undefined, ToastSystemConfig>;
 
   constructor() {
     this.subscribers = [];
     this.toasts = [];
     this.dismissedToasts = new Set();
+    this.systemConfigs = new Map();
   }
+
+  setSystemConfig = (toasterId: string | undefined, config?: ToastSystemConfig) => {
+    if (!config) {
+      this.systemConfigs.delete(toasterId);
+      return;
+    }
+    this.systemConfigs.set(toasterId, config);
+  };
+
+  getSystemConfig = (toasterId: string | undefined): ToastSystemConfig | undefined => {
+    return this.systemConfigs.get(toasterId) ?? this.systemConfigs.get(undefined);
+  };
+
+  isDedupeEnabled = (config?: ToastSystemConfig) => {
+    return config?.dedupe?.enabled === true;
+  };
 
   // We use arrow functions to maintain the correct `this` reference
   subscribe = (subscriber: (toast: ToastT | ToastToDismiss) => void) => {
@@ -53,7 +73,23 @@ class Observer {
     },
   ) => {
     const { message, ...rest } = data;
-    const id = typeof data?.id === 'number' || data.id?.length > 0 ? data.id : toastsCounter++;
+    const toasterId = data?.toasterId;
+
+    const existingId =
+      typeof data?.id === 'number' || (typeof data?.id === 'string' && data.id.length > 0) ? data.id : undefined;
+
+    const systemConfig = this.getSystemConfig(toasterId);
+    const dedupeKey = (rest as ExternalToast).dedupeKey;
+    const shouldDedupe =
+      this.isDedupeEnabled(systemConfig) && typeof dedupeKey === 'string' && dedupeKey.length > 0;
+
+    // If user provided an explicit id, always respect it.
+    // Otherwise, when system dedupe is enabled, map dedupeKey -> stable internal id.
+    const id =
+      existingId ??
+      (shouldDedupe
+        ? `__dedupe:${toasterId ?? 'global'}:${dedupeKey}`
+        : toastsCounter++);
     const alreadyExists = this.toasts.find((toast) => {
       return toast.id === id;
     });
@@ -85,13 +121,15 @@ class Observer {
     return id;
   };
 
-  dismiss = (id?: number | string) => {
+  dismiss = (id?: number | string, reason?: ToastCloseReason) => {
     if (id) {
       this.dismissedToasts.add(id);
-      requestAnimationFrame(() => this.subscribers.forEach((subscriber) => subscriber({ id, dismiss: true })));
+      requestAnimationFrame(() =>
+        this.subscribers.forEach((subscriber) => subscriber({ id, dismiss: true, reason } as ToastToDismiss)),
+      );
     } else {
       this.toasts.forEach((toast) => {
-        this.subscribers.forEach((subscriber) => subscriber({ id: toast.id, dismiss: true }));
+        this.subscribers.forEach((subscriber) => subscriber({ id: toast.id, dismiss: true, reason } as ToastToDismiss));
       });
     }
 

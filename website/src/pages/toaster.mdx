@@ -92,3 +92,32 @@ You can customize the default ARIA label for the notification container and the 
 | loadingIcon           |                                                Changes the default loading icon                                                 |            `-` |
 | pauseWhenPageIsHidden | Pauses toast timers when the page is hidden, e.g., when the tab is backgrounded, the browser is minimized, or the OS is locked. |        `false` |
 | icons                 |                                                    Changes the default icons                                                    |            `-` |
+
+## System (production behaviors)
+
+The `system` prop centralizes production-grade behaviors that may change toast semantics. These are **OFF by default** to avoid breaking existing app flows.
+
+### Dedupe
+
+When enabled, calling `toast.*(..., { dedupeKey: 'some-key' })` will update the existing toast with the same `dedupeKey` instead of creating a new one.
+
+```jsx
+<Toaster
+  system={{
+    dedupe: { enabled: true },
+  }}
+/>
+```
+
+### Dismiss Reason (`onClose`)
+
+When enabled, toasts created with `onClose` will receive a dismissal reason.
+This is useful for analytics/debug so you can distinguish `timeout` vs `swipe` vs `close` vs `action`.
+
+```jsx
+<Toaster
+  system={{
+    dismissReason: { enabled: true },
+  }}
+/>
+```

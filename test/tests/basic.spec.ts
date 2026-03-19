@@ -263,6 +263,21 @@ test.describe('Basic functionality', () => {
     await expect(updatedToast).not.toBeVisible();
   });
 
+  test('system dedupeKey updates existing toast (no duplicate)', async ({ page }) => {
+    await page.getByTestId('dedupe-toast').click();
+
+    await expect(page.getByText('Deduped Toast v1', { exact: true })).toHaveCount(1);
+
+    // Wait for the second toast call to run.
+    await page.waitForTimeout(250);
+
+    await expect(page.getByText('Deduped Toast v2', { exact: true })).toHaveCount(1);
+    await expect(page.getByText('Deduped Toast v1', { exact: true })).toHaveCount(0);
+
+    // Only one toast should exist for the dedupe key.
+    await expect(page.locator('[data-sonner-toast]')).toHaveCount(1);
+  });
+
   test('cancel button is rendered with custom styles', async ({ page }) => {
     await page.getByTestId('custom-cancel-button-toast').click();
     const button = await page.locator('[data-cancel]');

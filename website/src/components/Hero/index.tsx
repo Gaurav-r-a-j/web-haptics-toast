@@ -1,20 +1,26 @@
 'use client';
 
 import { toast } from 'web-haptics-toast';
-import styles from './hero.module.css';
 import Link from 'next/link';
 
 export const Hero = () => {
   return (
-    <section className={styles.hero} aria-label="Introduction">
-      <span className={styles.badge}>React · Haptics</span>
-      <h1 className={styles.title}>
+    <section
+      className="flex flex-col items-center justify-center px-0 pt-[3.5rem] pb-[4rem] text-center max-[600px]:pt-[2.5rem] max-[600px]:pb-[3rem]"
+      aria-label="Introduction"
+    >
+      <span className="mb-[1.25rem] inline-block rounded-full border border-[var(--border)] bg-[var(--bg-secondary)] px-[0.75rem] py-[0.35rem] text-[0.6875rem] font-semibold tracking-[0.08em] text-[var(--text-secondary)] uppercase">
+        React · Haptics
+      </span>
+      <h1
+        className="relative m-0 mb-[0.5rem] text-[clamp(2.25rem,6vw,3.25rem)] font-bold leading-[1.08] tracking-[-0.035em] text-[var(--text-primary)] after:mt-[0.75rem] after:block after:h-[3px] after:w-10 after:rounded-full after:bg-[var(--accent)] after:content-[''] after:mx-auto"
+      >
         web-haptics-toast
       </h1>
-      <p className={styles.subtitle}>
+      <p className="m-0 mb-[1.5rem] max-w-[26em] text-[1.0625rem] leading-[1.55] text-[var(--text-secondary)]">
         Toasts with haptic feedback by default. Drop-in replacement for Sonner.
       </p>
-      <div className={styles.actions}>
+      <div className="flex flex-wrap items-center justify-center gap-[0.625rem] max-[600px]:flex-col max-[600px]:w-full max-[600px]:gap-[0.5rem]">
         <button
           type="button"
           onClick={() =>
@@ -22,21 +28,27 @@ export const Hero = () => {
               description: 'Haptics on supported devices.',
             })
           }
-          className={styles.cta}
+          className="flex h-[44px] items-center justify-center rounded-[var(--radius)] bg-[var(--accent)] px-[1.25rem] text-[0.9375rem] font-semibold text-[var(--text-on-accent)] transition-[background,transform] duration-200 hover:bg-[var(--accent-hover)] focus:outline-none focus:shadow-[0_0_0_2px_var(--bg-primary),_0_0_0_4px_var(--accent)]"
         >
           Try a toast
         </button>
-        <Link href="/docs" className={styles.secondary}>
+        <Link
+          href="/docs"
+          className="flex h-[44px] max-[600px]:w-full max-[600px]:max-w-[260px] items-center justify-center rounded-[var(--radius)] border border-[var(--border)] bg-transparent px-[1rem] text-[0.875rem] font-medium text-[var(--text-primary)] transition-[border-color,background] duration-200 hover:border-[var(--text-secondary)] hover:bg-[var(--bg-secondary)] focus:outline-none focus:shadow-[0_0_0_2px_var(--bg-primary),_0_0_0_4px_var(--accent)]"
+        >
           Docs
         </Link>
-        <a href="#install" className={styles.secondary}>
+        <a
+          href="#install"
+          className="flex h-[44px] max-[600px]:w-full max-[600px]:max-w-[260px] items-center justify-center rounded-[var(--radius)] border border-[var(--border)] bg-transparent px-[1rem] text-[0.875rem] font-medium text-[var(--text-primary)] transition-[border-color,background] duration-200 hover:border-[var(--text-secondary)] hover:bg-[var(--bg-secondary)] focus:outline-none focus:shadow-[0_0_0_2px_var(--bg-primary),_0_0_0_4px_var(--accent)]"
+        >
           Get started
         </a>
         <a
           href="https://github.com/designbyte-official/web-haptics-toast"
           target="_blank"
           rel="noopener noreferrer"
-          className={styles.gh}
+          className="flex h-[44px] w-[44px] items-center justify-center rounded-[var(--radius)] border border-transparent text-[var(--text-secondary)] transition-[color,background,border-color] duration-200 hover:border-[var(--border)] hover:bg-[var(--bg-secondary)] hover:text-[var(--text-primary)] max-[600px]:px-0 max-[600px]:py-0 max-[600px]:leading-[1.5] focus:outline-none focus:shadow-[0_0_0_2px_var(--bg-primary),_0_0_0_4px_var(--accent)]"
           aria-label="GitHub repository"
           title="GitHub"
         >
@@ -45,8 +57,8 @@ export const Hero = () => {
           </svg>
         </a>
       </div>
-      <div className={styles.preview} aria-hidden>
-        <div className={styles.toast} />
+      <div className="mt-[2.5rem] flex w-full justify-center max-w-[320px]" aria-hidden>
+        <div className="h-[44px] w-full max-w-[280px] rounded-[var(--radius-sm)] border border-[var(--border)] bg-[var(--bg-secondary)] shadow-[0_4px_16px_rgba(0,0,0,0.06)]" />
       </div>
     </section>
   );

@@ -61,4 +61,67 @@ function MyToast() {
 }
 ```
 
+### (Optional) Enable production behaviors
+
+web-haptics-toast keeps Sonner-compatible behavior by default.
+If you want “production-grade” features that can change toast semantics (like dedupe/update), enable them from one place: `<Toaster system={...} />`.
+
+```tsx
+import { Toaster, toast } from 'web-haptics-toast';
+import 'web-haptics-toast/dist/styles.css';
+
+export default function App() {
+  return (
+    <>
+      <Toaster
+        system={{
+          dedupe: { enabled: true },
+          dismissReason: { enabled: true },
+        }}
+      />
+      <button
+        onClick={() =>
+          toast.error('Payment failed', {
+            dedupeKey: 'payment-error',
+            onClose: (_toast, reason) => {
+              console.log('Closed with reason:', reason);
+            },
+          })
+        }
+      >
+        Trigger toast
+      </button>
+    </>
+  );
+}
+```
+
+### Dedupe / update by `dedupeKey` (OFF by default)
+
+When enabled in `system`, calling `toast.*(..., { dedupeKey })` updates the existing toast with the same key instead of creating a new one.
+
+```tsx
+<Toaster system={{ dedupe: { enabled: true } }} />
+
+toast.error('Payment failed', { toasterId: 'global', dedupeKey: 'payment-error' });
+toast.error('Payment failed again', { toasterId: 'global', dedupeKey: 'payment-error' });
+```
+
+### Dismiss reason via `onClose` (OFF by default)
+
+When enabled in `system`, `toast.onClose` is called with a dismissal `reason`.
+
+Possible reasons:
+`timeout | swipe | close | cancel | action | dismiss`.
+
+```tsx
+<Toaster system={{ dismissReason: { enabled: true } }} />
+
+toast('Saved', {
+  onClose: (_toast, reason) => {
+    console.log(reason);
+  },
+});
+```
+
 </Steps>

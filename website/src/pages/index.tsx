@@ -4,6 +4,8 @@ import { Header } from '@/src/components/Header';
 import { Installation } from '@/src/components/Installation';
 import { Hero } from '@/src/components/Hero';
 import { Highlight } from '@/src/components/Highlight';
+import { MobileDemo } from '@/src/components/MobileDemo';
+import { Compatibility } from '@/src/components/Compatibility';
 import { Types } from '@/src/components/Types/Types';
 import { ExpandModes } from '@/src/components/ExpandModes';
 import { Position, type Position as PositionType } from '@/src/components/Position';
@@ -25,7 +27,7 @@ export default function Home() {
   return (
     <div className="wrapper light">
       <Head />
-      <Header haptics={haptics} setHaptics={setHaptics} />
+      <Header haptics={haptics} setHaptics={setHaptics} hapticsDebug={hapticsDebug} setHapticsDebug={setHapticsDebug} />
       <Toaster
         theme="light"
         richColors={richColors}
@@ -38,8 +40,10 @@ export default function Home() {
       />
       <main id="main" className="container" role="main" aria-label="Main content">
         <Hero />
+        <MobileDemo haptics={haptics} hapticsDebug={hapticsDebug} />
         <Highlight />
         <div className="content">
+          <Compatibility />
           <section className="section block" id="install" aria-labelledby="install-heading">
             <Installation />
           </section>

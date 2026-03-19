@@ -213,6 +213,26 @@ export default function Home({ searchParams }: any) {
         Updated Toast Duration
       </button>
       <button
+        data-testid="dedupe-toast"
+        className="button"
+        onClick={() => {
+          toast('Deduped Toast v1', {
+            dedupeKey: 'dedupe-demo',
+            duration: 10000,
+          });
+
+          // Trigger a second toast with the same key.
+          setTimeout(() => {
+            toast('Deduped Toast v2', {
+              dedupeKey: 'dedupe-demo',
+              duration: 10000,
+            });
+          }, 150);
+        }}
+      >
+        Dedupe Toast Demo
+      </button>
+      <button
         data-testid="string-description"
         className="button"
         onClick={() => toast('Custom Description', { description: 'string description' })}
@@ -377,6 +397,10 @@ export default function Home({ searchParams }: any) {
         theme={theme}
         dir={searchParams.dir || 'auto'}
         containerAriaLabel={showAriaLabels ? 'Notices' : undefined}
+        system={{
+          // Enable dedupe only for the Playwright test app so we can assert behavior.
+          dedupe: { enabled: true },
+        }}
         icons={{
           close:
             searchParams.customCloseIcon === '' ? (
