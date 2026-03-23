@@ -93,7 +93,7 @@ export const MobileDemo = ({ haptics, hapticsDebug }: { haptics: boolean; haptic
             </p>
 
             <div
-              className="flex flex-wrap items-center justify-start gap-4 rounded-xl border border-border bg-bg-primary p-3.5 shadow-stacked min-[860px]:rotate-[2deg]"
+              className="flex flex-wrap items-center justify-start gap-4 rounded-xl border border-border bg-bg-primary p-3.5 shadow-stacked min-[860px]:rotate-[2deg] max-[420px]:flex-col max-[420px]:items-center max-[420px]:justify-center"
               aria-label="QR code"
             >
               <div className="relative grid h-[160px] w-[160px] shrink-0 place-items-center overflow-hidden rounded-xl border border-border bg-bg-elevated max-[520px]:aspect-square min-[860px]:h-[168px] min-[860px]:w-[168px]">
@@ -112,7 +112,7 @@ export const MobileDemo = ({ haptics, hapticsDebug }: { haptics: boolean; haptic
                   <div className="h-full w-full rounded-[12px] bg-[linear-gradient(45deg,var(--rim-soft),transparent),linear-gradient(135deg,var(--rim-soft),transparent)]" />
                 )}
               </div>
-              <div className="flex min-w-0 flex-1 items-start gap-3 sm:min-w-[12rem]">
+              <div className="flex min-w-0 flex-1 items-center gap-3 sm:items-start sm:min-w-[12rem]">
                 <div
                   className="relative mt-0.5 h-7 w-7 shrink-0 rounded-full bg-accent after:absolute after:left-1/2 after:top-1/2 after:h-[10px] after:w-[10px] after:-translate-x-[55%] after:-translate-y-[55%] after:rotate-[-45deg] after:border-b-2 after:border-r-2 after:border-text-on-accent after:border-l-0 after:border-t-0 after:content-['']"
                   aria-hidden
