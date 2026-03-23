@@ -1,4 +1,5 @@
 import React from 'react';
+import { ThemeProvider, useTheme } from 'next-themes';
 import { Toaster } from 'web-haptics-toast';
 import { Header } from '@/src/components/Header';
 import { Installation } from '@/src/components/Installation';
@@ -16,20 +17,24 @@ import Head from '../components/Head';
 import { How } from '../components/How/How';
 import { Footer } from '../components/Footer';
 
-export default function Home() {
+function HomeInner() {
   const [expand, setExpand] = React.useState(false);
   const [position, setPosition] = React.useState<PositionType>('bottom-right');
   const [richColors, setRichColors] = React.useState(false);
   const [closeButton, setCloseButton] = React.useState(false);
   const [haptics, setHaptics] = React.useState(true);
   const [hapticsDebug, setHapticsDebug] = React.useState(false);
+  const { resolvedTheme } = useTheme();
+  const [mounted, setMounted] = React.useState(false);
+  React.useEffect(() => setMounted(true), []);
+  const toasterTheme = mounted && resolvedTheme === 'dark' ? 'dark' : 'light';
 
   return (
-    <div className="wrapper light">
+    <div className="wrapper">
       <Head />
       <Header haptics={haptics} setHaptics={setHaptics} hapticsDebug={hapticsDebug} setHapticsDebug={setHapticsDebug} />
       <Toaster
-        theme="light"
+        theme={toasterTheme}
         richColors={richColors}
         closeButton={closeButton}
         expand={expand}
@@ -77,5 +82,13 @@ export default function Home() {
       </main>
       <Footer />
     </div>
+  );
+}
+
+export default function Home() {
+  return (
+    <ThemeProvider attribute="class" defaultTheme="system" enableSystem storageKey="theme" disableTransitionOnChange>
+      <HomeInner />
+    </ThemeProvider>
   );
 }

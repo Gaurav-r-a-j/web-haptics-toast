@@ -5,7 +5,9 @@ export const Usage = () => {
     <div>
       <p className="section-label" aria-hidden>Code</p>
       <h2 id="usage-heading">Usage</h2>
-      <p>Render the toaster in the root of your app.</p>
+      <p className="m-0 mb-1 max-w-[52ch] text-[0.9375rem] leading-[1.55] text-[var(--text-secondary)]">
+        Render <code className="text-[0.8125rem]">Toaster</code> once at the root, then call <code className="text-[0.8125rem]">toast()</code> from anywhere in the tree.
+      </p>
       <CodeBlock initialHeight={270}>{`import { Toaster, toast } from 'web-haptics-toast'
 import 'web-haptics-toast/dist/styles.css'
 

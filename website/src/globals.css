@@ -196,9 +196,9 @@ code {
 .content {
   display: flex;
   flex-direction: column;
-  gap: 2.25rem;
-  margin-top: 2.75rem;
-  padding-bottom: 3.5rem;
+  gap: 2.5rem;
+  margin-top: 3rem;
+  padding-bottom: 4rem;
 }
 
 /* Section */

@@ -52,53 +52,57 @@ export const MobileDemo = ({ haptics, hapticsDebug }: { haptics: boolean; haptic
   return (
     <ParticlesProvider>
       <section
-        className="mt-[1.5rem] flex flex-col items-center gap-[1.25rem] rounded-[12px] border border-[var(--border)] bg-[var(--bg-secondary)] p-[1.25rem] min-[860px]:flex-row min-[860px]:items-stretch min-[860px]:gap-[2rem] min-[860px]:p-[1.5rem]"
+        className="mt-[2rem] flex flex-col items-center gap-[1.5rem] rounded-[12px] border border-[var(--border)] bg-[var(--bg-secondary)] p-[1.25rem] min-[860px]:flex-row min-[860px]:flex-nowrap min-[860px]:items-center min-[860px]:justify-center min-[860px]:gap-8 min-[860px]:px-6 min-[860px]:py-7"
         aria-label="Try it on mobile"
       >
-        <div className="w-full order-2 flex justify-center min-[860px]:order-1 min-[860px]:justify-start">
+        <div className="order-2 flex w-full shrink-0 justify-center min-[860px]:order-1 min-[860px]:w-auto min-[860px]:max-w-[min(280px,42vw)]">
           <div
             className={`relative aspect-[1/2] w-[min(260px,70vw)] overflow-hidden rounded-[28px] border-[8px] border-[#2b2b2b] bg-[var(--bg-primary)] shadow-[0_30px_70px_rgba(0,0,0,0.14)] -rotate-[3deg] max-[520px]:rotate-0 ${
               shaking && isDesktop && !prefersReducedMotion ? 'hapticsDemoShake' : ''
             }`}
           >
             <div
-              className="absolute -inset-[2px] rounded-[24px] border border-[rgba(0,0,0,0.04)] bg-[radial-gradient(600px_280px_at_50%_-40%,rgba(0,0,0,0.06),transparent_60%),var(--bg-primary)] p-[18px_16px]"
+              className="absolute -inset-[2px] flex min-h-0 flex-col rounded-[24px] border border-[rgba(0,0,0,0.04)] bg-[radial-gradient(600px_280px_at_50%_-40%,rgba(0,0,0,0.06),transparent_60%),var(--bg-primary)] px-4 pb-4 pt-[10px]"
             >
-              <div className="mt-[8px] mb-[14px] text-center text-[16px] font-bold tracking-[-0.02em]">web-haptics-toast</div>
-              <DemoTiles
-                isDesktop={isDesktop}
-                prefersReducedMotion={prefersReducedMotion}
-                setShaking={setShaking}
-                haptics={haptics}
-                hapticsDebug={hapticsDebug}
-              />
-              <div className="mt-[12px] text-center text-[12px] text-[var(--text-secondary)]">Tap tiles</div>
+              <div className="shrink-0 text-center text-[15px] font-bold tracking-[-0.02em]">web-haptics-toast</div>
+              <div className="flex min-h-0 flex-1 flex-col justify-center py-3">
+                <DemoTiles
+                  isDesktop={isDesktop}
+                  prefersReducedMotion={prefersReducedMotion}
+                  setShaking={setShaking}
+                  haptics={haptics}
+                  hapticsDebug={hapticsDebug}
+                />
+                <div className="mt-3 text-center text-[13px] font-medium text-[var(--text-primary)] opacity-80">
+                  Tap tiles for toast + haptics
+                </div>
+              </div>
             </div>
           </div>
         </div>
 
-        <div className="order-1 w-full min-[860px]:order-2 min-[860px]:w-auto min-[860px]:flex-1 min-[860px]:max-w-[520px]">
-          <div className="min-[860px]:-ml-[3%] min-[860px]:-mb-[4%]">
+        <div className="order-1 w-full shrink-0 min-[860px]:order-2 min-[860px]:w-auto min-[860px]:max-w-[min(22rem,100%)] min-[860px]:flex-col">
+          <div className="mx-auto w-full min-[860px]:mx-0">
             <p className="section-label" aria-hidden>
               Demo
             </p>
             <h2 className="m-0 mb-[0.5rem]">Try it out on mobile</h2>
-            <p className="m-0 mb-[1rem] text-[var(--text-secondary)]">
+            <p className="m-0 mb-[1.125rem] max-w-[42ch] text-[0.9375rem] leading-[1.55] text-[var(--text-secondary)]">
               Scan the QR code to open this page on your phone, then tap the tiles to trigger toast + haptics.
             </p>
 
             <div
-              className="flex items-center justify-between gap-[1rem] rounded-[12px] border border-[var(--border)] bg-[var(--bg-primary)] p-[0.75rem] shadow-[0_0_0_1px_rgba(0,0,0,0.05),0px_0px_27px_rgba(0,0,0,0.1)] min-[860px]:rotate-[3.72deg]"
+              className="flex flex-wrap items-center justify-start gap-4 rounded-[12px] border border-[var(--border)] bg-[var(--bg-primary)] p-3.5 shadow-[0_0_0_1px_rgba(0,0,0,0.05),0px_12px_32px_rgba(0,0,0,0.08)] min-[860px]:rotate-[2deg]"
               aria-label="QR code"
             >
-              <div className="relative grid h-[176px] w-[176px] place-items-center overflow-hidden rounded-[12px] border border-[var(--border)] bg-white max-[520px]:aspect-square">
+              <div className="relative grid h-[160px] w-[160px] shrink-0 place-items-center overflow-hidden rounded-[12px] border border-[var(--border)] bg-white max-[520px]:aspect-square min-[860px]:h-[168px] min-[860px]:w-[168px]">
                 {qr ? (
                   <div className="absolute inset-0">
                     <Image
                       src={qr}
                       alt="QR code to open this page on mobile"
                       fill
-                      sizes="176px"
+                      sizes="168px"
                       style={{ objectFit: 'cover' }}
                       priority={false}
                     />
@@ -107,14 +111,14 @@ export const MobileDemo = ({ haptics, hapticsDebug }: { haptics: boolean; haptic
                   <div className="h-full w-full rounded-[12px] bg-[linear-gradient(45deg,rgba(0,0,0,0.05),transparent),linear-gradient(135deg,rgba(0,0,0,0.05),transparent)]" />
                 )}
               </div>
-              <div className="flex items-start gap-[0.75rem]">
+              <div className="flex min-w-0 flex-1 items-start gap-3 sm:min-w-[12rem]">
                 <div
-                  className="relative flex-none h-[28px] w-[28px] rounded-full bg-[var(--accent)] after:content-[''] after:absolute after:left-1/2 after:top-1/2 after:h-[10px] after:w-[10px] after:rotate-[-45deg] after:border-r-2 after:border-b-2 after:border-[var(--text-on-accent)] after:border-l-0 after:border-t-0 after:-translate-x-[55%] after:-translate-y-[55%]"
+                  className="relative mt-0.5 h-7 w-7 shrink-0 rounded-full bg-[var(--accent)] after:absolute after:left-1/2 after:top-1/2 after:h-[10px] after:w-[10px] after:-translate-x-[55%] after:-translate-y-[55%] after:rotate-[-45deg] after:border-b-2 after:border-r-2 after:border-[var(--text-on-accent)] after:border-l-0 after:border-t-0 after:content-['']"
                   aria-hidden
                 />
-                <div>
-                  <div className="text-[var(--text-primary)] font-semibold leading-[1.2]">Scan with your phone</div>
-                  <div className="mt-[0.25rem] text-[0.875rem] text-[var(--text-secondary)]">Best experienced on iOS / Android.</div>
+                <div className="min-w-0">
+                  <div className="text-[0.9375rem] font-semibold leading-[1.25] text-[var(--text-primary)]">Scan with your phone</div>
+                  <div className="mt-1 text-[0.8125rem] leading-[1.45] text-[var(--text-secondary)]">Best on iOS / Android.</div>
                 </div>
               </div>
             </div>
@@ -210,7 +214,7 @@ const DemoTiles = ({
   };
 
   const tileBase =
-    'cursor-pointer rounded-[14px] border border-[var(--border)] px-[10px] py-[14px] text-[13px] font-semibold text-[var(--text-primary)] active:scale-[0.99] motion-safe:transition-[transform,box-shadow] motion-safe:duration-120 motion-safe:hover:-translate-y-[1px] motion-safe:hover:shadow-[0_6px_16px_rgba(0,0,0,0.08)] focus-visible:outline-none focus-visible:shadow-[0_0_0_2px_var(--bg-primary),_0_0_0_4px_var(--accent)] motion-reduce:transition-none';
+    'cursor-pointer rounded-[14px] border border-[var(--border)] bg-clip-padding px-[10px] py-[14px] text-[13px] font-semibold text-[var(--text-primary)] shadow-[0_1px_2px_rgba(0,0,0,0.04)] active:scale-[0.99] motion-safe:transition-[transform,box-shadow] motion-safe:duration-120 motion-safe:hover:-translate-y-[1px] motion-safe:hover:shadow-[0_6px_16px_rgba(0,0,0,0.1)] focus-visible:outline-none focus-visible:shadow-[0_0_0_2px_var(--bg-primary),_0_0_0_4px_var(--accent)] motion-reduce:transition-none dark:shadow-[0_1px_2px_rgba(0,0,0,0.2)]';
 
   return (
     <div className="grid grid-cols-2 gap-[10px]" role="group" aria-label="Haptic demo presets">

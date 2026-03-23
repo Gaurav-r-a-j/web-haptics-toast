@@ -6,7 +6,7 @@ import Link from 'next/link';
 export const Highlight = () => {
   return (
     <section
-      className="mt-[1.5rem] overflow-hidden rounded-[12px] border border-[var(--border)] bg-[var(--bg-secondary)] text-[var(--text-primary)]"
+      className="mt-6 overflow-hidden rounded-[12px] border border-[var(--border)] bg-[var(--bg-secondary)] text-[var(--text-primary)]"
       aria-label="Why haptics"
     >
       <div className="px-[1.25rem] py-[1.75rem] sm:px-[1.5rem]">
@@ -20,18 +20,20 @@ export const Highlight = () => {
           Toasts are easy to miss—especially on mobile. A subtle vibration makes feedback harder to ignore and easier to
           understand at a glance (success vs error). That’s why this library ships with haptics enabled by default.
         </p>
-        <ul className="m-0 list-none grid gap-[0.5rem] sm:grid-cols-3 sm:gap-[0.75rem]">
-          <li>
-            <span className="mt-[0.25rem] h-[10px] w-[10px] flex-none rounded-full bg-[var(--accent)]" aria-hidden />
-            Better confirmation for important actions (save, pay, submit).
+        <ul className="m-0 list-none grid gap-[0.75rem] sm:grid-cols-3 sm:gap-x-5 sm:gap-y-3">
+          <li className="flex items-start gap-2.5 text-[0.9375rem] leading-[1.5] text-[var(--text-primary)]">
+            <span className="mt-[0.35rem] h-2 w-2 flex-none shrink-0 rounded-full bg-[var(--accent)]" aria-hidden />
+            <span>Better confirmation for important actions (save, pay, submit).</span>
           </li>
-          <li>
-            <span className="mt-[0.25rem] h-[10px] w-[10px] flex-none rounded-full bg-[var(--accent)]" aria-hidden />
-            Stronger “error” feedback reduces repeated mistakes.
+          <li className="flex items-start gap-2.5 text-[0.9375rem] leading-[1.5] text-[var(--text-primary)]">
+            <span className="mt-[0.35rem] h-2 w-2 flex-none shrink-0 rounded-full bg-[var(--accent)]" aria-hidden />
+            <span>Stronger “error” feedback reduces repeated mistakes.</span>
           </li>
-          <li>
-            <span className="mt-[0.25rem] h-[10px] w-[10px] flex-none rounded-full bg-[var(--accent)]" aria-hidden />
-            One prop to disable: <code>haptics={false}</code>.
+          <li className="flex items-start gap-2.5 text-[0.9375rem] leading-[1.5] text-[var(--text-primary)]">
+            <span className="mt-[0.35rem] h-2 w-2 flex-none shrink-0 rounded-full bg-[var(--accent)]" aria-hidden />
+            <span>
+              One prop to disable: <code>haptics={false}</code>.
+            </span>
           </li>
         </ul>
         <div className="mt-[1.25rem] flex flex-wrap gap-[0.75rem]">

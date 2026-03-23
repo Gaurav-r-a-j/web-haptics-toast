@@ -12,11 +12,11 @@ export const ExpandModes = ({
     <div>
       <p className="section-label" aria-hidden>Behavior</p>
       <h2 id="expand-heading">Expand</h2>
-      <p>
-        You can change the amount of toasts visible through the <code>visibleToasts</code> prop.
+      <p className="m-0 mb-1 max-w-[52ch] text-[0.9375rem] leading-[1.55] text-[var(--text-secondary)]">
+        With <code className="text-[0.8125rem]">expand</code>, the stack opens to show more toasts at once. You can still cap how many show with <code className="text-[0.8125rem]">visibleToasts</code>.
       </p>
       <div
-        className="relative flex flex-wrap gap-2 overflow-auto py-[4px] mx-[calc(-1*var(--side-padding))] px-[var(--side-padding)] max-[600px]:[mask-image:linear-gradient(to_right,transparent,black_16px,black_calc(100%_-_16px),transparent)]"
+        className="relative mx-[calc(-1*var(--side-padding))] flex flex-wrap gap-2.5 overflow-auto px-[var(--side-padding)] py-1.5 max-[600px]:[mask-image:linear-gradient(to_right,transparent,black_16px,black_calc(100%_-_16px),transparent)]"
       >
         <button
           data-active={expand}

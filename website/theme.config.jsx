@@ -1,4 +1,9 @@
 export default {
+  darkMode: true,
+  nextThemes: {
+    defaultTheme: 'system',
+    storageKey: 'theme',
+  },
   logo: <span style={{ fontWeight: 600 }}>web-haptics-toast</span>,
   project: {
     link: 'https://github.com/designbyte-official/web-haptics-toast',

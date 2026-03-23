@@ -6,7 +6,7 @@ import Link from 'next/link';
 export const Hero = () => {
   return (
     <section
-      className="flex flex-col items-center justify-center px-0 pt-[3.5rem] pb-[4rem] text-center max-[600px]:pt-[2.5rem] max-[600px]:pb-[3rem]"
+      className="flex flex-col items-center justify-center px-0 pt-[3.25rem] pb-[3rem] text-center max-[600px]:pt-[2.25rem] max-[600px]:pb-[2.5rem]"
       aria-label="Introduction"
     >
       <span className="mb-[1.25rem] inline-block rounded-full border border-[var(--border)] bg-[var(--bg-secondary)] px-[0.75rem] py-[0.35rem] text-[0.6875rem] font-semibold tracking-[0.08em] text-[var(--text-secondary)] uppercase">
@@ -17,10 +17,10 @@ export const Hero = () => {
       >
         web-haptics-toast
       </h1>
-      <p className="m-0 mb-[1.5rem] max-w-[26em] text-[1.0625rem] leading-[1.55] text-[var(--text-secondary)]">
+      <p className="m-0 mb-[1.75rem] max-w-[26em] text-[1.0625rem] leading-[1.55] text-[var(--text-secondary)]">
         Toasts with haptic feedback by default. Drop-in replacement for Sonner.
       </p>
-      <div className="flex flex-wrap items-center justify-center gap-[0.625rem] max-[600px]:flex-col max-[600px]:w-full max-[600px]:gap-[0.5rem]">
+      <div className="flex w-full max-w-[min(100%,28rem)] flex-wrap items-center justify-center gap-3 max-[600px]:flex-col max-[600px]:gap-2.5">
         <button
           type="button"
           onClick={() =>
@@ -28,27 +28,31 @@ export const Hero = () => {
               description: 'Haptics on supported devices.',
             })
           }
-          className="flex h-[44px] items-center justify-center rounded-[var(--radius)] bg-[var(--accent)] px-[1.25rem] text-[0.9375rem] font-semibold text-[var(--text-on-accent)] transition-[background,transform] duration-200 hover:bg-[var(--accent-hover)] focus:outline-none focus:shadow-[0_0_0_2px_var(--bg-primary),_0_0_0_4px_var(--accent)]"
+          className="order-1 flex h-11 min-w-[8.5rem] shrink-0 items-center justify-center rounded-[var(--radius)] bg-[var(--accent)] px-5 text-[0.9375rem] font-semibold text-[var(--text-on-accent)] transition-[background,transform] duration-200 hover:bg-[var(--accent-hover)] focus:outline-none focus:shadow-[0_0_0_2px_var(--bg-primary),_0_0_0_4px_var(--accent)] max-[600px]:w-full max-[600px]:max-w-[280px]"
         >
           Try a toast
         </button>
         <Link
           href="/docs"
-          className="flex h-[44px] max-[600px]:w-full max-[600px]:max-w-[260px] items-center justify-center rounded-[var(--radius)] border border-[var(--border)] bg-transparent px-[1rem] text-[0.875rem] font-medium text-[var(--text-primary)] transition-[border-color,background] duration-200 hover:border-[var(--text-secondary)] hover:bg-[var(--bg-secondary)] focus:outline-none focus:shadow-[0_0_0_2px_var(--bg-primary),_0_0_0_4px_var(--accent)]"
+          className="order-2 flex h-11 min-w-[7.5rem] shrink-0 items-center justify-center rounded-[var(--radius)] border border-[var(--border)] bg-transparent px-5 text-[0.875rem] font-medium text-[var(--text-primary)] transition-[border-color,background] duration-200 hover:border-[var(--text-secondary)] hover:bg-[var(--bg-secondary)] focus:outline-none focus:shadow-[0_0_0_2px_var(--bg-primary),_0_0_0_4px_var(--accent)] max-[600px]:w-full max-[600px]:max-w-[280px]"
         >
           Docs
         </Link>
         <a
           href="#install"
-          className="flex h-[44px] max-[600px]:w-full max-[600px]:max-w-[260px] items-center justify-center rounded-[var(--radius)] border border-[var(--border)] bg-transparent px-[1rem] text-[0.875rem] font-medium text-[var(--text-primary)] transition-[border-color,background] duration-200 hover:border-[var(--text-secondary)] hover:bg-[var(--bg-secondary)] focus:outline-none focus:shadow-[0_0_0_2px_var(--bg-primary),_0_0_0_4px_var(--accent)]"
+          className="order-3 flex h-11 min-w-[7.5rem] shrink-0 items-center justify-center rounded-[var(--radius)] border border-[var(--border)] bg-transparent px-5 text-[0.875rem] font-medium text-[var(--text-primary)] transition-[border-color,background] duration-200 hover:border-[var(--text-secondary)] hover:bg-[var(--bg-secondary)] focus:outline-none focus:shadow-[0_0_0_2px_var(--bg-primary),_0_0_0_4px_var(--accent)] max-[600px]:w-full max-[600px]:max-w-[280px]"
         >
           Get started
         </a>
+        <span
+          className="order-4 mx-1 hidden h-6 w-px shrink-0 bg-[var(--border)] min-[601px]:block"
+          aria-hidden
+        />
         <a
           href="https://github.com/designbyte-official/web-haptics-toast"
           target="_blank"
           rel="noopener noreferrer"
-          className="flex h-[44px] w-[44px] items-center justify-center rounded-[var(--radius)] border border-transparent text-[var(--text-secondary)] transition-[color,background,border-color] duration-200 hover:border-[var(--border)] hover:bg-[var(--bg-secondary)] hover:text-[var(--text-primary)] max-[600px]:px-0 max-[600px]:py-0 max-[600px]:leading-[1.5] focus:outline-none focus:shadow-[0_0_0_2px_var(--bg-primary),_0_0_0_4px_var(--accent)]"
+          className="order-5 flex h-11 w-11 shrink-0 items-center justify-center rounded-[var(--radius)] border border-[var(--border)] bg-transparent text-[var(--text-secondary)] transition-[color,background,border-color] duration-200 hover:bg-[var(--bg-secondary)] hover:text-[var(--text-primary)] focus:outline-none focus:shadow-[0_0_0_2px_var(--bg-primary),_0_0_0_4px_var(--accent)] max-[600px]:mt-1"
           aria-label="GitHub repository"
           title="GitHub"
         >
@@ -57,9 +61,9 @@ export const Hero = () => {
           </svg>
         </a>
       </div>
-      <div className="mt-[2.5rem] flex w-full justify-center max-w-[320px]" aria-hidden>
-        <div className="h-[44px] w-full max-w-[280px] rounded-[var(--radius-sm)] border border-[var(--border)] bg-[var(--bg-secondary)] shadow-[0_4px_16px_rgba(0,0,0,0.06)]" />
-      </div>
+      <p className="mt-9 max-w-[22rem] text-[0.8125rem] leading-[1.5] text-[var(--text-secondary)]" role="note">
+        Toasts show in the screen corner—same as in your app after you install the toaster.
+      </p>
     </section>
   );
 };

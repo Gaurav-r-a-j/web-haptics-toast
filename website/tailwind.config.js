@@ -1,5 +1,6 @@
 /** Use theme tokens from theme.css so Tailwind utilities stay theme-driven */
 module.exports = {
+  darkMode: 'class',
   content: [
     './app/**/*.{js,ts,jsx,tsx,mdx}',
     './pages/**/*.{js,ts,jsx,tsx,mdx}',

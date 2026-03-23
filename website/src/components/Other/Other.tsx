@@ -109,8 +109,11 @@ export const Other = ({
     <div>
       <p className="section-label" aria-hidden>Options</p>
       <h2 id="other-heading">Other</h2>
+      <p className="m-0 mb-1 max-w-[52ch] text-[0.9375rem] leading-[1.55] text-[var(--text-secondary)]">
+        Rich colors, a global close button, and fully custom content. The live <code className="text-[0.8125rem]">Toaster</code> props update when you tap certain presets.
+      </p>
       <div
-        className="relative flex flex-wrap gap-2 overflow-auto py-[4px] mx-[calc(-1*var(--side-padding))] px-[var(--side-padding)] max-[600px]:[mask-image:linear-gradient(to_right,transparent,black_16px,black_calc(100%_-_16px),transparent)]"
+        className="relative mx-[calc(-1*var(--side-padding))] flex flex-wrap gap-2.5 overflow-auto px-[var(--side-padding)] py-1.5 max-[600px]:[mask-image:linear-gradient(to_right,transparent,black_16px,black_calc(100%_-_16px),transparent)]"
       >
         {allTypes.map((type) => (
           <button

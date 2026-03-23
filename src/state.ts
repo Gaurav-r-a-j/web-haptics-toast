@@ -51,7 +51,9 @@ class Observer {
 
     return () => {
       const index = this.subscribers.indexOf(subscriber);
-      this.subscribers.splice(index, 1);
+      // Be defensive: in some dev / hot-reload edge cases the subscriber reference
+      // might not be found, and `splice(-1, 1)` would remove the last subscriber.
+      if (index !== -1) this.subscribers.splice(index, 1);
     };
   };
 
@@ -289,7 +291,23 @@ class Observer {
   };
 }
 
-export const ToastState = new Observer();
+// Ensure a single shared ToastState instance across potential ESM/CJS duplication.
+// This prevents a common monorepo/bundler issue where `toast()` and `<Toaster />`
+// end up subscribing to different module instances.
+const TOAST_STATE_KEY = '__web_haptics_toast_state__';
+const getToastState = () => {
+  // Avoid leaking across SSR requests: only singleton on the client.
+  if (typeof window === 'undefined') return new Observer();
+
+  const globalAny = globalThis as unknown as Record<string, any>;
+  if (!globalAny[TOAST_STATE_KEY]) {
+    globalAny[TOAST_STATE_KEY] = new Observer();
+  }
+
+  return globalAny[TOAST_STATE_KEY] as Observer;
+};
+
+export const ToastState = getToastState();
 
 // bind this to the toast function
 const toastFunction = (message: titleT, data?: ExternalToast) => {

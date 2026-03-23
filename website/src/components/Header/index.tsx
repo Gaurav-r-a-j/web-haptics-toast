@@ -3,6 +3,7 @@
 import React from 'react';
 import Link from 'next/link';
 import { isHapticsSupported } from 'web-haptics-toast';
+import { SiteThemeSelect } from '@/src/components/SiteThemeSelect';
 
 const menuLinks = [
   { href: '#install', label: 'Install' },
@@ -83,6 +84,7 @@ export const Header = ({
         </div>
 
         <div className="flex items-center gap-2">
+          <SiteThemeSelect className="max-[480px]:min-w-0 max-[480px]:flex-1" />
           <button
             type="button"
             className="inline-flex items-center gap-2 rounded-full border border-[var(--border)] bg-[var(--bg-secondary)] px-2 py-[0.4rem] text-[var(--text-primary)] transition-colors duration-150 focus:outline-none focus:shadow-[0_0_0_2px_var(--bg-primary),_0_0_0_4px_var(--accent)]"

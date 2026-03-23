@@ -11,9 +11,11 @@ export const Types = () => {
     <div>
       <p className="section-label" aria-hidden>API</p>
       <h2 id="types-heading">Types</h2>
-      <p>You can customize the type of toast you want to render, and pass an options object as the second argument.</p>
+      <p className="m-0 mb-1 max-w-[52ch] text-[0.9375rem] leading-[1.55] text-[var(--text-secondary)]">
+        Pick a variant below; the snippet updates. Pass an options object as the second argument when you need descriptions, actions, or promises.
+      </p>
       <div
-        className="relative flex flex-wrap gap-2 overflow-auto py-[4px] mx-[calc(-1*var(--side-padding))] px-[var(--side-padding)] max-[600px]:[mask-image:linear-gradient(to_right,transparent,black_16px,black_calc(100%_-_16px),transparent)]"
+        className="relative mx-[calc(-1*var(--side-padding))] flex flex-wrap gap-2.5 overflow-auto px-[var(--side-padding)] py-1.5 max-[600px]:[mask-image:linear-gradient(to_right,transparent,black_16px,black_calc(100%_-_16px),transparent)]"
       >
         {allTypes.map((type) => (
           <button

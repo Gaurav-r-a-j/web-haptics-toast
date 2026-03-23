@@ -109,3 +109,36 @@ footer > div {
 :root {
   --shiki-token-comment: var(--text-secondary) !important;
 }
+
+/*
+ * Nextra footer uses Headless UI Listbox for theme/locale. Tailwind `ltr:` utilities only
+ * apply when `dir` is set; without padding the selected checkmark can overlap the label.
+ */
+ul[role='listbox'] > li[role='option'],
+ul[role='listbox'] > [role='option'] {
+  position: relative;
+  box-sizing: border-box;
+  padding-top: 0.375rem;
+  padding-bottom: 0.375rem;
+  padding-left: 0.75rem;
+  padding-right: 2.5rem;
+}
+
+ul[role='listbox'] > li[role='option'] > span:last-child,
+ul[role='listbox'] > [role='option'] > span:last-child {
+  position: absolute;
+  top: 50%;
+  right: 0.625rem;
+  left: auto;
+  display: flex;
+  align-items: center;
+  transform: translateY(-50%);
+}
+
+html.dark .nextra-nav-container,
+html.dark .nextra-sidebar-container,
+html.dark .nextra-main,
+html.dark .nextra-content,
+html.dark .nextra-container {
+  border-color: var(--border) !important;
+}

@@ -19,12 +19,12 @@ export const Haptics = ({
     <div>
       <p className="section-label" aria-hidden>Features</p>
       <h2 id="haptics-heading">Haptics</h2>
-      <p style={{ marginTop: 0 }}>
-        Toasts trigger haptic feedback by default on supported devices. Toggle below to test with haptics on or off.
-        On desktop, enable <strong>Debug</strong> to hear the pattern as sound.
+      <p className="m-0 mb-1 max-w-[52ch] text-[0.9375rem] leading-[1.55] text-[var(--text-secondary)]">
+        Toasts trigger haptic feedback by default on supported devices. Use the toggles to preview with haptics on or off.
+        On desktop, enable <strong className="font-semibold text-[var(--text-primary)]">Debug</strong> to hear the pattern as sound.
       </p>
       <div
-        className="relative flex flex-wrap gap-2 overflow-auto py-[4px] mx-[calc(-1*var(--side-padding))] px-[var(--side-padding)] max-[600px]:[mask-image:linear-gradient(to_right,transparent,black_16px,black_calc(100%_-_16px),transparent)]"
+        className="relative mx-[calc(-1*var(--side-padding))] flex flex-wrap gap-2.5 overflow-auto px-[var(--side-padding)] py-1.5 max-[600px]:[mask-image:linear-gradient(to_right,transparent,black_16px,black_calc(100%_-_16px),transparent)]"
       >
         <button
           className="cursor-pointer whitespace-nowrap rounded-[var(--radius)] border border-[var(--border)] bg-[var(--bg-secondary)] px-[0.875rem] py-[0.5rem] text-[0.8125rem] font-medium text-[var(--text-primary)] transition-[border-color,background,box-shadow] duration-200 [font-family:var(--font-sans)] hover:bg-[var(--bg-primary)] hover:border-[var(--text-secondary)] data-[active='true']:bg-[var(--accent)] data-[active='true']:border-[var(--accent)] data-[active='true']:text-[var(--text-on-accent)] focus:outline-none focus-visible:shadow-[0_0_0_2px_var(--bg-primary),_0_0_0_4px_var(--accent)]"
