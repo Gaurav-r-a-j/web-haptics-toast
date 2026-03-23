@@ -90,7 +90,7 @@ const allTypes = [
   },
   {
     name: 'Promise',
-    snippet: `const promise = () => new Promise((resolve) => setTimeout(() => resolve({ name: 'Sonner' }), 2000));
+    snippet: `const promise = () => new Promise((resolve) => setTimeout(() => resolve({ name: 'My app' }), 2000));
 
 toast.promise(promise, {
   loading: 'Loading...',
@@ -104,7 +104,7 @@ toast.promise(promise, {
         () =>
           new Promise((resolve) => {
             setTimeout(() => {
-              resolve({ name: 'Sonner' });
+              resolve({ name: 'My app' });
             }, 2000);
           }),
         {

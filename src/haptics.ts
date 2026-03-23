@@ -1,6 +1,6 @@
 /**
- * Re-exports web-haptics logic (copied from web-haptics-main). No external dependency.
- * Toaster uses its own WebHaptics instance; triggerHaptic uses a lazy singleton for standalone use.
+ * Haptics engine bundled in web-haptics-toast (no extra npm dependency).
+ * `<Toaster />` uses its own WebHaptics instance; `triggerHaptic` uses a lazy singleton for standalone use.
  */
 
 import { WebHaptics } from "./lib/web-haptics";

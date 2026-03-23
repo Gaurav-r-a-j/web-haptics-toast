@@ -67,4 +67,4 @@ export const defaultPatterns = {
     // rapid, low-intensity taps creating a buzzing effect.
     pattern: [{ duration: 1000, intensity: 1 }],
   },
-} as const satisfies Record<string, HapticPreset>;
+} as Record<string, HapticPreset>;

@@ -91,6 +91,27 @@ Use this during development to confirm which pattern runs for each toast type. O
 
 Renders a small built-in control so users can turn feedback on or off without you wiring custom UI.
 
+### Haptics on a button (or anywhere), not on every toast
+
+`<Toaster haptics={false}>` stops **toast**-driven vibration. You can still call **`triggerHaptic`** from any **`onClick`**, **`onSubmit`**, shortcut handler, etc.:
+
+```jsx
+import { Toaster, toast, triggerHaptic } from 'web-haptics-toast';
+
+<Toaster haptics={false} />
+<button
+  type="button"
+  onClick={() => {
+    triggerHaptic('success');
+    toast('Done');
+  }}
+>
+  Save
+</button>
+```
+
+You can also skip haptics for **individual** toasts: `toast('…', { haptics: false })` while leaving `<Toaster haptics />` on. Full write-up: **`/haptics#manual-haptics`** on the docs site.
+
 ### Other API
 
 - **`isHapticsSupported`** – `true` if `navigator.vibrate` is available.

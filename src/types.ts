@@ -104,6 +104,11 @@ export interface ToastT {
   descriptionClassName?: string;
   position?: Position;
   testId?: string;
+  /**
+   * When `false`, skip haptic feedback for this toast even if `<Toaster haptics />` is enabled.
+   * When omitted, follows the toaster’s global `haptics` setting.
+   */
+  haptics?: boolean;
 }
 
 export function isAction(action: Action | React.ReactNode): action is Action {

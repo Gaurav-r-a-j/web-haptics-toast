@@ -739,8 +739,9 @@ const Toaster = React.forwardRef<HTMLElement, ToasterProps>(function Toaster(pro
         return;
       }
 
-      if (haptics && 'type' in toast && hapticsRef.current) {
-        const pattern = getHapticPatternForType(toast.type, hapticPatternMap);
+      const t = toast as ToastT;
+      if (haptics && hapticsRef.current && t.haptics !== false) {
+        const pattern = getHapticPatternForType(t.type, hapticPatternMap);
         hapticsRef.current.trigger(pattern);
       }
 

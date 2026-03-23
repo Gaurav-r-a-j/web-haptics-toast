@@ -21,11 +21,69 @@ export function App() {
 
 `haptics` defaults to `true`, so you only need to pass props when you want to change behavior.
 
+<h2 id="manual-haptics">Manual haptics: buttons, forms, anywhere</h2>
+
+You can use the library in two complementary ways:
+
+1. **Automatic (default)** — With `<Toaster />`, each **toast** plays a haptic that matches its type (`toast.success` → success pattern, etc.).
+2. **Manual / selective** — Turn off toast-driven haptics, then call **`triggerHaptic`** only where you want vibration (button `onClick`, `onSubmit`, keyboard shortcuts, game actions, etc.).
+
+```tsx
+import { Toaster, toast, triggerHaptic } from 'web-haptics-toast';
+import 'web-haptics-toast/dist/styles.css';
+
+export function App() {
+  return (
+    <>
+      {/* No vibration when these toasts appear */}
+      <Toaster haptics={false} />
+
+      <button
+        type="button"
+        onClick={() => {
+          triggerHaptic('success');
+          toast('Saved');
+        }}
+      >
+        Save (manual haptic + toast)
+      </button>
+
+      <button
+        type="button"
+        onClick={() => toast('Silent banner', { haptics: false })}
+      >
+        Toast without haptic (per-toast)
+      </button>
+
+      <button
+        type="button"
+        onClick={() => {
+          triggerHaptic('selection');
+          void runSideEffect();
+        }}
+      >
+        No toast — haptic only
+      </button>
+    </>
+  );
+}
+```
+
+<Callout type="default">
+  **Per-toast:** pass **`haptics: false`** on a single `toast()` call to skip vibration for that toast while keeping `<Toaster haptics />` on. Omit the field everywhere else to use the global setting. For clicks **without** any toast, use **`triggerHaptic`** as shown above.
+</Callout>
+
+On desktop, pass **`{ debug: true }`** to **`triggerHaptic`** to hear the pattern while you build (independent of `<Toaster hapticsDebug />`, though you can enable both).
+
+```tsx
+triggerHaptic('medium', { debug: true });
+```
+
 ## Props
 
 ### `haptics`
 
-Enable or disable haptics for this toaster instance.
+Enable or disable **automatic** haptics when **toasts** from this `<Toaster />` are shown. Does not remove your ability to call **`triggerHaptic`** elsewhere.
 
 ```tsx
 <Toaster haptics={false} />
@@ -68,11 +126,11 @@ Defaults (when you don’t pass a map) include e.g. `success` → `success`, `er
 
 ## Programmatic helpers
 
-You can also use the same primitives outside the toaster:
+Exports for use **outside** the toast pipeline (or alongside `<Toaster haptics={false} />`):
 
 - **`isHapticsSupported`** – whether `navigator.vibrate` is available.
-- **`triggerHaptic(name, options?)`** – fire a preset by name; use `{ debug: true }` to hear it on desktop.
-- **`WebHaptics`** / **`defaultPatterns`** – advanced use; both are exported from **`web-haptics-toast`**.
+- **`triggerHaptic(name, options?)`** – fire a built-in preset by name from any event handler. Options include **`debug?: boolean`** (sound on desktop) and **`intensity`** (see types). Uses a small internal singleton, separate from each `<Toaster />`’s engine.
+- **`WebHaptics`** / **`defaultPatterns`** – own your instance and timing; both are exported from **`web-haptics-toast`**.
 
 ## Tips
 
