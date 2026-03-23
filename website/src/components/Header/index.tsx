@@ -67,9 +67,12 @@ export const Header = ({
       >
         <div className="flex min-w-0 items-center gap-3">
           <Link href="/" className="text-[0.9375rem] font-semibold tracking-[-0.02em] text-text-primary no-underline hover:text-accent" aria-label="Home">
-            web-haptics-toast
+            <span className="inline max-[600px]:hidden">web-haptics-toast</span>
+            <span className="hidden max-[600px]:inline-flex h-[34px] w-[34px] items-center justify-center rounded-full bg-bg-secondary text-text-primary text-[0.8125rem] font-bold tracking-tight">
+              db
+            </span>
           </Link>
-          <nav className="flex items-center gap-1" aria-label="Primary">
+          <nav className="flex items-center gap-1 max-[600px]:hidden" aria-label="Primary">
             <Link
               href="/docs"
               className="rounded-sm px-3 py-2 text-xs font-medium text-text-secondary no-underline transition-colors duration-150 hover:bg-bg-secondary hover:text-text-primary max-[600px]:px-2 max-[600px]:py-[0.4rem] max-[600px]:text-xs"
@@ -123,7 +126,7 @@ export const Header = ({
           </button>
           <button
             type="button"
-            className="inline-flex h-[34px] items-center gap-2 rounded-full border border-border bg-bg-secondary px-3 text-text-primary transition-colors duration-150 hover:border-text-secondary focus:outline-none focus:shadow-focus-ring data-[on=true]:border-accent data-[on=true]:bg-accent data-[on=true]:text-text-on-accent"
+            className="inline-flex h-[34px] w-[34px] items-center justify-center gap-0 rounded-full border border-border bg-bg-secondary px-3 text-text-primary transition-colors duration-150 hover:border-text-secondary focus:outline-none focus:shadow-focus-ring data-[on=true]:border-accent data-[on=true]:bg-accent data-[on=true]:text-text-on-accent max-[600px]:px-0"
             aria-pressed={haptics}
             onClick={() => setHaptics((v) => !v)}
             title="Toggle haptics"
@@ -137,12 +140,12 @@ export const Header = ({
                 <Slash size={16} className="absolute inset-0 m-auto rotate-[-20deg]" aria-hidden />
               </span>
             )}
-            <span className="text-xs font-semibold tracking-[-0.01em]">Haptics</span>
+            <span className="sr-only">Haptics</span>
           </button>
           {isDesktop && supported !== null && (
             <button
               type="button"
-              className="inline-flex h-[34px] items-center gap-2 rounded-full border border-border bg-bg-secondary px-3 text-text-primary transition-colors duration-150 hover:border-text-secondary focus:outline-none focus:shadow-focus-ring data-[on=true]:border-accent data-[on=true]:bg-accent data-[on=true]:text-text-on-accent"
+              className="inline-flex h-[34px] w-[34px] items-center justify-center gap-0 rounded-full border border-border bg-bg-secondary px-3 text-text-primary transition-colors duration-150 hover:border-text-secondary focus:outline-none focus:shadow-focus-ring data-[on=true]:border-accent data-[on=true]:bg-accent data-[on=true]:text-text-on-accent max-[600px]:px-0"
               aria-pressed={hapticsDebug}
               onClick={() => setHapticsDebug((v) => !v)}
               title="Debug: play pattern as sound"
@@ -151,7 +154,7 @@ export const Header = ({
               <span className="inline-flex opacity-90" aria-hidden>
                 {hapticsDebug ? <Volume2 size={16} aria-hidden /> : <VolumeX size={16} aria-hidden />}
               </span>
-              <span className="text-xs font-semibold tracking-[-0.01em]">Debug</span>
+              <span className="sr-only">Debug</span>
             </button>
           )}
           <a
