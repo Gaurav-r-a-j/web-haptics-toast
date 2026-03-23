@@ -4,7 +4,7 @@
 
 The **`toast()`** and **`<Toaster />`** API is compatible with [Sonner](https://sonner.emilkowal.ski/), so you can migrate or adopt without new mental models (including an optional npm alias so imports can stay `from 'sonner'`).
 
-By [**DesignByte**](https://studio.designbyte.dev) · [GitHub](https://github.com/designbyte-official/)
+By [**DesignByte**](https://studio.designbyte.dev) · [GitHub](https://github.com/Gaurav-r-a-j/)
 
 ---
 

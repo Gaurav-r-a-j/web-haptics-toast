@@ -43,13 +43,13 @@
   ],
   "author": "DesignByte <https://studio.designbyte.dev>",
   "license": "MIT",
-  "homepage": "https://github.com/designbyte-official/web-haptics-toast",
+  "homepage": "https://github.com/Gaurav-r-a-j/web-haptics-toast",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/designbyte-official/web-haptics-toast.git"
+    "url": "git+https://github.com/Gaurav-r-a-j/web-haptics-toast.git"
   },
   "bugs": {
-    "url": "https://github.com/designbyte-official/web-haptics-toast/issues"
+    "url": "https://github.com/Gaurav-r-a-j/web-haptics-toast/issues"
   },
   "devDependencies": {
     "@playwright/test": "^1.49.1",
