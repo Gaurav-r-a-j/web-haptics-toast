@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { isHapticsSupported } from 'web-haptics-toast';
 import { useTheme } from 'next-themes';
 import { siteContainer } from '@/src/lib/siteUi';
+import { Monitor, Moon, Sun, Slash, Volume2, VolumeX, Waves } from 'lucide-react';
 
 const menuLinks = [
   { href: '#install', label: 'Install' },
@@ -28,6 +29,7 @@ export const Header = ({
   const [supported, setSupported] = React.useState<boolean | null>(null);
   const { theme, setTheme } = useTheme();
   const [mounted, setMounted] = React.useState(false);
+  const menuRef = React.useRef<HTMLDetailsElement>(null);
   const [isDesktop, setIsDesktop] = React.useState(() => {
     if (typeof window === 'undefined') return false;
     return window.matchMedia('(min-width: 860px)').matches;
@@ -56,7 +58,7 @@ export const Header = ({
     <header className="sticky top-0 z-50 border-b border-border bg-bg-primary">
       <a
         href="#main"
-        className="absolute -top-full left-[var(--side-padding)] z-[100] rounded-sm border border-[var(--border)] bg-[var(--bg-secondary)] px-3 py-2 text-sm font-medium text-[var(--text-primary)] no-underline transition-[top] duration-150 focus:-top-[0.75rem] focus:outline-none focus:shadow-[0_0_0_2px_var(--accent)]"
+        className="absolute -top-full left-[var(--side-padding)] z-[100] rounded-sm border border-border bg-bg-secondary px-3 py-2 text-sm font-medium text-text-primary no-underline transition-[top] duration-150 focus:-top-[0.75rem] focus:outline-none focus:shadow-[0_0_0_2px_var(--accent)]"
       >
         Skip to content
       </a>
@@ -64,29 +66,37 @@ export const Header = ({
         className={`${siteContainer} flex flex-wrap items-center justify-between gap-x-3 gap-y-2 py-3 min-[480px]:gap-4 min-[480px]:py-3.5`}
       >
         <div className="flex min-w-0 items-center gap-3">
-          <Link href="/" className="text-[0.9375rem] font-semibold tracking-[-0.02em] text-[var(--text-primary)] no-underline hover:text-[var(--accent)]" aria-label="Home">
+          <Link href="/" className="text-[0.9375rem] font-semibold tracking-[-0.02em] text-text-primary no-underline hover:text-accent" aria-label="Home">
             web-haptics-toast
           </Link>
           <nav className="flex items-center gap-1" aria-label="Primary">
             <Link
               href="/docs"
-              className="rounded-sm px-3 py-2 text-xs font-medium text-[var(--text-secondary)] no-underline transition-colors duration-150 hover:bg-[var(--bg-secondary)] hover:text-[var(--text-primary)] max-[600px]:px-2 max-[600px]:py-[0.4rem] max-[600px]:text-xs"
+              className="rounded-sm px-3 py-2 text-xs font-medium text-text-secondary no-underline transition-colors duration-150 hover:bg-bg-secondary hover:text-text-primary max-[600px]:px-2 max-[600px]:py-[0.4rem] max-[600px]:text-xs"
             >
               Docs
             </Link>
-            <details className="relative group">
+            <details ref={menuRef} className="relative group">
               <summary
-                className="cursor-pointer select-none list-none rounded-sm px-3 py-2 text-[0.8125rem] font-medium text-[var(--text-secondary)] transition-colors duration-150 group-[open]:bg-[var(--bg-secondary)] group-[open]:text-[var(--text-primary)] hover:bg-[var(--bg-secondary)] hover:text-[var(--text-primary)] [&::-webkit-details-marker]:hidden max-[600px]:px-2 max-[600px]:py-[0.4rem]"
+                className="cursor-pointer select-none list-none rounded-sm px-3 py-2 text-[0.8125rem] font-medium text-text-secondary transition-colors duration-150 group-[open]:bg-bg-secondary group-[open]:text-text-primary hover:bg-bg-secondary hover:text-text-primary [&::-webkit-details-marker]:hidden max-[600px]:px-2 max-[600px]:py-[0.4rem]"
               >
                 Menu
               </summary>
               <div
-                className="absolute left-0 top-[calc(100%+8px)] z-50 min-w-[min(100vw-2rem,220px)] max-w-[calc(100vw-2rem)] rounded-[12px] border border-[var(--border)] bg-[var(--bg-secondary)] p-2 shadow-[var(--shadow-float)] max-[400px]:left-auto max-[400px]:right-0"
+                className="absolute left-0 top-[calc(100%+8px)] z-50 min-w-[min(100vw-2rem,220px)] max-w-[calc(100vw-2rem)] rounded-[12px] border border-border bg-bg-secondary p-2 shadow-[var(--shadow-float)] max-[400px]:left-auto max-[400px]:right-0"
                 role="menu"
                 aria-label="Sections"
               >
                 {menuLinks.map((l) => (
-                  <a key={l.href} href={l.href} className="block rounded-[10px] px-[0.6rem] py-2 text-sm text-[var(--text-primary)] no-underline hover:bg-[var(--bg-primary)]" role="menuitem">
+                  <a
+                    key={l.href}
+                    href={l.href}
+                    className="block rounded-[10px] px-[0.6rem] py-2 text-sm text-text-primary no-underline hover:bg-bg-primary"
+                    role="menuitem"
+                    onClick={() => {
+                      menuRef.current?.removeAttribute('open');
+                    }}
+                  >
                     {l.label}
                   </a>
                 ))}
@@ -99,66 +109,56 @@ export const Header = ({
           <button
             type="button"
             onClick={onCycleTheme}
-            className="inline-flex h-[34px] w-[34px] items-center justify-center rounded-sm text-[var(--text-secondary)] transition-colors duration-150 hover:bg-[var(--bg-secondary)] hover:text-[var(--text-primary)] focus:outline-none focus:shadow-[0_0_0_2px_var(--bg-primary),_0_0_0_4px_var(--accent)]"
+            className="inline-flex h-[34px] w-[34px] items-center justify-center rounded-sm text-text-secondary transition-colors duration-150 hover:bg-bg-secondary hover:text-text-primary focus:outline-none focus:shadow-[0_0_0_2px_var(--bg-primary),_0_0_0_4px_var(--accent)]"
             aria-label="Toggle color theme"
             title={mounted ? `Theme: ${theme ?? 'system'} (click to cycle)` : 'Toggle color theme'}
           >
             {!mounted || theme === 'system' ? (
-              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" strokeWidth="1.8" aria-hidden>
-                <rect x="3.5" y="4.5" width="17" height="12" rx="2" />
-                <path d="M8 19.5h8" />
-                <path d="M12 16.5v3" />
-              </svg>
+              <Monitor size={18} aria-hidden />
             ) : theme === 'light' ? (
-              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" strokeWidth="1.8" aria-hidden>
-                <circle cx="12" cy="12" r="4.2" />
-                <path d="M12 2.5v2.2M12 19.3v2.2M4.7 4.7l1.6 1.6M17.7 17.7l1.6 1.6M2.5 12h2.2M19.3 12h2.2M4.7 19.3l1.6-1.6M17.7 6.3l1.6-1.6" />
-              </svg>
+              <Sun size={18} aria-hidden />
             ) : (
-              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" strokeWidth="1.8" aria-hidden>
-                <path d="M21 13.2A8.7 8.7 0 1 1 10.8 3a7.2 7.2 0 1 0 10.2 10.2z" />
-              </svg>
+              <Moon size={18} aria-hidden />
             )}
           </button>
           <button
             type="button"
-            className="inline-flex items-center gap-2 rounded-full border border-[var(--border)] bg-[var(--bg-secondary)] px-2 py-[0.4rem] text-[var(--text-primary)] transition-colors duration-150 focus:outline-none focus:shadow-[0_0_0_2px_var(--bg-primary),_0_0_0_4px_var(--accent)]"
+            className="inline-flex h-[34px] items-center gap-2 rounded-full border border-border bg-bg-secondary px-3 text-text-primary transition-colors duration-150 hover:border-text-secondary focus:outline-none focus:shadow-[0_0_0_2px_var(--bg-primary),_0_0_0_4px_var(--accent)] data-[on=true]:border-accent data-[on=true]:bg-accent data-[on=true]:text-text-on-accent"
             aria-pressed={haptics}
             onClick={() => setHaptics((v) => !v)}
             title="Toggle haptics"
+            data-on={haptics ? 'true' : 'false'}
           >
-            <span className="text-xs font-semibold tracking-[-0.01em] max-[600px]:hidden">Haptics</span>
-            <span
-                className="group relative inline-block h-[20px] w-[34px] rounded-full border border-[var(--border)] bg-[var(--bg-primary)] transition-colors duration-150 data-[on=true]:bg-[var(--accent)] data-[on=true]:border-[var(--accent)]"
-              data-on={haptics ? 'true' : 'false'}
-            >
-              <span
-                className="absolute left-[3px] top-1/2 h-[14px] w-[14px] -translate-y-1/2 rounded-full bg-[var(--bg-primary)] transition-[left] duration-150 group-[data-on=true]:left-[17px]"
-              />
-            </span>
+            {haptics ? (
+              <Waves size={16} aria-hidden />
+            ) : (
+              <span className="relative inline-flex h-[16px] w-[16px] items-center justify-center">
+                <Waves size={16} aria-hidden />
+                <Slash size={16} className="absolute inset-0 m-auto rotate-[-20deg]" aria-hidden />
+              </span>
+            )}
+            <span className="text-xs font-semibold tracking-[-0.01em]">Haptics</span>
           </button>
           {isDesktop && supported !== null && (
             <button
               type="button"
-              className="inline-flex h-[34px] items-center gap-2 rounded-full border border-[var(--border)] bg-[var(--bg-secondary)] px-[0.6rem] text-[var(--text-primary)] focus:outline-none focus:shadow-[0_0_0_2px_var(--bg-primary),_0_0_0_4px_var(--accent)]"
+              className="inline-flex h-[34px] items-center gap-2 rounded-full border border-border bg-bg-secondary px-3 text-text-primary transition-colors duration-150 hover:border-text-secondary focus:outline-none focus:shadow-[0_0_0_2px_var(--bg-primary),_0_0_0_4px_var(--accent)] data-[on=true]:border-accent data-[on=true]:bg-accent data-[on=true]:text-text-on-accent"
               aria-pressed={hapticsDebug}
               onClick={() => setHapticsDebug((v) => !v)}
               title="Debug: play pattern as sound"
+              data-on={hapticsDebug ? 'true' : 'false'}
             >
               <span className="inline-flex opacity-90" aria-hidden>
-                <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" strokeWidth="1.8">
-                  <path d="M11 5L6 9H2v6h4l5 4V5z" />
-                  <path d="M15.5 8.5a5 5 0 0 1 0 7" />
-                </svg>
+                {hapticsDebug ? <Volume2 size={16} aria-hidden /> : <VolumeX size={16} aria-hidden />}
               </span>
-              <span className="text-xs font-semibold tracking-[-0.01em] max-[600px]:hidden">Debug</span>
+              <span className="text-xs font-semibold tracking-[-0.01em]">Debug</span>
             </button>
           )}
           <a
             href="https://github.com/Gaurav-r-a-j/web-haptics-toast"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex h-[34px] w-[34px] items-center justify-center rounded-sm text-[var(--text-secondary)] transition-colors duration-150 hover:bg-[var(--bg-secondary)] hover:text-[var(--text-primary)] focus:outline-none focus:shadow-[0_0_0_2px_var(--bg-primary),_0_0_0_4px_var(--accent)]"
+            className="inline-flex h-[34px] w-[34px] items-center justify-center rounded-sm text-text-secondary transition-colors duration-150 hover:bg-bg-secondary hover:text-text-primary focus:outline-none focus:shadow-[0_0_0_2px_var(--bg-primary),_0_0_0_4px_var(--accent)]"
             aria-label="GitHub repository"
             title="GitHub"
           >

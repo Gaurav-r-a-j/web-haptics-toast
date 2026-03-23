@@ -28,7 +28,7 @@ export const Position = ({
       <h2 id="position-heading" className={sectionTitle}>
         Position
       </h2>
-      <p className="m-0 mb-1 max-w-[52ch] text-[0.9375rem] leading-[1.55] text-[var(--text-secondary)]">
+      <p className="m-0 mb-1 max-w-[52ch] text-[0.9375rem] leading-[1.55] text-text-secondary">
         Swipe-to-dismiss follows the corner you choose. Try a position and watch the stack move.
       </p>
       <div
@@ -37,7 +37,7 @@ export const Position = ({
         {positions.map((position) => (
           <button
             data-active={activePosition === position}
-            className="cursor-pointer whitespace-nowrap rounded-[var(--radius)] border border-[var(--border)] bg-[var(--bg-secondary)] px-[0.875rem] py-[0.5rem] text-[0.8125rem] font-medium text-[var(--text-primary)] transition-[border-color,background,box-shadow] duration-200 [font-family:var(--font-sans)] hover:bg-[var(--bg-primary)] hover:border-[var(--text-secondary)] data-[active='true']:bg-[var(--accent)] data-[active='true']:border-[var(--accent)] data-[active='true']:text-[var(--text-on-accent)] focus:outline-none focus-visible:shadow-[0_0_0_2px_var(--bg-primary),_0_0_0_4px_var(--accent)]"
+            className="cursor-pointer whitespace-nowrap rounded-[var(--radius)] border border-border bg-bg-secondary px-[0.875rem] py-[0.5rem] text-[0.8125rem] font-medium text-text-primary transition-[border-color,background,box-shadow] duration-200 [font-family:var(--font-sans)] hover:bg-bg-primary hover:border-text-secondary data-[active='true']:bg-accent data-[active='true']:border-accent data-[active='true']:text-text-on-accent focus:outline-none focus-visible:shadow-[0_0_0_2px_var(--bg-primary),_0_0_0_4px_var(--accent)]"
             onClick={() => {
               if (activePosition !== position) {
                 setPosition(position);

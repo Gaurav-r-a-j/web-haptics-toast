@@ -78,12 +78,12 @@ export const Other = ({
         action: () => {
           toast.custom(
             (t) => (
-              <div className="relative box-border w-[356px] rounded-[var(--radius)] border border-[var(--border)] bg-[var(--bg-secondary)] p-4">
-                <p className="m-0 mb-[0.5rem] text-[0.875rem] font-medium leading-[1.3] text-[var(--text-primary)]">Event Created</p>
-                <p className="m-0 text-[0.875rem] leading-[1.4] text-[var(--text-secondary)]">Today at 4:00pm - &quot;Louvre Museum&quot;</p>
+              <div className="relative box-border w-[356px] rounded-[var(--radius)] border border-border bg-bg-secondary p-4">
+                <p className="m-0 mb-[0.5rem] text-[0.875rem] font-medium leading-[1.3] text-text-primary">Event Created</p>
+                <p className="m-0 text-[0.875rem] leading-[1.4] text-text-secondary">Today at 4:00pm - &quot;Louvre Museum&quot;</p>
                 <button
                   style={headlessCloseStyle}
-                  className="absolute top-[0.5rem] flex h-[24px] w-[24px] cursor-pointer items-center justify-center border-0 bg-transparent p-0 text-[var(--text-secondary)] transition-colors hover:text-[var(--text-primary)]"
+                  className="absolute top-[0.5rem] flex h-[24px] w-[24px] cursor-pointer items-center justify-center border-0 bg-transparent p-0 text-text-secondary transition-colors hover:text-text-primary"
                   onClick={() => toast.dismiss(t)}
                 >
                   <svg width="14" height="14" viewBox="0 0 16 16" fill="currentColor">
@@ -122,7 +122,7 @@ export const Other = ({
       >
         {allTypes.map((type) => (
           <button
-            className="cursor-pointer whitespace-nowrap rounded-[var(--radius)] border border-[var(--border)] bg-[var(--bg-secondary)] px-[0.875rem] py-[0.5rem] text-[0.8125rem] font-medium text-[var(--text-primary)] transition-[border-color,background,box-shadow] duration-200 [font-family:var(--font-sans)] hover:bg-[var(--bg-primary)] hover:border-[var(--text-secondary)] focus:outline-none focus-visible:shadow-[0_0_0_2px_var(--bg-primary),_0_0_0_4px_var(--accent)]"
+            className="cursor-pointer whitespace-nowrap rounded-[var(--radius)] border border-border bg-bg-secondary px-[0.875rem] py-[0.5rem] text-[0.8125rem] font-medium text-text-primary transition-[border-color,background,box-shadow] duration-200 [font-family:var(--font-sans)] hover:bg-bg-primary hover:border-text-secondary focus:outline-none focus-visible:shadow-[0_0_0_2px_var(--bg-primary),_0_0_0_4px_var(--accent)]"
             onClick={() => {
               type.action();
               setActiveType(type);

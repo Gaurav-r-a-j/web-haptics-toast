@@ -53,7 +53,7 @@ export const MobileDemo = ({ haptics, hapticsDebug }: { haptics: boolean; haptic
   return (
     <ParticlesProvider>
       <section
-        className="mt-[2rem] flex flex-col items-center gap-[1.5rem] rounded-[12px] border border-[var(--border)] bg-[var(--bg-secondary)] p-[1.25rem] min-[860px]:flex-row min-[860px]:flex-nowrap min-[860px]:items-center min-[860px]:justify-center min-[860px]:gap-8 min-[860px]:px-6 min-[860px]:py-7"
+        className="mt-[2rem] flex flex-col items-center gap-[1.5rem] rounded-[12px] border border-border bg-bg-secondary p-[1.25rem] min-[860px]:flex-row min-[860px]:flex-nowrap min-[860px]:items-center min-[860px]:justify-center min-[860px]:gap-8 min-[860px]:px-6 min-[860px]:py-7"
         aria-label="Try it on mobile"
       >
         <div className="order-2 flex w-full shrink-0 justify-center min-[860px]:order-1 min-[860px]:w-auto min-[860px]:max-w-[min(280px,42vw)]">
@@ -74,7 +74,7 @@ export const MobileDemo = ({ haptics, hapticsDebug }: { haptics: boolean; haptic
                   haptics={haptics}
                   hapticsDebug={hapticsDebug}
                 />
-                  <div className="mt-3 text-center text-[13px] font-medium text-text-primary opacity-80">
+                <div className="mt-3 text-center text-[13px] font-medium text-text-primary opacity-80">
                   Tap tiles for toast + haptics
                 </div>
               </div>
@@ -114,7 +114,7 @@ export const MobileDemo = ({ haptics, hapticsDebug }: { haptics: boolean; haptic
               </div>
               <div className="flex min-w-0 flex-1 items-start gap-3 sm:min-w-[12rem]">
                 <div
-                  className="relative mt-0.5 h-7 w-7 shrink-0 rounded-full bg-accent after:absolute after:left-1/2 after:top-1/2 after:h-[10px] after:w-[10px] after:-translate-x-[55%] after:-translate-y-[55%] after:rotate-[-45deg] after:border-b-2 after:border-r-2 after:border-[var(--text-on-accent)] after:border-l-0 after:border-t-0 after:content-['']"
+                  className="relative mt-0.5 h-7 w-7 shrink-0 rounded-full bg-accent after:absolute after:left-1/2 after:top-1/2 after:h-[10px] after:w-[10px] after:-translate-x-[55%] after:-translate-y-[55%] after:rotate-[-45deg] after:border-b-2 after:border-r-2 after:border-text-on-accent after:border-l-0 after:border-t-0 after:content-['']"
                   aria-hidden
                 />
                 <div className="min-w-0">
@@ -196,20 +196,20 @@ const DemoTiles = ({
       }
     }
 
-      // Show normal styled toast UI, but keep haptics manual for this demo
-      // (so each tile always maps to its explicit triggerHaptic preset).
-      const title =
-        name === 'success' ? 'Success' : name === 'nudge' ? 'Nudge' : name === 'error' ? 'Error' : 'Buzz';
-      const description =
-        name === 'success'
-          ? 'Haptic: success'
-          : name === 'nudge'
-            ? 'Haptic: nudge'
-            : name === 'error'
-              ? 'Haptic: error'
-              : 'Haptic: buzz';
+    // Show normal styled toast UI, but keep haptics manual for this demo
+    // (so each tile always maps to its explicit triggerHaptic preset).
+    const title =
+      name === 'success' ? 'Success' : name === 'nudge' ? 'Nudge' : name === 'error' ? 'Error' : 'Buzz';
+    const description =
+      name === 'success'
+        ? 'Haptic: success'
+        : name === 'nudge'
+          ? 'Haptic: nudge'
+          : name === 'error'
+            ? 'Haptic: error'
+            : 'Haptic: buzz';
 
-      toast(title, { description, haptics: false });
+    toast(title, { description, haptics: false });
 
     triggerHaptic(name, { debug: hapticsDebug });
   };
