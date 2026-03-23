@@ -1,6 +1,6 @@
 # Toaster
 
-This component renders all toasts. **web-haptics-toast** keeps Sonner’s API and adds **haptics by default** plus an optional **`system`** layer for dedupe and dismiss reasons. Migrating? See **[Migrate from Sonner](/migration-from-sonner)**.
+This component renders all toasts. **web-haptics-toast** bundles Sonner-compatible behavior with **built-in haptics** (on by default) and an optional **`system`** layer for dedupe and dismiss reasons—**one package**, no separate haptics install. Migrating? See **[Migrate from Sonner](/migration-from-sonner)**.
 
 Import styles once:
 
@@ -104,7 +104,7 @@ Haptics are **on by default**. Props are included in the table below; guides and
 | haptics               |                                     Enable haptic feedback for toasts (vibration or debug sound).                                     |     `true` |
 | hapticPatternMap      |                         Map toast types to preset names: `success`, `error`, `light`, `nudge`, `buzz`, etc.                          |  built-in  |
 | hapticsDebug          |                              On desktop, play patterns as sound when vibration is not available.                               |    `false` |
-| hapticsShowSwitch     |                              Show web-haptics’ on-screen toggle for end users (same as `showSwitch`).                               |    `false` |
+| hapticsShowSwitch     |                              Built-in on-screen haptics toggle for end users (engine `showSwitch`).                               |    `false` |
 | icons                 |                                                    Override default toast icons (`success`, `error`, `loading`, …).                                                    |            `-` |
 | containerAriaLabel    |                                              Accessible name for the toast region.                                              | `Notifications` |
 | customAriaLabel       |                              If set, used as the region `aria-label` instead of the default pattern.                              |            `-` |

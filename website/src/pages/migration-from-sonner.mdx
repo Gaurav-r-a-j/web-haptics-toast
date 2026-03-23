@@ -2,7 +2,9 @@ import { Callout, Steps, Tab, Tabs } from 'nextra-theme-docs';
 
 # Migrating from Sonner
 
-**web-haptics-toast** tracks [Sonner](https://sonner.emilkowal.ski/)’s public API: same `toast()` methods, `<Toaster />` props, and styling hooks. The main additions are **haptics** (on by default) and an optional **`system`** layer for dedupe and dismiss reasons ([Getting Started](/getting-started), [Toaster](/toaster)).
+**web-haptics-toast** is a **standalone** package: you install it once and get Sonner-compatible toasts **plus** a built-in haptics engine—no second dependency for vibration or presets.
+
+It tracks [Sonner](https://sonner.emilkowal.ski/)’s public API (`toast()`, `<Toaster />`, styling hooks). On top of that you get **haptics** (on by default) and an optional **`system`** layer for dedupe and dismiss reasons ([Getting Started](/getting-started), [Toaster](/toaster)).
 
 Pick one path below.
 
@@ -94,9 +96,10 @@ If you re-export from a shared `notifications.ts` (or similar), point that file 
 
 | Topic | Notes |
 | :---- | :---- |
+| **Single package** | Components, CSS, and haptics (`WebHaptics`, presets) are **all** in `web-haptics-toast`—no extra haptics dependency. |
 | **Haptics** | Default `true`. [Haptics](/haptics) — `hapticsDebug`, `hapticPatternMap`, `hapticsShowSwitch`. |
 | **`system` prop** | Opt-in dedupe (`dedupeKey`) and `onClose` with a dismissal **reason**. Off by default so Sonner-like behavior is unchanged. [Getting Started](/getting-started), [Toaster](/toaster#system-production-behaviors). |
-| **Types** | Types ship with the package; `ToasterProps`, `toast` options, and Sonner-style patterns align with upstream where applicable. |
+| **Types** | Published with the library; Sonner-shaped `ToasterProps` and `toast` options, plus haptics-related props. |
 | **Styling** | Same `toastOptions`, `classNames`, `unstyled` patterns as Sonner. [Styling](/styling). |
 
 ## Checklist

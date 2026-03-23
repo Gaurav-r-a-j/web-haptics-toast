@@ -17,8 +17,8 @@ export const Hero = () => {
       >
         web-haptics-toast
       </h1>
-      <p className="m-0 mb-[1.75rem] max-w-[26em] text-[1.0625rem] leading-[1.55] text-[var(--text-secondary)]">
-        Toasts with haptic feedback by default. Drop-in replacement for Sonner.
+      <p className="m-0 mb-[1.75rem] max-w-[28em] text-[1.0625rem] leading-[1.55] text-[var(--text-secondary)]">
+        One install: toasts, styles, and haptics together. Sonner-compatible API—no separate vibration library.
       </p>
       <div className="flex w-full max-w-[min(100%,28rem)] flex-wrap items-center justify-center gap-3 max-[600px]:flex-col max-[600px]:gap-2.5">
         <button

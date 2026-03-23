@@ -1,7 +1,7 @@
 {
   "name": "web-haptics-toast",
   "version": "2.0.7",
-  "description": "Toast component for React with haptic feedback by default. Built on Sonner with web-haptics.",
+  "description": "Standalone React toasts with built-in haptics and a Sonner-compatible API. Single dependency—no separate haptics package.",
   "exports": {
     ".": {
       "import": {

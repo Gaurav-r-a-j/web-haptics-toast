@@ -1,6 +1,8 @@
 # web-haptics-toast
 
-Toast component for React with **haptic feedback by default**. API-compatible with [Sonner](https://sonner.emilkowal.ski/)—drop in as a replacement with **no code changes**. All web-haptics logic is **copied from [web-haptics-main](https://github.com/lochie/web-haptics)** (same `WebHaptics` class, patterns, types, debug/sound fallback, showSwitch). No extra dependencies.
+**Standalone** React toasts with **haptics built in**: one `npm install`, and you get the UI, styles, and vibration/audio engine together—**no extra packages** for haptics.
+
+The **`toast()`** and **`<Toaster />`** API is compatible with [Sonner](https://sonner.emilkowal.ski/), so you can migrate or adopt without new mental models (including an optional npm alias so imports can stay `from 'sonner'`).
 
 By [**DesignByte**](https://studio.designbyte.dev) · [GitHub](https://github.com/designbyte-official/)
 
@@ -69,11 +71,11 @@ function App() {
 />
 ```
 
-Supported pattern names (same as web-haptics): `success`, `error`, `warning`, `light`, `medium`, `heavy`, `soft`, `rigid`, `selection`, `nudge`, `buzz`.
+Built-in pattern names: `success`, `error`, `warning`, `light`, `medium`, `heavy`, `soft`, `rigid`, `selection`, `nudge`, `buzz`.
 
 ### Test haptics on desktop (play sound)
 
-Same as web-haptics: when vibration isn’t available (e.g. desktop), you can still verify patterns by playing a short sound for each “click”:
+When vibration isn’t available (e.g. desktop), you can still verify patterns by playing a short sound for each pulse:
 
 ```jsx
 <Toaster hapticsDebug />
@@ -81,22 +83,26 @@ Same as web-haptics: when vibration isn’t available (e.g. desktop), you can st
 
 Use this during development to confirm which pattern runs for each toast type. On devices that support vibration, you still get real haptics; sound plays in addition when `hapticsDebug` is true.
 
-### Show haptics toggle on screen (same as web-haptics)
+### Show an on-screen haptics toggle
 
 ```jsx
 <Toaster hapticsShowSwitch />
 ```
 
-Shows the web-haptics toggle switch so users can enable/disable haptics (e.g. when the device doesn’t support vibration but the fallback is used).
+Renders a small built-in control so users can turn feedback on or off without you wiring custom UI.
 
 ### Other API
 
 - **`isHapticsSupported`** – `true` if `navigator.vibrate` is available.
-- **`triggerHaptic(patternName, options?)`** – trigger a pattern. Options: `{ intensity?: number; debug?: boolean }`. Use `triggerHaptic('success', { debug: true })` to hear the pattern on desktop.
-- **`WebHaptics`** – the same class as web-haptics (logic copied from web-haptics-main). Create instances with `new WebHaptics({ debug, showSwitch })`, call `.trigger(input)`, `.destroy()`.
-- **`defaultPatterns`** – the same preset patterns as web-haptics (success, error, warning, light, etc.).
+- **`triggerHaptic(patternName, options?)`** – fire a built-in preset by name. Options: `{ intensity?: number; debug?: boolean }`. Use `triggerHaptic('success', { debug: true })` to hear the pattern on desktop.
+- **`WebHaptics`** – low-level class included in this package. Create instances with `new WebHaptics({ debug, showSwitch })`, call `.trigger(input)`, `.destroy()`.
+- **`defaultPatterns`** – the preset map shipped with the library (success, error, warning, light, etc.).
 
-All original Sonner props and `toast()` API work the same (position, duration, theme, richColors, etc.).
+Sonner-style props still work the same (`position`, `duration`, `theme`, `richColors`, etc.).
+
+### Credits
+
+Toast UX and API follow **[Sonner](https://sonner.emilkowal.ski/)**. Haptic presets and the `WebHaptics` model are **vendored inside this repo**—aligned with the ideas behind [web-haptics](https://github.com/lochie/web-haptics), but **not** installed as a separate dependency.
 
 ---
 

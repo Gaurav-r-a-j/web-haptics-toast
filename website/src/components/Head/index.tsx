@@ -7,8 +7,8 @@ const Head = () => (
     <meta name="og:title" content="web-haptics-toast" />
 
     {/* Description */}
-    <meta name="description" content="Toast component for React with haptic feedback by default. Drop-in Sonner replacement." />
-    <meta name="og:description" content="Toast component for React with haptic feedback by default. Drop-in Sonner replacement." />
+    <meta name="description" content="Standalone React toasts with built-in haptics. Sonner-compatible API—one package, no extra haptics dependency." />
+    <meta name="og:description" content="Standalone React toasts with built-in haptics. Sonner-compatible API—one package, no extra haptics dependency." />
 
     {/* URL */}
     <meta name="og:url" content="https://studio.designbyte.dev" />

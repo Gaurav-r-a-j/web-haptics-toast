@@ -1,9 +1,13 @@
-import { Tab, Tabs, Cards, Card, Steps } from 'nextra-theme-docs';
+import { Callout, Tab, Tabs, Steps } from 'nextra-theme-docs';
 import { toast } from 'web-haptics-toast';
 
 # Getting Started
 
-web-haptics-toast is a toast component for React with haptic feedback by default. API-compatible with Sonner—drop in as a replacement with no code changes.
+<Callout emoji="📦">
+  **One package, everything included:** components, CSS, and the haptics engine (`WebHaptics`, presets, `triggerHaptic`, debug sound, optional on-screen toggle) ship **inside `web-haptics-toast`**. You do **not** install a second library for vibration.
+</Callout>
+
+**Sonner-compatible API** — same `toast()` helpers and `<Toaster />` props you already know, so you can migrate or start fresh without new patterns. Haptic feedback is **on by default** on supported devices; turn it off with `<Toaster haptics={false} />` if you want Sonner-only behavior.
 
 Coming from Sonner? See **[Migrate from Sonner](/migration-from-sonner)** (npm alias with zero import changes, or rename the package and update imports).
 
@@ -130,3 +134,8 @@ toast('Saved', {
 ```
 
 </Steps>
+
+### Credits
+
+- **[Sonner](https://sonner.emilkowal.ski/)** — API and toast UX this project tracks.
+- **Haptics** — preset names and engine behavior are **bundled in this package** (no separate npm dependency). They follow the same vocabulary as the open [web-haptics](https://github.com/lochie/web-haptics) project for familiarity, but you only depend on **`web-haptics-toast`**.
