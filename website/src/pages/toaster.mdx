@@ -1,6 +1,12 @@
 # Toaster
 
-This component renders all the toasts, you can place it anywhere in your app.
+This component renders all toasts. **web-haptics-toast** keeps Sonner’s API and adds **haptics by default** plus an optional **`system`** layer for dedupe and dismiss reasons. Migrating? See **[Migrate from Sonner](/migration-from-sonner)**.
+
+Import styles once:
+
+```jsx
+import 'web-haptics-toast/dist/styles.css';
+```
 
 ## Customization
 
@@ -72,26 +78,39 @@ You can customize the default ARIA label for the notification container and the 
 <Toaster containerAriaLabel="Ilmoitukset" toastOptions={{ closeButtonAriaLabel: 'Sulje' }} />
 ```
 
+## Haptics API
+
+Haptics are **on by default**. Props are included in the table below; guides and patterns: [Haptics](/haptics).
+
 ## API Reference
 
 | Property              |                                                           Description                                                           |        Default |
 | :-------------------- | :-----------------------------------------------------------------------------------------------------------------------------: | -------------: |
+| id                    |                                      Toaster instance id; use with `toasterId` on `toast()`.                                      |            `-` |
 | theme                 |                                       Toast's theme, either `light`, `dark`, or `system`                                        |        `light` |
 | richColors            |                                           Makes error and success state more colorful                                           |        `false` |
 | expand                |                                               Toasts will be expanded by default                                                |        `false` |
 | visibleToasts         |                                                    Amount of visible toasts                                                     |            `3` |
 | position              |                                             Place where the toasts will be rendered                                             | `bottom-right` |
 | closeButton           |                                                Adds a close button to all toasts                                                |        `false` |
+| duration              |                          Default toast lifetime in ms (per toast unless overridden). See [toast()](/toast).                          |       `4000` |
 | offset                |                                              Offset from the edges of the screen.                                               |         `32px` |
 | mobileOffset          |                    Offset from the left/right edges of the screen on screens with width smaller than 600px.                     |         `16px` |
 | dir                   |                                                 Directionality of toast's text                                                  |          `ltr` |
 | hotkey                |                                   Keyboard shortcut that will move focus to the toaster area.                                   |    `⌥/alt + T` |
 | invert                |                                            Dark toasts in light mode and vice versa.                                            |        `false` |
-| toastOptions          |               These will act as default options for all toasts. See [toast()](/toast) for all available options.                |         `4000` |
+| toastOptions          |               Default options for all toasts. See [toast()](/toast) for fields (`className`, `duration`, …).                |            `-` |
 | gap                   |                                                Gap between toasts when expanded                                                 |           `14` |
-| loadingIcon           |                                                Changes the default loading icon                                                 |            `-` |
-| pauseWhenPageIsHidden | Pauses toast timers when the page is hidden, e.g., when the tab is backgrounded, the browser is minimized, or the OS is locked. |        `false` |
-| icons                 |                                                    Changes the default icons                                                    |            `-` |
+| haptics               |                                     Enable haptic feedback for toasts (vibration or debug sound).                                     |     `true` |
+| hapticPatternMap      |                         Map toast types to preset names: `success`, `error`, `light`, `nudge`, `buzz`, etc.                          |  built-in  |
+| hapticsDebug          |                              On desktop, play patterns as sound when vibration is not available.                               |    `false` |
+| hapticsShowSwitch     |                              Show web-haptics’ on-screen toggle for end users (same as `showSwitch`).                               |    `false` |
+| icons                 |                                                    Override default toast icons (`success`, `error`, `loading`, …).                                                    |            `-` |
+| containerAriaLabel    |                                              Accessible name for the toast region.                                              | `Notifications` |
+| customAriaLabel       |                              If set, used as the region `aria-label` instead of the default pattern.                              |            `-` |
+| system                |                         Feature flags: `dedupe`, `dismissReason` for `dedupeKey` / `onClose` reasons.                          |            `-` |
+| className             |                                                              CSS class on the toaster root.                                                              |            `-` |
+| style                 |                                                              Inline styles on the toaster root.                                                              |            `-` |
 
 ## System (production behaviors)
 

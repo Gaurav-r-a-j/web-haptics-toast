@@ -2,7 +2,7 @@ import { toast } from 'web-haptics-toast';
 
 # Toast()
 
-Use it to render a toast. You can call it from anywhere, even outside of React.
+Use it to render a toast. You can call it from anywhere, even outside of React. Requires a mounted [`<Toaster />`](/toaster) and `import 'web-haptics-toast/dist/styles.css'` in your app.
 
 ## Rendering the toast
 
@@ -160,9 +160,9 @@ toast('Hello World', {
 You can update a toast by using the `toast` function and passing it the id of the toast you want to update, the rest stays the same.
 
 ```jsx
-const toastId = toast('Sonner');
+const toastId = toast('Saving…');
 
-toast.success('Toast has been updated', {
+toast.success('Saved', {
   id: toastId,
 });
 ```

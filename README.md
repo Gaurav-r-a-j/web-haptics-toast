@@ -26,6 +26,8 @@ bun remove sonner && bun add sonner@npm:web-haptics-toast
 
 No import changes needed. Haptics are on by default; disable with `<Toaster haptics={false} />`.
 
+On the docs site in this repo, see **[Migrate from Sonner](./website/src/pages/migration-from-sonner.mdx)** (route `/migration-from-sonner` when you run the website) for both migration paths, CSS notes, and a checklist.
+
 ---
 
 ## New install

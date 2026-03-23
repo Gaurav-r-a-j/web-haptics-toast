@@ -1,28 +1,31 @@
-import { Callout, Steps, Tabs, Tab } from 'nextra-theme-docs';
+import { Callout } from 'nextra-theme-docs';
 
 # Haptics
 
-Haptics are **on by default**. On supported devices, each toast triggers a small vibration pattern to make feedback feel more “native”.
+Haptics are **on by default**. On supported devices, each toast triggers a small vibration pattern to make feedback feel more “native”. See also the [`<Toaster />` API](/toaster#haptics-api) for a concise prop list.
 
 <Callout type="info">
-  On desktop, haptics aren’t available—enable <strong>Debug</strong> to hear the pattern as sound.
+  On desktop, vibration usually isn’t available—use **`hapticsDebug`** to hear the pattern as sound while developing.
 </Callout>
 
 ## Quick usage
 
 ```tsx
 import { Toaster } from 'web-haptics-toast';
+import 'web-haptics-toast/dist/styles.css';
 
 export function App() {
-  return <Toaster haptics />;
+  return <Toaster />;
 }
 ```
+
+`haptics` defaults to `true`, so you only need to pass props when you want to change behavior.
 
 ## Props
 
 ### `haptics`
 
-Enable/disable haptics for this toaster.
+Enable or disable haptics for this toaster instance.
 
 ```tsx
 <Toaster haptics={false} />
@@ -30,15 +33,25 @@ Enable/disable haptics for this toaster.
 
 ### `hapticsDebug`
 
-Debug mode. On desktop it plays the vibration pattern as audio so you can validate the “feel” while developing.
+When `true`, plays the pattern as **audio** on desktop (same idea as web-haptics debug). On phones that vibrate, you still get real haptics; debug can add sound on top depending on environment.
 
 ```tsx
 <Toaster haptics hapticsDebug />
 ```
 
+### `hapticsShowSwitch`
+
+Shows the small **web-haptics** on-screen toggle (same as `showSwitch` in web-haptics) so people can turn feedback off without wiring your own UI.
+
+```tsx
+<Toaster haptics hapticsShowSwitch />
+```
+
 ### `hapticPatternMap`
 
-Override which haptic pattern is used for each toast type.
+Map each **toast type** to a **named pattern**. Pattern names must exist in the bundled presets (same as [web-haptics-main](https://github.com/lochie/web-haptics)): `success`, `error`, `warning`, `light`, `medium`, `heavy`, `soft`, `rigid`, `selection`, `nudge`, `buzz`.
+
+Defaults (when you don’t pass a map) include e.g. `success` → `success`, `error` → `error`, `warning` → `warning`, `info` / `loading` / `default` → `light`.
 
 ```tsx
 <Toaster
@@ -47,15 +60,23 @@ Override which haptic pattern is used for each toast type.
     success: 'success',
     error: 'error',
     warning: 'warning',
-    info: 'notification',
-    default: 'selection',
+    info: 'selection',
+    default: 'light',
   }}
-/>;
+/>
 ```
+
+## Programmatic helpers
+
+You can also use the same primitives outside the toaster:
+
+- **`isHapticsSupported`** – whether `navigator.vibrate` is available.
+- **`triggerHaptic(name, options?)`** – fire a preset by name; use `{ debug: true }` to hear it on desktop.
+- **`WebHaptics`** / **`defaultPatterns`** – advanced use; same model as web-haptics-main.
 
 ## Tips
 
-- Keep patterns subtle for frequent toasts (e.g. “selection”).
-- Use stronger patterns for “success” or “error”.
-- Always allow users to disable haptics if your product has accessibility settings.
+- Keep patterns subtle for frequent toasts (e.g. `selection` / `light`).
+- Use stronger patterns for rare, important outcomes (`success` / `error`).
+- Offer a user-facing way to disable haptics where your product has accessibility or preference settings.
 

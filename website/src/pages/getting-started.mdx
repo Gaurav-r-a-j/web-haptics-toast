@@ -5,6 +5,8 @@ import { toast } from 'web-haptics-toast';
 
 web-haptics-toast is a toast component for React with haptic feedback by default. API-compatible with Sonner—drop in as a replacement with no code changes.
 
+Coming from Sonner? See **[Migrate from Sonner](/migration-from-sonner)** (npm alias with zero import changes, or rename the package and update imports).
+
 <Steps>
 ### Install
 
@@ -34,10 +36,11 @@ web-haptics-toast is a toast component for React with haptic feedback by default
 
 ### Add Toaster to your app
 
-It can be placed anywhere, even in server components such as `layout.tsx`.
+Import the package styles **once** (typically in the same file as `<Toaster />` or your root layout). You can place `<Toaster />` anywhere; in the App Router it is often in `layout.tsx`.
 
 ```tsx
 import { Toaster } from 'web-haptics-toast';
+import 'web-haptics-toast/dist/styles.css';
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
@@ -50,6 +53,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   );
 }
 ```
+
+**Haptics** are enabled by default on supported devices. To turn them off or tune patterns, see the [Haptics](/haptics) page and [`<Toaster />` props](/toaster#haptics-api).
 
 ### Render a toast
 
