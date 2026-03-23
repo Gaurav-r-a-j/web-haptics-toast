@@ -61,7 +61,7 @@ export const Installation = () => {
             aria-controls={`install-panel-${id}`}
             id={`install-tab-${id}`}
             className={clsx(
-              'h-9 min-w-[4.25rem] rounded-md border px-3 text-xs font-semibold uppercase tracking-[0.04em] transition-[border-color,background,color] focus:outline-none focus-visible:shadow-[0_0_0_2px_var(--bg-primary),_0_0_0_4px_var(--accent)]',
+              'h-9 min-w-[4.25rem] rounded-md border px-3 text-xs font-semibold uppercase tracking-[0.04em] transition-[border-color,background,color] focus:outline-none focus-visible:shadow-focus-ring',
               pm === id
                 ? 'border-accent bg-bg-primary text-text-primary'
                 : 'border-border bg-bg-secondary text-text-secondary hover:border-text-secondary hover:text-text-primary',
@@ -81,14 +81,14 @@ export const Installation = () => {
         <button
           type="button"
           onClick={onCopy}
-          className="relative flex h-11 w-full max-w-xl cursor-pointer items-center overflow-hidden rounded-[var(--radius-sm)] border border-border bg-bg-secondary px-3 pr-12 text-left font-[var(--font-mono)] text-[0.875rem] leading-[1.5] text-text-primary transition-[border-color,box-shadow] duration-200 hover:border-text-secondary focus:outline-none focus-visible:shadow-[0_0_0_2px_var(--bg-primary),_0_0_0_4px_var(--accent)]"
+          className="relative flex h-11 w-full max-w-xl cursor-pointer items-center overflow-hidden rounded-sm border border-border bg-bg-secondary px-3 pr-12 text-left font-mono text-[0.875rem] leading-[1.5] text-text-primary transition-[border-color,box-shadow] duration-200 hover:border-text-secondary focus:outline-none focus-visible:shadow-focus-ring"
           aria-label={`Copy install command: ${line}`}
         >
           <span className="min-w-0 flex-1 select-all overflow-x-auto whitespace-nowrap pr-1 [-webkit-overflow-scrolling:touch]">
             {line}
           </span>
           <span
-            className="pointer-events-none absolute right-2 top-1/2 flex h-7 w-7 -translate-y-1/2 items-center justify-center rounded-[var(--radius-sm)] border border-border bg-bg-primary text-text-primary [&>div]:flex"
+            className="pointer-events-none absolute right-2 top-1/2 flex h-7 w-7 -translate-y-1/2 items-center justify-center rounded-sm border border-border bg-bg-primary text-text-primary [&>div]:flex"
             aria-hidden
           >
             {mounted ? (

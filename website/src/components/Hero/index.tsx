@@ -28,19 +28,19 @@ export const Hero = () => {
               description: 'Haptics on supported devices.',
             })
           }
-          className="order-1 flex h-11 min-w-[8.5rem] shrink-0 items-center justify-center rounded-[var(--radius)] bg-accent px-5 text-[0.9375rem] font-semibold text-text-on-accent transition-[background,transform] duration-200 hover:bg-accent-hover focus:outline-none focus:shadow-[0_0_0_2px_var(--bg-primary),_0_0_0_4px_var(--accent)] max-[600px]:w-full max-[600px]:max-w-[280px]"
+          className="order-1 flex h-11 min-w-[8.5rem] shrink-0 items-center justify-center rounded bg-accent px-5 text-[0.9375rem] font-semibold text-text-on-accent transition-[background,transform] duration-200 hover:bg-accent-hover focus:outline-none focus:shadow-focus-ring max-[600px]:w-full max-[600px]:max-w-[280px]"
         >
           Try a toast
         </button>
         <Link
           href="/docs"
-          className="order-2 flex h-11 min-w-[7.5rem] shrink-0 items-center justify-center rounded-[var(--radius)] border border-border bg-transparent px-5 text-[0.875rem] font-medium text-text-primary transition-[border-color,background] duration-200 hover:border-text-secondary hover:bg-bg-secondary focus:outline-none focus:shadow-[0_0_0_2px_var(--bg-primary),_0_0_0_4px_var(--accent)] max-[600px]:w-full max-[600px]:max-w-[280px]"
+          className="order-2 flex h-11 min-w-[7.5rem] shrink-0 items-center justify-center rounded border border-border bg-transparent px-5 text-[0.875rem] font-medium text-text-primary transition-[border-color,background] duration-200 hover:border-text-secondary hover:bg-bg-secondary focus:outline-none focus:shadow-focus-ring max-[600px]:w-full max-[600px]:max-w-[280px]"
         >
           Docs
         </Link>
         <a
           href="#install"
-          className="order-3 flex h-11 min-w-[7.5rem] shrink-0 items-center justify-center rounded-[var(--radius)] border border-border bg-transparent px-5 text-[0.875rem] font-medium text-text-primary transition-[border-color,background] duration-200 hover:border-text-secondary hover:bg-bg-secondary focus:outline-none focus:shadow-[0_0_0_2px_var(--bg-primary),_0_0_0_4px_var(--accent)] max-[600px]:w-full max-[600px]:max-w-[280px]"
+          className="order-3 flex h-11 min-w-[7.5rem] shrink-0 items-center justify-center rounded border border-border bg-transparent px-5 text-[0.875rem] font-medium text-text-primary transition-[border-color,background] duration-200 hover:border-text-secondary hover:bg-bg-secondary focus:outline-none focus:shadow-focus-ring max-[600px]:w-full max-[600px]:max-w-[280px]"
         >
           Get started
         </a>
@@ -48,7 +48,7 @@ export const Hero = () => {
           href="https://github.com/Gaurav-r-a-j/web-haptics-toast"
           target="_blank"
           rel="noopener noreferrer"
-          className="order-4 flex h-11 w-11 shrink-0 items-center justify-center rounded-[var(--radius)] border border-border bg-transparent text-text-secondary transition-[color,background,border-color] duration-200 hover:bg-bg-secondary hover:text-text-primary focus:outline-none focus:shadow-[0_0_0_2px_var(--bg-primary),_0_0_0_4px_var(--accent)] max-[600px]:mt-1"
+          className="order-4 flex h-11 w-11 shrink-0 items-center justify-center rounded border border-border bg-transparent text-text-secondary transition-[color,background,border-color] duration-200 hover:bg-bg-secondary hover:text-text-primary focus:outline-none focus:shadow-focus-ring max-[600px]:mt-1"
           aria-label="GitHub repository"
           title="GitHub"
         >

@@ -17,6 +17,10 @@ module.exports = {
           secondary: 'var(--bg-secondary)',
           elevated: 'var(--bg-elevated)',
         },
+        rim: {
+          soft: 'var(--rim-soft)',
+          softer: 'var(--rim-softer)',
+        },
         text: {
           primary: 'var(--text-primary)',
           secondary: 'var(--text-secondary)',
@@ -29,6 +33,7 @@ module.exports = {
         border: {
           DEFAULT: 'var(--border)',
         },
+        'phone-bezel': 'var(--phone-bezel)',
       },
       maxWidth: {
         content: '1120px',
@@ -42,6 +47,8 @@ module.exports = {
         float: 'var(--shadow-float)',
         strong: 'var(--shadow-strong)',
         stacked: 'var(--shadow-stacked)',
+        'focus-ring': '0 0 0 2px var(--bg-primary), 0 0 0 4px var(--accent)',
+        'focus-accent': '0 0 0 2px var(--accent)',
       },
       fontFamily: {
         sans: 'var(--font-sans)',

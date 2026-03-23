@@ -58,12 +58,12 @@ export const MobileDemo = ({ haptics, hapticsDebug }: { haptics: boolean; haptic
       >
         <div className="order-2 flex w-full shrink-0 justify-center min-[860px]:order-1 min-[860px]:w-auto min-[860px]:max-w-[min(280px,42vw)]">
           <div
-            className={`relative aspect-[1/2] w-[min(260px,70vw)] overflow-hidden rounded-[28px] border-[8px] border-[var(--phone-bezel)] bg-bg-primary shadow-strong -rotate-[3deg] max-[520px]:rotate-0 ${
+            className={`relative aspect-[1/2] w-[min(260px,70vw)] overflow-hidden rounded-[28px] border-[8px] border-phone-bezel bg-bg-primary shadow-strong -rotate-[3deg] max-[520px]:rotate-0 ${
               shaking && isDesktop && !prefersReducedMotion ? 'animate-haptics-shake' : ''
             }`}
           >
             <div
-              className="absolute -inset-[2px] flex min-h-0 flex-col rounded-[24px] border border-[var(--rim-softer)] bg-[radial-gradient(600px_280px_at_50%_-40%,var(--rim-soft),transparent_60%),var(--bg-primary)] px-4 pb-4 pt-[10px]"
+              className="absolute -inset-[2px] flex min-h-0 flex-col rounded-[24px] border border-rim-softer bg-[radial-gradient(600px_280px_at_50%_-40%,var(--rim-soft),transparent_60%),var(--bg-primary)] px-4 pb-4 pt-[10px]"
             >
               <div className="shrink-0 text-center text-[15px] font-bold tracking-[-0.02em]">web-haptics-toast</div>
               <div className="flex min-h-0 flex-1 flex-col justify-center py-3">

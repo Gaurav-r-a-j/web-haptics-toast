@@ -105,7 +105,7 @@ export const CodeBlock = ({ children, initialHeight = 0 }: { children: string; i
       <Highlight {...defaultProps} theme={theme} code={children} language="jsx">
         {({ className, tokens, getLineProps, getTokenProps }) => (
           <motion.pre
-            className="relative mt-[1rem] overflow-hidden rounded-[var(--radius)] border border-border !p-0"
+            className="relative mt-[1rem] overflow-hidden rounded border border-border !p-0"
             animate={{ height: bounds.height || initialHeight }}
             transition={{ type: 'easeOut', duration: 0.2 }}
           >

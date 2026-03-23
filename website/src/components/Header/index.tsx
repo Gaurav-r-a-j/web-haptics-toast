@@ -58,7 +58,7 @@ export const Header = ({
     <header className="sticky top-0 z-50 border-b border-border bg-bg-primary">
       <a
         href="#main"
-        className="absolute -top-full left-[var(--side-padding)] z-[100] rounded-sm border border-border bg-bg-secondary px-3 py-2 text-sm font-medium text-text-primary no-underline transition-[top] duration-150 focus:-top-[0.75rem] focus:outline-none focus:shadow-[0_0_0_2px_var(--accent)]"
+        className="absolute -top-full left-[var(--side-padding)] z-[100] rounded-sm border border-border bg-bg-secondary px-3 py-2 text-sm font-medium text-text-primary no-underline transition-[top] duration-150 focus:-top-[0.75rem] focus:outline-none focus:shadow-focus-accent"
       >
         Skip to content
       </a>
@@ -83,7 +83,7 @@ export const Header = ({
                 Menu
               </summary>
               <div
-                className="absolute left-0 top-[calc(100%+8px)] z-50 min-w-[min(100vw-2rem,220px)] max-w-[calc(100vw-2rem)] rounded-[12px] border border-border bg-bg-secondary p-2 shadow-[var(--shadow-float)] max-[400px]:left-auto max-[400px]:right-0"
+                className="absolute left-0 top-[calc(100%+8px)] z-50 min-w-[min(100vw-2rem,220px)] max-w-[calc(100vw-2rem)] rounded-[12px] border border-border bg-bg-secondary p-2 shadow-float max-[400px]:left-auto max-[400px]:right-0"
                 role="menu"
                 aria-label="Sections"
               >
@@ -109,7 +109,7 @@ export const Header = ({
           <button
             type="button"
             onClick={onCycleTheme}
-            className="inline-flex h-[34px] w-[34px] items-center justify-center rounded-sm text-text-secondary transition-colors duration-150 hover:bg-bg-secondary hover:text-text-primary focus:outline-none focus:shadow-[0_0_0_2px_var(--bg-primary),_0_0_0_4px_var(--accent)]"
+            className="inline-flex h-[34px] w-[34px] items-center justify-center rounded-sm text-text-secondary transition-colors duration-150 hover:bg-bg-secondary hover:text-text-primary focus:outline-none focus:shadow-focus-ring"
             aria-label="Toggle color theme"
             title={mounted ? `Theme: ${theme ?? 'system'} (click to cycle)` : 'Toggle color theme'}
           >
@@ -123,7 +123,7 @@ export const Header = ({
           </button>
           <button
             type="button"
-            className="inline-flex h-[34px] items-center gap-2 rounded-full border border-border bg-bg-secondary px-3 text-text-primary transition-colors duration-150 hover:border-text-secondary focus:outline-none focus:shadow-[0_0_0_2px_var(--bg-primary),_0_0_0_4px_var(--accent)] data-[on=true]:border-accent data-[on=true]:bg-accent data-[on=true]:text-text-on-accent"
+            className="inline-flex h-[34px] items-center gap-2 rounded-full border border-border bg-bg-secondary px-3 text-text-primary transition-colors duration-150 hover:border-text-secondary focus:outline-none focus:shadow-focus-ring data-[on=true]:border-accent data-[on=true]:bg-accent data-[on=true]:text-text-on-accent"
             aria-pressed={haptics}
             onClick={() => setHaptics((v) => !v)}
             title="Toggle haptics"
@@ -142,7 +142,7 @@ export const Header = ({
           {isDesktop && supported !== null && (
             <button
               type="button"
-              className="inline-flex h-[34px] items-center gap-2 rounded-full border border-border bg-bg-secondary px-3 text-text-primary transition-colors duration-150 hover:border-text-secondary focus:outline-none focus:shadow-[0_0_0_2px_var(--bg-primary),_0_0_0_4px_var(--accent)] data-[on=true]:border-accent data-[on=true]:bg-accent data-[on=true]:text-text-on-accent"
+              className="inline-flex h-[34px] items-center gap-2 rounded-full border border-border bg-bg-secondary px-3 text-text-primary transition-colors duration-150 hover:border-text-secondary focus:outline-none focus:shadow-focus-ring data-[on=true]:border-accent data-[on=true]:bg-accent data-[on=true]:text-text-on-accent"
               aria-pressed={hapticsDebug}
               onClick={() => setHapticsDebug((v) => !v)}
               title="Debug: play pattern as sound"
@@ -158,7 +158,7 @@ export const Header = ({
             href="https://github.com/Gaurav-r-a-j/web-haptics-toast"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex h-[34px] w-[34px] items-center justify-center rounded-sm text-text-secondary transition-colors duration-150 hover:bg-bg-secondary hover:text-text-primary focus:outline-none focus:shadow-[0_0_0_2px_var(--bg-primary),_0_0_0_4px_var(--accent)]"
+            className="inline-flex h-[34px] w-[34px] items-center justify-center rounded-sm text-text-secondary transition-colors duration-150 hover:bg-bg-secondary hover:text-text-primary focus:outline-none focus:shadow-focus-ring"
             aria-label="GitHub repository"
             title="GitHub"
           >
