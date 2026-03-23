@@ -80,7 +80,7 @@ You can customize the default ARIA label for the notification container and the 
 
 ## Haptics API
 
-Haptics are **on by default** for **toasts** from this `<Toaster />`. To fire patterns only from **buttons or other handlers** (not when every toast shows), use `<Toaster haptics={false} />` and **`triggerHaptic`** — see [Manual haptics](/haptics#manual-haptics).
+Haptics are **on by default** for **toasts** from this `<Toaster />`. For a **single** toast without vibration, pass **`haptics: false`** on that `toast()` call ([Toast](/toast)). To fire patterns only from **buttons or other handlers** (not when every toast shows), use `<Toaster haptics={false} />` and **`triggerHaptic`** — see [Manual haptics](/haptics#manual-haptics).
 
 Props are in the table below; full guide: [Haptics](/haptics).
 

@@ -1,5 +1,6 @@
 import { toast } from 'web-haptics-toast';
 import { CodeBlock } from '../CodeBlock';
+import { sectionLabel, sectionTitle } from '@/src/lib/siteUi';
 
 export const ExpandModes = ({
   expand,
@@ -10,8 +11,12 @@ export const ExpandModes = ({
 }) => {
   return (
     <div>
-      <p className="section-label" aria-hidden>Behavior</p>
-      <h2 id="expand-heading">Expand</h2>
+      <p className={sectionLabel} aria-hidden>
+        Behavior
+      </p>
+      <h2 id="expand-heading" className={sectionTitle}>
+        Expand
+      </h2>
       <p className="m-0 mb-1 max-w-[52ch] text-[0.9375rem] leading-[1.55] text-[var(--text-secondary)]">
         With <code className="text-[0.8125rem]">expand</code>, the stack opens to show more toasts at once. You can still cap how many show with <code className="text-[0.8125rem]">visibleToasts</code>.
       </p>

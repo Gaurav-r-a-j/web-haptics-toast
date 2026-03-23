@@ -6,9 +6,9 @@ export default {
   },
   logo: <span style={{ fontWeight: 600 }}>web-haptics-toast</span>,
   project: {
-    link: 'https://github.com/designbyte-official/web-haptics-toast',
+    link: 'https://github.com/Gaurav-r-a-j/web-haptics-toast',
   },
-  docsRepositoryBase: 'https://github.com/designbyte-official/web-haptics-toast/tree/main/website',
+  docsRepositoryBase: 'https://github.com/Gaurav-r-a-j/web-haptics-toast/tree/main/website',
   useNextSeoProps() {
     return {
       titleTemplate: '%s – web-haptics-toast',

@@ -32,20 +32,21 @@ export const Highlight = () => {
           <li className="flex items-start gap-2.5 text-[0.9375rem] leading-[1.5] text-[var(--text-primary)]">
             <span className="mt-[0.35rem] h-2 w-2 flex-none shrink-0 rounded-full bg-[var(--accent)]" aria-hidden />
             <span>
-              One prop to disable: <code>haptics={false}</code>.
+              Global off: <code>{'haptics={false}'}</code> on <code>Toaster</code>, or per toast:{' '}
+              <code>{'{ haptics: false }'}</code>.
             </span>
           </li>
         </ul>
-        <div className="mt-[1.25rem] flex flex-wrap gap-[0.75rem]">
+        <div className="mt-[1.25rem] flex flex-col gap-2.5 min-[420px]:flex-row min-[420px]:flex-wrap">
           <Link
             href="/haptics"
-            className="flex h-[40px] items-center justify-center rounded-full bg-[var(--accent)] px-[0.9rem] text-[0.875rem] font-semibold text-[var(--text-on-accent)]"
+            className="flex h-11 min-h-[44px] w-full items-center justify-center rounded-full bg-[var(--accent)] px-[0.9rem] text-[0.875rem] font-semibold text-[var(--text-on-accent)] min-[420px]:h-[40px] min-[420px]:min-h-0 min-[420px]:w-auto"
           >
             Read haptics docs
           </Link>
           <a
             href="#compatibility"
-            className="flex h-[40px] items-center justify-center rounded-full border border-[var(--border)] bg-[var(--bg-primary)] px-[0.9rem] text-[0.875rem] font-semibold text-[var(--text-primary)] hover:border-[var(--text-secondary)]"
+            className="flex h-11 min-h-[44px] w-full items-center justify-center rounded-full border border-[var(--border)] bg-[var(--bg-primary)] px-[0.9rem] text-[0.875rem] font-semibold text-[var(--text-primary)] hover:border-[var(--text-secondary)] min-[420px]:h-[40px] min-[420px]:min-h-0 min-[420px]:w-auto"
           >
             See compatibility
           </a>

@@ -311,7 +311,10 @@ export const ParticlesProvider = ({ children }: { children: React.ReactNode }) =
   return (
     <ParticlesContext.Provider value={{ create }}>
       {children}
-      <canvas ref={canvasRef} className="particles" />
+      <canvas
+        ref={canvasRef}
+        className="pointer-events-none fixed inset-0 z-particles select-none overflow-hidden [contain:strict]"
+      />
     </ParticlesContext.Provider>
   );
 };

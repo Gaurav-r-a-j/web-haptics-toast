@@ -4,6 +4,8 @@ import { toast } from 'web-haptics-toast';
 
 Use it to render a toast. You can call it from anywhere, even outside of React. Requires a mounted [`<Toaster />`](/toaster) and `import 'web-haptics-toast/dist/styles.css'` in your app.
 
+When [`<Toaster />` haptics](/toaster#haptics-api) are enabled, each toast triggers a vibration pattern by default. Pass **`haptics: false`** in the options object to skip haptics for that call only.
+
 ## Rendering the toast
 
 You can call it with just a string.

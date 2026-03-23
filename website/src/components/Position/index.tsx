@@ -1,5 +1,6 @@
 import { toast, useSonner } from 'web-haptics-toast';
 import { CodeBlock } from '../CodeBlock';
+import { sectionLabel, sectionTitle } from '@/src/lib/siteUi';
 import React from 'react';
 
 const positions = ['top-left', 'top-center', 'top-right', 'bottom-left', 'bottom-center', 'bottom-right'] as const;
@@ -21,8 +22,12 @@ export const Position = ({
 
   return (
     <div>
-      <p className="section-label" aria-hidden>Layout</p>
-      <h2 id="position-heading">Position</h2>
+      <p className={sectionLabel} aria-hidden>
+        Layout
+      </p>
+      <h2 id="position-heading" className={sectionTitle}>
+        Position
+      </h2>
       <p className="m-0 mb-1 max-w-[52ch] text-[0.9375rem] leading-[1.55] text-[var(--text-secondary)]">
         Swipe-to-dismiss follows the corner you choose. Try a position and watch the stack move.
       </p>

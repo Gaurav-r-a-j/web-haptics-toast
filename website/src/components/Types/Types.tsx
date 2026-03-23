@@ -1,5 +1,6 @@
 import React from 'react';
 import { toast } from 'web-haptics-toast';
+import { sectionLabel, sectionTitle } from '@/src/lib/siteUi';
 import { CodeBlock } from '../CodeBlock';
 
 const promiseCode = '`${data.name} toast has been added`';
@@ -9,9 +10,13 @@ export const Types = () => {
 
   return (
     <div>
-      <p className="section-label" aria-hidden>API</p>
-      <h2 id="types-heading">Types</h2>
-      <p className="m-0 mb-1 max-w-[52ch] text-[0.9375rem] leading-[1.55] text-[var(--text-secondary)]">
+      <p className={sectionLabel} aria-hidden>
+        API
+      </p>
+      <h2 id="types-heading" className={sectionTitle}>
+        Types
+      </h2>
+      <p className="m-0 mb-1 max-w-[52ch] text-[0.9375rem] leading-[1.55] text-text-secondary">
         Pick a variant below; the snippet updates. Pass an options object as the second argument when you need descriptions, actions, or promises.
       </p>
       <div

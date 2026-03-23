@@ -3,7 +3,8 @@
 import React from 'react';
 import Link from 'next/link';
 import { isHapticsSupported } from 'web-haptics-toast';
-import { SiteThemeSelect } from '@/src/components/SiteThemeSelect';
+import { useTheme } from 'next-themes';
+import { siteContainer } from '@/src/lib/siteUi';
 
 const menuLinks = [
   { href: '#install', label: 'Install' },
@@ -25,6 +26,8 @@ export const Header = ({
   setHapticsDebug: React.Dispatch<React.SetStateAction<boolean>>;
 }) => {
   const [supported, setSupported] = React.useState<boolean | null>(null);
+  const { theme, setTheme } = useTheme();
+  const [mounted, setMounted] = React.useState(false);
   const [isDesktop, setIsDesktop] = React.useState(() => {
     if (typeof window === 'undefined') return false;
     return window.matchMedia('(min-width: 860px)').matches;
@@ -32,6 +35,7 @@ export const Header = ({
 
   React.useEffect(() => {
     setSupported(Boolean(isHapticsSupported));
+    setMounted(true);
   }, []);
 
   React.useEffect(() => {
@@ -42,15 +46,23 @@ export const Header = ({
     return () => mq.removeEventListener?.('change', sync);
   }, []);
 
+  const onCycleTheme = () => {
+    const current = theme ?? 'system';
+    const next = current === 'system' ? 'light' : current === 'light' ? 'dark' : 'system';
+    setTheme(next);
+  };
+
   return (
-    <header className="sticky top-0 z-50 border-b border-[var(--border)] bg-[var(--bg-primary)]">
+    <header className="sticky top-0 z-50 border-b border-border bg-bg-primary">
       <a
         href="#main"
         className="absolute -top-full left-[var(--side-padding)] z-[100] rounded-sm border border-[var(--border)] bg-[var(--bg-secondary)] px-3 py-2 text-sm font-medium text-[var(--text-primary)] no-underline transition-[top] duration-150 focus:-top-[0.75rem] focus:outline-none focus:shadow-[0_0_0_2px_var(--accent)]"
       >
         Skip to content
       </a>
-      <div className="mx-auto flex max-w-[1120px] items-center justify-between gap-4 px-[max(var(--side-padding),_env(safe-area-inset-left))] py-[0.875rem]">
+      <div
+        className={`${siteContainer} flex flex-wrap items-center justify-between gap-x-3 gap-y-2 py-3 min-[480px]:gap-4 min-[480px]:py-3.5`}
+      >
         <div className="flex min-w-0 items-center gap-3">
           <Link href="/" className="text-[0.9375rem] font-semibold tracking-[-0.02em] text-[var(--text-primary)] no-underline hover:text-[var(--accent)]" aria-label="Home">
             web-haptics-toast
@@ -69,7 +81,7 @@ export const Header = ({
                 Menu
               </summary>
               <div
-                className="absolute left-0 top-[calc(100%+8px)] min-w-[180px] rounded-[12px] border border-[var(--border)] bg-[var(--bg-secondary)] p-2 shadow-[0_18px_40px_rgba(0,0,0,0.12)]"
+                className="absolute left-0 top-[calc(100%+8px)] z-50 min-w-[min(100vw-2rem,220px)] max-w-[calc(100vw-2rem)] rounded-[12px] border border-[var(--border)] bg-[var(--bg-secondary)] p-2 shadow-[var(--shadow-float)] max-[400px]:left-auto max-[400px]:right-0"
                 role="menu"
                 aria-label="Sections"
               >
@@ -83,8 +95,31 @@ export const Header = ({
           </nav>
         </div>
 
-        <div className="flex items-center gap-2">
-          <SiteThemeSelect className="max-[480px]:min-w-0 max-[480px]:flex-1" />
+        <div className="flex min-w-0 items-center gap-2">
+          <button
+            type="button"
+            onClick={onCycleTheme}
+            className="inline-flex h-[34px] w-[34px] items-center justify-center rounded-sm text-[var(--text-secondary)] transition-colors duration-150 hover:bg-[var(--bg-secondary)] hover:text-[var(--text-primary)] focus:outline-none focus:shadow-[0_0_0_2px_var(--bg-primary),_0_0_0_4px_var(--accent)]"
+            aria-label="Toggle color theme"
+            title={mounted ? `Theme: ${theme ?? 'system'} (click to cycle)` : 'Toggle color theme'}
+          >
+            {!mounted || theme === 'system' ? (
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" strokeWidth="1.8" aria-hidden>
+                <rect x="3.5" y="4.5" width="17" height="12" rx="2" />
+                <path d="M8 19.5h8" />
+                <path d="M12 16.5v3" />
+              </svg>
+            ) : theme === 'light' ? (
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" strokeWidth="1.8" aria-hidden>
+                <circle cx="12" cy="12" r="4.2" />
+                <path d="M12 2.5v2.2M12 19.3v2.2M4.7 4.7l1.6 1.6M17.7 17.7l1.6 1.6M2.5 12h2.2M19.3 12h2.2M4.7 19.3l1.6-1.6M17.7 6.3l1.6-1.6" />
+              </svg>
+            ) : (
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" strokeWidth="1.8" aria-hidden>
+                <path d="M21 13.2A8.7 8.7 0 1 1 10.8 3a7.2 7.2 0 1 0 10.2 10.2z" />
+              </svg>
+            )}
+          </button>
           <button
             type="button"
             className="inline-flex items-center gap-2 rounded-full border border-[var(--border)] bg-[var(--bg-secondary)] px-2 py-[0.4rem] text-[var(--text-primary)] transition-colors duration-150 focus:outline-none focus:shadow-[0_0_0_2px_var(--bg-primary),_0_0_0_4px_var(--accent)]"
@@ -120,7 +155,7 @@ export const Header = ({
             </button>
           )}
           <a
-            href="https://github.com/designbyte-official/web-haptics-toast"
+            href="https://github.com/Gaurav-r-a-j/web-haptics-toast"
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex h-[34px] w-[34px] items-center justify-center rounded-sm text-[var(--text-secondary)] transition-colors duration-150 hover:bg-[var(--bg-secondary)] hover:text-[var(--text-primary)] focus:outline-none focus:shadow-[0_0_0_2px_var(--bg-primary),_0_0_0_4px_var(--accent)]"

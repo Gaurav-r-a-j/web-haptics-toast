@@ -16,6 +16,8 @@ import { Other } from '@/src/components/Other/Other';
 import Head from '../components/Head';
 import { How } from '../components/How/How';
 import { Footer } from '../components/Footer';
+import { SiteAtmosphere } from '../components/SiteAtmosphere';
+import { sectionCard, siteContainer, siteContent, siteWrapper } from '../lib/siteUi';
 
 function HomeInner() {
   const [expand, setExpand] = React.useState(false);
@@ -30,7 +32,8 @@ function HomeInner() {
   const toasterTheme = mounted && resolvedTheme === 'dark' ? 'dark' : 'light';
 
   return (
-    <div className="wrapper">
+    <div className={siteWrapper}>
+      <SiteAtmosphere />
       <Head />
       <Header haptics={haptics} setHaptics={setHaptics} hapticsDebug={hapticsDebug} setHapticsDebug={setHapticsDebug} />
       <Toaster
@@ -39,23 +42,23 @@ function HomeInner() {
         closeButton={closeButton}
         expand={expand}
         position={position}
-        duration={Infinity}
+        duration={3200}
         haptics={haptics}
         hapticsDebug={hapticsDebug}
       />
-      <main id="main" className="container" role="main" aria-label="Main content">
+      <main id="main" className={siteContainer} role="main" aria-label="Main content">
         <Hero />
         <MobileDemo haptics={haptics} hapticsDebug={hapticsDebug} />
         <Highlight />
-        <div className="content">
+        <div className={siteContent}>
           <Compatibility />
-          <section className="section block" id="install" aria-labelledby="install-heading">
+          <section className={sectionCard} id="install" aria-labelledby="install-heading">
             <Installation />
           </section>
-          <section className="section block" id="usage" aria-labelledby="usage-heading">
+          <section className={sectionCard} id="usage" aria-labelledby="usage-heading">
             <Usage />
           </section>
-          <section className="section block" id="haptics" aria-labelledby="haptics-heading">
+          <section className={sectionCard} id="haptics" aria-labelledby="haptics-heading">
             <Haptics
               haptics={haptics}
               hapticsDebug={hapticsDebug}
@@ -63,19 +66,19 @@ function HomeInner() {
               setHapticsDebug={setHapticsDebug}
             />
           </section>
-          <section className="section block" id="types" aria-labelledby="types-heading">
+          <section className={sectionCard} id="types" aria-labelledby="types-heading">
             <Types />
           </section>
-          <section className="section block" id="position" aria-labelledby="position-heading">
+          <section className={sectionCard} id="position" aria-labelledby="position-heading">
             <Position position={position} setPosition={setPosition} />
           </section>
-          <section className="section block" id="expand" aria-labelledby="expand-heading">
+          <section className={sectionCard} id="expand" aria-labelledby="expand-heading">
             <ExpandModes expand={expand} setExpand={setExpand} />
           </section>
-          <section className="section block" id="other" aria-labelledby="other-heading">
+          <section className={sectionCard} id="other" aria-labelledby="other-heading">
             <Other setCloseButton={setCloseButton} setRichColors={setRichColors} />
           </section>
-          <section className="section block" id="how" aria-labelledby="how-heading">
+          <section className={sectionCard} id="how" aria-labelledby="how-heading">
             <How />
           </section>
         </div>

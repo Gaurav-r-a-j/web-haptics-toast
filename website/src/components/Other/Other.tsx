@@ -2,6 +2,7 @@ import React from 'react';
 import { useMemo } from 'react';
 import { toast } from 'web-haptics-toast';
 import { CodeBlock } from '../CodeBlock';
+import { sectionLabel, sectionTitle } from '@/src/lib/siteUi';
 
 export const Other = ({
   setRichColors,
@@ -107,9 +108,13 @@ export const Other = ({
 
   return (
     <div>
-      <p className="section-label" aria-hidden>Options</p>
-      <h2 id="other-heading">Other</h2>
-      <p className="m-0 mb-1 max-w-[52ch] text-[0.9375rem] leading-[1.55] text-[var(--text-secondary)]">
+      <p className={sectionLabel} aria-hidden>
+        Options
+      </p>
+      <h2 id="other-heading" className={sectionTitle}>
+        Other
+      </h2>
+      <p className="m-0 mb-1 max-w-[52ch] text-[0.9375rem] leading-[1.55] text-text-secondary">
         Rich colors, a global close button, and fully custom content. The live <code className="text-[0.8125rem]">Toaster</code> props update when you tap certain presets.
       </p>
       <div

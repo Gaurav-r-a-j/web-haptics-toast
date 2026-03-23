@@ -2,6 +2,7 @@
 
 import React from 'react';
 import clsx from 'clsx';
+import { sectionLabel, sectionTitle } from '@/src/lib/siteUi';
 import copy from 'copy-to-clipboard';
 import { motion, AnimatePresence, MotionConfig } from 'framer-motion';
 
@@ -36,9 +37,13 @@ export const Installation = () => {
 
   return (
     <div>
-      <p className="section-label" aria-hidden>Quick start</p>
-      <h2 id="install-heading">Installation</h2>
-      <p className="m-0 mb-3 max-w-[52ch] text-[0.9375rem] leading-[1.55] text-[var(--text-secondary)]">
+      <p className={sectionLabel} aria-hidden>
+        Quick start
+      </p>
+      <h2 id="install-heading" className={sectionTitle}>
+        Installation
+      </h2>
+      <p className="m-0 mb-3 max-w-[52ch] text-[0.9375rem] leading-[1.55] text-text-secondary">
         Add the package, import styles once, then mount <code className="text-[0.8125rem]">Toaster</code> near your app root.
       </p>
 
@@ -79,7 +84,9 @@ export const Installation = () => {
           className="relative flex h-11 w-full max-w-xl cursor-pointer items-center overflow-hidden rounded-[var(--radius-sm)] border border-[var(--border)] bg-[var(--bg-secondary)] px-3 pr-12 text-left font-[var(--font-mono)] text-[0.875rem] leading-[1.5] text-[var(--text-primary)] transition-[border-color,box-shadow] duration-200 hover:border-[var(--text-secondary)] focus:outline-none focus-visible:shadow-[0_0_0_2px_var(--bg-primary),_0_0_0_4px_var(--accent)]"
           aria-label={`Copy install command: ${line}`}
         >
-          <span className="min-w-0 flex-1 select-all truncate">{line}</span>
+          <span className="min-w-0 flex-1 select-all overflow-x-auto whitespace-nowrap pr-1 [-webkit-overflow-scrolling:touch]">
+            {line}
+          </span>
           <span
             className="pointer-events-none absolute right-2 top-1/2 flex h-7 w-7 -translate-y-1/2 items-center justify-center rounded-[var(--radius-sm)] border border-[var(--border)] bg-[var(--bg-primary)] text-[var(--text-primary)] [&>div]:flex"
             aria-hidden

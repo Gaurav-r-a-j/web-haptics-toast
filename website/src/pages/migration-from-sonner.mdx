@@ -97,7 +97,7 @@ If you re-export from a shared `notifications.ts` (or similar), point that file 
 | Topic | Notes |
 | :---- | :---- |
 | **Single package** | Components, CSS, and haptics (`WebHaptics`, presets) are **all** in `web-haptics-toast`—no extra haptics dependency. |
-| **Haptics** | Default `true`. [Haptics](/haptics) — `hapticsDebug`, `hapticPatternMap`, `hapticsShowSwitch`. |
+| **Haptics** | Default `true` on `<Toaster />`. Plain `toast('message')` uses the **default** pattern when haptics are on; pass `{ haptics: false }` on a call to skip. [Haptics](/haptics) — `hapticsDebug`, `hapticPatternMap`, `hapticsShowSwitch`, `triggerHaptic`. |
 | **`system` prop** | Opt-in dedupe (`dedupeKey`) and `onClose` with a dismissal **reason**. Off by default so Sonner-like behavior is unchanged. [Getting Started](/getting-started), [Toaster](/toaster#system-production-behaviors). |
 | **Types** | Published with the library; Sonner-shaped `ToasterProps` and `toast` options, plus haptics-related props. |
 | **Styling** | Same `toastOptions`, `classNames`, `unstyled` patterns as Sonner. [Styling](/styling). |
@@ -110,4 +110,4 @@ If you re-export from a shared `notifications.ts` (or similar), point that file 
 - [ ] Decide on **haptics** (`true` default vs `haptics={false}`).
 - [ ] If you need **dedupe** or **onClose(reason)**, enable `<Toaster system={{ … }} />` as in [Getting Started](/getting-started).
 
-If something behaves differently from Sonner after migration, open an issue on the [GitHub repo](https://github.com/designbyte-official/web-haptics-toast) with a minimal repro.
+If something behaves differently from Sonner after migration, open an issue on the [GitHub repo](https://github.com/Gaurav-r-a-j/web-haptics-toast) with a minimal repro.

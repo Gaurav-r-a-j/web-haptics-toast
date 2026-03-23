@@ -110,7 +110,7 @@ export const CodeBlock = ({ children, initialHeight = 0 }: { children: string; i
             transition={{ type: 'easeOut', duration: 0.2 }}
           >
             <div
-              className={`${className} relative m-0 rounded-sm bg-[var(--bg-secondary)] p-4 leading-[1.5] whitespace-pre-wrap`}
+              className={`${className} relative m-0 overflow-x-auto rounded-sm bg-[var(--bg-secondary)] p-4 leading-[1.5] whitespace-pre [-webkit-overflow-scrolling:touch]`}
               ref={ref}
             >
               <div />

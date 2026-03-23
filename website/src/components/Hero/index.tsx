@@ -49,7 +49,7 @@ export const Hero = () => {
           aria-hidden
         />
         <a
-          href="https://github.com/designbyte-official/web-haptics-toast"
+          href="https://github.com/Gaurav-r-a-j/web-haptics-toast"
           target="_blank"
           rel="noopener noreferrer"
           className="order-5 flex h-11 w-11 shrink-0 items-center justify-center rounded-[var(--radius)] border border-[var(--border)] bg-transparent text-[var(--text-secondary)] transition-[color,background,border-color] duration-200 hover:bg-[var(--bg-secondary)] hover:text-[var(--text-primary)] focus:outline-none focus:shadow-[0_0_0_2px_var(--bg-primary),_0_0_0_4px_var(--accent)] max-[600px]:mt-1"
