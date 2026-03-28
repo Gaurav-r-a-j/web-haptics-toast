@@ -12,6 +12,7 @@
   color utility to any element that depends on these defaults.
 */
 @layer base {
+
   *,
   ::after,
   ::before,
@@ -159,7 +160,7 @@
     color: var(--muted-foreground);
   }
 
-  main > p {
+  main>p {
     line-height: 1.6 !important;
     margin-top: 1rem !important;
   }
@@ -168,7 +169,7 @@
     color: var(--foreground) !important;
   }
 
-  footer > div {
+  footer>div {
     padding: 1.5rem var(--side-padding) !important;
   }
 
@@ -176,8 +177,8 @@
     --shiki-token-comment: var(--muted-foreground) !important;
   }
 
-  ul[role='listbox'] > li[role='option'],
-  ul[role='listbox'] > [role='option'] {
+  ul[role='listbox']>li[role='option'],
+  ul[role='listbox']>[role='option'] {
     position: relative;
     box-sizing: border-box;
     padding-top: 0.375rem;
@@ -186,8 +187,8 @@
     padding-right: 2.5rem;
   }
 
-  ul[role='listbox'] > li[role='option'] > span:last-child,
-  ul[role='listbox'] > [role='option'] > span:last-child {
+  ul[role='listbox']>li[role='option']>span:last-child,
+  ul[role='listbox']>[role='option']>span:last-child {
     position: absolute;
     top: 50%;
     right: 0.625rem;
@@ -205,9 +206,7 @@
     box-shadow: var(--shadow-float) !important;
   }
 
-  .nextra-container
-    ul[role='listbox']
-    [role='option'][data-headlessui-state~='active'],
+  .nextra-container ul[role='listbox'] [role='option'][data-headlessui-state~='active'],
   .nextra-container ul[role='listbox'] li[role='option']:hover {
     background-color: var(--secondary) !important;
   }
@@ -235,19 +234,38 @@
   }
 }
 
+/* @utility container {
+  padding-inline: 1rem;
+
+  @variant sm {
+    padding-inline: 2rem;
+  }
+
+  @variant md {
+    padding-inline: 4rem;
+  }
+
+  @variant lg {
+    padding-inline: 6rem;
+  }
+} */
+
 @layer base {
   .theme {
     --font-heading: var(--font-sans);
     --font-sans: var(--font-sans);
   }
+
   * {
     @apply border-border;
     outline-color: color-mix(in oklch, var(--ring) 50%, transparent);
   }
+
   body {
     background-color: var(--background);
     color: var(--foreground);
   }
+
   html {
     font-family: var(--font-sans);
   }

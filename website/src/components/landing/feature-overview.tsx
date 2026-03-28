@@ -1,8 +1,9 @@
 'use client';
 
 import Link from 'next/link';
-import { toast, triggerHaptic } from 'web-haptics-toast';
-import { sectionCard, sectionLabel, sectionTitle } from '@/src/utils/site-ui';
+import { toast } from 'web-haptics-toast';
+import { Check, AlertCircle, XCircle, Vibrate, ArrowRight } from 'lucide-react';
+import { sectionLabel, sectionTitle } from '@/src/utils/site-ui';
 
 type Card = {
   title: string;
@@ -56,72 +57,92 @@ const cards: Card[] = [
   },
 ];
 
+import { ArrowBlack1, ArrowBlack2 } from '../icons/arrows';
+
 export const FeatureOverview = () => {
   return (
-    <section className={sectionCard} id="features" aria-labelledby="features-heading">
-      <p className={sectionLabel} aria-hidden>
-        Overview
-      </p>
-      <h2 id="features-heading" className={sectionTitle}>
-        Everything in one package
-      </h2>
-      <p className="m-0 mb-6 max-w-[60ch] text-[0.9375rem] leading-[1.55] text-muted-foreground">
-        The live <code className="text-[0.8125rem]">Toaster</code> on this page matches the sections below. Skim the cards, use the try buttons for a quick preview, then open a doc link when you are ready to copy code into your app.
-      </p>
+    <section id="features" aria-labelledby="features-heading" className="bg-background text-foreground rounded-t-4xl px-6 py-12 md:px-10 md:py-16 relative z-20 shadow-[0_-20px_50px_rgba(0,0,0,0.1)] mt-auto w-full -translate-y-20 md:-translate-y-32">
+      <div className="max-w-6xl mx-auto flex flex-col items-center">
+        <div className="flex flex-col items-center text-center mb-16 w-full max-w-3xl">
+          <p className="mb-4 text-[10px] md:text-xs font-black uppercase tracking-[0.15em] text-muted-foreground" aria-hidden>
+            Documentation Overview
+          </p>
+          <h2 id="features-heading" className="text-3xl md:text-5xl uppercase leading-[1.1] mb-6 font-black tracking-tighter">
+            Everything in One Package
+          </h2>
+          <p className="m-0 max-w-[60ch] text-[0.9375rem] md:text-base leading-snug text-muted-foreground font-medium">
+            Standardized tools for modern haptic experiences. Built to work properly with your existing Sonner implementations.
+          </p>
+        </div>
 
-      <ul className="m-0 grid list-none gap-3 p-0 sm:grid-cols-2 sm:gap-4 lg:grid-cols-3">
-        {cards.map((c) => (
-          <li
-            key={c.title}
-            className="flex min-h-0 flex-col rounded-xl border border-border bg-background p-4 shadow-card"
-          >
-            <p className="m-0 text-[0.9375rem] font-semibold tracking-tight text-foreground">{c.title}</p>
-            <p className="m-0 mt-2 flex-1 text-sm leading-snug text-muted-foreground">{c.description}</p>
-            <Link
-              href={c.href}
-              className="mt-3 inline-flex w-fit text-sm font-medium text-primary no-underline underline-offset-2 hover:underline"
+        <ul className="m-0 grid list-none gap-6 p-0 sm:grid-cols-2 lg:grid-cols-3 w-full">
+          {cards.map((c, index) => (
+            <li
+              key={c.title}
+              className="flex flex-col items-center text-center rounded-4xl border border-border bg-card p-8 shadow-sm transition-all hover:-translate-y-2 hover:shadow-lg relative min-h-[16rem]"
             >
-              {c.linkLabel} →
-            </Link>
-          </li>
-        ))}
-      </ul>
+              <h3 className="text-lg md:text-xl uppercase leading-tight mb-2 font-black text-foreground">
+                {c.title}
+              </h3>
+              <p className="m-0 mt-2 text-[10px] md:text-xs leading-snug text-muted-foreground font-bold mb-auto max-w-[24ch]">
+                {c.description}
+              </p>
+              <Link
+                href={c.href}
+                className={`mt-6 px-6 py-3 rounded-full text-[11px] font-black transition-all hover:scale-105 tracking-widest shadow-md flex items-center gap-2 ${
+                  index % 2 === 0 ? 'bg-primary text-primary-foreground' : 'bg-secondary text-secondary-foreground'
+                }`}
+              >
+                {c.linkLabel}
+                <ArrowRight className="w-3 h-3" />
+              </Link>
+            </li>
+          ))}
+        </ul>
 
-      <div className="mt-6 rounded-xl border border-border bg-background p-4 sm:p-5">
-        <p className="m-0 mb-3 text-[0.6875rem] font-semibold uppercase tracking-[0.06em] text-muted-foreground">
-          Try on this page
-        </p>
-        <div className="flex flex-wrap gap-2.5">
-          <button
-            type="button"
-            className="inline-flex min-h-[44px] items-center rounded-md border border-border bg-secondary px-3 py-2 text-left text-[0.8125rem] font-medium text-foreground transition-colors hover:border-muted-foreground focus:outline-none focus-visible:shadow-focus-ring sm:min-h-0"
-            aria-label="Show a toast with haptics disabled for that toast only"
-            onClick={() =>
-              toast('No vibration for this one', {
-                haptics: false,
-                description: 'Uses per-toast { haptics: false }',
-              })
-            }
-          >
-            Toast without haptic
-          </button>
-          <button
-            type="button"
-            className="inline-flex min-h-[44px] items-center rounded-md border border-border bg-secondary px-3 py-2 text-left text-[0.8125rem] font-medium text-foreground transition-colors hover:border-muted-foreground focus:outline-none focus-visible:shadow-focus-ring sm:min-h-0"
-            aria-label="Trigger success haptic then show a toast without toast-driven haptics"
-            onClick={() => {
-              triggerHaptic('success');
-              toast('Saved', { description: 'Manual triggerHaptic + toast', haptics: false });
-            }}
-          >
-            triggerHaptic + toast
-          </button>
-          <Link
-            href="/getting-started"
-            className="inline-flex min-h-[44px] items-center justify-center rounded-md border border-border bg-secondary px-3 py-2 text-[0.8125rem] font-medium text-foreground no-underline transition-colors hover:border-muted-foreground focus:outline-none focus-visible:shadow-focus-ring sm:min-h-0"
-          >
-            Quick reference
-          </Link>
+        <div className="mt-8 rounded-4xl border border-border bg-card p-8 shadow-sm w-full max-w-4xl">
+          <p className="m-0 mb-6 text-[10px] md:text-xs font-black uppercase tracking-[0.15em] text-muted-foreground text-center">
+            Live Demo
+          </p>
+          <div className="flex flex-wrap justify-center gap-4">
+            <button
+              type="button"
+              className="inline-flex min-h-[44px] items-center gap-2 rounded-full border border-black/5 bg-secondary px-6 py-3 text-center text-[11px] font-black uppercase tracking-widest text-secondary-foreground transition-transform hover:scale-105 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary shadow-sm"
+              onClick={() =>
+                toast('Manual Control', {
+                  description: 'Haptics disabled for this toast.',
+                  haptics: false,
+                })
+              }
+            >
+              <Vibrate className="w-3.5 h-3.5" />
+              Disable Haptics
+            </button>
+            <button
+              type="button"
+              className="inline-flex min-h-[44px] items-center gap-2 rounded-full border border-black/5 bg-primary px-6 py-3 text-center text-[11px] font-black uppercase tracking-widest text-primary-foreground transition-transform hover:scale-105 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary shadow-sm"
+              onClick={() =>
+                toast.success('Settings Saved', {
+                  description: 'Native success haptic played.',
+                })
+              }
+            >
+              <Check className="w-3.5 h-3.5" />
+              Success
+            </button>
+            <button
+              type="button"
+              className="inline-flex min-h-[44px] items-center gap-2 rounded-full border border-black/5 bg-primary px-6 py-3 text-center text-[11px] font-black uppercase tracking-widest text-primary-foreground transition-transform hover:scale-105 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary shadow-sm"
+              onClick={() =>
+                toast.error('Payment Failed', {
+                  description: 'Native error haptic played.',
+                })
+              }
+            >
+              <AlertCircle className="w-3.5 h-3.5" />
+              Error
+            </button>
+          </div>
         </div>
       </div>
     </section>

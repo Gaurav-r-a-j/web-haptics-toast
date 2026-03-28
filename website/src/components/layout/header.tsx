@@ -71,11 +71,11 @@ export const Header = ({
       initial={false}
       animate={{
         backgroundColor: isScrolled ? "var(--background)" : "transparent",
-        backdropFilter: isScrolled ? "blur(12px)" : "blur(0px)",
-        borderBottomColor: isScrolled ? "var(--border)" : "transparent"
+        backdropFilter: "none",
+        borderBottomColor: "transparent"
       }}
       transition={{ duration: 0.3 }}
-      className="fixed top-0 left-0 right-0 z-50 border-b transition-colors"
+      className="fixed top-0 left-0 right-0 z-50 transition-colors"
     >
       <a
         href="#main"

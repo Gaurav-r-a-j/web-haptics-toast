@@ -5,24 +5,24 @@
 
 :root,
 .light {
-  --background: #faf8f2;
-  --foreground: #332c28;
+  --background: #fefefe;
+  --foreground: #111111;
 
-  --card: #fffbf6;
-  --card-foreground: #332c28;
+  --card: #f8f9fa;
+  --card-foreground: #111111;
 
-  --popover: #fffbf6;
-  --popover-foreground: #332c28;
+  --popover: #ffffff;
+  --popover-foreground: #111111;
 
-  /* Brand CTA — warm amber (same hue in dark) */
+  /* Brand CTA */
   --primary: #0038FF;
   --primary-foreground: #ffffff;
 
-  --secondary: #fcf6ee;
-  --secondary-foreground: #332c28;
+  --secondary: #CCFF00;
+  --secondary-foreground: #111111;
 
-  --muted: #f5f0e8;
-  --muted-foreground: #5c4b3c;
+  --muted: #f1f3f5;
+  --muted-foreground: #495057;
 
   /* Subtle hover / tint surfaces (not the brand button color) */
   --accent: rgba(0, 56, 255, 0.14);

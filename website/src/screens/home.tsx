@@ -57,15 +57,17 @@ export function HomeScreen() {
       <main id="main" role="main" aria-label="Main content">
         <MainHero />
 
-        <div className="mt-10 max-[640px]:mt-8">
-          <FeatureOverview />
+        <FeatureOverview />
+
+        <div className={siteContainer}>
+          <MobileDemo haptics={haptics} hapticsDebug={hapticsDebug} />
         </div>
 
-        <MobileDemo haptics={haptics} hapticsDebug={hapticsDebug} />
+        <div className={siteContainer}>
+          <Highlight />
+        </div>
 
-        <Highlight />
-
-        <div className={siteContent}>
+        <div className={`${siteContent} ${siteContainer}`}>
           <Compatibility />
 
           <section className={sectionCard} id="install" aria-labelledby="install-heading">
