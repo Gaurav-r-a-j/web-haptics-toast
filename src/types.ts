@@ -160,6 +160,9 @@ export type HapticPatternName =
   | 'nudge'
   | 'buzz';
 
+/** Visual preset for default toast styling (`<Toaster toastAppearance />`). */
+export type ToastAppearance = 'default' | 'subtle' | 'themed';
+
 export interface ToasterProps {
   id?: string;
   invert?: boolean;
@@ -167,6 +170,11 @@ export interface ToasterProps {
   position?: Position;
   hotkey?: string[];
   richColors?: boolean;
+  /**
+   * Preset: `default` (neutral), `subtle` (soft type tints), `themed` (rich colors + `--toast-*` CSS overrides).
+   * Explicit `richColors` overrides the preset default.
+   */
+  toastAppearance?: ToastAppearance;
   expand?: boolean;
   duration?: number;
   gap?: number;

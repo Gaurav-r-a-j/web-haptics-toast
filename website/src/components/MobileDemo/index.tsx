@@ -222,7 +222,7 @@ const DemoTiles = ({
       <button
         type="button"
         aria-label="Success preset"
-        className={`${tileBase} bg-state-success-strong`}
+        className={`${tileBase} bg-chart-2/30`}
         onClick={(e) => handleTrigger('success', e)}
       >
         Success
@@ -230,7 +230,7 @@ const DemoTiles = ({
       <button
         type="button"
         aria-label="Nudge preset"
-        className={`${tileBase} bg-state-info-soft`}
+        className={`${tileBase} bg-chart-3/25`}
         onClick={(e) => handleTrigger('nudge', e)}
       >
         Nudge
@@ -238,7 +238,7 @@ const DemoTiles = ({
       <button
         type="button"
         aria-label="Error preset"
-        className={`${tileBase} bg-state-error-strong`}
+        className={`${tileBase} bg-destructive/20`}
         onClick={(e) => handleTrigger('error', e)}
       >
         Error
@@ -246,7 +246,7 @@ const DemoTiles = ({
       <button
         type="button"
         aria-label="Buzz preset"
-        className={`${tileBase} bg-state-warning-strong`}
+        className={`${tileBase} bg-chart-4/28`}
         onClick={(e) => handleTrigger('buzz', e)}
       >
         Buzz

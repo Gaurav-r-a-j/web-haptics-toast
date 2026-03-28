@@ -1,5 +1,8 @@
-const path = require('path');
-const nextra = require('nextra');
+import path from 'node:path';
+import { fileURLToPath } from 'node:url';
+import nextra from 'nextra';
+
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 const withNextra = nextra({
   defaultShowCopyCode: true,
@@ -15,4 +18,4 @@ const nextConfig = {
   },
 };
 
-module.exports = withNextra(nextConfig);
+export default withNextra(nextConfig);

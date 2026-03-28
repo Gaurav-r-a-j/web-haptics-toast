@@ -24,36 +24,36 @@ export const Compatibility = () => {
 
       <div className="grid gap-3 min-[860px]:grid-cols-3 min-[860px]:gap-4">
         <div
-          className="flex h-full flex-col gap-2 rounded-xl border border-border bg-background p-4 data-[state=yes]:border-state-success-border"
+          className="flex h-full flex-col gap-2 rounded-xl border border-border bg-background p-4 data-[state=yes]:border-chart-2/50"
           data-state="yes"
         >
           <div className="flex items-center justify-between gap-2">
             <div className="text-[0.9375rem] font-bold tracking-[-0.02em]">Android</div>
-            <span className="shrink-0 rounded-full bg-state-success-medium px-2 py-[0.15rem] text-[0.6875rem] font-semibold uppercase tracking-wide text-foreground">
+            <span className="shrink-0 rounded-full bg-chart-2/25 px-2 py-[0.15rem] text-[0.6875rem] font-semibold uppercase tracking-wide text-foreground">
               Supported
             </span>
           </div>
           <div className="text-sm leading-snug text-muted-foreground">Chrome, Edge, and Firefox can vibrate on capable hardware.</div>
         </div>
         <div
-          className="flex h-full flex-col gap-2 rounded-xl border border-border bg-background p-4 data-[state=no]:border-state-error-border"
+          className="flex h-full flex-col gap-2 rounded-xl border border-border bg-background p-4 data-[state=no]:border-destructive/45"
           data-state="no"
         >
           <div className="flex items-center justify-between gap-2">
             <div className="text-[0.9375rem] font-bold tracking-[-0.02em]">iOS</div>
-            <span className="shrink-0 rounded-full bg-state-error-soft px-2 py-[0.15rem] text-[0.6875rem] font-semibold uppercase tracking-wide text-foreground">
+            <span className="shrink-0 rounded-full bg-destructive/15 px-2 py-[0.15rem] text-[0.6875rem] font-semibold uppercase tracking-wide text-foreground">
               No vibration
             </span>
           </div>
           <div className="text-sm leading-snug text-muted-foreground">Safari does not expose the Vibration API; toasts still work.</div>
         </div>
         <div
-          className="flex h-full flex-col gap-2 rounded-xl border border-border bg-background p-4 data-[state=partial]:border-state-warning-border"
+          className="flex h-full flex-col gap-2 rounded-xl border border-border bg-background p-4 data-[state=partial]:border-chart-4/50"
           data-state="partial"
         >
           <div className="flex items-center justify-between gap-2">
             <div className="text-[0.9375rem] font-bold tracking-[-0.02em]">Desktop</div>
-            <span className="shrink-0 rounded-full bg-state-warning-badge px-2 py-[0.15rem] text-[0.6875rem] font-semibold uppercase tracking-wide text-foreground">
+            <span className="shrink-0 rounded-full bg-chart-5/25 px-2 py-[0.15rem] text-[0.6875rem] font-semibold uppercase tracking-wide text-foreground">
               Debug
             </span>
           </div>

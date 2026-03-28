@@ -1,5 +1,7 @@
+'use client';
+
 import React from 'react';
-import { ThemeProvider, useTheme } from 'next-themes';
+import { useTheme } from 'next-themes';
 import { Toaster } from 'web-haptics-toast';
 import { Header } from '@/src/components/Header';
 import { Installation } from '@/src/components/Installation';
@@ -14,13 +16,11 @@ import { Position, type Position as PositionType } from '@/src/components/Positi
 import { Usage } from '@/src/components/Usage';
 import { Haptics } from '@/src/components/Haptics';
 import { Other } from '@/src/components/Other/Other';
-import Head from '../components/Head';
-import { How } from '../components/How/How';
-import { Footer } from '../components/Footer';
-import { SiteAtmosphere } from '../components/SiteAtmosphere';
-import { sectionCard, siteContainer, siteContent, siteWrapper } from '../lib/siteUi';
+import { How } from '@/src/components/How/How';
+import { Footer } from '@/src/components/Footer';
+import { sectionCard, siteContainer, siteContent, siteWrapper } from '@/src/lib/siteUi';
 
-function HomeInner() {
+export function HomePage() {
   const [expand, setExpand] = React.useState(false);
   const [position, setPosition] = React.useState<PositionType>('bottom-right');
   const [richColors, setRichColors] = React.useState(false);
@@ -39,11 +39,10 @@ function HomeInner() {
 
   return (
     <div className={siteWrapper}>
-      <SiteAtmosphere />
-      <Head />
       <Header haptics={haptics} setHaptics={setHaptics} hapticsDebug={hapticsDebug} setHapticsDebug={setHapticsDebug} />
       <Toaster
         theme={toasterTheme}
+        toastAppearance="themed"
         richColors={richColors}
         closeButton={closeButton}
         expand={expand}
@@ -100,13 +99,5 @@ function HomeInner() {
       </main>
       <Footer />
     </div>
-  );
-}
-
-export default function Home() {
-  return (
-    <ThemeProvider attribute="class" defaultTheme="system" enableSystem storageKey="theme" disableTransitionOnChange>
-      <HomeInner />
-    </ThemeProvider>
   );
 }

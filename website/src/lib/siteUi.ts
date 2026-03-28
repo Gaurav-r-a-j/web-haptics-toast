@@ -45,9 +45,9 @@ export const interactiveChip =
 export const chipActiveStates =
   "data-[active='true']:bg-primary data-[active='true']:border-primary data-[active='true']:text-primary-foreground";
 
-/** Toast style preview buttons — semantic tints from `theme.css` */
+/** Toast style preview buttons — shadcn chart / destructive tints */
 export const toastVariantSurfaces =
-  "data-[variant='success']:bg-state-success-soft data-[variant='error']:bg-state-error-soft data-[variant='warning']:bg-state-warning-soft";
+  "data-[variant='success']:bg-chart-2/20 data-[variant='error']:bg-destructive/15 data-[variant='warning']:bg-chart-4/20";
 
 /** Horizontal chip row: bleeds to viewport edges using `spacing.side` */
 export const chipScrollRow =
