@@ -41,13 +41,13 @@ export function HomeScreen() {
 
   return (
     <div className={siteWrapper}>
-      <Header 
-        haptics={haptics} 
-        setHaptics={setHaptics} 
-        hapticsDebug={hapticsDebug} 
-        setHapticsDebug={setHapticsDebug} 
+      <Header
+        haptics={haptics}
+        setHaptics={setHaptics}
+        hapticsDebug={hapticsDebug}
+        setHapticsDebug={setHapticsDebug}
       />
-      
+
       <Toaster
         theme={toasterTheme}
         toastAppearance="themed"
@@ -64,18 +64,18 @@ export function HomeScreen() {
 
       <main id="main" className={siteContainer} role="main" aria-label="Main content">
         <Hero />
-        
+
         <div className="mt-10 max-[640px]:mt-8">
           <FeatureOverview />
         </div>
 
         <MobileDemo haptics={haptics} hapticsDebug={hapticsDebug} />
-        
+
         <Highlight />
 
         <div className={siteContent}>
           <Compatibility />
-          
+
           <section className={sectionCard} id="install" aria-labelledby="install-heading">
             <Installation />
           </section>

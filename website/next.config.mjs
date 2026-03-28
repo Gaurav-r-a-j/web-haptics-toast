@@ -12,6 +12,8 @@ const withNextra = nextra({
 const nextConfig = {
   turbopack: {
     resolveAlias: {
+      'web-haptics-toast': path.join(__dirname, '../src/index.tsx'),
+      'web-haptics-toast/dist/styles.css': path.join(__dirname, '../src/styles.css'),
       'next-mdx-import-source-file': [
         './mdx-components.tsx',
         './mdx-components.ts',
@@ -27,7 +29,12 @@ const nextConfig = {
   // eslint key removed because it is no longer supported in next.config.mjs for this Next.js version
   webpack: (config) => {
     const focusVisible = require.resolve('focus-visible', { paths: [path.join(__dirname, 'node_modules')] });
-    config.resolve.alias = { ...config.resolve.alias, 'focus-visible': focusVisible };
+    config.resolve.alias = {
+      ...config.resolve.alias,
+      'web-haptics-toast': path.join(__dirname, '../src/index.tsx'),
+      'web-haptics-toast/dist/styles.css': path.join(__dirname, '../src/styles.css'),
+      'focus-visible': focusVisible,
+    };
     return config;
   },
 };

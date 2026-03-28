@@ -25,6 +25,9 @@
     ],
     "baseUrl": ".",
     "paths": {
+      "web-haptics-toast": [
+        "../src/index.tsx"
+      ],
       "next-mdx-import-source-file": [
         "./mdx-components.tsx",
         "./src/mdx-components.tsx",
