@@ -55,7 +55,7 @@ export function HomeScreen() {
       />
 
       <main id="main" role="main" aria-label="Main content">
-        <MainHero />
+        <MainHero haptics={haptics} hapticsDebug={hapticsDebug} />
 
         <FeatureOverview />
 
