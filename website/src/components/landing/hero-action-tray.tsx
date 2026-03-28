@@ -9,28 +9,28 @@ type EmojiEntry = [emoji: string, weight: number, canFlip?: boolean];
 
 const emojis: Record<'success' | 'nudge' | 'error' | 'buzz', EmojiEntry[]> = {
   success: [
-    ['✅', 3],
+    ['✨', 3],
     ['🎉', 2, true],
-    ['🤝', 1],
-    ['💚', 2],
-    ['👍', 3, true],
+    ['🚀', 1, true],
+    ['💎', 2],
+    ['🔥', 3, true],
   ],
   nudge: [
-    ['🫨', 2, true],
-    ['🙉', 3],
-    ['👉', 2, true],
-    ['😳', 1],
+    ['☝️', 2, true],
+    ['🔔', 3],
+    ['🎯', 2, true],
+    ['📍', 1],
   ],
   error: [
-    ['⛔️', 3],
-    ['🚨', 1],
-    ['🚫', 3],
-    ['🙅‍♀️', 1, true],
+    ['💥', 3],
+    ['⛔️', 1],
+    ['🛑', 3],
+    ['⚠️', 1, true],
   ],
   buzz: [
-    ['🐝', 12, true],
-    ['🍯', 8],
-    ['🌼', 3],
+    ['⚡️', 12, true],
+    ['🐝', 8, true],
+    ['🧨', 3],
   ],
 };
 
