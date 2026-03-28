@@ -1,5 +1,5 @@
-import { Callout, Tab, Tabs, Steps } from 'nextra-theme-docs';
-import { toast } from 'web-haptics-toast';
+import { Callout, Tabs, Steps } from 'nextra/components';
+
 
 # Getting Started
 
@@ -7,7 +7,7 @@ import { toast } from 'web-haptics-toast';
   **One package, everything included:** components, CSS, and the haptics engine (`WebHaptics`, presets, `triggerHaptic`, debug sound, optional on-screen toggle) ship **inside `web-haptics-toast`**. You do **not** install a second library for vibration.
 </Callout>
 
-**Sonner-compatible API** — same `toast()` helpers and `<Toaster />` props you already know, so you can migrate or start fresh without new patterns. Haptic feedback is **on by default** on supported devices. Turn it off globally with `<Toaster haptics={false} />`, or skip vibration for **one** toast with `toast('…', { haptics: false })` ([Toast options](/toast)).
+**Sonner-compatible API** — same ``toast`()` helpers and `<Toaster />` props you already know, so you can migrate or start fresh without new patterns. Haptic feedback is **on by default** on supported devices. Turn it off globally with `<Toaster haptics={false} />`, or skip vibration for **one** toast with ``toast`('…', { haptics: false })` ([Toast options](/toast)).
 
 Coming from Sonner? See **[Migrate from Sonner](/migration-from-sonner)** (npm alias with zero import changes, or rename the package and update imports).
 
@@ -15,27 +15,27 @@ Coming from Sonner? See **[Migrate from Sonner](/migration-from-sonner)** (npm a
 ### Install
 
 <Tabs items={['pnpm', 'npm', 'yarn', 'bun']}>
-  <Tab>
+  <Tabs.Tab>
     ```bash
     pnpm i web-haptics-toast
     ```
 
-  </Tab>
-  <Tab>
+  </Tabs.Tab>
+  <Tabs.Tab>
     ```bash
     npm i web-haptics-toast
     ```
-  </Tab>
-  <Tab>
+  </Tabs.Tab>
+  <Tabs.Tab>
     ```bash
     yarn add web-haptics-toast
     ```
-  </Tab>
-  <Tab>
+  </Tabs.Tab>
+  <Tabs.Tab>
     ```bash
     bun add web-haptics-toast
     ```
-  </Tab>
+  </Tabs.Tab>
 </Tabs>
 
 ### Add Toaster to your app
@@ -63,10 +63,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 ### Render a toast
 
 ```tsx
-import { toast } from 'web-haptics-toast';
+
 
 function MyToast() {
-  return <button onClick={() => toast('This is a toast')}>Render my toast</button>;
+  return <button onClick={() => `toast`('This is a toast')}>Render my toast</button>;
 }
 ```
 
@@ -126,7 +126,7 @@ Possible reasons:
 ```tsx
 <Toaster system={{ dismissReason: { enabled: true } }} />
 
-toast('Saved', {
+`toast`('Saved', {
   onClose: (_toast, reason) => {
     console.log(reason);
   },
@@ -140,8 +140,8 @@ toast('Saved', {
 | Goal | What to do |
 | :--- | :--- |
 | Disable all toast haptics | `<Toaster haptics={false} />` |
-| Disable haptics for one toast | `toast('…', { haptics: false })` |
-| Haptic on a button **without** a toast | `triggerHaptic('success')` from `web-haptics-toast` ([Haptics](/haptics#manual-haptics)) |
+| Disable haptics for one toast | ``toast`('…', { haptics: false })` |
+| Haptic on a button **without** a toast | ``triggerHaptic`('success')` from `web-haptics-toast` ([Haptics](/haptics#manual-haptics)) |
 | Dedupe / update toasts | `<Toaster system={{ dedupe: { enabled: true } }} />` + `dedupeKey` on the toast |
 | Dismissal reason in `onClose` | `<Toaster system={{ dismissReason: { enabled: true } }} />` |
 

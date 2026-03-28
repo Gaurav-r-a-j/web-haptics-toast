@@ -1,4 +1,4 @@
-import { CodeBlock } from '../CodeBlock';
+import { CodeBlock } from '../../Shared/CodeBlock';
 import { sectionLabel, sectionTitle } from '@/src/lib/siteUi';
 
 export const Usage = () => {

@@ -1,5 +1,5 @@
 import { toast, useSonner } from 'web-haptics-toast';
-import { CodeBlock } from '../CodeBlock';
+import { CodeBlock } from '../../Shared/CodeBlock';
 import { chipActiveStates, chipScrollRow, hapticChip, sectionLabel, sectionTitle } from '@/src/lib/siteUi';
 import React from 'react';
 

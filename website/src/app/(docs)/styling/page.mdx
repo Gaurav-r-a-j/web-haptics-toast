@@ -22,7 +22,7 @@ Styling can be done globally via `toastOptions`, so every toast shares the same 
 You can also use the same props when calling `toast` to style a specific toast.
 
 ```jsx
-toast('Hello World', {
+`toast`('Hello World', {
   style: {
     background: 'red',
   },
@@ -50,10 +50,10 @@ The preferred way to style the toasts with tailwind is by using the `unstyled` p
 />
 ```
 
-You can do the same when calling `toast()`.
+You can do the same when calling ``toast`()`.
 
 ```jsx
-toast('Hello World', {
+`toast`('Hello World', {
   unstyled: true,
   classNames: {
     toast: 'bg-blue-400',
@@ -101,7 +101,7 @@ You can change the default icons using the `icons` prop:
 You can also set an icon for each toast:
 
 ```jsx
-toast('Hello World', {
+`toast`('Hello World', {
   icon: <Icon />,
 });
 ```

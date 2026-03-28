@@ -1,7 +1,7 @@
 import React from 'react';
 import { useMemo } from 'react';
 import { toast } from 'web-haptics-toast';
-import { CodeBlock } from '../CodeBlock';
+import { CodeBlock } from '../../Shared/CodeBlock';
 import { chipScrollRow, focusRing, interactiveChip, sectionLabel, sectionTitle, transitionSurface } from '@/src/lib/siteUi';
 
 const otherChip = `${interactiveChip} ${transitionSurface} ${focusRing}`;

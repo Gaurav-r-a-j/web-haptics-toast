@@ -20,10 +20,10 @@ You can render multiple Toaster components with different ids and target toasts 
 <Toaster id="global" position="top-right" />
 <Toaster id="canvas" position="bottom-left" />
 
-<button onClick={() => toast('Global toast', { toasterId: 'global' })}>
+<button onClick={() => `toast`('Global toast', { toasterId: 'global' })}>
   Show in Global Toaster
 </button>
-<button onClick={() => toast('Canvas toast', { toasterId: 'canvas' })}>
+<button onClick={() => `toast`('Canvas toast', { toasterId: 'canvas' })}>
   Show in Canvas Toaster
 </button>
 ```
@@ -80,7 +80,7 @@ You can customize the default ARIA label for the notification container and the 
 
 ## Haptics API
 
-Haptics are **on by default** for **toasts** from this `<Toaster />`. For a **single** toast without vibration, pass **`haptics: false`** on that `toast()` call ([Toast](/toast)). To fire patterns only from **buttons or other handlers** (not when every toast shows), use `<Toaster haptics={false} />` and **`triggerHaptic`** — see [Manual haptics](/haptics#manual-haptics).
+Haptics are **on by default** for **toasts** from this `<Toaster />`. For a **single** toast without vibration, pass **`haptics: false`** on that ``toast`()` call ([Toast](/toast)). To fire patterns only from **buttons or other handlers** (not when every toast shows), use `<Toaster haptics={false} />` and **`triggerHaptic`** — see [Manual haptics](/haptics#manual-haptics).
 
 Props are in the table below; full guide: [Haptics](/haptics).
 
@@ -88,20 +88,20 @@ Props are in the table below; full guide: [Haptics](/haptics).
 
 | Property              |                                                           Description                                                           |        Default |
 | :-------------------- | :-----------------------------------------------------------------------------------------------------------------------------: | -------------: |
-| id                    |                                      Toaster instance id; use with `toasterId` on `toast()`.                                      |            `-` |
+| id                    |                                      Toaster instance id; use with `toasterId` on ``toast`()`.                                      |            `-` |
 | theme                 |                                       Toast's theme, either `light`, `dark`, or `system`                                        |        `light` |
 | richColors            |                                           Makes error and success state more colorful                                           |        `false` |
 | expand                |                                               Toasts will be expanded by default                                                |        `false` |
 | visibleToasts         |                                                    Amount of visible toasts                                                     |            `3` |
 | position              |                                             Place where the toasts will be rendered                                             | `bottom-right` |
 | closeButton           |                                                Adds a close button to all toasts                                                |        `false` |
-| duration              |                          Default toast lifetime in ms (per toast unless overridden). See [toast()](/toast).                          |       `4000` |
+| duration              |                          Default toast lifetime in ms (per toast unless overridden). See [`toast`()](/toast).                          |       `4000` |
 | offset                |                                              Offset from the edges of the screen.                                               |         `32px` |
 | mobileOffset          |                    Offset from the left/right edges of the screen on screens with width smaller than 600px.                     |         `16px` |
 | dir                   |                                                 Directionality of toast's text                                                  |          `ltr` |
 | hotkey                |                                   Keyboard shortcut that will move focus to the toaster area.                                   |    `⌥/alt + T` |
 | invert                |                                            Dark toasts in light mode and vice versa.                                            |        `false` |
-| toastOptions          |               Default options for all toasts. See [toast()](/toast) for fields (`className`, `duration`, …).                |            `-` |
+| toastOptions          |               Default options for all toasts. See [`toast`()](/toast) for fields (`className`, `duration`, …).                |            `-` |
 | gap                   |                                                Gap between toasts when expanded                                                 |           `14` |
 | haptics               |                                     Enable haptic feedback for toasts (vibration or debug sound).                                     |     `true` |
 | hapticPatternMap      |                         Map toast types to preset names: `success`, `error`, `light`, `nudge`, `buzz`, etc.                          |  built-in  |

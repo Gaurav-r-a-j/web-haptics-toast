@@ -4,7 +4,7 @@ import React from 'react';
 import { toast, triggerHaptic } from 'web-haptics-toast';
 import QRCode from 'qrcode';
 import Image from 'next/image';
-import { ParticlesProvider, useParticles, type EmojiOption } from '../EmojiParticles';
+import { ParticlesProvider, useParticles, type EmojiOption } from '../../Shared/EmojiParticles';
 import { sectionLabel, sectionTitle } from '@/src/lib/siteUi';
 
 export const MobileDemo = ({ haptics, hapticsDebug }: { haptics: boolean; hapticsDebug: boolean }) => {

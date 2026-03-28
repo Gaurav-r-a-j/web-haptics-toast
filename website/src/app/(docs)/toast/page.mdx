@@ -1,4 +1,4 @@
-import { toast } from 'web-haptics-toast';
+
 
 # Toast()
 
@@ -11,17 +11,17 @@ When [`<Toaster />` haptics](/toaster#haptics-api) are enabled, each toast trigg
 You can call it with just a string.
 
 ```jsx
-import { toast } from 'web-haptics-toast';
 
-toast('Hello World!');
+
+`toast`('Hello World!');
 ```
 
 Or provide an object as the second argument with more options. They will overwrite the options passed to [`<Toaster />`](/toaster) if you have provided any.
 
 ```jsx
-import { toast } from 'web-haptics-toast';
 
-toast('My toast', {
+
+`toast`('My toast', {
   className: 'my-classname',
   description: 'My description',
   duration: 5000,
@@ -31,11 +31,11 @@ toast('My toast', {
 
 ### Render toast on page load
 
-To render a toast on initial page load it is required that the function `toast()` is called inside of a `setTimeout` or `requestAnimationFrame`.
+To render a toast on initial page load it is required that the function ``toast`()` is called inside of a `setTimeout` or `requestAnimationFrame`.
 
 ```jsx
 setTimeout(() => {
-  toast('My toast on a page load');
+  `toast`('My toast on a page load');
 });
 ```
 
@@ -62,7 +62,7 @@ toast.error('My error toast');
 Renders a primary button, clicking it will close the toast and run the callback passed via `onClick`. You can prevent the toast from closing by calling `event.preventDefault()` in the `onClick` callback.
 
 ```jsx
-toast('My action toast', {
+`toast`('My action toast', {
   action: {
     label: 'Action',
     onClick: () => console.log('Action!'),
@@ -73,7 +73,7 @@ toast('My action toast', {
 You can also render jsx as your action.
 
 ```jsx
-toast('My action toast', {
+`toast`('My action toast', {
   action: <Button onClick={() => console.log('Action!')}>Action</Button>,
 });
 ```
@@ -83,7 +83,7 @@ toast('My action toast', {
 Renders a secondary button, clicking it will close the toast and run the callback passed via `onClick`.
 
 ```jsx
-toast('My cancel toast', {
+`toast`('My cancel toast', {
   cancel: {
     label: 'Cancel',
     onClick: () => console.log('Cancel!'),
@@ -94,7 +94,7 @@ toast('My cancel toast', {
 You can also render jsx in the cancel option.
 
 ```jsx
-toast('My cancel toast', {
+`toast`('My cancel toast', {
   cancel: <Button onClick={() => console.log('Cancel!')}>Cancel</Button>,
 });
 ```
@@ -127,7 +127,7 @@ toast.loading('Loading data');
 You can pass jsx as the first argument instead of a string to render a custom toast while maintaining default styling.
 
 ```jsx
-toast(<div>A custom toast with default styling</div>, { duration: 5000 });
+`toast`(<div>A custom toast with default styling</div>, { duration: 5000 });
 ```
 
 ### Headless
@@ -150,7 +150,7 @@ function. It will not affect the positioning of other toasts.
 ```jsx
 // Available positions:
 // top-left, top-center, top-right, bottom-left, bottom-center, bottom-right
-toast('Hello World', {
+`toast`('Hello World', {
   position: 'top-center',
 });
 ```
@@ -162,7 +162,7 @@ toast('Hello World', {
 You can update a toast by using the `toast` function and passing it the id of the toast you want to update, the rest stays the same.
 
 ```jsx
-const toastId = toast('Saving…');
+const toastId = `toast`('Saving…');
 
 toast.success('Saved', {
   id: toastId,
@@ -174,7 +174,7 @@ toast.success('Saved', {
 You can pass `onDismiss` and `onAutoClose` callbacks to each toast. `onDismiss` gets fired when either the close button gets clicked or the toast is swiped. `onAutoClose` fires when the toast disappears automatically after it's timeout (`duration` prop).
 
 ```jsx
-toast('Event has been created', {
+`toast`('Event has been created', {
   onDismiss: (t) => console.log(`Toast with id ${t.id} has been dismissed`),
   onAutoClose: (t) => console.log(`Toast with id ${t.id} has been closed automatically`),
 });
@@ -185,17 +185,17 @@ toast('Event has been created', {
 If you want a toast to stay on screen forever, you can set the `duration` to [`Infinity`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Infinity).
 
 ```js
-toast('This toast will stay on screen forever', {
+`toast`('This toast will stay on screen forever', {
   duration: Infinity,
 });
 ```
 
 ### Dismissing toasts programmatically
 
-To remove a toast programmatically use `toast.dismiss(id)`. The `toast()` function return the id of the toast.
+To remove a toast programmatically use `toast.dismiss(id)`. The ``toast`()` function return the id of the toast.
 
 ```jsx
-const toastId = toast('Event has been created');
+const toastId = `toast`('Event has been created');
 
 toast.dismiss(toastId);
 ```
@@ -211,7 +211,7 @@ toast.dismiss();
 You can render custom elements inside the toast like `<a />` or custom components by passing a function instead of a string. This work for both the title and description.
 
 ```jsx
-toast(
+`toast`(
   () => (
     <>
       View{' '}
@@ -232,7 +232,7 @@ You can target a specific Toaster by passing a `toasterId` option:
 
 ```jsx
 // This toast will only appear in the Toaster with id="canvas"
-toast('This will show in the canvas Toaster', { toasterId: 'canvas' });
+`toast`('This will show in the canvas Toaster', { toasterId: 'canvas' });
 ```
 
 ## API Reference

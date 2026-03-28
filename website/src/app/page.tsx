@@ -1,5 +1,6 @@
-import { HomePage } from '@/src/app/home-page';
+import { HomeScreen } from '@/src/screens/Landing/HomeScreen';
 
-export default function Page() {
-  return <HomePage />;
+export default function Home() {
+  return (<HomeScreen />);
 }
+

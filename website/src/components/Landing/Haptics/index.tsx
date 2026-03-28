@@ -2,7 +2,7 @@
 
 import React from 'react';
 import { toast } from 'web-haptics-toast';
-import { CodeBlock } from '../CodeBlock';
+import { CodeBlock } from '../../Shared/CodeBlock';
 import {
   chipActiveStates,
   chipScrollRow,

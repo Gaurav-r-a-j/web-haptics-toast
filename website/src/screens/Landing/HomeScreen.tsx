@@ -3,43 +3,54 @@
 import React from 'react';
 import { useTheme } from 'next-themes';
 import { Toaster } from 'web-haptics-toast';
-import { Header } from '@/src/components/Header';
-import { Installation } from '@/src/components/Installation';
-import { Hero } from '@/src/components/Hero';
-import { Highlight } from '@/src/components/Highlight';
-import { FeatureOverview } from '@/src/components/FeatureOverview';
-import { MobileDemo } from '@/src/components/MobileDemo';
-import { Compatibility } from '@/src/components/Compatibility';
-import { Types } from '@/src/components/Types/Types';
-import { ExpandModes } from '@/src/components/ExpandModes';
-import { Position, type Position as PositionType } from '@/src/components/Position';
-import { Usage } from '@/src/components/Usage';
-import { Haptics } from '@/src/components/Haptics';
-import { Other } from '@/src/components/Other/Other';
-import { How } from '@/src/components/How/How';
-import { Footer } from '@/src/components/Footer';
+import { Header } from '@/src/components/Layout/Header';
+import { Footer } from '@/src/components/Layout/Footer';
+import { Hero } from '@/src/components/Landing/Hero';
+import { FeatureOverview } from '@/src/components/Landing/FeatureOverview';
+import { MobileDemo } from '@/src/components/Landing/MobileDemo';
+import { Highlight } from '@/src/components/Landing/Highlight';
+import { Compatibility } from '@/src/components/Landing/Compatibility';
+import { Installation } from '@/src/components/Landing/Installation';
+import { Usage } from '@/src/components/Landing/Usage';
+import { Haptics } from '@/src/components/Landing/Haptics';
+import { Types } from '@/src/components/Landing/Types';
+import { Position } from '@/src/components/Landing/Position';
+import { ExpandModes } from '@/src/components/Landing/ExpandModes';
+import { Other } from '@/src/components/Landing/Other';
+import { How } from '@/src/components/Landing/How';
 import { sectionCard, siteContainer, siteContent, siteWrapper } from '@/src/lib/siteUi';
+import { useToastState } from '@/src/hooks/useToastState';
 
-export function HomePage() {
-  const [expand, setExpand] = React.useState(false);
-  const [position, setPosition] = React.useState<PositionType>('bottom-right');
-  const [richColors, setRichColors] = React.useState(false);
-  const [closeButton, setCloseButton] = React.useState(false);
-  const [haptics, setHaptics] = React.useState(true);
-  const [hapticsDebug, setHapticsDebug] = React.useState(false);
-  const [hapticsShowSwitch, setHapticsShowSwitch] = React.useState(false);
-  const [customHapticMap, setCustomHapticMap] = React.useState(false);
-  const hapticPatternMap = customHapticMap
-    ? ({ info: 'selection', loading: 'light' } as const)
-    : undefined;
-  const { resolvedTheme } = useTheme();
-  const [mounted, setMounted] = React.useState(false);
-  React.useEffect(() => setMounted(true), []);
-  const toasterTheme = mounted && resolvedTheme === 'dark' ? 'dark' : 'light';
+/**
+ * HomeScreen Component
+ * 
+ * The main landing page screen for the web-haptics-toast website.
+ * Follows the "Poeru" aesthetic with clean, professional layouts.
+ * Organized into categorized components: Layout and Landing.
+ */
+export function HomeScreen() {
+  const {
+    haptics, setHaptics,
+    hapticsDebug, setHapticsDebug,
+    richColors, setRichColors,
+    closeButton, setCloseButton,
+    expand, setExpand,
+    position, setPosition,
+    hapticsShowSwitch, setHapticsShowSwitch,
+    customHapticMap, setCustomHapticMap,
+    hapticPatternMap,
+    toasterTheme
+  } = useToastState();
 
   return (
     <div className={siteWrapper}>
-      <Header haptics={haptics} setHaptics={setHaptics} hapticsDebug={hapticsDebug} setHapticsDebug={setHapticsDebug} />
+      <Header 
+        haptics={haptics} 
+        setHaptics={setHaptics} 
+        hapticsDebug={hapticsDebug} 
+        setHapticsDebug={setHapticsDebug} 
+      />
+      
       <Toaster
         theme={toasterTheme}
         toastAppearance="themed"
@@ -53,21 +64,29 @@ export function HomePage() {
         hapticsShowSwitch={hapticsShowSwitch}
         hapticPatternMap={hapticPatternMap}
       />
+
       <main id="main" className={siteContainer} role="main" aria-label="Main content">
         <Hero />
+        
         <div className="mt-10 max-[640px]:mt-8">
           <FeatureOverview />
         </div>
+
         <MobileDemo haptics={haptics} hapticsDebug={hapticsDebug} />
+        
         <Highlight />
+
         <div className={siteContent}>
           <Compatibility />
+          
           <section className={sectionCard} id="install" aria-labelledby="install-heading">
             <Installation />
           </section>
+
           <section className={sectionCard} id="usage" aria-labelledby="usage-heading">
             <Usage />
           </section>
+
           <section className={sectionCard} id="haptics" aria-labelledby="haptics-heading">
             <Haptics
               haptics={haptics}
@@ -80,23 +99,29 @@ export function HomePage() {
               setCustomHapticMap={setCustomHapticMap}
             />
           </section>
+
           <section className={sectionCard} id="types" aria-labelledby="types-heading">
             <Types />
           </section>
+
           <section className={sectionCard} id="position" aria-labelledby="position-heading">
             <Position position={position} setPosition={setPosition} />
           </section>
+
           <section className={sectionCard} id="expand" aria-labelledby="expand-heading">
             <ExpandModes expand={expand} setExpand={setExpand} />
           </section>
+
           <section className={sectionCard} id="other" aria-labelledby="other-heading">
             <Other setCloseButton={setCloseButton} setRichColors={setRichColors} />
           </section>
+
           <section className={sectionCard} id="how" aria-labelledby="how-heading">
             <How />
           </section>
         </div>
       </main>
+
       <Footer />
     </div>
   );
