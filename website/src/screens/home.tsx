@@ -5,7 +5,7 @@ import { useTheme } from 'next-themes';
 import { Toaster } from 'web-haptics-toast';
 import { Header } from '@/src/components/Layout/Header';
 import { Footer } from '@/src/components/Layout/Footer';
-import { Hero } from '@/src/components/Landing/Hero';
+import { Hero } from '@/src/components/Ui/Hero';
 import { FeatureOverview } from '@/src/components/Landing/FeatureOverview';
 import { MobileDemo } from '@/src/components/Landing/MobileDemo';
 import { Highlight } from '@/src/components/Landing/Highlight';
@@ -24,9 +24,6 @@ import { useToastState } from '@/src/hooks/useToastState';
 /**
  * HomeScreen Component
  * 
- * The main landing page screen for the web-haptics-toast website.
- * Follows the "Poeru" aesthetic with clean, professional layouts.
- * Organized into categorized components: Layout and Landing.
  */
 export function HomeScreen() {
   const {

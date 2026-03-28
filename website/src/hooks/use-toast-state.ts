@@ -8,9 +8,6 @@ import type { Position } from '@/src/types';
  * useToastState Hook
  * 
  * Centralized state management for the web-haptics-toast documentation site.
- * Used for controlling the <Toaster /> props and debugging settings.
- * Adheres to "Poeru" principles with clean, type-safe logic.
- * Consumes centralized types from @/src/types.
  */
 export function useToastState() {
   const [expand, setExpand] = React.useState(false);

@@ -1,4 +1,4 @@
-import DocLayout from '@/src/containers/DocLayout/DocLayout';
+import DocLayout from '@/src/containers/doc-layout';
 
 /**
  * App Router Documentation Layout
