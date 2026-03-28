@@ -12,7 +12,7 @@ export function SiteAtmosphere() {
       />
       <div
         aria-hidden
-        className="pointer-events-none fixed left-0 right-0 top-0 z-0 h-40 bg-[linear-gradient(90deg,transparent_0%,var(--accent)_35%,transparent_70%)] opacity-[0.12] [mask-image:linear-gradient(180deg,#000,transparent)] dark:opacity-[0.14]"
+        className="pointer-events-none fixed left-0 right-0 top-0 z-0 h-40 bg-[linear-gradient(90deg,transparent_0%,var(--primary)_35%,transparent_70%)] opacity-[0.12] [mask-image:linear-gradient(180deg,#000,transparent)] dark:opacity-[0.14]"
       />
     </>
   );

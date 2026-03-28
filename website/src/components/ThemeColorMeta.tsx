@@ -2,7 +2,7 @@
 
 import { useEffect } from 'react';
 
-/** Matches theme.css --bg-primary for light / dark (browser chrome, PWA). */
+/** Matches theme.css `--background` for light / dark (browser chrome, PWA). */
 const THEME_COLOR = {
   light: '#faf8f2',
   dark: '#141210',

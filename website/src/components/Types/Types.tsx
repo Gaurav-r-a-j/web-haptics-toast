@@ -16,7 +16,7 @@ export const Types = () => {
       <h2 id="types-heading" className={sectionTitle}>
         Types
       </h2>
-      <p className="m-0 mb-1 max-w-[52ch] text-[0.9375rem] leading-[1.55] text-text-secondary">
+      <p className="m-0 mb-1 max-w-[52ch] text-[0.9375rem] leading-[1.55] text-muted-foreground">
         Pick a variant below; the snippet updates. Pass an options object as the second argument when you need descriptions, actions, or promises.
       </p>
       <div
@@ -24,7 +24,7 @@ export const Types = () => {
       >
         {allTypes.map((type) => (
           <button
-            className="cursor-pointer whitespace-nowrap rounded border border-border bg-bg-secondary px-[0.875rem] py-[0.5rem] text-[0.8125rem] font-medium text-text-primary transition-[border-color,background,box-shadow] duration-200 [font-family:var(--font-sans)] hover:bg-bg-primary hover:border-text-secondary data-[active='true']:bg-accent data-[active='true']:border-accent data-[active='true']:text-text-on-accent focus:outline-none focus-visible:shadow-focus-ring"
+            className="cursor-pointer whitespace-nowrap rounded border border-border bg-secondary px-[0.875rem] py-[0.5rem] text-[0.8125rem] font-medium text-foreground transition-[border-color,background,box-shadow] duration-200 [font-family:var(--font-sans)] hover:bg-background hover:border-muted-foreground data-[active='true']:bg-primary data-[active='true']:border-primary data-[active='true']:text-primary-foreground focus:outline-none focus-visible:shadow-focus-ring"
             data-active={activeType.name === type.name}
             onClick={() => {
               type.action();

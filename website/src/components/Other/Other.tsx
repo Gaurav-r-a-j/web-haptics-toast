@@ -78,12 +78,12 @@ export const Other = ({
         action: () => {
           toast.custom(
             (t) => (
-              <div className="relative box-border w-[356px] rounded border border-border bg-bg-secondary p-4">
-                <p className="m-0 mb-[0.5rem] text-[0.875rem] font-medium leading-[1.3] text-text-primary">Event Created</p>
-                <p className="m-0 text-[0.875rem] leading-[1.4] text-text-secondary">Today at 4:00pm - &quot;Louvre Museum&quot;</p>
+              <div className="relative box-border w-[356px] rounded border border-border bg-secondary p-4">
+                <p className="m-0 mb-[0.5rem] text-[0.875rem] font-medium leading-[1.3] text-foreground">Event Created</p>
+                <p className="m-0 text-[0.875rem] leading-[1.4] text-muted-foreground">Today at 4:00pm - &quot;Louvre Museum&quot;</p>
                 <button
                   style={headlessCloseStyle}
-                  className="absolute top-[0.5rem] flex h-[24px] w-[24px] cursor-pointer items-center justify-center border-0 bg-transparent p-0 text-text-secondary transition-colors hover:text-text-primary"
+                  className="absolute top-[0.5rem] flex h-[24px] w-[24px] cursor-pointer items-center justify-center border-0 bg-transparent p-0 text-muted-foreground transition-colors hover:text-foreground"
                   onClick={() => toast.dismiss(t)}
                 >
                   <svg width="14" height="14" viewBox="0 0 16 16" fill="currentColor">
@@ -114,7 +114,7 @@ export const Other = ({
       <h2 id="other-heading" className={sectionTitle}>
         Other
       </h2>
-      <p className="m-0 mb-1 max-w-[52ch] text-[0.9375rem] leading-[1.55] text-text-secondary">
+      <p className="m-0 mb-1 max-w-[52ch] text-[0.9375rem] leading-[1.55] text-muted-foreground">
         Rich colors, a global close button, and fully custom content. The live <code className="text-[0.8125rem]">Toaster</code> props update when you tap certain presets.
       </p>
       <div
@@ -122,7 +122,7 @@ export const Other = ({
       >
         {allTypes.map((type) => (
           <button
-            className="cursor-pointer whitespace-nowrap rounded border border-border bg-bg-secondary px-[0.875rem] py-[0.5rem] text-[0.8125rem] font-medium text-text-primary transition-[border-color,background,box-shadow] duration-200 [font-family:var(--font-sans)] hover:bg-bg-primary hover:border-text-secondary focus:outline-none focus-visible:shadow-focus-ring"
+            className="cursor-pointer whitespace-nowrap rounded border border-border bg-secondary px-[0.875rem] py-[0.5rem] text-[0.8125rem] font-medium text-foreground transition-[border-color,background,box-shadow] duration-200 [font-family:var(--font-sans)] hover:bg-background hover:border-muted-foreground focus:outline-none focus-visible:shadow-focus-ring"
             onClick={() => {
               type.action();
               setActiveType(type);

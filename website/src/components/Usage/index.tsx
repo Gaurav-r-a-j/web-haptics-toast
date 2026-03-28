@@ -10,7 +10,7 @@ export const Usage = () => {
       <h2 id="usage-heading" className={sectionTitle}>
         Usage
       </h2>
-      <p className="m-0 mb-1 max-w-[52ch] text-[0.9375rem] leading-[1.55] text-text-secondary">
+      <p className="m-0 mb-1 max-w-[52ch] text-[0.9375rem] leading-[1.55] text-muted-foreground">
         Render <code className="text-[0.8125rem]">Toaster</code> once at the root, then call <code className="text-[0.8125rem]">toast()</code> from anywhere in the tree.
       </p>
       <CodeBlock initialHeight={270}>{`import { Toaster, toast } from 'web-haptics-toast'

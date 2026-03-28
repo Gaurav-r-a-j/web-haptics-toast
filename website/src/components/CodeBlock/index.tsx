@@ -11,7 +11,7 @@ const variants = {
 
 const theme = {
   plain: {
-    color: 'var(--text-primary)',
+    color: 'var(--foreground)',
     fontSize: 12,
     fontFamily: 'var(--font-mono)',
   },
@@ -19,25 +19,25 @@ const theme = {
     {
       types: ['comment'],
       style: {
-        color: 'var(--text-secondary)',
+        color: 'var(--muted-foreground)',
       },
     },
     {
       types: ['atrule', 'keyword', 'attr-name', 'selector', 'string'],
       style: {
-        color: 'var(--text-secondary)',
+        color: 'var(--muted-foreground)',
       },
     },
     {
       types: ['punctuation', 'operator'],
       style: {
-        color: 'var(--text-secondary)',
+        color: 'var(--muted-foreground)',
       },
     },
     {
       types: ['class-name', 'function', 'tag'],
       style: {
-        color: 'var(--text-primary)',
+        color: 'var(--foreground)',
       },
     },
   ],
@@ -61,7 +61,7 @@ export const CodeBlock = ({ children, initialHeight = 0 }: { children: string; i
         type="button"
         onClick={onCopy}
         aria-label="Copy code"
-        className="absolute right-[0.75rem] top-[0.75rem] z-[1] flex h-[28px] w-[28px] items-center justify-center rounded-sm border border-border bg-bg-primary text-text-primary opacity-0 transition-[background,box-shadow,opacity] duration-200 hover:bg-bg-secondary group-hover:opacity-100 focus-visible:opacity-100 focus-visible:shadow-[0_0_0_2px_var(--accent)]"
+        className="absolute right-[0.75rem] top-[0.75rem] z-[1] flex h-[28px] w-[28px] items-center justify-center rounded-sm border border-border bg-background text-foreground opacity-0 transition-[background,box-shadow,opacity] duration-200 hover:bg-secondary group-hover:opacity-100 focus-visible:opacity-100 focus-visible:shadow-[0_0_0_2px_var(--primary)]"
       >
         <MotionConfig transition={{ duration: 0.15 }}>
           <AnimatePresence initial={false} mode="wait">
@@ -110,7 +110,7 @@ export const CodeBlock = ({ children, initialHeight = 0 }: { children: string; i
             transition={{ type: 'easeOut', duration: 0.2 }}
           >
             <div
-              className={`${className} relative m-0 overflow-x-auto rounded-sm bg-bg-secondary p-4 leading-[1.5] whitespace-pre [-webkit-overflow-scrolling:touch]`}
+              className={`${className} relative m-0 overflow-x-auto rounded-sm bg-secondary p-4 leading-[1.5] whitespace-pre [-webkit-overflow-scrolling:touch]`}
               ref={ref}
             >
               <div />

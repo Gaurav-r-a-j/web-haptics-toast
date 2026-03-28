@@ -20,7 +20,7 @@ const Head = () => (
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="author" content="DesignByte" />
 
-    {/* Favicons — match theme.css --bg-primary when changing palette */}
+    {/* Favicons — match theme.css `--background` when changing palette */}
     <meta name="msapplication-TileColor" content="#faf8f2" />
     <meta name="theme-color" content="#faf8f2" />
     <link rel="shortcut icon" href="favicon.ico" />

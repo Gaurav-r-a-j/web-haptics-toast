@@ -8,6 +8,7 @@ import { siteContainer } from '@/src/lib/siteUi';
 import { Monitor, Moon, Sun, Slash, Volume2, VolumeX, Waves } from 'lucide-react';
 
 const menuLinks = [
+  { href: '#features', label: 'Features' },
   { href: '#install', label: 'Install' },
   { href: '#usage', label: 'Usage' },
   { href: '#haptics', label: 'Haptics' },
@@ -55,10 +56,10 @@ export const Header = ({
   };
 
   return (
-    <header className="sticky top-0 z-50 border-b border-border bg-bg-primary">
+    <header className="sticky top-0 z-50 border-b border-border bg-background">
       <a
         href="#main"
-        className="absolute -top-full left-[var(--side-padding)] z-[100] rounded-sm border border-border bg-bg-secondary px-3 py-2 text-sm font-medium text-text-primary no-underline transition-[top] duration-150 focus:-top-[0.75rem] focus:outline-none focus:shadow-focus-accent"
+        className="absolute -top-full left-[var(--side-padding)] z-[100] rounded-sm border border-border bg-secondary px-3 py-2 text-sm font-medium text-foreground no-underline transition-[top] duration-150 focus:-top-[0.75rem] focus:outline-none focus:shadow-focus-accent"
       >
         Skip to content
       </a>
@@ -66,27 +67,27 @@ export const Header = ({
         className={`${siteContainer} flex flex-wrap items-center justify-between gap-x-3 gap-y-2 py-3 min-[480px]:gap-4 min-[480px]:py-3.5`}
       >
         <div className="flex min-w-0 items-center gap-3">
-          <Link href="/" className="text-[0.9375rem] font-semibold tracking-[-0.02em] text-text-primary no-underline hover:text-accent" aria-label="Home">
+          <Link href="/" className="text-[0.9375rem] font-semibold tracking-[-0.02em] text-foreground no-underline hover:text-primary" aria-label="Home">
             <span className="inline max-[600px]:hidden">web-haptics-toast</span>
-            <span className="hidden max-[600px]:inline-flex h-[34px] w-[34px] items-center justify-center rounded-full bg-bg-secondary text-text-primary text-[0.8125rem] font-bold tracking-tight">
+            <span className="hidden max-[600px]:inline-flex h-[34px] w-[34px] items-center justify-center rounded-full bg-secondary text-foreground text-[0.8125rem] font-bold tracking-tight">
               db
             </span>
           </Link>
           <nav className="flex items-center gap-1 max-[600px]:hidden" aria-label="Primary">
             <Link
               href="/docs"
-              className="rounded-sm px-3 py-2 text-xs font-medium text-text-secondary no-underline transition-colors duration-150 hover:bg-bg-secondary hover:text-text-primary max-[600px]:px-2 max-[600px]:py-[0.4rem] max-[600px]:text-xs"
+              className="rounded-sm px-3 py-2 text-xs font-medium text-muted-foreground no-underline transition-colors duration-150 hover:bg-secondary hover:text-foreground max-[600px]:px-2 max-[600px]:py-[0.4rem] max-[600px]:text-xs"
             >
               Docs
             </Link>
             <details ref={menuRef} className="relative group">
               <summary
-                className="cursor-pointer select-none list-none rounded-sm px-3 py-2 text-[0.8125rem] font-medium text-text-secondary transition-colors duration-150 group-[open]:bg-bg-secondary group-[open]:text-text-primary hover:bg-bg-secondary hover:text-text-primary [&::-webkit-details-marker]:hidden max-[600px]:px-2 max-[600px]:py-[0.4rem]"
+                className="cursor-pointer select-none list-none rounded-sm px-3 py-2 text-[0.8125rem] font-medium text-muted-foreground transition-colors duration-150 group-[open]:bg-secondary group-[open]:text-foreground hover:bg-secondary hover:text-foreground [&::-webkit-details-marker]:hidden max-[600px]:px-2 max-[600px]:py-[0.4rem]"
               >
                 Menu
               </summary>
               <div
-                className="absolute left-0 top-[calc(100%+8px)] z-50 min-w-[min(100vw-2rem,220px)] max-w-[calc(100vw-2rem)] rounded-[12px] border border-border bg-bg-secondary p-2 shadow-float max-[400px]:left-auto max-[400px]:right-0"
+                className="absolute left-0 top-[calc(100%+8px)] z-50 min-w-[min(100vw-2rem,220px)] max-w-[calc(100vw-2rem)] rounded-[12px] border border-border bg-secondary p-2 shadow-float max-[400px]:left-auto max-[400px]:right-0"
                 role="menu"
                 aria-label="Sections"
               >
@@ -94,7 +95,7 @@ export const Header = ({
                   <a
                     key={l.href}
                     href={l.href}
-                    className="block rounded-[10px] px-[0.6rem] py-2 text-sm text-text-primary no-underline hover:bg-bg-primary"
+                    className="block rounded-[10px] px-[0.6rem] py-2 text-sm text-foreground no-underline hover:bg-background"
                     role="menuitem"
                     onClick={() => {
                       menuRef.current?.removeAttribute('open');
@@ -112,7 +113,7 @@ export const Header = ({
           <button
             type="button"
             onClick={onCycleTheme}
-            className="inline-flex h-[34px] w-[34px] items-center justify-center rounded-sm text-text-secondary transition-colors duration-150 hover:bg-bg-secondary hover:text-text-primary focus:outline-none focus:shadow-focus-ring"
+            className="inline-flex h-[34px] w-[34px] items-center justify-center rounded-sm text-muted-foreground transition-colors duration-150 hover:bg-secondary hover:text-foreground focus:outline-none focus:shadow-focus-ring"
             aria-label="Toggle color theme"
             title={mounted ? `Theme: ${theme ?? 'system'} (click to cycle)` : 'Toggle color theme'}
           >
@@ -126,7 +127,7 @@ export const Header = ({
           </button>
           <button
             type="button"
-            className="inline-flex h-[34px] w-[34px] items-center justify-center gap-0 rounded-full border border-border bg-bg-secondary px-3 text-text-primary transition-colors duration-150 hover:border-text-secondary focus:outline-none focus:shadow-focus-ring data-[on=true]:border-accent data-[on=true]:bg-accent data-[on=true]:text-text-on-accent max-[600px]:px-0"
+            className="inline-flex h-[34px] w-[34px] items-center justify-center gap-0 rounded-full border border-border bg-secondary px-3 text-foreground transition-colors duration-150 hover:border-muted-foreground focus:outline-none focus:shadow-focus-ring data-[on=true]:border-primary data-[on=true]:bg-primary data-[on=true]:text-primary-foreground max-[600px]:px-0"
             aria-pressed={haptics}
             onClick={() => setHaptics((v) => !v)}
             title="Toggle haptics"
@@ -145,7 +146,7 @@ export const Header = ({
           {isDesktop && supported !== null && (
             <button
               type="button"
-              className="inline-flex h-[34px] w-[34px] items-center justify-center gap-0 rounded-full border border-border bg-bg-secondary px-3 text-text-primary transition-colors duration-150 hover:border-text-secondary focus:outline-none focus:shadow-focus-ring data-[on=true]:border-accent data-[on=true]:bg-accent data-[on=true]:text-text-on-accent max-[600px]:px-0"
+              className="inline-flex h-[34px] w-[34px] items-center justify-center gap-0 rounded-full border border-border bg-secondary px-3 text-foreground transition-colors duration-150 hover:border-muted-foreground focus:outline-none focus:shadow-focus-ring data-[on=true]:border-primary data-[on=true]:bg-primary data-[on=true]:text-primary-foreground max-[600px]:px-0"
               aria-pressed={hapticsDebug}
               onClick={() => setHapticsDebug((v) => !v)}
               title="Debug: play pattern as sound"
@@ -161,7 +162,7 @@ export const Header = ({
             href="https://github.com/Gaurav-r-a-j/web-haptics-toast"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex h-[34px] w-[34px] items-center justify-center rounded-sm text-text-secondary transition-colors duration-150 hover:bg-bg-secondary hover:text-text-primary focus:outline-none focus:shadow-focus-ring"
+            className="inline-flex h-[34px] w-[34px] items-center justify-center rounded-sm text-muted-foreground transition-colors duration-150 hover:bg-secondary hover:text-foreground focus:outline-none focus:shadow-focus-ring"
             aria-label="GitHub repository"
             title="GitHub"
           >

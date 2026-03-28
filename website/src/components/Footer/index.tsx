@@ -5,13 +5,13 @@ const GITHUB = 'https://github.com/Gaurav-r-a-j/web-haptics-toast';
 const NPM = 'https://www.npmjs.com/package/web-haptics-toast';
 
 const footerLinkClass =
-  'inline-flex min-h-[44px] items-center rounded-md py-2 text-sm font-medium text-text-primary no-underline transition-colors hover:text-accent focus:outline-none focus-visible:text-accent focus-visible:shadow-[0_0_0_2px_var(--bg-primary),0_0_0_4px_var(--accent)]';
+  'inline-flex min-h-[44px] items-center rounded-md py-2 text-sm font-medium text-foreground no-underline transition-colors hover:text-primary focus:outline-none focus-visible:text-primary focus-visible:shadow-[0_0_0_2px_var(--background),0_0_0_4px_var(--primary)]';
 
 export const Footer = () => {
   const year = new Date().getFullYear();
 
   return (
-    <footer className="mt-auto border-t border-border bg-bg-secondary">
+    <footer className="mt-auto border-t border-border bg-secondary">
       <div
         className={`${siteContainer} py-8 pb-[max(2rem,env(safe-area-inset-bottom))] max-[640px]:py-6`}
       >
@@ -19,14 +19,14 @@ export const Footer = () => {
           <div className="min-w-0">
             <div className="flex flex-wrap items-start gap-4">
               <span
-                className="inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-accent text-[0.8125rem] font-bold tracking-tight text-text-on-accent"
+                className="inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-primary text-[0.8125rem] font-bold tracking-tight text-primary-foreground"
                 aria-hidden
               >
                 db
               </span>
               <div className="min-w-0 flex-1">
-                <p className="m-0 text-base font-semibold tracking-tight text-text-primary">web-haptics-toast</p>
-                <p className="m-0 mt-1 max-w-[40ch] text-sm leading-snug text-text-secondary">
+                <p className="m-0 text-base font-semibold tracking-tight text-foreground">web-haptics-toast</p>
+                <p className="m-0 mt-1 max-w-[40ch] text-sm leading-snug text-muted-foreground">
                   Sonner-compatible React toasts with vibration presets built in—one dependency for UI and haptics.
                 </p>
               </div>
@@ -81,7 +81,7 @@ export const Footer = () => {
         </div>
 
         <div className="mt-10 flex flex-col gap-3 border-t border-border pt-6 max-[640px]:mt-8 max-[640px]:pt-5 sm:flex-row sm:flex-wrap sm:items-center sm:justify-between sm:gap-x-6">
-          <p className="m-0 text-[0.8125rem] leading-normal text-text-secondary">
+          <p className="m-0 text-[0.8125rem] leading-normal text-muted-foreground">
             MIT {year} ©{' '}
             <a
               href="https://studio.designbyte.dev"
@@ -93,7 +93,7 @@ export const Footer = () => {
             </a>
           </p>
 
-          <p className="m-0 text-[0.8125rem] text-text-secondary">
+          <p className="m-0 text-[0.8125rem] text-muted-foreground">
             <a
               href="https://github.com/Gaurav-r-a-j"
               target="_blank"

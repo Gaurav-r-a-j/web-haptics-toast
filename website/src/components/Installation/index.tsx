@@ -43,7 +43,7 @@ export const Installation = () => {
       <h2 id="install-heading" className={sectionTitle}>
         Installation
       </h2>
-      <p className="m-0 mb-3 max-w-[52ch] text-[0.9375rem] leading-[1.55] text-text-secondary">
+      <p className="m-0 mb-3 max-w-[52ch] text-[0.9375rem] leading-[1.55] text-muted-foreground">
         Add the package, import styles once, then mount <code className="text-[0.8125rem]">Toaster</code> near your app root.
       </p>
 
@@ -63,8 +63,8 @@ export const Installation = () => {
             className={clsx(
               'h-9 min-w-[4.25rem] rounded-md border px-3 text-xs font-semibold uppercase tracking-[0.04em] transition-[border-color,background,color] focus:outline-none focus-visible:shadow-focus-ring',
               pm === id
-                ? 'border-accent bg-bg-primary text-text-primary'
-                : 'border-border bg-bg-secondary text-text-secondary hover:border-text-secondary hover:text-text-primary',
+                ? 'border-primary bg-background text-foreground'
+                : 'border-border bg-secondary text-muted-foreground hover:border-muted-foreground hover:text-foreground',
             )}
             onClick={() => setPm(id)}
           >
@@ -81,14 +81,14 @@ export const Installation = () => {
         <button
           type="button"
           onClick={onCopy}
-          className="relative flex h-11 w-full max-w-xl cursor-pointer items-center overflow-hidden rounded-sm border border-border bg-bg-secondary px-3 pr-12 text-left font-mono text-[0.875rem] leading-[1.5] text-text-primary transition-[border-color,box-shadow] duration-200 hover:border-text-secondary focus:outline-none focus-visible:shadow-focus-ring"
+          className="relative flex h-11 w-full max-w-xl cursor-pointer items-center overflow-hidden rounded-sm border border-border bg-secondary px-3 pr-12 text-left font-mono text-[0.875rem] leading-[1.5] text-foreground transition-[border-color,box-shadow] duration-200 hover:border-muted-foreground focus:outline-none focus-visible:shadow-focus-ring"
           aria-label={`Copy install command: ${line}`}
         >
           <span className="min-w-0 flex-1 select-all overflow-x-auto whitespace-nowrap pr-1 [-webkit-overflow-scrolling:touch]">
             {line}
           </span>
           <span
-            className="pointer-events-none absolute right-2 top-1/2 flex h-7 w-7 -translate-y-1/2 items-center justify-center rounded-sm border border-border bg-bg-primary text-text-primary [&>div]:flex"
+            className="pointer-events-none absolute right-2 top-1/2 flex h-7 w-7 -translate-y-1/2 items-center justify-center rounded-sm border border-border bg-background text-foreground [&>div]:flex"
             aria-hidden
           >
             {mounted ? (

@@ -1,209 +1,254 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import 'tailwindcss';
+@custom-variant dark (&:where(.dark, .dark *));
+@import './tailwind-theme.css';
+@import 'tw-animate-css';
 
-html {
-  scroll-behavior: smooth;
-  background: var(--bg-primary);
-  color: var(--text-primary);
-}
+/*
+  The default border color has changed to `currentcolor` in Tailwind CSS v4,
+  so we've added these compatibility styles to make sure everything still
+  looks the same as it did with Tailwind CSS v3.
 
-body {
-  padding-top: 0;
-  margin: 0;
-  background: var(--bg-primary);
-  color: var(--text-primary);
-  font-family: var(--font-sans);
-  -webkit-font-smoothing: antialiased;
-}
-
-* {
-  touch-action: manipulation;
-}
-
-::selection {
-  background: var(--accent);
-  color: var(--text-on-accent);
-}
-
-@media (prefers-reduced-motion: reduce) {
-  html {
-    scroll-behavior: auto;
-  }
-
+  If we ever want to remove these styles, we need to add an explicit border
+  color utility to any element that depends on these defaults.
+*/
+@layer base {
   *,
-  *::before,
-  *::after {
-    animation-duration: 0.001ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.001ms !important;
-    scroll-behavior: auto !important;
+  ::after,
+  ::before,
+  ::backdrop,
+  ::file-selector-button {
+    border-color: var(--color-gray-200, currentcolor);
   }
 }
 
-/* Let Tailwind/MDX set colors; keep these predictable */
-h1,
-h2,
-h3,
-p,
-a {
-  color: inherit;
+@layer utilities {
+  .z-particles {
+    z-index: 214748365;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    background: var(--background);
+    color: var(--foreground);
+  }
+
+  body {
+    padding-top: 0;
+    margin: 0;
+    background: var(--background);
+    color: var(--foreground);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  * {
+    touch-action: manipulation;
+  }
+
+  ::selection {
+    background: var(--primary);
+    color: var(--primary-foreground);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.001ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.001ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+
+  /* Let Tailwind/MDX set colors; keep these predictable */
+  h1,
+  h2,
+  h3,
+  p,
+  a {
+    color: inherit;
+  }
+
+  /* Nextra + MDX — third-party selectors; token variables from theme.css. */
+
+  .nextra-content,
+  .nextra-sidebar-container,
+  .nextra-nav-container {
+    position: relative;
+    z-index: 1;
+  }
+
+  .nextra-container {
+    background: var(--background) !important;
+  }
+
+  .nextra-main {
+    background: var(--background) !important;
+  }
+
+  .nextra-nav-container {
+    background: var(--background) !important;
+    border-bottom: 1px solid var(--border) !important;
+  }
+
+  .nextra-sidebar-container {
+    background: var(--secondary) !important;
+    border-right: 1px solid var(--border) !important;
+  }
+
+  .nextra-content {
+    background: var(--background) !important;
+  }
+
+  .nextra-sidebar-container a {
+    color: var(--muted-foreground) !important;
+  }
+
+  .nextra-sidebar-container a:hover {
+    color: var(--foreground) !important;
+  }
+
+  .nextra-sidebar-container a[aria-current='page'] {
+    color: var(--foreground) !important;
+    background: var(--background) !important;
+    border: 1px solid var(--border) !important;
+    border-radius: var(--radius-sm) !important;
+  }
+
+  .nextra-toc {
+    border-left: 1px solid var(--border) !important;
+  }
+
+  .nextra-content a {
+    color: var(--foreground);
+    text-decoration-color: var(--muted-foreground);
+  }
+
+  .nextra-content a:hover {
+    text-decoration-color: var(--primary);
+  }
+
+  .nextra-code span,
+  .nextra-code code {
+    font-family: var(--font-mono) !important;
+  }
+
+  aside li.active a {
+    background: var(--secondary) !important;
+    color: var(--foreground) !important;
+  }
+
+  aside li:not(.active) a:hover {
+    background: var(--secondary) !important;
+  }
+
+  pre {
+    background-color: var(--secondary) !important;
+    border: 1px solid var(--border);
+    margin-bottom: 2rem !important;
+    border-radius: var(--radius);
+  }
+
+  button[title='Copy code'] {
+    background: var(--secondary);
+    color: var(--muted-foreground);
+  }
+
+  main > p {
+    line-height: 1.6 !important;
+    margin-top: 1rem !important;
+  }
+
+  .nx-text-primary-600 {
+    color: var(--foreground) !important;
+  }
+
+  footer > div {
+    padding: 1.5rem var(--side-padding) !important;
+  }
+
+  :root {
+    --shiki-token-comment: var(--muted-foreground) !important;
+  }
+
+  ul[role='listbox'] > li[role='option'],
+  ul[role='listbox'] > [role='option'] {
+    position: relative;
+    box-sizing: border-box;
+    padding-top: 0.375rem;
+    padding-bottom: 0.375rem;
+    padding-left: 0.75rem;
+    padding-right: 2.5rem;
+  }
+
+  ul[role='listbox'] > li[role='option'] > span:last-child,
+  ul[role='listbox'] > [role='option'] > span:last-child {
+    position: absolute;
+    top: 50%;
+    right: 0.625rem;
+    left: auto;
+    display: flex;
+    align-items: center;
+    transform: translateY(-50%);
+  }
+
+  .nextra-container ul[role='listbox'] {
+    background-color: var(--background) !important;
+    color: var(--foreground) !important;
+    border: 1px solid var(--border) !important;
+    border-radius: var(--radius-sm) !important;
+    box-shadow: var(--shadow-float) !important;
+  }
+
+  .nextra-container
+    ul[role='listbox']
+    [role='option'][data-headlessui-state~='active'],
+  .nextra-container ul[role='listbox'] li[role='option']:hover {
+    background-color: var(--secondary) !important;
+  }
+
+  .nextra-container button[aria-haspopup='listbox'] {
+    background-color: var(--secondary) !important;
+    color: var(--foreground) !important;
+    border-color: var(--border) !important;
+  }
+
+  html.dark .nextra-nav-container,
+  html.dark .nextra-sidebar-container,
+  html.dark .nextra-main,
+  html.dark .nextra-content,
+  html.dark .nextra-container {
+    border-color: var(--border) !important;
+  }
+
+  .nx-border-primary-500 {
+    border-color: var(--primary) !important;
+  }
+
+  .nx-bg-primary-500\/10 {
+    background: var(--secondary) !important;
+  }
 }
 
-/* Nextra + MDX — third-party selectors; token variables from theme.css. */
-
-.nextra-content,
-.nextra-sidebar-container,
-.nextra-nav-container {
-  position: relative;
-  z-index: 1;
-}
-
-.nextra-container {
-  background: var(--bg-primary) !important;
-}
-
-.nextra-main {
-  background: var(--bg-primary) !important;
-}
-
-.nextra-nav-container {
-  background: var(--bg-primary) !important;
-  border-bottom: 1px solid var(--border) !important;
-}
-
-.nextra-sidebar-container {
-  background: var(--bg-secondary) !important;
-  border-right: 1px solid var(--border) !important;
-}
-
-.nextra-content {
-  background: var(--bg-primary) !important;
-}
-
-.nextra-sidebar-container a {
-  color: var(--text-secondary) !important;
-}
-
-.nextra-sidebar-container a:hover {
-  color: var(--text-primary) !important;
-}
-
-.nextra-sidebar-container a[aria-current='page'] {
-  color: var(--text-primary) !important;
-  background: var(--bg-primary) !important;
-  border: 1px solid var(--border) !important;
-  border-radius: var(--radius-sm) !important;
-}
-
-.nextra-toc {
-  border-left: 1px solid var(--border) !important;
-}
-
-.nextra-content a {
-  color: var(--text-primary);
-  text-decoration-color: var(--text-secondary);
-}
-
-.nextra-content a:hover {
-  text-decoration-color: var(--accent);
-}
-
-.nextra-code span,
-.nextra-code code {
-  font-family: var(--font-mono) !important;
-}
-
-aside li.active a {
-  background: var(--bg-secondary) !important;
-  color: var(--text-primary) !important;
-}
-
-aside li:not(.active) a:hover {
-  background: var(--bg-secondary) !important;
-}
-
-pre {
-  background-color: var(--bg-secondary) !important;
-  border: 1px solid var(--border);
-  margin-bottom: 2rem !important;
-  border-radius: var(--radius);
-}
-
-button[title='Copy code'] {
-  background: var(--bg-secondary);
-  color: var(--text-secondary);
-}
-
-main > p {
-  line-height: 1.6 !important;
-  margin-top: 1rem !important;
-}
-
-.nx-text-primary-600 {
-  color: var(--text-primary) !important;
-}
-
-footer > div {
-  padding: 1.5rem var(--side-padding) !important;
-}
-
-:root {
-  --shiki-token-comment: var(--text-secondary) !important;
-}
-
-ul[role='listbox'] > li[role='option'],
-ul[role='listbox'] > [role='option'] {
-  position: relative;
-  box-sizing: border-box;
-  padding-top: 0.375rem;
-  padding-bottom: 0.375rem;
-  padding-left: 0.75rem;
-  padding-right: 2.5rem;
-}
-
-ul[role='listbox'] > li[role='option'] > span:last-child,
-ul[role='listbox'] > [role='option'] > span:last-child {
-  position: absolute;
-  top: 50%;
-  right: 0.625rem;
-  left: auto;
-  display: flex;
-  align-items: center;
-  transform: translateY(-50%);
-}
-
-.nextra-container ul[role='listbox'] {
-  background-color: var(--bg-primary) !important;
-  color: var(--text-primary) !important;
-  border: 1px solid var(--border) !important;
-  border-radius: var(--radius-sm) !important;
-  box-shadow: var(--shadow-float) !important;
-}
-
-.nextra-container ul[role='listbox'] [role='option'][data-headlessui-state~='active'],
-.nextra-container ul[role='listbox'] li[role='option']:hover {
-  background-color: var(--bg-secondary) !important;
-}
-
-.nextra-container button[aria-haspopup='listbox'] {
-  background-color: var(--bg-secondary) !important;
-  color: var(--text-primary) !important;
-  border-color: var(--border) !important;
-}
-
-html.dark .nextra-nav-container,
-html.dark .nextra-sidebar-container,
-html.dark .nextra-main,
-html.dark .nextra-content,
-html.dark .nextra-container {
-  border-color: var(--border) !important;
-}
-
-.nx-border-primary-500 {
-  border-color: var(--accent) !important;
-}
-
-.nx-bg-primary-500\/10 {
-  background: var(--bg-secondary) !important;
+@layer base {
+  .theme {
+    --font-heading: var(--font-sans);
+    --font-sans: var(--font-sans);
+  }
+  * {
+    @apply border-border;
+    outline-color: color-mix(in oklch, var(--ring) 50%, transparent);
+  }
+  body {
+    background-color: var(--background);
+    color: var(--foreground);
+  }
+  html {
+    font-family: var(--font-sans);
+  }
 }

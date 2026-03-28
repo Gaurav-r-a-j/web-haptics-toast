@@ -1,60 +1,119 @@
 /**
- * Global theme — semantic color tokens only.
- * Light and dark share the same accent (amber) and the same roles: primary / secondary
- * surfaces, warm neutrals, and borders that sit in the same family—only luminance flips.
+ * shadcn/ui-style design tokens (:root / .dark) + site-specific shadows and device chrome.
+ * Tailwind utilities map via tailwind-theme.css @theme inline → var(--token).
  */
 
 :root,
 .light {
-  --bg-primary: #faf8f2;
-  --bg-secondary: #fcf6ee;
-  /* Slightly lifted surface (QR tile, chips) */
-  --bg-elevated: #fffbf6;
+  --background: #faf8f2;
+  --foreground: #332c28;
 
-  --text-primary: #332c28;
-  --text-secondary: #5c4b3c;
-  --text-on-accent: #ffffff;
+  --card: #fffbf6;
+  --card-foreground: #332c28;
 
-  /* Brand accent — identical hue in dark mode for one recognizable system */
-  --accent: #e59a1a;
-  --accent-hover: #cf8816;
+  --popover: #fffbf6;
+  --popover-foreground: #332c28;
+
+  /* Brand CTA — warm amber (same hue in dark) */
+  --primary: #e59a1a;
+  --primary-foreground: #ffffff;
+
+  --secondary: #fcf6ee;
+  --secondary-foreground: #332c28;
+
+  --muted: #f5f0e8;
+  --muted-foreground: #5c4b3c;
+
+  /* Subtle hover / tint surfaces (not the brand button color) */
+  --accent: rgba(229, 154, 26, 0.14);
+  --accent-foreground: #332c28;
+
+  --destructive: oklch(0.577 0.245 27.325);
+  --destructive-foreground: oklch(0.985 0 0);
 
   --border: #eedcc8;
+  --input: #eedcc8;
+  --ring: #e59a1a;
+
+  --radius: 8px;
+  --radius-sm: 6px;
+
+  --chart-1: oklch(0.646 0.222 41.116);
+  --chart-2: oklch(0.6 0.118 184.704);
+  --chart-3: oklch(0.398 0.07 227.392);
+  --chart-4: oklch(0.828 0.189 84.429);
+  --chart-5: oklch(0.769 0.188 70.08);
+
+  --sidebar: #fcf6ee;
+  --sidebar-foreground: #332c28;
+  --sidebar-primary: #332c28;
+  --sidebar-primary-foreground: #faf8f2;
+  --sidebar-accent: #f5f0e8;
+  --sidebar-accent-foreground: #332c28;
+  --sidebar-border: #eedcc8;
+  --sidebar-ring: #e59a1a;
+
+  --font-sans: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+    'Helvetica Neue', Arial, 'Noto Sans', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
+    'Segoe UI Symbol', 'Noto Color Emoji';
+  --font-mono: 'SF Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono',
+    'Courier New', monospace;
+
+  --side-padding: 16px;
 
   --shadow-card: 0 1px 2px rgba(51, 44, 40, 0.06);
   --shadow-float: 0 18px 44px rgba(51, 44, 40, 0.12);
   --shadow-strong: 0 28px 70px rgba(51, 44, 40, 0.14);
-  /* Raised panels (e.g. QR strip): ring + drop */
   --shadow-stacked: 0 0 0 1px rgba(51, 44, 40, 0.05), 0 12px 32px rgba(51, 44, 40, 0.09);
 
-  /* Device mockup / subtle rims */
   --phone-bezel: #2a2624;
   --rim-soft: rgba(51, 44, 40, 0.07);
   --rim-softer: rgba(51, 44, 40, 0.04);
-
-  --font-sans: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Arial,
-    Noto Sans, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji;
-  --font-mono: 'SF Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, Liberation Mono, Courier New, monospace;
-  --radius: 8px;
-  --radius-sm: 6px;
-  --side-padding: 16px;
 }
 
 .dark {
-  /* Warm dark: inverse of cream/brown, not cold gray + unrelated purple */
-  --bg-primary: #141210;
-  --bg-secondary: #1e1a17;
-  --bg-elevated: #2a241f;
+  --background: #141210;
+  --foreground: #f2ebe3;
 
-  --text-primary: #f2ebe3;
-  --text-secondary: #a6988c;
-  /* Same as light: primary buttons stay white-on-amber */
-  --text-on-accent: #ffffff;
+  --card: #2a241f;
+  --card-foreground: #f2ebe3;
 
-  --accent: #e59a1a;
-  --accent-hover: #f0ac3a;
+  --popover: #2a241f;
+  --popover-foreground: #f2ebe3;
+
+  --primary: #e59a1a;
+  --primary-foreground: #ffffff;
+
+  --secondary: #1e1a17;
+  --secondary-foreground: #f2ebe3;
+
+  --muted: #1e1a17;
+  --muted-foreground: #a6988c;
+
+  --accent: rgba(229, 154, 26, 0.18);
+  --accent-foreground: #f2ebe3;
+
+  --destructive: oklch(0.704 0.191 22.216);
+  --destructive-foreground: oklch(0.985 0 0);
 
   --border: #3d3630;
+  --input: #3d3630;
+  --ring: #e59a1a;
+
+  --chart-1: oklch(0.488 0.243 264.376);
+  --chart-2: oklch(0.696 0.17 162.48);
+  --chart-3: oklch(0.769 0.188 70.08);
+  --chart-4: oklch(0.627 0.265 303.9);
+  --chart-5: oklch(0.645 0.246 16.439);
+
+  --sidebar: #1e1a17;
+  --sidebar-foreground: #f2ebe3;
+  --sidebar-primary: #e59a1a;
+  --sidebar-primary-foreground: #ffffff;
+  --sidebar-accent: #2a241f;
+  --sidebar-accent-foreground: #f2ebe3;
+  --sidebar-border: #3d3630;
+  --sidebar-ring: #e59a1a;
 
   --shadow-card: 0 1px 0 rgba(255, 248, 240, 0.06), 0 16px 48px rgba(0, 0, 0, 0.45);
   --shadow-float: 0 20px 50px rgba(0, 0, 0, 0.5);

@@ -9,16 +9,16 @@ export const Hero = () => {
       className="flex flex-col items-center justify-center px-0 pt-[3.25rem] pb-[3rem] text-center max-[600px]:pt-[2.25rem] max-[600px]:pb-[2.5rem]"
       aria-label="Introduction"
     >
-      <span className="mb-[1.25rem] inline-block rounded-full border border-border bg-bg-secondary px-[0.75rem] py-[0.35rem] text-[0.6875rem] font-semibold tracking-[0.08em] text-text-secondary uppercase">
+      <span className="mb-[1.25rem] inline-block rounded-full border border-border bg-secondary px-[0.75rem] py-[0.35rem] text-[0.6875rem] font-semibold tracking-[0.08em] text-muted-foreground uppercase">
         React · Haptics
       </span>
       <h1
-        className="relative m-0 mb-[0.5rem] text-[clamp(2.25rem,6vw,3.25rem)] font-bold leading-[1.08] tracking-[-0.035em] text-text-primary after:mt-[0.75rem] after:block after:h-[3px] after:w-10 after:rounded-full after:bg-accent after:content-[''] after:mx-auto"
+        className="relative m-0 mb-[0.5rem] text-[clamp(2.25rem,6vw,3.25rem)] font-bold leading-[1.08] tracking-[-0.035em] text-foreground after:mt-[0.75rem] after:block after:h-[3px] after:w-10 after:rounded-full after:bg-primary after:content-[''] after:mx-auto"
       >
         web-haptics-toast
       </h1>
-      <p className="m-0 mb-[1.75rem] max-w-[28em] text-[1.0625rem] leading-[1.55] text-text-secondary">
-        One install: toasts, styles, and haptics together. Sonner-compatible API—no separate vibration library.
+      <p className="m-0 mb-[1.75rem] w-full max-w-[min(28em,100%)] px-1 text-[1.0625rem] leading-[1.55] text-muted-foreground">
+        One install: toasts, styles, and haptics together. Sonner-compatible API, no separate vibration library.
       </p>
       <div className="flex w-full max-w-[min(100%,36rem)] flex-wrap items-center justify-center gap-3 min-[601px]:flex-nowrap max-[600px]:flex-col max-[600px]:gap-2.5">
         <button
@@ -28,19 +28,19 @@ export const Hero = () => {
               description: 'Haptics on supported devices.',
             })
           }
-          className="order-1 flex h-11 min-w-[8.5rem] shrink-0 items-center justify-center rounded bg-accent px-5 text-[0.9375rem] font-semibold text-text-on-accent transition-[background,transform] duration-200 hover:bg-accent-hover focus:outline-none focus:shadow-focus-ring max-[600px]:w-full max-[600px]:max-w-[280px]"
+          className="order-1 flex h-11 min-w-[8.5rem] shrink-0 items-center justify-center rounded bg-primary px-5 text-[0.9375rem] font-semibold text-primary-foreground transition-[background,transform] duration-200 hover:bg-primary/90 focus:outline-none focus:shadow-focus-ring max-[600px]:w-full max-[600px]:max-w-[280px]"
         >
           Try a toast
         </button>
         <Link
           href="/docs"
-          className="order-2 flex h-11 min-w-[7.5rem] shrink-0 items-center justify-center rounded border border-border bg-transparent px-5 text-[0.875rem] font-medium text-text-primary transition-[border-color,background] duration-200 hover:border-text-secondary hover:bg-bg-secondary focus:outline-none focus:shadow-focus-ring max-[600px]:w-full max-[600px]:max-w-[280px]"
+          className="order-2 flex h-11 min-w-[7.5rem] shrink-0 items-center justify-center rounded border border-border bg-transparent px-5 text-[0.875rem] font-medium text-foreground transition-[border-color,background] duration-200 hover:border-muted-foreground hover:bg-secondary focus:outline-none focus:shadow-focus-ring max-[600px]:w-full max-[600px]:max-w-[280px]"
         >
           Docs
         </Link>
         <a
           href="#install"
-          className="order-3 flex h-11 min-w-[7.5rem] shrink-0 items-center justify-center rounded border border-border bg-transparent px-5 text-[0.875rem] font-medium text-text-primary transition-[border-color,background] duration-200 hover:border-text-secondary hover:bg-bg-secondary focus:outline-none focus:shadow-focus-ring max-[600px]:w-full max-[600px]:max-w-[280px]"
+          className="order-3 flex h-11 min-w-[7.5rem] shrink-0 items-center justify-center rounded border border-border bg-transparent px-5 text-[0.875rem] font-medium text-foreground transition-[border-color,background] duration-200 hover:border-muted-foreground hover:bg-secondary focus:outline-none focus:shadow-focus-ring max-[600px]:w-full max-[600px]:max-w-[280px]"
         >
           Get started
         </a>
@@ -48,7 +48,7 @@ export const Hero = () => {
           href="https://github.com/Gaurav-r-a-j/web-haptics-toast"
           target="_blank"
           rel="noopener noreferrer"
-          className="order-4 flex h-11 w-11 shrink-0 items-center justify-center rounded border border-border bg-transparent text-text-secondary transition-[color,background,border-color] duration-200 hover:bg-bg-secondary hover:text-text-primary focus:outline-none focus:shadow-focus-ring max-[600px]:mt-1"
+          className="order-4 flex h-11 w-11 shrink-0 items-center justify-center rounded border border-border bg-transparent text-muted-foreground transition-[color,background,border-color] duration-200 hover:bg-secondary hover:text-foreground focus:outline-none focus:shadow-focus-ring max-[600px]:mt-1"
           aria-label="GitHub repository"
           title="GitHub"
         >
@@ -57,7 +57,15 @@ export const Hero = () => {
           </svg>
         </a>
       </div>
-      <p className="mt-9 max-w-[22rem] text-[0.8125rem] leading-[1.5] text-text-secondary" role="note">
+      <p className="m-0 mt-3 text-center text-[0.875rem] text-muted-foreground">
+        <Link
+          href="#features"
+          className="inline-flex min-h-[44px] items-center justify-center font-medium text-primary no-underline hover:underline sm:min-h-0"
+        >
+          See what is on this page →
+        </Link>
+      </p>
+      <p className="mt-9 max-w-[22rem] text-[0.8125rem] leading-[1.5] text-muted-foreground" role="note">
         Toasts show in the screen corner—same as in your app after you install the toaster.
       </p>
     </section>

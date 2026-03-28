@@ -5,6 +5,7 @@ import { Header } from '@/src/components/Header';
 import { Installation } from '@/src/components/Installation';
 import { Hero } from '@/src/components/Hero';
 import { Highlight } from '@/src/components/Highlight';
+import { FeatureOverview } from '@/src/components/FeatureOverview';
 import { MobileDemo } from '@/src/components/MobileDemo';
 import { Compatibility } from '@/src/components/Compatibility';
 import { Types } from '@/src/components/Types/Types';
@@ -26,6 +27,11 @@ function HomeInner() {
   const [closeButton, setCloseButton] = React.useState(false);
   const [haptics, setHaptics] = React.useState(true);
   const [hapticsDebug, setHapticsDebug] = React.useState(false);
+  const [hapticsShowSwitch, setHapticsShowSwitch] = React.useState(false);
+  const [customHapticMap, setCustomHapticMap] = React.useState(false);
+  const hapticPatternMap = customHapticMap
+    ? ({ info: 'selection', loading: 'light' } as const)
+    : undefined;
   const { resolvedTheme } = useTheme();
   const [mounted, setMounted] = React.useState(false);
   React.useEffect(() => setMounted(true), []);
@@ -45,9 +51,14 @@ function HomeInner() {
         duration={3200}
         haptics={haptics}
         hapticsDebug={hapticsDebug}
+        hapticsShowSwitch={hapticsShowSwitch}
+        hapticPatternMap={hapticPatternMap}
       />
       <main id="main" className={siteContainer} role="main" aria-label="Main content">
         <Hero />
+        <div className="mt-10 max-[640px]:mt-8">
+          <FeatureOverview />
+        </div>
         <MobileDemo haptics={haptics} hapticsDebug={hapticsDebug} />
         <Highlight />
         <div className={siteContent}>
@@ -62,8 +73,12 @@ function HomeInner() {
             <Haptics
               haptics={haptics}
               hapticsDebug={hapticsDebug}
+              hapticsShowSwitch={hapticsShowSwitch}
+              customHapticMap={customHapticMap}
               setHaptics={setHaptics}
               setHapticsDebug={setHapticsDebug}
+              setHapticsShowSwitch={setHapticsShowSwitch}
+              setCustomHapticMap={setCustomHapticMap}
             />
           </section>
           <section className={sectionCard} id="types" aria-labelledby="types-heading">
