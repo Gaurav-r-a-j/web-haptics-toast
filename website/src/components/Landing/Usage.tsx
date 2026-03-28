@@ -1,5 +1,5 @@
-import { CodeBlock } from '@/src/components/Shared/CodeBlock';
-import { sectionLabel, sectionTitle } from '@/src/utils/siteUi';
+import { CodeBlock } from '@/src/components/shared/code-block';
+import { sectionLabel, sectionTitle } from '@/src/utils/site-ui';
 
 export const Usage = () => {
   return (

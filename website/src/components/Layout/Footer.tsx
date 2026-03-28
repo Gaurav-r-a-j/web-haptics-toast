@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { linkExternal, sectionLabel, siteContainer } from '@/src/utils/siteUi';
+import { linkExternal, sectionLabel, siteContainer } from '@/src/utils/site-ui';
 
 const GITHUB = 'https://github.com/Gaurav-r-a-j/web-haptics-toast';
 const NPM = 'https://www.npmjs.com/package/web-haptics-toast';

@@ -4,7 +4,7 @@ import React from 'react';
 import Link from 'next/link';
 import { isHapticsSupported } from 'web-haptics-toast';
 import { useTheme } from 'next-themes';
-import { siteContainer } from '@/src/utils/siteUi';
+import { siteContainer } from '@/src/utils/site-ui';
 import { Monitor, Moon, Sun, Slash, Volume2, VolumeX, Waves } from 'lucide-react';
 
 const menuLinks = [

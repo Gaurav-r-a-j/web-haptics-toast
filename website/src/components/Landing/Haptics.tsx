@@ -2,7 +2,7 @@
 
 import React from 'react';
 import { toast } from 'web-haptics-toast';
-import { CodeBlock } from '@/src/components/Shared/CodeBlock';
+import { CodeBlock } from '@/src/components/shared/code-block';
 import {
   chipActiveStates,
   chipScrollRow,
@@ -10,7 +10,7 @@ import {
   sectionLabel,
   sectionTitle,
   toastVariantSurfaces,
-} from '@/src/utils/siteUi';
+} from '@/src/utils/site-ui';
 
 export const Haptics = ({
   haptics,

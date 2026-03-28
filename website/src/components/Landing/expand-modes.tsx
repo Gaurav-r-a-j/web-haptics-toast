@@ -1,7 +1,7 @@
 import type { Dispatch, SetStateAction } from 'react';
 import { toast } from 'web-haptics-toast';
-import { CodeBlock } from '@/src/components/Shared/CodeBlock';
-import { chipActiveStates, chipScrollRow, hapticChip, sectionLabel, sectionTitle } from '@/src/utils/siteUi';
+import { CodeBlock } from '@/src/components/shared/code-block';
+import { chipActiveStates, chipScrollRow, hapticChip, sectionLabel, sectionTitle } from '@/src/utils/site-ui';
 
 const expandChip = `${hapticChip} ${chipActiveStates}`;
 

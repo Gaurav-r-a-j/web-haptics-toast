@@ -3,23 +3,23 @@
 import React from 'react';
 import { useTheme } from 'next-themes';
 import { Toaster } from 'web-haptics-toast';
-import { Header } from '@/src/components/Layout/Header';
-import { Footer } from '@/src/components/Layout/Footer';
-import { Hero } from '@/src/components/Ui/Hero';
-import { FeatureOverview } from '@/src/components/Landing/FeatureOverview';
-import { MobileDemo } from '@/src/components/Landing/MobileDemo';
-import { Highlight } from '@/src/components/Landing/Highlight';
-import { Compatibility } from '@/src/components/Landing/Compatibility';
-import { Installation } from '@/src/components/Landing/Installation';
-import { Usage } from '@/src/components/Landing/Usage';
-import { Haptics } from '@/src/components/Landing/Haptics';
-import { Types as Toasts } from '@/src/components/Landing/Toasts';
-import { Position } from '@/src/components/Landing/Position';
-import { ExpandModes } from '@/src/components/Landing/ExpandModes';
-import { Other } from '@/src/components/Landing/Other';
-import { How } from '@/src/components/Landing/How';
-import { sectionCard, siteContainer, siteContent, siteWrapper } from '@/src/utils/siteUi';
-import { useToastState } from '@/src/hooks/useToastState';
+import { Header } from '@/src/components/layout/header';
+import { Footer } from '@/src/components/layout/footer';
+import { Hero } from '@/src/components/ui/hero';
+import { FeatureOverview } from '@/src/components/landing/feature-overview';
+import { MobileDemo } from '@/src/components/landing/mobile-demo';
+import { Highlight } from '@/src/components/landing/highlight';
+import { Compatibility } from '@/src/components/landing/compatibility';
+import { Installation } from '@/src/components/landing/installation';
+import { Usage } from '@/src/components/landing/usage';
+import { Haptics } from '@/src/components/landing/haptics';
+import { Types as Toasts } from '@/src/components/landing/toasts';
+import { Position } from '@/src/components/landing/position';
+import { ExpandModes } from '@/src/components/landing/expand-modes';
+import { Other } from '@/src/components/landing/other';
+import { How } from '@/src/components/landing/how';
+import { sectionCard, siteContainer, siteContent, siteWrapper } from '@/src/utils/site-ui';
+import { useToastState } from '@/src/hooks/use-toast-state';
 
 /**
  * HomeScreen Component
