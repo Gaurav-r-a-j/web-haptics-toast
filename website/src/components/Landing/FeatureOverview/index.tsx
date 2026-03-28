@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 import { toast, triggerHaptic } from 'web-haptics-toast';
-import { sectionCard, sectionLabel, sectionTitle } from '@/src/lib/siteUi';
+import { sectionCard, sectionLabel, sectionTitle } from '@/src/utils/siteUi';
 
 type Card = {
   title: string;

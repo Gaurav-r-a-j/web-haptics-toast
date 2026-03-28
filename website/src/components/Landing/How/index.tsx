@@ -1,5 +1,5 @@
 import React from 'react';
-import { linkExternal, sectionLabel, sectionTitle } from '@/src/lib/siteUi';
+import { linkExternal, sectionLabel, sectionTitle } from '@/src/utils/siteUi';
 
 export const How = () => {
   return (

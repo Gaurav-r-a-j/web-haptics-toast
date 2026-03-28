@@ -1,5 +1,5 @@
 import { CodeBlock } from '../../Shared/CodeBlock';
-import { sectionLabel, sectionTitle } from '@/src/lib/siteUi';
+import { sectionLabel, sectionTitle } from '@/src/utils/siteUi';
 
 export const Usage = () => {
   return (

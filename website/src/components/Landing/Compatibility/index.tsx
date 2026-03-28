@@ -1,7 +1,7 @@
 'use client';
 
 import React from 'react';
-import { linkExternal, sectionCard, sectionLabel, sectionTitle } from '@/src/lib/siteUi';
+import { linkExternal, sectionCard, sectionLabel, sectionTitle } from '@/src/utils/siteUi';
 
 const mdnVibrate = 'https://developer.mozilla.org/en-US/docs/Web/API/Vibration_API';
 

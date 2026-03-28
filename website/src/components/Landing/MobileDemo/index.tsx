@@ -5,7 +5,7 @@ import { toast, triggerHaptic } from 'web-haptics-toast';
 import QRCode from 'qrcode';
 import Image from 'next/image';
 import { ParticlesProvider, useParticles, type EmojiOption } from '../../Shared/EmojiParticles';
-import { sectionLabel, sectionTitle } from '@/src/lib/siteUi';
+import { sectionLabel, sectionTitle } from '@/src/utils/siteUi';
 
 export const MobileDemo = ({ haptics, hapticsDebug }: { haptics: boolean; hapticsDebug: boolean }) => {
   const [qr, setQr] = React.useState<string | null>(null);

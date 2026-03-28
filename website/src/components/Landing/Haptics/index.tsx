@@ -10,7 +10,7 @@ import {
   sectionLabel,
   sectionTitle,
   toastVariantSurfaces,
-} from '@/src/lib/siteUi';
+} from '@/src/utils/siteUi';
 
 export const Haptics = ({
   haptics,

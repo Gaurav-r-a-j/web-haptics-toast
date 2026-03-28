@@ -2,7 +2,7 @@
 
 import React from 'react';
 import clsx from 'clsx';
-import { sectionLabel, sectionTitle } from '@/src/lib/siteUi';
+import { sectionLabel, sectionTitle } from '@/src/utils/siteUi';
 import copy from 'copy-to-clipboard';
 import { motion, AnimatePresence, MotionConfig } from 'framer-motion';
 

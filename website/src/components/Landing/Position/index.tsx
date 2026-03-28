@@ -1,20 +1,19 @@
 import { toast, useSonner } from 'web-haptics-toast';
-import { CodeBlock } from '../../Shared/CodeBlock';
-import { chipActiveStates, chipScrollRow, hapticChip, sectionLabel, sectionTitle } from '@/src/lib/siteUi';
+import { CodeBlock } from '@/src/components/Shared/CodeBlock';
+import { chipActiveStates, chipScrollRow, hapticChip, sectionLabel, sectionTitle } from '@/src/utils/siteUi';
 import React from 'react';
+import type { Position as PositionType } from '@/src/types';
 
 const positionChip = `${hapticChip} ${chipActiveStates}`;
 
-const positions = ['top-left', 'top-center', 'top-right', 'bottom-left', 'bottom-center', 'bottom-right'] as const;
-
-export type Position = (typeof positions)[number];
+const positions: PositionType[] = ['top-left', 'top-center', 'top-right', 'bottom-left', 'bottom-center', 'bottom-right'];
 
 export const Position = ({
   position: activePosition,
   setPosition,
 }: {
-  position: Position;
-  setPosition: React.Dispatch<React.SetStateAction<Position>>;
+  position: PositionType;
+  setPosition: React.Dispatch<React.SetStateAction<PositionType>>;
 }) => {
   const { toasts } = useSonner();
 

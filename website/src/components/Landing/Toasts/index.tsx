@@ -1,6 +1,6 @@
 import React from 'react';
 import { toast } from 'web-haptics-toast';
-import { chipActiveStates, chipScrollRow, hapticChip, sectionLabel, sectionTitle } from '@/src/lib/siteUi';
+import { chipActiveStates, chipScrollRow, hapticChip, sectionLabel, sectionTitle } from '@/src/utils/siteUi';
 import { CodeBlock } from '../../Shared/CodeBlock';
 
 const typeChip = `${hapticChip} ${chipActiveStates}`;

@@ -13,12 +13,12 @@ import { Compatibility } from '@/src/components/Landing/Compatibility';
 import { Installation } from '@/src/components/Landing/Installation';
 import { Usage } from '@/src/components/Landing/Usage';
 import { Haptics } from '@/src/components/Landing/Haptics';
-import { Types } from '@/src/components/Landing/Types';
+import { Types as Toasts } from '@/src/components/Landing/Toasts';
 import { Position } from '@/src/components/Landing/Position';
 import { ExpandModes } from '@/src/components/Landing/ExpandModes';
 import { Other } from '@/src/components/Landing/Other';
 import { How } from '@/src/components/Landing/How';
-import { sectionCard, siteContainer, siteContent, siteWrapper } from '@/src/lib/siteUi';
+import { sectionCard, siteContainer, siteContent, siteWrapper } from '@/src/utils/siteUi';
 import { useToastState } from '@/src/hooks/useToastState';
 
 /**
@@ -101,7 +101,7 @@ export function HomeScreen() {
           </section>
 
           <section className={sectionCard} id="types" aria-labelledby="types-heading">
-            <Types />
+            <Toasts />
           </section>
 
           <section className={sectionCard} id="position" aria-labelledby="position-heading">

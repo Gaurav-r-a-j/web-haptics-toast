@@ -2,7 +2,7 @@
 
 import React from 'react';
 import { useTheme } from 'next-themes';
-import type { Position as PositionType } from '@/src/components/Position';
+import type { Position } from '@/src/types';
 
 /**
  * useToastState Hook
@@ -10,10 +10,11 @@ import type { Position as PositionType } from '@/src/components/Position';
  * Centralized state management for the web-haptics-toast documentation site.
  * Used for controlling the <Toaster /> props and debugging settings.
  * Adheres to "Poeru" principles with clean, type-safe logic.
+ * Consumes centralized types from @/src/types.
  */
 export function useToastState() {
   const [expand, setExpand] = React.useState(false);
-  const [position, setPosition] = React.useState<PositionType>('bottom-right');
+  const [position, setPosition] = React.useState<Position>('bottom-right');
   const [richColors, setRichColors] = React.useState(false);
   const [closeButton, setCloseButton] = React.useState(false);
   const [haptics, setHaptics] = React.useState(true);
