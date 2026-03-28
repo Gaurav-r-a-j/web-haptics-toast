@@ -10,14 +10,13 @@
   },
   "dependencies": {
     "@types/node": "18.15.0",
-    "@types/react": "18.0.28",
-    "@types/react-dom": "18.0.11",
-    "ai": "^3.4.9",
-    "eslint": "8.57.1",
-    "eslint-config-next": "14.2.35",
-    "next": "14.2.35",
-    "react": "18.3.1",
-    "react-dom": "18.3.1",
+    "@types/react": "19.2.14",
+    "@types/react-dom": "19.2.3",
+    "eslint": "^9.21.0",
+    "eslint-config-next": "^15.1.0",
+    "next": "^15.1.0",
+    "react": "^19.2.4",
+    "react-dom": "^19.2.4",
     "web-haptics-toast": "workspace:*",
     "typescript": "4.9.5"
   }
