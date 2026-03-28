@@ -15,7 +15,7 @@
   --popover-foreground: #332c28;
 
   /* Brand CTA — warm amber (same hue in dark) */
-  --primary: #e59a1a;
+  --primary: #0038FF;
   --primary-foreground: #ffffff;
 
   --secondary: #fcf6ee;
@@ -25,7 +25,7 @@
   --muted-foreground: #5c4b3c;
 
   /* Subtle hover / tint surfaces (not the brand button color) */
-  --accent: rgba(229, 154, 26, 0.14);
+  --accent: rgba(0, 56, 255, 0.14);
   --accent-foreground: #332c28;
 
   --destructive: oklch(0.577 0.245 27.325);
@@ -33,7 +33,7 @@
 
   --border: #eedcc8;
   --input: #eedcc8;
-  --ring: #e59a1a;
+  --ring: #CCFF00;
 
   --radius: 8px;
   --radius-sm: 6px;
@@ -95,8 +95,8 @@
   --popover: #2a241f;
   --popover-foreground: #f2ebe3;
 
-  --primary: #e59a1a;
-  --primary-foreground: #ffffff;
+  --primary: #CCFF00;
+  --primary-foreground: #000000;
 
   --secondary: #1e1a17;
   --secondary-foreground: #f2ebe3;
@@ -104,7 +104,7 @@
   --muted: #1e1a17;
   --muted-foreground: #a6988c;
 
-  --accent: rgba(229, 154, 26, 0.18);
+  --accent: rgba(204, 255, 0, 0.18);
   --accent-foreground: #f2ebe3;
 
   --destructive: oklch(0.704 0.191 22.216);
@@ -112,7 +112,7 @@
 
   --border: #3d3630;
   --input: #3d3630;
-  --ring: #e59a1a;
+  --ring: #CCFF00;
 
   --chart-1: oklch(0.488 0.243 264.376);
   --chart-2: oklch(0.696 0.17 162.48);

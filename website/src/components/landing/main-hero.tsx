@@ -52,40 +52,12 @@ const CircularBadge = () => (
   </div>
 );
 
-export const Hero = () => {
+export const MainHero = () => {
   return (
-    <div className="min-h-screen bg-[#0038FF] flex flex-col font-sans selection:bg-[#CCFF00] selection:text-black relative overflow-hidden w-full">
+    <div className="min-h-screen bg-[#0038FF] flex flex-col font-sans selection:bg-[#CCFF00] selection:text-black relative overflow-hidden w-full pt-16">
 
       {/* Background Grid */}
-      <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff15_1px,transparent_1px),linear-gradient(to_bottom,#ffffff15_1px,transparent_1px)] bg-[size:4rem_4rem] pointer-events-none z-0"></div>
-
-      {/* Navbar */}
-      <nav className="relative z-20 flex items-center justify-between px-6 py-6 md:px-10 md:py-8 max-w-[1440px] mx-auto w-full">
-        {/* Logo */}
-        <div className="flex items-center gap-1">
-          <div className="bg-white text-black font-black tracking-tight text-xs md:text-sm px-3 py-1.5 rounded-2xl rounded-bl-sm relative shadow-sm">
-            BASE
-            <div className="absolute -bottom-1.5 left-0 w-3 h-3 bg-white" style={{ clipPath: 'polygon(0 0, 100% 0, 0 100%)' }}></div>
-          </div>
-          <div className="bg-[#CCFF00] text-black font-black text-xs md:text-sm px-3 py-1.5 rounded-full border-[1.5px] border-white shadow-sm">
-            CLUB
-          </div>
-        </div>
-
-        {/* Desktop Links */}
-        <div className="hidden md:flex items-center space-x-2">
-          {['About Club', 'My stats', 'Tokenomic', 'Airdrop'].map((item) => (
-            <a key={item} href="#" className="px-4 py-1.5 rounded-full border border-white/30 text-white text-xs font-semibold hover:bg-white/10 transition-colors">
-              {item}
-            </a>
-          ))}
-        </div>
-
-        {/* Connect Button */}
-        <button className="px-6 py-2 rounded-full border border-white text-white text-xs md:text-sm font-semibold hover:bg-white hover:text-[#0038FF] transition-colors">
-          Connect wallet
-        </button>
-      </nav>
+      <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff15_1px,transparent_1px),linear-gradient(to_bottom,#ffffff15_1px,transparent_1px)] bg-size-[4rem_4rem] pointer-events-none z-0"></div>
 
       {/* Hero Section */}
       <main className="flex-1 relative z-10 pt-8 pb-32 md:pt-12 md:pb-48 px-4 flex flex-col items-center justify-center w-full max-w-[1440px] mx-auto">
@@ -146,7 +118,7 @@ export const Hero = () => {
               transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
               className="absolute bottom-[10%] left-[5%] md:left-[20%] z-30 pointer-events-auto"
             >
-              <div className="w-40 md:w-52 aspect-[3/3.5] bg-white/20 backdrop-blur-md border border-white/40 rounded-[2rem] p-5 flex flex-col items-center justify-center rotate-[-12deg] shadow-2xl hover:rotate-0 transition-transform duration-500">
+              <div className="w-40 md:w-52 aspect-3/3.5 bg-white/20 backdrop-blur-md border border-white/40 rounded-4xl p-5 flex flex-col items-center justify-center -rotate-12 shadow-2xl hover:rotate-0 transition-transform duration-500">
                 <div className="w-16 h-16 md:w-24 md:h-24 bg-[#D2B48C] rounded-full flex items-center justify-center mb-4 shadow-inner border-[3px] border-white/50 overflow-hidden">
                   <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Felix&backgroundColor=D2B48C" alt="Avatar" className="w-full h-full object-cover" />
                 </div>
@@ -163,7 +135,7 @@ export const Hero = () => {
               transition={{ duration: 6, repeat: Infinity, ease: "easeInOut", delay: 1 }}
               className="absolute top-[15%] right-[5%] md:right-[22%] z-30 pointer-events-auto"
             >
-              <div className="w-40 md:w-52 aspect-[3/3.5] bg-white/20 backdrop-blur-md border border-white/40 rounded-[2rem] p-5 flex flex-col items-center justify-center rotate-[12deg] shadow-2xl hover:rotate-0 transition-transform duration-500">
+              <div className="w-40 md:w-52 aspect-3/3.5 bg-white/20 backdrop-blur-md border border-white/40 rounded-4xl p-5 flex flex-col items-center justify-center rotate-12 shadow-2xl hover:rotate-0 transition-transform duration-500">
                 <div className="w-16 h-16 md:w-24 md:h-24 bg-[#2C3E50] rounded-full flex items-center justify-center mb-4 shadow-inner border-[3px] border-white/50 overflow-hidden">
                   <img src="https://api.dicebear.com/7.x/pixel-art/svg?seed=John" alt="Avatar" className="w-full h-full object-cover scale-150" />
                 </div>
@@ -194,11 +166,11 @@ export const Hero = () => {
       </main>
 
       {/* Bottom Features Section */}
-      <section className="bg-white text-black rounded-t-[2.5rem] md:rounded-t-[3.5rem] px-6 py-12 md:px-10 md:py-16 relative z-20 shadow-[0_-20px_50px_rgba(0,0,0,0.2)] mt-auto w-full">
+      <section className="bg-white text-black rounded-t-4xl px-6 py-12 md:px-10 md:py-16 relative z-20 shadow-[0_-20px_50px_rgba(0,0,0,0.2)] mt-auto w-full">
         <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
 
           {/* Card 1 */}
-          <div className="bg-[#F8F9FA] rounded-[2rem] p-8 flex flex-col items-center text-center relative h-64 border border-gray-100">
+          <div className="bg-[#F8F9FA] rounded-4xl p-8 flex flex-col items-center text-center relative h-64 border border-gray-100">
             <h3 className="text-xl md:text-2xl uppercase leading-tight mb-2 font-black">
               SUBSCRIBE<br />TO CREATORS
             </h3>
@@ -209,7 +181,7 @@ export const Hero = () => {
             {/* Pill Graphic */}
             <div className="relative w-full flex justify-center mt-6">
               <div className="flex items-center bg-[#0038FF] rounded-2xl p-2 pr-16 text-white shadow-lg relative z-10">
-                <div className="w-8 h-8 bg-[#D2B48C] rounded-full mr-3 border border-white/30 overflow-hidden flex-shrink-0">
+                <div className="w-8 h-8 bg-[#D2B48C] rounded-full mr-3 border border-white/30 overflow-hidden shrink-0">
                   <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Felix&backgroundColor=D2B48C" alt="Avatar" className="w-full h-full object-cover" />
                 </div>
                 <div className="text-left">
@@ -229,7 +201,7 @@ export const Hero = () => {
           </div>
 
           {/* Card 2 */}
-          <div className="bg-[#F8F9FA] rounded-[2rem] p-8 flex flex-col items-center text-center relative h-64 border border-gray-100">
+          <div className="bg-[#F8F9FA] rounded-4xl p-8 flex flex-col items-center text-center relative h-64 border border-gray-100">
             <h3 className="text-xl md:text-2xl uppercase leading-tight mb-2 font-black">
               CHOOSE HIGHT<br />$CLUB REWARDS
             </h3>
@@ -263,7 +235,7 @@ export const Hero = () => {
           </div>
 
           {/* Card 3 */}
-          <div className="bg-[#F8F9FA] rounded-[2rem] p-8 flex flex-col items-center text-center relative h-64 border border-gray-100">
+          <div className="bg-[#F8F9FA] rounded-4xl p-8 flex flex-col items-center text-center relative h-64 border border-gray-100">
             <h3 className="text-xl md:text-2xl uppercase leading-tight mb-2 font-black">
               STAKE $CLUB<br />FOR CREATORS
             </h3>
@@ -272,7 +244,7 @@ export const Hero = () => {
             </p>
 
             {/* Pill Graphic */}
-            <div className="flex flex-col items-center bg-[#CCFF00] rounded-[2rem] px-6 py-4 text-black shadow-lg mt-6 relative w-full max-w-[200px]">
+            <div className="flex flex-col items-center bg-[#CCFF00] rounded-4xl px-6 py-4 text-black shadow-lg mt-6 relative w-full max-w-[200px]">
               <p className="text-[9px] font-bold uppercase tracking-wider mb-1">EST. Monthly $CLUB</p>
               <p className="text-xl font-black">188.34257</p>
 

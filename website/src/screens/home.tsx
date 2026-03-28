@@ -5,7 +5,7 @@ import { useTheme } from 'next-themes';
 import { Toaster } from 'web-haptics-toast';
 import { Header } from '@/src/components/layout/header';
 import { Footer } from '@/src/components/layout/footer';
-import { Hero } from '@/src/components/ui/hero';
+import { MainHero } from '@/src/components/landing/main-hero';
 import { FeatureOverview } from '@/src/components/landing/feature-overview';
 import { MobileDemo } from '@/src/components/landing/mobile-demo';
 import { Highlight } from '@/src/components/landing/highlight';
@@ -54,8 +54,8 @@ export function HomeScreen() {
         hapticPatternMap={config.hapticPatternMap}
       />
 
-      <main id="main" className={siteContainer} role="main" aria-label="Main content">
-        <Hero />
+      <main id="main" role="main" aria-label="Main content">
+        <MainHero />
 
         <div className="mt-10 max-[640px]:mt-8">
           <FeatureOverview />
