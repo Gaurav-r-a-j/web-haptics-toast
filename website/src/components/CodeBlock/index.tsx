@@ -61,7 +61,7 @@ export const CodeBlock = ({ children, initialHeight = 0 }: { children: string; i
         type="button"
         onClick={onCopy}
         aria-label="Copy code"
-        className="absolute right-[0.75rem] top-[0.75rem] z-[1] flex h-[28px] w-[28px] items-center justify-center rounded-sm border border-border bg-background text-foreground opacity-0 transition-[background,box-shadow,opacity] duration-200 hover:bg-secondary group-hover:opacity-100 focus-visible:opacity-100 focus-visible:shadow-[0_0_0_2px_var(--primary)]"
+        className="absolute right-[0.75rem] top-[0.75rem] z-[1] flex h-[28px] w-[28px] items-center justify-center rounded-sm border border-border bg-background text-foreground opacity-0 transition-[background,box-shadow,opacity] duration-200 hover:bg-secondary group-hover:opacity-100 focus-visible:opacity-100 focus-visible:shadow-focus-accent"
       >
         <MotionConfig transition={{ duration: 0.15 }}>
           <AnimatePresence initial={false} mode="wait">

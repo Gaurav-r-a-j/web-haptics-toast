@@ -9,7 +9,7 @@ export const siteWrapper =
 
 /** Max-width column + safe horizontal padding */
 export const siteContainer =
-  'mx-auto max-w-content pl-[max(var(--side-padding),env(safe-area-inset-left))] pr-[max(var(--side-padding),env(safe-area-inset-right))]';
+  'mx-auto max-w-content pl-[max(theme(spacing.side),env(safe-area-inset-left))] pr-[max(theme(spacing.side),env(safe-area-inset-right))]';
 
 /** Main stack under hero / demo / highlight */
 export const siteContent =
@@ -29,3 +29,29 @@ export const sectionCard =
 
 /** External links */
 export const linkExternal = 'underline underline-offset-2';
+
+/** Matches `--shadow-focus-ring` in tailwind-theme.css */
+export const focusRing = 'focus:outline-none focus-visible:shadow-focus-ring';
+
+/** Interactive controls: border/background/shadow + motion */
+export const transitionSurface =
+  'transition-[border-color,background,box-shadow] duration-200 motion-reduce:transition-none';
+
+/** Base chip / pill control — uses `theme.css` surfaces */
+export const interactiveChip =
+  'cursor-pointer whitespace-nowrap rounded border border-border bg-secondary px-[0.875rem] py-[0.5rem] text-[0.8125rem] font-medium font-sans text-foreground hover:bg-background hover:border-muted-foreground';
+
+/** Selected state for toggle chips (`data-active`) */
+export const chipActiveStates =
+  "data-[active='true']:bg-primary data-[active='true']:border-primary data-[active='true']:text-primary-foreground";
+
+/** Toast style preview buttons — semantic tints from `theme.css` */
+export const toastVariantSurfaces =
+  "data-[variant='success']:bg-state-success-soft data-[variant='error']:bg-state-error-soft data-[variant='warning']:bg-state-warning-soft";
+
+/** Horizontal chip row: bleeds to viewport edges using `spacing.side` */
+export const chipScrollRow =
+  'relative -mx-side flex flex-wrap gap-2.5 overflow-auto px-side py-1.5 max-[600px]:[mask-image:linear-gradient(to_right,transparent,black_16px,black_calc(100%_-_16px),transparent)]';
+
+/** Composes a full haptic/demo chip (toggle or toast row) */
+export const hapticChip = `${interactiveChip} ${transitionSurface} ${focusRing}`;

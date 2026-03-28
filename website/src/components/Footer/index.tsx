@@ -5,7 +5,7 @@ const GITHUB = 'https://github.com/Gaurav-r-a-j/web-haptics-toast';
 const NPM = 'https://www.npmjs.com/package/web-haptics-toast';
 
 const footerLinkClass =
-  'inline-flex min-h-[44px] items-center rounded-md py-2 text-sm font-medium text-foreground no-underline transition-colors hover:text-primary focus:outline-none focus-visible:text-primary focus-visible:shadow-[0_0_0_2px_var(--background),0_0_0_4px_var(--primary)]';
+  'inline-flex min-h-[44px] items-center rounded-md py-2 text-sm font-medium text-foreground no-underline transition-colors hover:text-primary focus:outline-none focus-visible:text-primary focus-visible:shadow-focus-ring';
 
 export const Footer = () => {
   const year = new Date().getFullYear();

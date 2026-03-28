@@ -2,7 +2,9 @@ import React from 'react';
 import { useMemo } from 'react';
 import { toast } from 'web-haptics-toast';
 import { CodeBlock } from '../CodeBlock';
-import { sectionLabel, sectionTitle } from '@/src/lib/siteUi';
+import { chipScrollRow, focusRing, interactiveChip, sectionLabel, sectionTitle, transitionSurface } from '@/src/lib/siteUi';
+
+const otherChip = `${interactiveChip} ${transitionSurface} ${focusRing}`;
 
 export const Other = ({
   setRichColors,
@@ -117,12 +119,10 @@ export const Other = ({
       <p className="m-0 mb-1 max-w-[52ch] text-[0.9375rem] leading-[1.55] text-muted-foreground">
         Rich colors, a global close button, and fully custom content. The live <code className="text-[0.8125rem]">Toaster</code> props update when you tap certain presets.
       </p>
-      <div
-        className="relative mx-[calc(-1*var(--side-padding))] flex flex-wrap gap-2.5 overflow-auto px-[var(--side-padding)] py-1.5 max-[600px]:[mask-image:linear-gradient(to_right,transparent,black_16px,black_calc(100%_-_16px),transparent)]"
-      >
+      <div className={chipScrollRow}>
         {allTypes.map((type) => (
           <button
-            className="cursor-pointer whitespace-nowrap rounded border border-border bg-secondary px-[0.875rem] py-[0.5rem] text-[0.8125rem] font-medium text-foreground transition-[border-color,background,box-shadow] duration-200 [font-family:var(--font-sans)] hover:bg-background hover:border-muted-foreground focus:outline-none focus-visible:shadow-focus-ring"
+            className={otherChip}
             onClick={() => {
               type.action();
               setActiveType(type);

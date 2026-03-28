@@ -59,7 +59,7 @@ export const Header = ({
     <header className="sticky top-0 z-50 border-b border-border bg-background">
       <a
         href="#main"
-        className="absolute -top-full left-[var(--side-padding)] z-[100] rounded-sm border border-border bg-secondary px-3 py-2 text-sm font-medium text-foreground no-underline transition-[top] duration-150 focus:-top-[0.75rem] focus:outline-none focus:shadow-focus-accent"
+        className="absolute -top-full left-side z-[100] rounded-sm border border-border bg-secondary px-3 py-2 text-sm font-medium text-foreground no-underline transition-[top] duration-150 focus:-top-[0.75rem] focus:outline-none focus:shadow-focus-accent"
       >
         Skip to content
       </a>

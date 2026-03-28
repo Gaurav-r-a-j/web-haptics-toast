@@ -43,6 +43,21 @@
   --color-rim-soft: var(--rim-soft);
   --color-rim-softer: var(--rim-softer);
 
+  --color-state-success-soft: var(--state-success-soft);
+  --color-state-success-medium: var(--state-success-medium);
+  --color-state-success-strong: var(--state-success-strong);
+  --color-state-success-border: var(--state-success-border);
+  --color-state-error-soft: var(--state-error-soft);
+  --color-state-error-strong: var(--state-error-strong);
+  --color-state-error-border: var(--state-error-border);
+  --color-state-warning-soft: var(--state-warning-soft);
+  --color-state-warning-badge: var(--state-warning-badge);
+  --color-state-warning-strong: var(--state-warning-strong);
+  --color-state-warning-border: var(--state-warning-border);
+  --color-state-info-soft: var(--state-info-soft);
+
+  --spacing-side: var(--side-padding);
+
   --max-width-content: 1120px;
 
   --radius: var(--radius);

@@ -1,13 +1,16 @@
+import type { Dispatch, SetStateAction } from 'react';
 import { toast } from 'web-haptics-toast';
 import { CodeBlock } from '../CodeBlock';
-import { sectionLabel, sectionTitle } from '@/src/lib/siteUi';
+import { chipActiveStates, chipScrollRow, hapticChip, sectionLabel, sectionTitle } from '@/src/lib/siteUi';
+
+const expandChip = `${hapticChip} ${chipActiveStates}`;
 
 export const ExpandModes = ({
   expand,
   setExpand,
 }: {
   expand: boolean;
-  setExpand: React.Dispatch<React.SetStateAction<boolean>>;
+  setExpand: Dispatch<SetStateAction<boolean>>;
 }) => {
   return (
     <div>
@@ -20,12 +23,10 @@ export const ExpandModes = ({
       <p className="m-0 mb-1 max-w-[52ch] text-[0.9375rem] leading-[1.55] text-muted-foreground">
         With <code className="text-[0.8125rem]">expand</code>, the stack opens to show more toasts at once. You can still cap how many show with <code className="text-[0.8125rem]">visibleToasts</code>.
       </p>
-      <div
-        className="relative mx-[calc(-1*var(--side-padding))] flex flex-wrap gap-2.5 overflow-auto px-[var(--side-padding)] py-1.5 max-[600px]:[mask-image:linear-gradient(to_right,transparent,black_16px,black_calc(100%_-_16px),transparent)]"
-      >
+      <div className={chipScrollRow}>
         <button
           data-active={expand}
-          className="cursor-pointer whitespace-nowrap rounded border border-border bg-secondary px-[0.875rem] py-[0.5rem] text-[0.8125rem] font-medium text-foreground transition-[border-color,background,box-shadow] duration-200 [font-family:var(--font-sans)] hover:bg-background hover:border-muted-foreground data-[active='true']:bg-primary data-[active='true']:border-primary data-[active='true']:text-primary-foreground focus:outline-none focus-visible:shadow-focus-ring"
+          className={expandChip}
           onClick={() => {
             toast('Event has been created', {
               description: 'Monday, January 3rd at 6:00pm',
@@ -37,7 +38,7 @@ export const ExpandModes = ({
         </button>
         <button
           data-active={!expand}
-          className="cursor-pointer whitespace-nowrap rounded border border-border bg-secondary px-[0.875rem] py-[0.5rem] text-[0.8125rem] font-medium text-foreground transition-[border-color,background,box-shadow] duration-200 [font-family:var(--font-sans)] hover:bg-background hover:border-muted-foreground data-[active='true']:bg-primary data-[active='true']:border-primary data-[active='true']:text-primary-foreground focus:outline-none focus-visible:shadow-focus-ring"
+          className={expandChip}
           onClick={() => {
             toast('Event has been created', {
               description: 'Monday, January 3rd at 6:00pm',

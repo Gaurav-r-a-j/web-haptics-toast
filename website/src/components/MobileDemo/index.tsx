@@ -63,7 +63,7 @@ export const MobileDemo = ({ haptics, hapticsDebug }: { haptics: boolean; haptic
             }`}
           >
             <div
-              className="absolute -inset-[2px] flex min-h-0 flex-col rounded-[24px] border border-rim-softer bg-[radial-gradient(600px_280px_at_50%_-40%,var(--rim-soft),transparent_60%),var(--background)] px-4 pb-4 pt-[10px]"
+              className="absolute -inset-[2px] flex min-h-0 flex-col rounded-[24px] border border-rim-softer bg-[radial-gradient(600px_280px_at_50%_-40%,theme(colors.rim-soft),transparent_60%),theme(colors.background)] px-4 pb-4 pt-[10px]"
             >
               <div className="shrink-0 text-center text-[15px] font-bold tracking-[-0.02em]">web-haptics-toast</div>
               <div className="flex min-h-0 flex-1 flex-col justify-center py-3">
@@ -109,7 +109,7 @@ export const MobileDemo = ({ haptics, hapticsDebug }: { haptics: boolean; haptic
                     />
                   </div>
                 ) : (
-                  <div className="h-full w-full rounded-[12px] bg-[linear-gradient(45deg,var(--rim-soft),transparent),linear-gradient(135deg,var(--rim-soft),transparent)]" />
+                  <div className="h-full w-full rounded-[12px] bg-[linear-gradient(45deg,theme(colors.rim-soft),transparent),linear-gradient(135deg,theme(colors.rim-soft),transparent)]" />
                 )}
               </div>
               <div className="flex min-w-0 flex-1 items-center gap-3 sm:items-start sm:min-w-[12rem]">
@@ -215,14 +215,14 @@ const DemoTiles = ({
   };
 
   const tileBase =
-    'cursor-pointer rounded-[14px] border border-border bg-clip-padding px-[10px] py-[14px] text-[13px] font-semibold text-foreground shadow-card active:scale-[0.99] motion-safe:transition-[transform,box-shadow] motion-safe:duration-120 motion-safe:hover:-translate-y-px motion-safe:hover:shadow-float focus-visible:outline-none focus-visible:shadow-[0_0_0_2px_var(--background),0_0_0_4px_var(--primary)] motion-reduce:transition-none';
+    'cursor-pointer rounded-[14px] border border-border bg-clip-padding px-[10px] py-[14px] text-[13px] font-semibold text-foreground shadow-card active:scale-[0.99] motion-safe:transition-[transform,box-shadow] motion-safe:duration-120 motion-safe:hover:-translate-y-px motion-safe:hover:shadow-float focus-visible:outline-none focus-visible:shadow-focus-ring motion-reduce:transition-none';
 
   return (
     <div className="grid grid-cols-2 gap-[10px]" role="group" aria-label="Haptic demo presets">
       <button
         type="button"
         aria-label="Success preset"
-        className={`${tileBase} bg-[rgba(52,199,89,0.18)]`}
+        className={`${tileBase} bg-state-success-strong`}
         onClick={(e) => handleTrigger('success', e)}
       >
         Success
@@ -230,7 +230,7 @@ const DemoTiles = ({
       <button
         type="button"
         aria-label="Nudge preset"
-        className={`${tileBase} bg-[rgba(26,136,248,0.16)]`}
+        className={`${tileBase} bg-state-info-soft`}
         onClick={(e) => handleTrigger('nudge', e)}
       >
         Nudge
@@ -238,7 +238,7 @@ const DemoTiles = ({
       <button
         type="button"
         aria-label="Error preset"
-        className={`${tileBase} bg-[rgba(255,69,58,0.16)]`}
+        className={`${tileBase} bg-state-error-strong`}
         onClick={(e) => handleTrigger('error', e)}
       >
         Error
@@ -246,7 +246,7 @@ const DemoTiles = ({
       <button
         type="button"
         aria-label="Buzz preset"
-        className={`${tileBase} bg-[rgba(255,214,10,0.20)]`}
+        className={`${tileBase} bg-state-warning-strong`}
         onClick={(e) => handleTrigger('buzz', e)}
       >
         Buzz

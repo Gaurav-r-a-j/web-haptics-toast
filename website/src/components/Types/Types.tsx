@@ -1,7 +1,9 @@
 import React from 'react';
 import { toast } from 'web-haptics-toast';
-import { sectionLabel, sectionTitle } from '@/src/lib/siteUi';
+import { chipActiveStates, chipScrollRow, hapticChip, sectionLabel, sectionTitle } from '@/src/lib/siteUi';
 import { CodeBlock } from '../CodeBlock';
+
+const typeChip = `${hapticChip} ${chipActiveStates}`;
 
 const promiseCode = '`${data.name} toast has been added`';
 
@@ -19,12 +21,10 @@ export const Types = () => {
       <p className="m-0 mb-1 max-w-[52ch] text-[0.9375rem] leading-[1.55] text-muted-foreground">
         Pick a variant below; the snippet updates. Pass an options object as the second argument when you need descriptions, actions, or promises.
       </p>
-      <div
-        className="relative mx-[calc(-1*var(--side-padding))] flex flex-wrap gap-2.5 overflow-auto px-[var(--side-padding)] py-1.5 max-[600px]:[mask-image:linear-gradient(to_right,transparent,black_16px,black_calc(100%_-_16px),transparent)]"
-      >
+      <div className={chipScrollRow}>
         {allTypes.map((type) => (
           <button
-            className="cursor-pointer whitespace-nowrap rounded border border-border bg-secondary px-[0.875rem] py-[0.5rem] text-[0.8125rem] font-medium text-foreground transition-[border-color,background,box-shadow] duration-200 [font-family:var(--font-sans)] hover:bg-background hover:border-muted-foreground data-[active='true']:bg-primary data-[active='true']:border-primary data-[active='true']:text-primary-foreground focus:outline-none focus-visible:shadow-focus-ring"
+            className={typeChip}
             data-active={activeType.name === type.name}
             onClick={() => {
               type.action();
