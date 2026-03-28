@@ -29,7 +29,7 @@ export function useToastState() {
 
   const toasterTheme = React.useMemo(() => {
     if (!mounted) return 'light';
-    return resolvedTheme === 'dark' ? 'dark' : 'light';
+    return (resolvedTheme === 'dark' ? 'dark' : 'light') as 'light' | 'dark' | 'system';
   }, [mounted, resolvedTheme]);
 
   // Virtual pattern map logic
@@ -38,28 +38,49 @@ export function useToastState() {
     return { info: 'selection', loading: 'light' } as const;
   }, [customHapticMap]);
 
-  return {
-    // State values
-    expand,
-    position,
-    richColors,
-    closeButton,
+  // Derived values for the Toaster
+  const config = React.useMemo(() => ({
+    theme: toasterTheme,
     haptics,
     hapticsDebug,
     hapticsShowSwitch,
-    customHapticMap,
-    toasterTheme,
     hapticPatternMap,
-    mounted,
+    richColors,
+    closeButton,
+    expand,
+    position,
+    mounted
+  }), [
+    toasterTheme, haptics, hapticsDebug, hapticsShowSwitch, hapticPatternMap,
+    richColors, closeButton, expand, position, mounted
+  ]);
 
-    // Actions
-    setExpand,
-    setPosition,
-    setRichColors,
-    setCloseButton,
-    setHaptics,
-    setHapticsDebug,
-    setHapticsShowSwitch,
-    setCustomHapticMap,
+  return {
+    // Current site/toast configuration
+    config,
+    
+    // Detailed state (for individual controls)
+    state: {
+      expand,
+      position,
+      richColors,
+      closeButton,
+      haptics,
+      hapticsDebug,
+      hapticsShowSwitch,
+      customHapticMap,
+    },
+
+    // UI actions
+    actions: {
+      setExpand,
+      setPosition,
+      setRichColors,
+      setCloseButton,
+      setHaptics,
+      setHapticsDebug,
+      setHapticsShowSwitch,
+      setCustomHapticMap,
+    }
   };
 }

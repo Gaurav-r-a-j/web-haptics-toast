@@ -52,7 +52,7 @@ const CircularBadge = () => (
   </div>
 );
 
-export const Hero = () => {
+export const Component = () => {
   return (
     <div className="min-h-screen bg-[#0038FF] flex flex-col font-sans selection:bg-[#CCFF00] selection:text-black relative overflow-hidden w-full">
       

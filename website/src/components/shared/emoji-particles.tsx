@@ -195,6 +195,7 @@ export const ParticlesProvider = ({ children }: { children: React.ReactNode }) =
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const particlesRef = useRef<Particle[]>([]);
   const rafIdRef = useRef<number | null>(null);
+  const timeoutIdsRef = useRef<Set<NodeJS.Timeout>>(new Set());
   const ctxRef = useRef<CanvasRenderingContext2D | null>(null);
 
   const startLoop = useCallback(() => {
@@ -277,6 +278,8 @@ export const ParticlesProvider = ({ children }: { children: React.ReactNode }) =
         cancelAnimationFrame(rafIdRef.current);
         rafIdRef.current = null;
       }
+      timeoutIdsRef.current.forEach((id) => clearTimeout(id));
+      timeoutIdsRef.current.clear();
       window.removeEventListener('resize', onResize);
     };
   }, []);
@@ -298,10 +301,12 @@ export const ParticlesProvider = ({ children }: { children: React.ReactNode }) =
         const interval = 150;
         const count = Math.floor(duration / interval);
         for (let i = 1; i <= count; i++) {
-          setTimeout(() => {
+          const timeoutId = setTimeout(() => {
+            timeoutIdsRef.current.delete(timeoutId);
             spawnBurst(particles, x, y, emojis, gx, gy);
             startLoop();
           }, i * interval);
+          timeoutIdsRef.current.add(timeoutId);
         }
       }
     },

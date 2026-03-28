@@ -28,8 +28,6 @@ import {
   type ToastToDismiss,
   type ToastTypes,
 } from './types';
-import { resolveToastAppearance } from './toast-appearance';
-import { sanitizeClassNameString, sanitizeClassNames, sanitizeToasterId } from './security';
 
 // Visible toasts amount
 const VISIBLE_TOASTS_AMOUNT = 3;
@@ -119,11 +117,8 @@ const Toast = (props: ToastProps) => {
   const isVisible = index + 1 <= visibleToasts;
   const toastType = toast.type;
   const dismissible = toast.dismissible !== false;
-  const toastClassname = sanitizeClassNameString(toast.className || '');
-  const toastDescriptionClassname = sanitizeClassNameString(toast.descriptionClassName || '');
-  const toastClassNamesSanitized = sanitizeClassNames(toast.classNames);
-  const toasterClassNamesSanitized = sanitizeClassNames(classNames);
-  const toasterSurfaceClassName = sanitizeClassNameString(className);
+  const toastClassname = toast.className || '';
+  const toastDescriptionClassname = toast.descriptionClassName || '';
   // Height index is used to calculate the offset as it gets updated before the toast array, which means we can calculate the new layout faster.
   const heightIndex = React.useMemo(
     () => heights.findIndex((height) => height.toastId === toast.id) || 0,
@@ -276,7 +271,7 @@ const Toast = (props: ToastProps) => {
     if (icons?.loading) {
       return (
         <div
-          className={cn(toasterClassNamesSanitized?.loader, toastClassNamesSanitized?.loader, 'sonner-loader')}
+          className={cn(classNames?.loader, toast?.classNames?.loader, 'sonner-loader')}
           data-visible={toastType === 'loading'}
         >
           {icons.loading}
@@ -284,7 +279,7 @@ const Toast = (props: ToastProps) => {
       );
     }
 
-    return <Loader className={cn(toasterClassNamesSanitized?.loader, toastClassNamesSanitized?.loader)} visible={toastType === 'loading'} />;
+    return <Loader className={cn(classNames?.loader, toast?.classNames?.loader)} visible={toastType === 'loading'} />;
   }
 
   const icon = toast.icon || icons?.[toastType] || getAsset(toastType);
@@ -294,13 +289,13 @@ const Toast = (props: ToastProps) => {
       tabIndex={0}
       ref={toastRef}
       className={cn(
-        toasterSurfaceClassName,
+        className,
         toastClassname,
-        toasterClassNamesSanitized?.toast,
-        toastClassNamesSanitized?.toast,
-        toasterClassNamesSanitized?.default,
-        toasterClassNamesSanitized?.[toastType],
-        toastClassNamesSanitized?.[toastType],
+        classNames?.toast,
+        toast?.classNames?.toast,
+        classNames?.default,
+        classNames?.[toastType],
+        toast?.classNames?.[toastType],
       )}
       data-sonner-toast=""
       data-rich-colors={toast.richColors ?? defaultRichColors}
@@ -460,7 +455,7 @@ const Toast = (props: ToastProps) => {
                   toast.onDismiss?.(toast);
                 }
           }
-          className={cn(toasterClassNamesSanitized?.closeButton, toastClassNamesSanitized?.closeButton)}
+          className={cn(classNames?.closeButton, toast?.classNames?.closeButton)}
         >
           {icons?.close ?? CloseIcon}
         </button>
@@ -469,24 +464,24 @@ const Toast = (props: ToastProps) => {
       {(toastType || toast.icon || toast.promise) &&
       toast.icon !== null &&
       (icons?.[toastType] !== null || toast.icon) ? (
-        <div data-icon="" className={cn(toasterClassNamesSanitized?.icon, toastClassNamesSanitized?.icon)}>
+        <div data-icon="" className={cn(classNames?.icon, toast?.classNames?.icon)}>
           {toast.promise || (toast.type === 'loading' && !toast.icon) ? toast.icon || getLoadingIcon() : null}
           {toast.type !== 'loading' ? icon : null}
         </div>
       ) : null}
 
-      <div data-content="" className={cn(toasterClassNamesSanitized?.content, toastClassNamesSanitized?.content)}>
-        <div data-title="" className={cn(toasterClassNamesSanitized?.title, toastClassNamesSanitized?.title)}>
+      <div data-content="" className={cn(classNames?.content, toast?.classNames?.content)}>
+        <div data-title="" className={cn(classNames?.title, toast?.classNames?.title)}>
           {toast.jsx ? toast.jsx : typeof toast.title === 'function' ? toast.title() : toast.title}
         </div>
         {toast.description ? (
           <div
             data-description=""
             className={cn(
-              sanitizeClassNameString(descriptionClassName),
+              descriptionClassName,
               toastDescriptionClassname,
-              toasterClassNamesSanitized?.description,
-              toastClassNamesSanitized?.description,
+              classNames?.description,
+              toast?.classNames?.description,
             )}
           >
             {typeof toast.description === 'function' ? toast.description() : toast.description}
@@ -507,7 +502,7 @@ const Toast = (props: ToastProps) => {
             toast.cancel.onClick?.(event);
             deleteToast('cancel');
           }}
-          className={cn(toasterClassNamesSanitized?.cancelButton, toastClassNamesSanitized?.cancelButton)}
+          className={cn(classNames?.cancelButton, toast?.classNames?.cancelButton)}
         >
           {toast.cancel.label}
         </button>
@@ -526,7 +521,7 @@ const Toast = (props: ToastProps) => {
             if (event.defaultPrevented) return;
             deleteToast('action');
           }}
-          className={cn(toasterClassNamesSanitized?.actionButton, toastClassNamesSanitized?.actionButton)}
+          className={cn(classNames?.actionButton, toast?.classNames?.actionButton)}
         >
           {toast.action.label}
         </button>
@@ -644,7 +639,7 @@ function getHapticPatternForType(
 
 const Toaster = React.forwardRef<HTMLElement, ToasterProps>(function Toaster(props, ref) {
   const {
-    id: idProp,
+    id,
     invert,
     position = 'bottom-right',
     hotkey = ['altKey', 'KeyT'],
@@ -654,8 +649,7 @@ const Toaster = React.forwardRef<HTMLElement, ToasterProps>(function Toaster(pro
     offset,
     mobileOffset,
     theme = 'light',
-    richColors: richColorsProp,
-    toastAppearance,
+    richColors,
     duration,
     style,
     visibleToasts = VISIBLE_TOASTS_AMOUNT,
@@ -671,12 +665,6 @@ const Toaster = React.forwardRef<HTMLElement, ToasterProps>(function Toaster(pro
     hapticsShowSwitch = false,
     system,
   } = props;
-
-  const id = sanitizeToasterId(idProp);
-  const { appearance, effectiveRichColors } = resolveToastAppearance({
-    toastAppearance,
-    richColors: richColorsProp,
-  });
   const hapticsRef = React.useRef<WebHaptics | null>(null);
   const [toasts, setToasts] = React.useState<ToastT[]>([]);
   const filteredToasts = React.useMemo(() => {
@@ -890,7 +878,6 @@ const Toaster = React.forwardRef<HTMLElement, ToasterProps>(function Toaster(pro
             className={className}
             data-sonner-toaster
             data-sonner-theme={actualTheme}
-            data-toast-appearance={appearance}
             data-y-position={y}
             data-x-position={x}
             style={
@@ -948,7 +935,7 @@ const Toaster = React.forwardRef<HTMLElement, ToasterProps>(function Toaster(pro
                   icons={icons}
                   index={index}
                   toast={toast}
-                  defaultRichColors={effectiveRichColors}
+                  defaultRichColors={richColors}
                   duration={toastOptions?.duration ?? duration}
                   className={toastOptions?.className}
                   descriptionClassName={toastOptions?.descriptionClassName}
@@ -983,15 +970,5 @@ const Toaster = React.forwardRef<HTMLElement, ToasterProps>(function Toaster(pro
 
 export { toast, Toaster, useSonner, isHapticsSupported, triggerHaptic, WebHaptics, defaultPatterns };
 export type { TriggerHapticOptions } from './haptics';
-export type {
-  ExternalToast,
-  ToastT,
-  ToasterProps,
-  ToastSystemConfig,
-  HapticPatternName,
-  ToastTypes,
-  ToastAppearance,
-} from './types';
+export type { ExternalToast, ToastT, ToasterProps, ToastSystemConfig, HapticPatternName, ToastTypes };
 export { type ToastClassnames, type ToastToDismiss, type Action } from './types';
-export { resolveToastAppearance } from './toast-appearance';
-export { sanitizeToasterId, sanitizeClassNameString, sanitizeClassNames } from './security';

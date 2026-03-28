@@ -26,18 +26,10 @@ import { useToastState } from '@/src/hooks/use-toast-state';
  * 
  */
 export function HomeScreen() {
-  const {
-    haptics, setHaptics,
-    hapticsDebug, setHapticsDebug,
-    richColors, setRichColors,
-    closeButton, setCloseButton,
-    expand, setExpand,
-    position, setPosition,
-    hapticsShowSwitch, setHapticsShowSwitch,
-    customHapticMap, setCustomHapticMap,
-    hapticPatternMap,
-    toasterTheme
-  } = useToastState();
+  const { config, state, actions } = useToastState();
+  const { haptics, hapticsDebug, hapticsShowSwitch, customHapticMap } = state;
+  const { setHaptics, setHapticsDebug, setHapticsShowSwitch, setCustomHapticMap, setRichColors, setCloseButton, setExpand, setPosition } = actions;
+  const { richColors, closeButton, expand, position } = state;
 
   return (
     <div className={siteWrapper}>
@@ -49,7 +41,7 @@ export function HomeScreen() {
       />
 
       <Toaster
-        theme={toasterTheme}
+        theme={config.theme}
         toastAppearance="themed"
         richColors={richColors}
         closeButton={closeButton}
@@ -59,7 +51,7 @@ export function HomeScreen() {
         haptics={haptics}
         hapticsDebug={hapticsDebug}
         hapticsShowSwitch={hapticsShowSwitch}
-        hapticPatternMap={hapticPatternMap}
+        hapticPatternMap={config.hapticPatternMap}
       />
 
       <main id="main" className={siteContainer} role="main" aria-label="Main content">

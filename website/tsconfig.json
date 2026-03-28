@@ -16,7 +16,7 @@
     "moduleResolution": "bundler",
     "resolveJsonModule": true,
     "isolatedModules": true,
-    "jsx": "react-jsx",
+    "jsx": "preserve",
     "incremental": true,
     "plugins": [
       {
@@ -25,9 +25,6 @@
     ],
     "baseUrl": ".",
     "paths": {
-      "web-haptics-toast": [
-        "../src/index.tsx"
-      ],
       "next-mdx-import-source-file": [
         "./mdx-components.tsx",
         "./src/mdx-components.tsx",

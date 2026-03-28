@@ -1,6 +1,9 @@
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { createRequire } from 'node:module';
 import nextra from 'nextra';
+
+const require = createRequire(import.meta.url);
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
@@ -10,30 +13,14 @@ const withNextra = nextra({
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  turbopack: {
-    resolveAlias: {
-      'web-haptics-toast': path.join(__dirname, '../src/index.tsx'),
-      'web-haptics-toast/dist/styles.css': path.join(__dirname, '../src/styles.css'),
-      'next-mdx-import-source-file': [
-        './mdx-components.tsx',
-        './mdx-components.ts',
-        './src/mdx-components.tsx',
-        './src/mdx-components.ts',
-      ],
-    },
+  reactStrictMode: true,
+  images: {
+    unoptimized: true,
   },
-  transpilePackages: ['web-haptics-toast'],
-  typescript: {
-    ignoreBuildErrors: true,
-  },
-  // eslint key removed because it is no longer supported in next.config.mjs for this Next.js version
   webpack: (config) => {
-    const focusVisible = require.resolve('focus-visible', { paths: [path.join(__dirname, 'node_modules')] });
     config.resolve.alias = {
       ...config.resolve.alias,
-      'web-haptics-toast': path.join(__dirname, '../src/index.tsx'),
-      'web-haptics-toast/dist/styles.css': path.join(__dirname, '../src/styles.css'),
-      'focus-visible': focusVisible,
+      'focus-visible': require.resolve('focus-visible'),
     };
     return config;
   },

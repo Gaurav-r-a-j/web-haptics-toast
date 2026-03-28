@@ -2,7 +2,7 @@
 
 **Standalone** React toasts with **haptics built in**: one `npm install`, and you get the UI, styles, and vibration/audio engine together—**no extra packages** for haptics.
 
-The **`toast()`** and **`<Toaster />`** API is compatible with [Sonner](https://sonner.emilkowal.ski/), so you can migrate or adopt without new mental models (including an optional npm alias so imports can stay `from 'sonner'`).
+The **`toast()`** and **`<Toaster />`** API is compatible with **Sonner**, so you can migrate or adopt without new mental models (including an optional npm alias so imports can stay `from 'sonner'`).
 
 By [**DesignByte**](https://studio.designbyte.dev) · [GitHub](https://github.com/Gaurav-r-a-j/)
 
@@ -123,7 +123,7 @@ Sonner-style props still work the same (`position`, `duration`, `theme`, `richCo
 
 ### Credits
 
-Toast UX and API follow **[Sonner](https://sonner.emilkowal.ski/)**. Haptic presets and the `WebHaptics` model are **vendored inside this repo**—aligned with the ideas behind [web-haptics](https://github.com/lochie/web-haptics), but **not** installed as a separate dependency.
+Toast UX and API follow **Sonner**. Haptic presets and the `WebHaptics` model are **vendored inside this repo**—aligned with the ideas behind [web-haptics](https://github.com/lochie/web-haptics), but **not** installed as a separate dependency.
 
 ---
 
