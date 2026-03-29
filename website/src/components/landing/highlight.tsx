@@ -2,54 +2,94 @@
 
 import React from 'react';
 import Link from 'next/link';
+import { HeroText } from '@/src/components/ui/hero-text';
+import { Button } from '@/src/components/ui/button';
+import { Card, CardHeader, CardTitle, CardContent, CardDescription } from '@/src/components/ui/card';
+
+
+const NavButton = ({ href, children, variant = "secondary" as const }: { href: string; children: React.ReactNode; variant?: "secondary" | "outline" }) => (
+  <Button
+    variant={variant}
+    size="lg"
+    asChild
+    className={`rounded-full px-12 py-6 font-black uppercase text-sm h-auto transition-all active:scale-95 border-2 border-black/10 hover:-translate-y-1 hover:-translate-x-1 ${variant === 'outline' ? 'border-primary-foreground/30 text-primary-foreground hover:bg-primary-foreground/10' : 'bg-secondary text-secondary-foreground shadow-none'
+      }`}
+    style={{
+      boxShadow: Array.from({ length: 8 }, (_, i) => {
+        const val = i + 1;
+        return `${val}px ${val}px 0 #000000`;
+      }).join(', ')
+    }}
+  >
+    <Link href={href} target={href.startsWith('http') ? '_blank' : undefined}>
+      {children}
+    </Link>
+  </Button>
+);
+
+const CompatibilityCard = ({ title, status, desc, color }: { title: string; status: string; desc: string; color: string }) => (
+  <Card className="p-8 border-border bg-card hover:border-primary/40 transition-all group rounded-3xl shadow-none flex flex-col justify-between h-full">
+    <CardHeader className="p-0 mb-2 flex-row items-center justify-between">
+      <CardTitle className="text-xs font-black uppercase leading-none text-foreground">
+        {title}
+      </CardTitle>
+      {/* <span className={`px-3 py-1 rounded-full text-[10px] font-black uppercase border ${color}`}>
+        {status}
+      </span> */}
+    </CardHeader>
+    <CardContent className="p-0">
+      <CardDescription className="text-sm font-bold text-muted-foreground/80 m-0 leading-relaxed">
+        {desc}
+      </CardDescription>
+    </CardContent>
+  </Card>
+);
 
 export const Highlight = () => {
   return (
-    <section
-      className="mt-6 overflow-hidden rounded-[12px] border border-border bg-secondary text-foreground"
-      aria-label="Why haptics"
-    >
-      <div className="px-[1.25rem] py-[1.75rem] sm:px-[1.5rem]">
-        <p className="mb-[0.5rem] text-[0.6875rem] font-semibold uppercase tracking-[0.08em] text-muted-foreground">
-          Why it works
-        </p>
-        <h2 className="m-0 mb-[0.5rem] text-[1.5rem] leading-[1.2] tracking-[-0.02em]">
-          Haptics make toasts feel “native”.
-        </h2>
-        <p className="m-0 mb-[1rem] text-muted-foreground">
-          Toasts are easy to miss—especially on mobile. A subtle vibration makes feedback harder to ignore and easier to
-          understand at a glance (success vs error). That’s why this library ships with haptics enabled by default.
-        </p>
-        <ul className="m-0 list-none grid gap-[0.75rem] sm:grid-cols-3 sm:gap-x-5 sm:gap-y-3">
-          <li className="flex items-start gap-2.5 text-[0.9375rem] leading-[1.5] text-foreground">
-            <span className="mt-[0.35rem] h-2 w-2 flex-none shrink-0 rounded-full bg-primary" aria-hidden />
-            <span>Better confirmation for important actions (save, pay, submit).</span>
-          </li>
-          <li className="flex items-start gap-2.5 text-[0.9375rem] leading-[1.5] text-foreground">
-            <span className="mt-[0.35rem] h-2 w-2 flex-none shrink-0 rounded-full bg-primary" aria-hidden />
-            <span>Stronger “error” feedback reduces repeated mistakes.</span>
-          </li>
-          <li className="flex items-start gap-2.5 text-[0.9375rem] leading-[1.5] text-foreground">
-            <span className="mt-[0.35rem] h-2 w-2 flex-none shrink-0 rounded-full bg-primary" aria-hidden />
-            <span>
-              Global off: <code>{'haptics={false}'}</code> on <code>Toaster</code>, or per toast:{' '}
-              <code>{'{ haptics: false }'}</code>.
-            </span>
-          </li>
-        </ul>
-        <div className="mt-[1.25rem] flex flex-col gap-2.5 min-[420px]:flex-row min-[420px]:flex-wrap">
-          <Link
-            href="/haptics"
-            className="flex h-11 min-h-[44px] w-full items-center justify-center rounded-full bg-primary px-[0.9rem] text-[0.875rem] font-semibold text-primary-foreground min-[420px]:h-[40px] min-[420px]:min-h-0 min-[420px]:w-auto"
-          >
-            Read haptics docs
-          </Link>
-          <a
-            href="#compatibility"
-            className="flex h-11 min-h-[44px] w-full items-center justify-center rounded-full border border-border bg-background px-[0.9rem] text-[0.875rem] font-semibold text-foreground hover:border-muted-foreground min-[420px]:h-[40px] min-[420px]:min-h-0 min-[420px]:w-auto"
-          >
-            See compatibility
-          </a>
+    <section aria-label="Tactile Experience Highlights" className="space-y-0 text-left w-full font-sans">
+
+      {/* 🚀 PHILOSOPHY SECTION (FIRST) */}
+      <div id="why" className="overflow-hidden rounded-t-[4rem] border-0 bg-primary text-primary-foreground py-20 md:py-28 relative px-4">
+
+        <div className="relative z-10 max-w-7xl container mx-auto">
+          <div className="flex flex-col lg:flex-row gap-20 items-start">
+            <div className="flex-1 space-y-4">
+              <HeroText shadowColor="#000000" className="text-4xl md:text-6xl lg:text-7xl mb-0 text-primary-foreground leading-none uppercase">
+                WHY TO USE
+              </HeroText>
+              <HeroText shadowColor="#000000" className="text-6xl md:text-7xl lg:text-8xl mb-0 text-secondary leading-none uppercase">
+                WEB HAPTICS<br />TOAST
+              </HeroText>
+            </div>
+
+            <div className="flex-1">
+              <p className="m-0 text-2xl md:text-3xl lg:text-4xl  text-primary-foreground font-black leading-[1.1]">
+                Toasts are too easy to ignore. Vibration cuts through the noise.
+              </p>
+              <p className="m-0 text-base md:text-lg text-primary-foreground/70 mt-2 md:mt-4 font-semibold leading-relaxed max-w-xl">
+                Ever wonder why native apps feel &quot;snappier&quot;? It&apos;s the subtle physical feedback we don&apos;t consciously notice.
+                Bridge the gap. No more double-clicking because they &quot;didn&apos;t see&quot; the message.
+              </p>
+
+              <ul className="m-0 list-none mt-4 md:mt-8 lg:mt-10 space-y-4">
+                {[
+                  "Confirm actions without visual clutter.",
+                  "Reduce user anxiety through physical feedback.",
+                  "Elite tactile feel for modern web apps."
+                ].map((text, i) => (
+                  <li key={text} className="flex items-center gap-4 text-xs md:text-sm lg:text-base font-semibold capitalize text-secondary">
+                    <span className="h-2 w-2 rounded-full bg-secondary shrink-0" />
+                    {text}
+                  </li>
+                ))}
+              </ul>
+
+              <div className="pt-8">
+                <NavButton href="/haptics">Explore Documentation</NavButton>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </section>

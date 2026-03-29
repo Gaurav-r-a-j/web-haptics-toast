@@ -1,6 +1,6 @@
 {
   "name": "web-haptics-toast",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Standalone React toasts with built-in haptics and a Sonner-compatible API. Single dependency—no separate haptics package.",
   "exports": {
     ".": {

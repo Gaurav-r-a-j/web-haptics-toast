@@ -2,9 +2,13 @@
 
 import React from 'react';
 import clsx from 'clsx';
-import { sectionLabel, sectionTitle } from '@/src/utils/site-ui';
+import { HeroText } from '@/src/components/ui/hero-text';
+import { Button } from '@/src/components/ui/button';
+import { Card, CardContent, CardTitle, CardHeader, CardDescription } from '@/src/components/ui/card';
 import copy from 'copy-to-clipboard';
 import { motion, AnimatePresence, MotionConfig } from 'framer-motion';
+import { CheckCircle2, AlertCircle, Copy, Info } from 'lucide-react';
+import { Compatibility } from './compatibility';
 
 const variants = {
   visible: { opacity: 1, scale: 1 },
@@ -36,105 +40,126 @@ export const Installation = () => {
   }, [line]);
 
   return (
-    <div>
-      <p className={sectionLabel} aria-hidden>
-        Quick start
-      </p>
-      <h2 id="install-heading" className={sectionTitle}>
-        Installation
-      </h2>
-      <p className="m-0 mb-3 max-w-[52ch] text-[0.9375rem] leading-[1.55] text-muted-foreground">
-        Add the package, import styles once, then mount <code className="text-[0.8125rem]">Toaster</code> near your app root.
-      </p>
+    <section id="setup" className="p-8 md:p-16 lg:py-24 border-b border-border bg-secondary overflow-hidden">
+      <div className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-12 lg:gap-24 items-start">
+        
+        {/* Left Column: COMPATIBILITY (Extracted) */}
+        <Compatibility className="w-full flex-1" />
 
-      <div
-        className="mb-3 flex w-full max-w-xl flex-wrap gap-2"
-        role="tablist"
-        aria-label="Package manager"
-      >
-        {MANAGERS.map((id) => (
-          <button
-            key={id}
-            type="button"
-            role="tab"
-            aria-selected={pm === id}
-            aria-controls={`install-panel-${id}`}
-            id={`install-tab-${id}`}
-            className={clsx(
-              'h-9 min-w-[4.25rem] rounded-md border px-3 text-xs font-semibold uppercase tracking-[0.04em] transition-[border-color,background,color] focus:outline-none focus-visible:shadow-focus-ring',
-              pm === id
-                ? 'border-primary bg-background text-foreground'
-                : 'border-border bg-secondary text-muted-foreground hover:border-muted-foreground hover:text-foreground',
-            )}
-            onClick={() => setPm(id)}
-          >
-            {id}
-          </button>
-        ))}
-      </div>
+        {/* Right Column: INSTALLATION */}
+        <div className="lg:pt-2 w-full flex-1 mb-20">
+          <div className="mb-20">
+            <HeroText 
+              shadowColor="var(--secondary-foreground)" 
+              className="mb-14 text-4xl md:text-5xl lg:text-7xl text-primary leading-none uppercase tracking-tight text-right lg:text-left"
+            >
+              INSTALL
+            </HeroText>
+            <p className="text-muted-foreground font-black text-lg text-right lg:text-left opacity-70">
+              One package. Total tactile control. Simple.
+            </p>
+          </div>
 
-      <div
-        id={`install-panel-${pm}`}
-        role="tabpanel"
-        aria-labelledby={`install-tab-${pm}`}
-      >
-        <button
-          type="button"
-          onClick={onCopy}
-          className="relative flex h-11 w-full max-w-xl cursor-pointer items-center overflow-hidden rounded-sm border border-border bg-secondary px-3 pr-12 text-left font-mono text-[0.875rem] leading-[1.5] text-foreground transition-[border-color,box-shadow] duration-200 hover:border-muted-foreground focus:outline-none focus-visible:shadow-focus-ring"
-          aria-label={`Copy install command: ${line}`}
-        >
-          <span className="min-w-0 flex-1 select-all overflow-x-auto whitespace-nowrap pr-1 [-webkit-overflow-scrolling:touch]">
-            {line}
-          </span>
-          <span
-            className="pointer-events-none absolute right-2 top-1/2 flex h-7 w-7 -translate-y-1/2 items-center justify-center rounded-sm border border-border bg-background text-foreground [&>div]:flex"
-            aria-hidden
-          >
-            {mounted ? (
-              <MotionConfig transition={{ duration: 0.15 }}>
-                <AnimatePresence initial={false} mode="wait">
-                  {copying ? (
-                    <motion.div animate="visible" exit="hidden" initial="hidden" key="check" variants={variants}>
-                      <svg
-                        viewBox="0 0 24 24"
-                        width="14"
-                        height="14"
-                        stroke="currentColor"
-                        strokeWidth="1.5"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        fill="none"
-                        shapeRendering="geometricPrecision"
-                      >
-                        <path d="M20 6L9 17l-5-5"></path>
-                      </svg>
-                    </motion.div>
-                  ) : (
-                    <motion.div animate="visible" exit="hidden" initial="hidden" key="copy" variants={variants}>
-                      <svg
-                        viewBox="0 0 24 24"
-                        width="14"
-                        height="14"
-                        stroke="currentColor"
-                        strokeWidth="1.5"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        fill="none"
-                        shapeRendering="geometricPrecision"
-                      >
-                        <path d="M8 17.929H6c-1.105 0-2-.912-2-2.036V5.036C4 3.91 4.895 3 6 3h8c1.105 0 2 .911 2 2.036v1.866m-6 .17h8c1.105 0 2 .91 2 2.035v10.857C20 21.09 19.105 22 18 22h-8c-1.105 0-2-.911-2-2.036V9.107c0-1.124.895-2.036 2-2.036z"></path>
-                      </svg>
-                    </motion.div>
+          <div className="space-y-8">
+            <div
+              className="flex w-full flex-wrap gap-2 justify-end lg:justify-start"
+              role="tablist"
+              aria-label="Package manager"
+            >
+              {MANAGERS.map((id) => (
+                <Button
+                  key={id}
+                  variant={pm === id ? 'default' : 'outline'}
+                  size="lg"
+                  className={clsx(
+                    'h-11 min-w-[5.5rem] rounded-2xl text-xs font-black uppercase tracking-widest transition-all scale-x-105',
+                    pm === id ? 'shadow-none scale-110' : 'shadow-none opacity-60 hover:opacity-100'
                   )}
-                </AnimatePresence>
-              </MotionConfig>
-            ) : (
-              <span className="h-7 w-7" />
-            )}
-          </span>
-        </button>
+                  onClick={() => setPm(id)}
+                  role="tab"
+                  aria-selected={pm === id}
+                  aria-controls={`install-panel-${id}`}
+                  id={`install-tab-${id}`}
+                >
+                  {id}
+                </Button>
+              ))}
+            </div>
+
+            <div
+              id={`install-panel-${pm}`}
+              role="tabpanel"
+              aria-labelledby={`install-tab-${pm}`}
+              className="w-full"
+            >
+              <button
+                type="button"
+                onClick={onCopy}
+                className="group relative flex h-20 w-full cursor-pointer items-center overflow-hidden rounded-[24px] border-2 border-primary/20 bg-background px-6 pr-16 text-left font-mono text-[1.1rem] font-bold text-foreground transition-all duration-300 hover:-translate-y-1 hover:-translate-x-1 focus:outline-none shadow-none"
+                style={{
+                  boxShadow: Array.from({ length: 10 }, (_, i) => {
+                    const val = i + 1;
+                    return `${val}px ${val}px 0 rgba(0,0,0,0.1)`;
+                  }).join(', ')
+                }}
+                aria-label={`Copy install command: ${line}`}
+              >
+                <span className="min-w-0 flex-1 select-all overflow-x-auto whitespace-nowrap pr-1 [-webkit-overflow-scrolling:touch]">
+                  <span className="text-primary/50 font-black">$</span> {line}
+                </span>
+                <span
+                  className="absolute right-4 top-1/2 flex h-9 w-9 -translate-y-1/2 items-center justify-center rounded-2xl bg-primary text-primary-foreground transition-all group-hover:scale-110 group-hover:rotate-6 shadow-none"
+                  aria-hidden
+                >
+                  {mounted ? (
+                    <MotionConfig transition={{ duration: 0.15 }}>
+                      <AnimatePresence initial={false} mode="wait">
+                        {copying ? (
+                          <motion.div animate="visible" exit="hidden" initial="hidden" key="check" variants={variants}>
+                            <CheckCircle2 size={18} strokeWidth={3} />
+                          </motion.div>
+                        ) : (
+                          <motion.div animate="visible" exit="hidden" initial="hidden" key="copy" variants={variants}>
+                            <Copy size={18} strokeWidth={3} />
+                          </motion.div>
+                        )}
+                      </AnimatePresence>
+                    </MotionConfig>
+                  ) : (
+                    <span className="h-9 w-9" />
+                  )}
+                </span>
+              </button>
+            </div>
+          </div>
+
+          <div className="pt-16">
+            <Card 
+              className="shadow-none relative overflow-hidden transition-all hover:-translate-y-1 hover:-translate-x-1 border-2 border-primary/10 bg-background rounded-3xl"
+              style={{
+                boxShadow: Array.from({ length: 8 }, (_, i) => {
+                  const val = i + 1;
+                  return `${val}px ${val}px 0 #cfd9fc`;
+                }).join(', ')
+              }}
+            >
+              <CardHeader className="pb-4 border-b border-border/10 mb-2">
+                <div className="flex items-center gap-3">
+                  <AlertCircle size={14} className="text-primary" strokeWidth={3} />
+                  <p className="font-black uppercase text-[10px] tracking-[0.3em] opacity-70">Pro Tip</p>
+                </div>
+              </CardHeader>
+              <CardContent className="pt-4">
+                <p className="m-0 font-black text-base lg:text-lg leading-snug relative z-10 text-primary">
+                  Mount the provider at the root level to enjoy tactile feedback across any component instantly.
+                </p>
+              </CardContent>
+            </Card>
+          </div>
+
+        </div>
+
       </div>
-    </div>
+    </section>
   );
 };

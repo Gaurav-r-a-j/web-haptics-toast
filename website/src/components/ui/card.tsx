@@ -1,6 +1,6 @@
+import { cn } from "@/src/lib/utils"
 import * as React from "react"
 
-import { cn } from "@/src/utils/site-ui"
 
 function Card({
   className,
@@ -38,7 +38,7 @@ function CardTitle({ className, ...props }: React.ComponentProps<"div">) {
     <div
       data-slot="card-title"
       className={cn(
-        "font-heading text-base leading-snug font-medium group-data-[size=sm]/card:text-sm",
+        "cn-font-heading text-base leading-snug font-medium group-data-[size=sm]/card:text-sm",
         className
       )}
       {...props}

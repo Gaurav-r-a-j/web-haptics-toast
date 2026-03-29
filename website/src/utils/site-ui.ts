@@ -25,7 +25,7 @@ export const sectionTitle =
 
 /** Card section: scroll margin for sticky header, border, shadow */
 export const sectionCard =
-  'scroll-mt-[5.5rem] rounded-[10px] border border-border bg-secondary p-5 shadow-card max-[480px]:scroll-mt-[4.75rem] max-[480px]:rounded-lg max-[480px]:p-4 sm:px-7 sm:py-7';
+  'scroll-mt-[5.5rem] rounded-[2.5rem] md:rounded-[3rem] border border-border bg-card p-6 max-[480px]:scroll-mt-[4.75rem] max-[480px]:p-6 sm:px-10 sm:py-12 shadow-sm';
 
 /** External links */
 export const linkExternal = 'underline underline-offset-2';
@@ -37,9 +37,9 @@ export const focusRing = 'focus:outline-none focus-visible:shadow-focus-ring';
 export const transitionSurface =
   'transition-[border-color,background,box-shadow] duration-200 motion-reduce:transition-none';
 
-/** Base chip / pill control — uses `theme.css` surfaces */
+/** Base chip / pill control — uses theme surfaces (avoid secondary since it is bright green) */
 export const interactiveChip =
-  'cursor-pointer whitespace-nowrap rounded border border-border bg-secondary px-[0.875rem] py-[0.5rem] text-[0.8125rem] font-medium font-sans text-foreground hover:bg-background hover:border-muted-foreground';
+  'cursor-pointer whitespace-nowrap rounded-full border border-border bg-muted px-[0.875rem] py-[0.5rem] text-[0.8125rem] font-medium font-sans text-foreground hover:bg-background hover:border-muted-foreground';
 
 /** Selected state for toggle chips (`data-active`) */
 export const chipActiveStates =

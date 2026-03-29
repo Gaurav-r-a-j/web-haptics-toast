@@ -1,6 +1,6 @@
 # Toaster
 
-This component renders all toasts. **web-haptics-toast** bundles Sonner-compatible behavior with **built-in haptics** (on by default) and an optional **`system`** layer for dedupe and dismiss reasons—**one package**, no separate haptics install. Migrating? See **[Migrate from Sonner](/migration-from-sonner)**.
+The heart of the tactile experience. `<Toaster />` manages your notification layer, bundling Sonner-compatible physics with a **precision haptics engine**. It's the one package you need to bridge the gap between sight and touch. Migrating? See **[Migrate from Sonner](/migration-from-sonner)**.
 
 Import styles once:
 
@@ -90,8 +90,9 @@ Props are in the table below; full guide: [Haptics](/haptics).
 | :-------------------- | :-----------------------------------------------------------------------------------------------------------------------------: | -------------: |
 | id                    |                                      Toaster instance id; use with `toasterId` on ``toast`()`.                                      |            `-` |
 | theme                 |                                       Toast's theme, either `light`, `dark`, or `system`                                        |        `light` |
-| richColors            |                                           Makes error and success state more colorful                                           |        `false` |
+| richColors | Transforms toasts into high-intent signals using expressive, vibrant colors. | `false` |
 | expand                |                                               Toasts will be expanded by default                                                |        `false` |
+
 | visibleToasts         |                                                    Amount of visible toasts                                                     |            `3` |
 | position              |                                             Place where the toasts will be rendered                                             | `bottom-right` |
 | closeButton           |                                                Adds a close button to all toasts                                                |        `false` |

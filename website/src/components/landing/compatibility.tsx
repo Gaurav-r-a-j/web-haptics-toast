@@ -1,68 +1,64 @@
 'use client';
 
 import React from 'react';
-import { linkExternal, sectionCard, sectionLabel, sectionTitle } from '@/src/utils/site-ui';
+import { HeroText } from '@/src/components/ui/hero-text';
+import { Card, CardContent } from '@/src/components/ui/card';
+import { CheckCircle2, ExternalLink } from 'lucide-react';
+import Link from 'next/link';
+import Image from 'next/image';
 
-const mdnVibrate = 'https://developer.mozilla.org/en-US/docs/Web/API/Vibration_API';
-
-export const Compatibility = () => {
+export const Compatibility = ({ className }: { className?: string }) => {
   return (
-    <section id="compatibility" aria-label="Compatibility" className={sectionCard}>
-      <p className={sectionLabel} aria-hidden>
-        Compatibility
-      </p>
-      <h2 id="compatibility-heading" className={sectionTitle}>
-        Browser support
-      </h2>
-      <p className="m-0 mb-5 max-w-[52ch] text-[0.9375rem] leading-snug text-muted-foreground">
-        Haptics use the{' '}
-        <a className={linkExternal} href={mdnVibrate} target="_blank" rel="noopener noreferrer">
-          Vibration API (MDN)
-        </a>
-        . It’s mainly supported on Android browsers. iOS Safari does not support vibration.
-      </p>
-
-      <div className="grid gap-3 min-[860px]:grid-cols-3 min-[860px]:gap-4">
-        <div
-          className="flex h-full flex-col gap-2 rounded-xl border border-border bg-background p-4 data-[state=yes]:border-chart-2/50"
-          data-state="yes"
+    <div className={className}>
+      <div className="px-4 mb-20">
+        <HeroText
+          shadowColor="var(--secondary-foreground)"
+          className="mb-14 text-4xl md:text-5xl lg:text-7xl text-primary leading-none uppercase tracking-tight"
         >
-          <div className="flex items-center justify-between gap-2">
-            <div className="text-[0.9375rem] font-bold tracking-[-0.02em]">Android</div>
-            <span className="shrink-0 rounded-full bg-chart-2/25 px-2 py-[0.15rem] text-[0.6875rem] font-semibold uppercase tracking-wide text-foreground">
-              Supported
-            </span>
-          </div>
-          <div className="text-sm leading-snug text-muted-foreground">Chrome, Edge, and Firefox can vibrate on capable hardware.</div>
-        </div>
-        <div
-          className="flex h-full flex-col gap-2 rounded-xl border border-border bg-background p-4 data-[state=no]:border-destructive/45"
-          data-state="no"
-        >
-          <div className="flex items-center justify-between gap-2">
-            <div className="text-[0.9375rem] font-bold tracking-[-0.02em]">iOS</div>
-            <span className="shrink-0 rounded-full bg-destructive/15 px-2 py-[0.15rem] text-[0.6875rem] font-semibold uppercase tracking-wide text-foreground">
-              No vibration
-            </span>
-          </div>
-          <div className="text-sm leading-snug text-muted-foreground">Safari does not expose the Vibration API; toasts still work.</div>
-        </div>
-        <div
-          className="flex h-full flex-col gap-2 rounded-xl border border-border bg-background p-4 data-[state=partial]:border-chart-4/50"
-          data-state="partial"
-        >
-          <div className="flex items-center justify-between gap-2">
-            <div className="text-[0.9375rem] font-bold tracking-[-0.02em]">Desktop</div>
-            <span className="shrink-0 rounded-full bg-chart-5/25 px-2 py-[0.15rem] text-[0.6875rem] font-semibold uppercase tracking-wide text-foreground">
-              Debug
-            </span>
-          </div>
-          <div className="text-sm leading-snug text-muted-foreground">
-            Use header <strong className="font-semibold text-foreground">Debug</strong> to preview patterns as sound.
-          </div>
-        </div>
+          COMPATIBILITY
+        </HeroText>
+        <p className="text-muted-foreground font-black text-lg max-w-xl opacity-70">
+          Native Vibration API support across modern ecosystems. Reliable tactile responses as standard.
+        </p>
       </div>
-    </section>
+
+      <Link
+        href="https://developer.mozilla.org/en-US/docs/Web/API/Vibration_API"
+        target="_blank"
+        className="block"
+      >
+        <Card
+          className="shadow-none overflow-hidden group transition-all relative p-3 md:p-6 bg-card border border-black/5"
+          style={{
+            boxShadow: Array.from({ length: 8 }, (_, i) => {
+              const val = i + 1;
+              return `${val}px ${val}px 0 var(--secondary-foreground)`;
+            }).join(', ')
+          }}
+        >
+          <CardContent className="p-0 relative">
+            <Image
+              src="/compatibility.webp"
+              alt="Compatibility Information"
+              width={500}
+              height={300}
+              className="object-contain w-full p-4 transition-transform duration-500 group-hover:scale-[1.02]"
+              priority
+            />
+
+            {/* Hover Overlay */}
+            <div className="absolute inset-0 bg-primary/5 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+              <div className="size-12 rounded-2xl bg-primary text-primary-foreground flex items-center justify-center shadow-2xl scale-50 group-hover:scale-100 transition-transform duration-300">
+                <ExternalLink className="size-6" strokeWidth={3} />
+              </div>
+            </div>
+          </CardContent>
+        </Card>
+      </Link>
+
+
+    </div>
   );
 };
+
 

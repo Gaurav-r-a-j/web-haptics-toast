@@ -60,27 +60,40 @@
   --font-sans: var(--font-sans);
   --font-mono: var(--font-mono);
 
+
+  --container-sm: 600px;
+  --container-md: 720px;
+  --container-lg: 980px;
+  --container-xl: 1200px;
+  --container-2xl: 1400px;
+
   --animate-haptics-shake: haptics-shake 1s ease-in-out;
 
   @keyframes haptics-shake {
     0% {
       transform: rotate(-3deg) translateX(0);
     }
+
     15% {
       transform: rotate(-3deg) translateX(-6px);
     }
+
     30% {
       transform: rotate(-3deg) translateX(6px);
     }
+
     45% {
       transform: rotate(-3deg) translateX(-4px);
     }
+
     60% {
       transform: rotate(-3deg) translateX(4px);
     }
+
     75% {
       transform: rotate(-3deg) translateX(-2px);
     }
+
     100% {
       transform: rotate(-3deg) translateX(0);
     }
