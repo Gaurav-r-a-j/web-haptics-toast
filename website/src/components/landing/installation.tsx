@@ -55,7 +55,7 @@ export const Installation = () => {
               INSTALL
             </HeroText>
             <p className="text-xl font-bold max-w-lg text-black/80 leading-relaxed text-right ml-auto">
-              One command. Zero config. Just add the provider and start <span className="text-[#0038FF] italic">vibrating</span> your users' worlds.
+              One command. Zero config. Just add the provider and start <span className="text-[#0038FF] italic">vibrating</span> your users&apos; worlds.
             </p>
           </div>
 
