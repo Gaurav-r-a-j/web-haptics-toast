@@ -93,7 +93,13 @@ export const MobileDemo = ({ haptics, hapticsDebug }: { haptics: boolean; haptic
             </p>
 
             <div
-              className="flex flex-wrap items-center justify-start gap-4 rounded-xl border border-border bg-background p-3.5 shadow-stacked min-[860px]:rotate-[2deg] max-[420px]:flex-col max-[420px]:items-center max-[420px]:justify-center"
+              className="flex flex-wrap items-center justify-start gap-4 rounded-xl border-2 border-primary/10 bg-background p-4 min-[860px]:rotate-[2deg] max-[420px]:flex-col max-[420px]:items-center max-[420px]:justify-center transition-all hover:rotate-0"
+              style={{
+                boxShadow: Array.from({ length: 10 }, (_, i) => {
+                  const val = i + 1;
+                  return `${val}px ${val}px 0 rgba(0,0,0,0.1)`;
+                }).join(', ')
+              }}
               aria-label="QR code"
             >
               <div className="relative grid h-[160px] w-[160px] shrink-0 place-items-center overflow-hidden rounded-xl border border-border bg-card max-[520px]:aspect-square min-[860px]:h-[168px] min-[860px]:w-[168px]">
@@ -219,38 +225,28 @@ const DemoTiles = ({
 
   return (
     <div className="grid grid-cols-2 gap-[10px]" role="group" aria-label="Haptic demo presets">
-      <button
-        type="button"
-        aria-label="Success preset"
-        className={`${tileBase} bg-chart-2/30`}
-        onClick={(e) => handleTrigger('success', e)}
-      >
-        Success
-      </button>
-      <button
-        type="button"
-        aria-label="Nudge preset"
-        className={`${tileBase} bg-chart-3/25`}
-        onClick={(e) => handleTrigger('nudge', e)}
-      >
-        Nudge
-      </button>
-      <button
-        type="button"
-        aria-label="Error preset"
-        className={`${tileBase} bg-destructive/20`}
-        onClick={(e) => handleTrigger('error', e)}
-      >
-        Error
-      </button>
-      <button
-        type="button"
-        aria-label="Buzz preset"
-        className={`${tileBase} bg-chart-4/28`}
-        onClick={(e) => handleTrigger('buzz', e)}
-      >
-        Buzz
-      </button>
+      {[
+        { id: 'success', label: 'Success', bg: 'bg-chart-2/30', shadow: '#cfd9fc' },
+        { id: 'nudge', label: 'Nudge', bg: 'bg-chart-3/25', shadow: '#cfd9fc' },
+        { id: 'error', label: 'Error', bg: 'bg-destructive/20', shadow: '#cfd9fc' },
+        { id: 'buzz', label: 'Buzz', bg: 'bg-chart-4/28', shadow: '#cfd9fc' },
+      ].map((tile) => (
+        <button
+          key={tile.id}
+          type="button"
+          aria-label={`${tile.label} preset`}
+          className={`${tileBase} ${tile.bg} border-2 border-black/5 transition-all hover:-translate-y-1 hover:-translate-x-1`}
+          style={{
+            boxShadow: Array.from({ length: 6 }, (_, i) => {
+              const val = i + 1;
+              return `${val}px ${val}px 0 rgba(0,0,0,0.05)`;
+            }).join(', ')
+          }}
+          onClick={(e) => handleTrigger(tile.id as any, e)}
+        >
+          {tile.label}
+        </button>
+      ))}
     </div>
   );
 };

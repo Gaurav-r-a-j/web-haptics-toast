@@ -9,9 +9,11 @@ export const Usage = () => {
           USAGE
         </HeroText>
         <p className="m-0 mb-12 max-w-2xl text-center text-lg md:text-xl font-bold leading-relaxed text-muted-foreground">
-          Mount <code className="text-secondary">Toaster</code> once at your app root, and trigger premium tactile toasts from any component in your tree.
+          Mount <code className="text-primary bg-primary/5 px-1.5 py-0.5 rounded-md">Toaster</code> once at your app root, and trigger premium tactile toasts from any component in your tree.
         </p>
-        <div className="max-w-3xl w-full">
+        <div 
+          className="max-w-3xl w-full"
+        >
           <CodeBlock initialHeight={270}>{`import { Toaster, toast } from 'web-haptics-toast'
 import 'web-haptics-toast/dist/styles.css'
 

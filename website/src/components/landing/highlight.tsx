@@ -12,8 +12,14 @@ const NavButton = ({ href, children, variant = "secondary" as const }: { href: s
     variant={variant}
     size="lg"
     asChild
-    className={`rounded-full px-10 py-5 font-black uppercase text-xs h-auto transition-all active:scale-95 ${variant === 'outline' ? 'border-primary-foreground/30 text-primary-foreground hover:bg-primary-foreground/10' : ''
+    className={`rounded-full px-12 py-6 font-black uppercase text-sm h-auto transition-all active:scale-95 border-2 border-black/10 hover:-translate-y-1 hover:-translate-x-1 ${variant === 'outline' ? 'border-primary-foreground/30 text-primary-foreground hover:bg-primary-foreground/10' : 'bg-secondary text-secondary-foreground shadow-none'
       }`}
+    style={{
+      boxShadow: Array.from({ length: 8 }, (_, i) => {
+        const val = i + 1;
+        return `${val}px ${val}px 0 #000000`;
+      }).join(', ')
+    }}
   >
     <Link href={href} target={href.startsWith('http') ? '_blank' : undefined}>
       {children}

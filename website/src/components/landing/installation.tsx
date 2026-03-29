@@ -95,7 +95,13 @@ export const Installation = () => {
               <button
                 type="button"
                 onClick={onCopy}
-                className="group relative flex h-16 w-full cursor-pointer items-center overflow-hidden rounded-[24px] border border-border bg-background px-6 pr-16 text-left font-mono text-[1rem] font-black text-foreground transition-all duration-300 hover:border-black/30 hover:shadow-none focus:outline-none focus:ring-2 focus:ring-primary shadow-none"
+                className="group relative flex h-20 w-full cursor-pointer items-center overflow-hidden rounded-[24px] border-2 border-primary/20 bg-background px-6 pr-16 text-left font-mono text-[1.1rem] font-bold text-foreground transition-all duration-300 hover:-translate-y-1 hover:-translate-x-1 focus:outline-none shadow-none"
+                style={{
+                  boxShadow: Array.from({ length: 10 }, (_, i) => {
+                    const val = i + 1;
+                    return `${val}px ${val}px 0 rgba(0,0,0,0.1)`;
+                  }).join(', ')
+                }}
                 aria-label={`Copy install command: ${line}`}
               >
                 <span className="min-w-0 flex-1 select-all overflow-x-auto whitespace-nowrap pr-1 [-webkit-overflow-scrolling:touch]">
@@ -128,7 +134,15 @@ export const Installation = () => {
           </div>
 
           <div className="pt-16">
-            <Card className="shadow-none relative overflow-hidden transition-transform hover:scale-[1.01] border-border/10 bg-background/30 backdrop-blur-sm">
+            <Card 
+              className="shadow-none relative overflow-hidden transition-all hover:-translate-y-1 hover:-translate-x-1 border-2 border-primary/10 bg-background rounded-3xl"
+              style={{
+                boxShadow: Array.from({ length: 8 }, (_, i) => {
+                  const val = i + 1;
+                  return `${val}px ${val}px 0 #cfd9fc`;
+                }).join(', ')
+              }}
+            >
               <CardHeader className="pb-4 border-b border-border/10 mb-2">
                 <div className="flex items-center gap-3">
                   <AlertCircle size={14} className="text-primary" strokeWidth={3} />
@@ -136,12 +150,13 @@ export const Installation = () => {
                 </div>
               </CardHeader>
               <CardContent className="pt-4">
-                <p className="m-0 font-black text-base lg:text-lg leading-snug relative z-10">
+                <p className="m-0 font-black text-base lg:text-lg leading-snug relative z-10 text-primary">
                   Mount the provider at the root level to enjoy tactile feedback across any component instantly.
                 </p>
               </CardContent>
             </Card>
           </div>
+
         </div>
 
       </div>

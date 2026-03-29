@@ -30,11 +30,16 @@ export const Position = ({
         <p className="m-0 mb-12 max-w-2xl text-center text-lg md:text-xl font-bold leading-relaxed text-muted-foreground">
           Swipe-to-dismiss follows the corner you choose. Watch the stack move across the screen as you trigger placement presets.
         </p>
-        <div className={`${chipScrollRow} justify-center mb-12`}>
+        <div className={`${chipScrollRow} justify-center mb-12 flex-wrap gap-4`}>
           {positions.map((position) => (
             <button
               data-active={activePosition === position}
-              className={positionChip}
+              className={`${positionChip} px-8 py-3 text-sm font-black uppercase transition-all hover:-translate-y-1 hover:-translate-x-1 border-2 border-black/5`}
+              style={{
+                boxShadow: activePosition === position 
+                  ? Array.from({ length: 6 }, (_, i) => `${i + 1}px ${i + 1}px 0 #cfd9fc`).join(', ')
+                  : Array.from({ length: 4 }, (_, i) => `${i + 1}px ${i + 1}px 0 rgba(0,0,0,0.05)`).join(', ')
+              }}
               onClick={() => {
                 if (activePosition !== position) {
                   setPosition(position);

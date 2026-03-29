@@ -124,13 +124,20 @@ export const CodeBlock = ({ children, initialHeight = 0 }: { children: string; i
       <Highlight {...defaultProps} theme={theme} code={children} language="jsx">
         {({ className, tokens, getLineProps, getTokenProps }) => (
           <motion.pre
-            className="relative mt-[1rem] overflow-hidden rounded border border-border !p-0"
+            className="relative mt-[1rem] overflow-hidden rounded-2xl border-2 border-primary/20 bg-[#09090b] !p-0 transition-all hover:-translate-y-1 hover:-translate-x-1"
             animate={{ height: bounds.height || initialHeight }}
             transition={{ type: 'easeOut', duration: 0.2 }}
+            style={{
+              boxShadow: Array.from({ length: 14 }, (_, i) => {
+                const val = i + 1;
+                return `${val}px ${val}px 0 #000000`;
+              }).join(', ')
+            }}
           >
             <div
-              className={`${className} relative m-0 overflow-x-auto rounded-sm bg-[#09090b] p-6 leading-[1.6] whitespace-pre [-webkit-overflow-scrolling:touch]`}
+              className="relative m-0 overflow-x-auto rounded-xl bg-[#09090b] p-6 leading-[1.6] whitespace-pre [-webkit-overflow-scrolling:touch]"
               ref={ref}
+              style={{ color: '#e4e4e7' }}
             >
               <div />
               {tokens.map((line, i) => {
@@ -146,6 +153,8 @@ export const CodeBlock = ({ children, initialHeight = 0 }: { children: string; i
               })}
             </div>
           </motion.pre>
+
+
         )}
       </Highlight>
     </div>
