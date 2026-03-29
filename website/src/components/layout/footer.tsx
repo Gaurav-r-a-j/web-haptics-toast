@@ -52,9 +52,9 @@ export const Footer = () => {
                 rel="noopener noreferrer"
                 className="text-3xl font-black tracking-tight text-white hover:text-secondary transition-colors no-underline"
               >
-                DesignByte.
+                © DesignByte Studio
               </a>
-              <p className="m-0 mt-4 max-w-sm text-sm font-bold opacity-30 leading-relaxed italic">
+              <p className="m-0 mt-4 max-w-sm text-sm font-bold leading-relaxed italic">
                 The opinionated toast library with native vibration support for the modern web. Built for the modern developer.
               </p>
             </div>
@@ -95,8 +95,8 @@ export const Footer = () => {
 
       <div className="w-full border-t border-primary-foreground/10 py-10">
         <div className="container mx-auto px-8 flex flex-col md:flex-row justify-between items-center gap-6">
-          <p className="m-0 text-[10px] font-black uppercase tracking-wide  text-left text-white">
-            © {year} DESIGNBYTE STUDIO. ALL RIGHTS RESERVED.
+          <p className="m-0 text-[10px] md:text-sm font-black uppercase tracking-wide  text-left text-white">
+            © {year} DESIGNBYTE STUDIO | ALL RIGHTS RESERVEDß
           </p>
           <div className="flex items-center gap-6">
             <a href={LINKS.GITHUB} target="_blank" rel="noopener noreferrer" className="text-white opacity-100 hover:opacity-80 transition-opacity" title="GitHub">
@@ -116,23 +116,28 @@ export const Footer = () => {
       </div>
 
       {/* Marquee Anchor */}
-      <div className="w-full bg-primary py-32 border-t border-primary-foreground/10 flex items-center justify-center relative overflow-hidden">
+      <div className="w-full bg-primary py-32 border-t border-primary-foreground/10 flex items-center relative overflow-hidden">
         <div className="flex whitespace-nowrap animate-marquee">
-          {[1, 2, 3, 4, 5].map((i) => (
-            <div key={i} className="flex items-center gap-6 md:gap-12 px-6 ">
-              <HeroText className="text-[120px] md:text-[200px] uppercase tracking-tighter leading-[0.85] text-secondary">
-                WEB
-              </HeroText>
-              <HeroText className="text-[120px] md:text-[200px] uppercase tracking-tighter leading-[0.85] text-white">
-                HAPTICS
-              </HeroText>
-              <HeroText className="text-[120px] md:text-[200px] uppercase tracking-tighter leading-[0.85] text-white">
-                TOAST
-              </HeroText>
+          {[1, 2].map((group) => (
+            <div key={group} className="flex items-center">
+              {[1, 2, 3, 4].map((i) => (
+                <div key={i} className="flex items-center gap-6 md:gap-12 px-6 md:px-12">
+                  <HeroText className="text-[120px] md:text-[200px] uppercase tracking-tighter leading-[0.85] text-secondary">
+                    WEB
+                  </HeroText>
+                  <HeroText className="text-[120px] md:text-[200px] uppercase tracking-tighter leading-[0.85] text-white">
+                    HAPTICS
+                  </HeroText>
+                  <HeroText className="text-[120px] md:text-[200px] uppercase tracking-tighter leading-[0.85] text-white">
+                    TOAST
+                  </HeroText>
+                </div>
+              ))}
             </div>
           ))}
         </div>
       </div>
+
     </footer>
   );
 };

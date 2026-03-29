@@ -27,14 +27,22 @@ export const Compatibility = ({ className }: { className?: string }) => {
         target="_blank"
         className="block"
       >
-        <Card className="shadow-none  overflow-hidden group transition-all relative p-3 md:p-6">
+        <Card
+          className="shadow-none overflow-hidden group transition-all relative p-3 md:p-6 bg-card border border-black/5"
+          style={{
+            boxShadow: Array.from({ length: 8 }, (_, i) => {
+              const val = i + 1;
+              return `${val}px ${val}px 0 var(--secondary-foreground)`;
+            }).join(', ')
+          }}
+        >
           <CardContent className="p-0 relative">
             <Image
               src="/compatibility.webp"
               alt="Compatibility Information"
               width={500}
               height={300}
-              className="object-contain w-full  p-4 transition-transform duration-500 group-hover:scale-[1.02]"
+              className="object-contain w-full p-4 transition-transform duration-500 group-hover:scale-[1.02]"
               priority
             />
 
@@ -47,6 +55,7 @@ export const Compatibility = ({ className }: { className?: string }) => {
           </CardContent>
         </Card>
       </Link>
+
 
     </div>
   );

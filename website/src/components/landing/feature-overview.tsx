@@ -78,41 +78,51 @@ export const FeatureOverview = () => {
             </p>
           </div>
 
-          <ul className="m-0 grid list-none gap-6 p-0 sm:grid-cols-2 lg:grid-cols-3 w-full">
-            {cards.map((c, index) => (
-              <Card
-                key={c.title}
-                className="flex flex-col items-start text-left transition-all hover:-translate-y-1 rounded-3xl border-0 group relative overflow-hidden  p-4 md:p-6 lg:p-8"
-              >
-                {/* Subtle Decorative Haptic Pattern Background */}
-                <div className="absolute inset-0 opacity-[0.03] group-hover:opacity-[0.06] transition-opacity pointer-events-none"
-                  style={{ backgroundImage: 'radial-gradient(circle, currentColor 1px, transparent 1px)', backgroundSize: '16px 16px' }}></div>
+          <ul className="m-0 grid list-none gap-8 p-0 sm:grid-cols-2 lg:grid-cols-3 w-full pb-20 mt-10">
+            {cards.map((c, index) => {
+              const shadowColor = '#cfd9fc';
+              const boxShadow = Array.from({ length: 8 }, (_, i) => {
+                const val = i + 1;
+                return `${val}px ${val}px 0 ${shadowColor}`;
+              }).join(', ');
 
-                <CardHeader className="flex flex-col w-full items-start relative z-10 p-0">
-                  <CardTitle className="font-black uppercase w-full">
-                    {c.title}
-                  </CardTitle>
-                </CardHeader>
+              return (
+                <Card
+                  key={c.title}
+                  className="flex flex-col items-start text-left transition-all hover:-translate-y-1 hover:-translate-x-1 rounded-3xl border border-black/5 group relative overflow-hidden p-4 md:p-6 lg:p-8 bg-card"
+                  style={{ boxShadow }}
+                >
+                  {/* Subtle Decorative Haptic Pattern Background */}
+                  <div className="absolute inset-0 opacity-[0.03] group-hover:opacity-[0.06] transition-opacity pointer-events-none"
+                    style={{ backgroundImage: 'radial-gradient(circle, currentColor 1px, transparent 1px)', backgroundSize: '16px 16px' }}></div>
 
-                <CardContent className="flex flex-col items-start flex-1 relative z-10 p-0 gap-4 md:gap-8">
-                  <CardDescription className="w-full text-sm md:text-base leading-relaxed">
-                    {c.description}
-                  </CardDescription>
-                  <Button
-                    variant="outline"
-                    size="lg"
-                    asChild
-                    className="rounded-full px-8 py-3 text-[11px] font-black tracking-widest uppercase  hover:bg-primary hover:text-primary-foreground transition-all w-full flex items-center justify-between"
-                  >
-                    <Link href={c.href}>
-                      {c.linkLabel}
-                      <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
-                    </Link>
-                  </Button>
-                </CardContent>
-              </Card>
-            ))}
+                  <CardHeader className="flex flex-col w-full items-start relative z-10 p-0">
+                    <CardTitle className="font-black uppercase w-full text-xl md:text-2xl mb-4">
+                      {c.title}
+                    </CardTitle>
+                  </CardHeader>
+
+                  <CardContent className="flex flex-col items-start flex-1 relative z-10 p-0 gap-4 md:gap-8">
+                    <CardDescription className="w-full text-sm md:text-base leading-relaxed font-semibold text-muted-foreground/80">
+                      {c.description}
+                    </CardDescription>
+                    <Button
+                      variant="outline"
+                      size="lg"
+                      asChild
+                      className="rounded-full px-8 py-3 text-[11px] font-black tracking-widest uppercase border-2 border-primary/20 hover:bg-primary hover:text-primary-foreground transition-all w-full flex items-center justify-between mt-auto"
+                    >
+                      <Link href={c.href}>
+                        {c.linkLabel}
+                        <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1 shadow-none" />
+                      </Link>
+                    </Button>
+                  </CardContent>
+                </Card>
+              );
+            })}
           </ul>
+
 
         </div>
       </div>
