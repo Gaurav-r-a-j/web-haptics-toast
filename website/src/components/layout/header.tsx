@@ -7,9 +7,11 @@ import { isHapticsSupported } from 'web-haptics-toast';
 import { useTheme } from 'next-themes';
 import { siteContainer } from '@/src/utils/site-ui';
 import { cn } from '@/src/lib/utils';
-import { Monitor, Moon, Sun, Slash, Volume2, VolumeX, Waves } from 'lucide-react';
-import { motion, useScroll, useMotionValueEvent } from 'motion/react';
+import { Monitor, Moon, Sun, Slash, Volume2, VolumeX, Waves, Bell } from 'lucide-react';
+import { motion, useScroll, useMotionValueEvent, AnimatePresence } from 'motion/react';
 import { ThemeToggle } from '@/src/components/ui/theme-toggle';
+
+const LOGO_ROTATION = ['WEB', 'HAPTICS'];
 
 const menuLinks = [
   { href: '#features', label: 'Features' },
@@ -88,17 +90,19 @@ export const Header = ({
         <div className="flex flex-1 justify-start items-center">
           <Link href="/" className="flex items-center gap-1 no-underline" aria-label="Home">
             <div className={cn(
-              "font-black tracking-tight text-xs md:text-sm px-3 py-1.5 rounded-2xl rounded-bl-sm relative shadow-sm transition-colors duration-300",
+              "font-black tracking-tight text-xs md:text-sm px-3 py-1.5 rounded-2xl rounded-bl-sm relative shadow-sm transition-colors duration-300 h-[34px] flex items-center min-w-[100px] justify-center",
               isScrolled ? "bg-foreground text-background" : "bg-white text-black"
             )}>
-              SONNER
+              <div className="relative h-full flex items-center overflow-hidden w-full justify-center">
+                <LogoTextRotation />
+              </div>
               <div className={cn(
                 "absolute -bottom-1.5 left-0 w-3 h-3 transition-colors duration-300",
                 isScrolled ? "bg-foreground" : "bg-white"
               )} style={{ clipPath: 'polygon(0 0, 100% 0, 0 100%)' }}></div>
             </div>
             <div className={cn(
-              "bg-[#CCFF00] text-black font-black text-xs md:text-sm px-3 py-1.5 rounded-full border-[1.5px] shadow-sm max-[600px]:hidden transition-colors duration-300",
+              "bg-[#CCFF00] text-black font-black text-xs md:text-sm px-3 py-1.5 rounded-full border-[1.5px] shadow-sm transition-colors duration-300",
               isScrolled ? "border-border" : "border-white/30"
             )}>
               TOAST
@@ -118,7 +122,7 @@ export const Header = ({
             >
               Docs
             </Link>
-            
+
             <details ref={menuRef} className="relative group">
               <summary
                 className={cn(
@@ -167,7 +171,7 @@ export const Header = ({
           <ThemeToggle className={cn(
             isScrolled ? "border-border bg-transparent text-muted-foreground hover:bg-secondary hover:text-foreground" : "border-white/30 bg-transparent text-white hover:bg-white hover:text-primary"
           )} />
-          
+
           <button
             type="button"
             className={cn(
@@ -189,7 +193,7 @@ export const Header = ({
             )}
             <span className="sr-only">Haptics</span>
           </button>
-          
+
           {isDesktop && supported !== null && (
             <button
               type="button"
@@ -227,5 +231,32 @@ export const Header = ({
         </div>
       </nav>
     </motion.header>
+  );
+};
+
+const LogoTextRotation = () => {
+  const [index, setIndex] = React.useState(0);
+
+  React.useEffect(() => {
+    const timer = setInterval(() => {
+      setIndex((prev) => (prev + 1) % LOGO_ROTATION.length);
+    }, 2500);
+    return () => clearInterval(timer);
+  }, []);
+
+  return (
+    <AnimatePresence mode="wait">
+      <motion.span
+        key={index}
+        initial={{ y: 20, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        exit={{ y: -20, opacity: 0 }}
+        transition={{ duration: 0.4, ease: [0.23, 1, 0.32, 1] }}
+        className="flex items-center gap-1.5"
+      >
+        {index === 0 && <Bell size={12} className="fill-current" strokeWidth={3} />}
+        {LOGO_ROTATION[index]}
+      </motion.span>
+    </AnimatePresence>
   );
 };

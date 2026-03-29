@@ -10,17 +10,23 @@ const LINKS = {
 };
 
 const SITE_LINKS = {
-  PRODUCT: [
+  CORE: [
     { label: 'Documentation', href: '/docs' },
     { label: 'Getting Started', href: '/getting-started' },
     { label: 'Installation', href: '/installation' },
     { label: 'Haptics API', href: '/haptics' }
   ],
-  FEATURES: [
+  REFERENCE: [
     { label: 'Positioning', href: '/docs/positioning' },
     { label: 'Expand / Stack', href: '/docs/expand-stack' },
     { label: 'Custom Styling', href: '/docs/styling' },
     { label: 'Migration', href: '/migration-from-sonner' }
+  ],
+  ECOSYSTEM: [
+    { label: 'DesignByte Studio', href: LINKS.STUDIO },
+    { label: 'Brand Assets', href: '/brand' },
+    { label: 'Community', href: '/community' },
+    { label: 'Changelog', href: '/changelog' }
   ]
 };
 
@@ -30,11 +36,11 @@ export const Footer = () => {
   return (
     <footer className="mt-auto border-t border-border bg-primary pt-24 pb-0 overflow-hidden text-primary-foreground relative">
       <div className="container mx-auto px-8 mb-24">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-start">
-          <div className="lg:col-span-5 flex flex-col justify-start">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
+          <div className="lg:col-span-4 flex flex-col justify-start">
             <div className="flex flex-col gap-1">
               <HeroText shadowColor="#000000" className="text-4xl md:text-5xl lg:text-6xl mb-0 text-white leading-[0.85] uppercase tracking-tighter">
-                WEB-HAPTICS
+                WEB HAPTICS
               </HeroText>
               <HeroText shadowColor="#000000" className="text-4xl md:text-5xl lg:text-6xl mb-0 text-white leading-[0.85] uppercase tracking-tighter">
                 TOAST
@@ -50,30 +56,37 @@ export const Footer = () => {
                 DesignByte.
               </a>
               <p className="m-0 mt-4 max-w-sm text-sm font-bold opacity-30 leading-relaxed italic">
-                The opinionated toast library with native vibration support for the modern web. Built for the Poeru ecosystem.
+                The opinionated toast library with native vibration support for the modern web. Built for the modern developer.
               </p>
             </div>
           </div>
 
-          <div className="lg:col-span-3 flex flex-col justify-start">
-            <div className="flex flex-col gap-4">
-              <p className="text-[10px] font-black uppercase tracking-[0.2em] opacity-20 mb-2">Core Docs</p>
-              {SITE_LINKS.PRODUCT.map((link) => (
-                <Link key={link.href} href={link.href} className="text-base font-bold hover:text-secondary transition-colors no-underline text-white">
-                  {link.label}
-                </Link>
-              ))}
-            </div>
-          </div>
-
-          <div className="lg:col-span-4 flex flex-col justify-start">
-            <div className="flex flex-col gap-4">
-              <p className="text-[10px] font-black uppercase tracking-[0.2em] opacity-20 mb-2">Reference</p>
-              {SITE_LINKS.FEATURES.map((link) => (
-                <Link key={link.href} href={link.href} className="text-base font-bold hover:text-secondary transition-colors no-underline text-white">
-                  {link.label}
-                </Link>
-              ))}
+          <div className="lg:col-span-8 flex flex-col justify-start">
+            <div className="grid grid-cols-2 md:grid-cols-3 gap-12 text-left items-start">
+              <div className="flex flex-col gap-4">
+                <p className="text-[10px] font-black uppercase tracking-[0.2em] opacity-20">Core Docs</p>
+                {SITE_LINKS.CORE.map((link) => (
+                  <Link key={link.href} href={link.href} className="text-base font-bold hover:text-secondary transition-colors no-underline text-white whitespace-nowrap">
+                    {link.label}
+                  </Link>
+                ))}
+              </div>
+              <div className="flex flex-col gap-4">
+                <p className="text-[10px] font-black uppercase tracking-[0.2em] opacity-20">Reference</p>
+                {SITE_LINKS.REFERENCE.map((link) => (
+                  <Link key={link.href} href={link.href} className="text-base font-bold hover:text-secondary transition-colors no-underline text-white whitespace-nowrap">
+                    {link.label}
+                  </Link>
+                ))}
+              </div>
+              <div className="flex flex-col gap-4">
+                <p className="text-[10px] font-black uppercase tracking-[0.2em] opacity-20">Ecosystem</p>
+                {SITE_LINKS.ECOSYSTEM.map((link) => (
+                  <Link key={link.href} href={link.href} className="text-base font-bold hover:text-secondary transition-colors no-underline text-white whitespace-nowrap">
+                    {link.label}
+                  </Link>
+                ))}
+              </div>
             </div>
           </div>
         </div>
@@ -105,7 +118,7 @@ export const Footer = () => {
       <div className="w-full bg-primary py-32 border-t border-primary-foreground/10 flex items-center justify-center relative overflow-hidden">
         <div className="flex whitespace-nowrap animate-marquee">
           {[1, 2, 3, 4, 5].map((i) => (
-            <div key={i} className="flex items-center gap-6 md:gap-12 px-6 opacity-10">
+            <div key={i} className="flex items-center gap-6 md:gap-12 px-6 ">
               <HeroText className="text-[120px] md:text-[200px] uppercase tracking-tighter leading-[0.85] text-secondary">
                 WEB
               </HeroText>

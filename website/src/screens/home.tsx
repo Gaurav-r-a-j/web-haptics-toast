@@ -61,19 +61,21 @@ export function HomeScreen() {
         <Highlight />
 
         <div className="flex flex-col gap-0 w-full">
-          <Installation />
-          <Usage />
-          <Haptics
-            haptics={haptics}
-            hapticsDebug={hapticsDebug}
-            hapticsShowSwitch={hapticsShowSwitch}
-            customHapticMap={customHapticMap}
-            setHaptics={setHaptics}
-            setHapticsDebug={setHapticsDebug}
-            setHapticsShowSwitch={setHapticsShowSwitch}
-            setCustomHapticMap={setCustomHapticMap}
-          />
-          <Toasts />
+          <section id="install"><Installation /></section>
+          <section id="usage"><Usage /></section>
+          <section id="haptics">
+            <Haptics
+              haptics={haptics}
+              hapticsDebug={hapticsDebug}
+              hapticsShowSwitch={hapticsShowSwitch}
+              customHapticMap={customHapticMap}
+              setHaptics={setHaptics}
+              setHapticsDebug={setHapticsDebug}
+              setHapticsShowSwitch={setHapticsShowSwitch}
+              setCustomHapticMap={setCustomHapticMap}
+            />
+          </section>
+          <section id="types"><Toasts /></section>
           <Position position={position} setPosition={setPosition} />
           <ExpandModes expand={expand} setExpand={setExpand} />
           <Other setCloseButton={setCloseButton} setRichColors={setRichColors} />

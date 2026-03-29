@@ -35,7 +35,7 @@ export const CircularBadge = ({ className }: { className?: string }) => (
         <path id="circlePath" d="M 50, 50 m -36, 0 a 36,36 0 1,1 72,0 a 36,36 0 1,1 -72,0" fill="none" />
         <text className="text-[11px] font-black tracking-[0.18em] uppercase" fill="black">
           <textPath href="#circlePath" startOffset="0%">
-            GET STARTED OF FREE • GET STARTED OF FREE •
+            • GET STARTED • GET STARTED •
           </textPath>
         </text>
       </svg>
