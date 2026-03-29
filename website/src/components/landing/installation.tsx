@@ -39,8 +39,8 @@ export const Installation = () => {
   }, [line]);
 
   return (
-    <section id="setup" className="p-8 md:p-16 lg:py-24 bg-secondary overflow-hidden">
-      <div className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-12 lg:gap-24 items-start">
+    <section id="setup" className="p-8 md:p-16 lg:py-24 bg-secondary overflow-hidden text-black">
+      <div className="max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-12 lg:gap-24 items-start">
 
         {/* Left Column: COMPATIBILITY (Extracted) */}
         <Compatibility className="w-full flex-1" />
@@ -62,7 +62,7 @@ export const Installation = () => {
           <div className="relative group">
             {/* Redesigned Installation Card - Terminal Style */}
             <div className="absolute -inset-1 bg-black rounded-[2.5rem] blur-sm opacity-10 group-hover:opacity-20 transition duration-1000"></div>
-            
+
             <div className="relative overflow-hidden border-4 border-black bg-white rounded-[2.5rem] shadow-[12px_12px_0_black] transition-all hover:scale-[1.01] w-full">
               {/* Terminal Header */}
               <div className="flex items-center gap-2 p-6 border-b-4 border-black bg-black/5">
@@ -85,13 +85,11 @@ export const Installation = () => {
                   aria-label="Package manager"
                 >
                   {MANAGERS.map((id) => (
-                    <Button
+                    <button
                       key={id}
-                      variant="outline"
-                      size="sm"
                       className={clsx(
                         'h-9 min-w-22 rounded-xl text-[10px] font-[1000] uppercase tracking-widest transition-all border-2 border-black shadow-[3px_3px_0_black] active:translate-x-0.5 active:translate-y-0.5 active:shadow-none',
-                        pm === id ? 'bg-primary text-white' : 'bg-white text-black/60 hover:text-black hover:bg-black/5'
+                        pm === id ? 'bg-primary dark:bg-primary text-white' : 'bg-white dark:tex-whi text-black/60 hover:text-black hover:bg-black/5'
                       )}
                       onClick={() => setPm(id)}
                       role="tab"
@@ -100,7 +98,7 @@ export const Installation = () => {
                       id={`install-tab-${id}`}
                     >
                       {id}
-                    </Button>
+                    </button>
                   ))}
                 </div>
 
@@ -121,7 +119,7 @@ export const Installation = () => {
                   >
                     <AnimatePresence>
                       {copying && (
-                        <motion.div 
+                        <motion.div
                           className="absolute inset-0 bg-[#CCFF00]/20"
                           initial={{ opacity: 0 }}
                           animate={{ opacity: 1 }}

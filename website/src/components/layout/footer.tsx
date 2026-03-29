@@ -34,14 +34,14 @@ export const Footer = () => {
 
   return (
     <footer className="mt-auto border-t-8 border-black bg-primary pt-24 pb-0 overflow-hidden text-white relative">
-      <div className="container mx-auto px-8 mb-24">
+      <div className="container mx-auto px-8 mb-6">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
           <div className="lg:col-span-4 flex flex-col justify-start">
             <div className="flex flex-col gap-1">
-              <HeroText shadowColor="#000000" className="text-4xl md:text-5xl lg:text-6xl mb-0 text-white leading-[0.85] uppercase tracking-tighter">
+              <HeroText className="text-4xl md:text-5xl lg:text-6xl mb-0 text-secondary leading-[0.85] uppercase tracking-tighter">
                 WEB HAPTICS
               </HeroText>
-              <HeroText shadowColor="#000000" className="text-4xl md:text-5xl lg:text-6xl mb-0 text-white leading-[0.85] uppercase tracking-tighter">
+              <HeroText className="text-4xl md:text-5xl lg:text-6xl mb-0 text-white leading-[0.85] uppercase tracking-tighter">
                 TOAST
               </HeroText>
             </div>
@@ -54,7 +54,7 @@ export const Footer = () => {
               >
                 © DesignByte Studio
               </a>
-              <p className="m-0 mt-4 max-w-sm text-sm font-bold leading-relaxed italic opacity-70">
+              <p className="m-0 mt-4 max-w-sm text-sm font-bold leading-relaxed italic">
                 The opinionated toast library with native vibration support for the modern web. Built for the tactical developer.
               </p>
             </div>
@@ -62,7 +62,9 @@ export const Footer = () => {
 
           <div className="lg:col-span-8 grid grid-cols-2 md:grid-cols-3 gap-12 text-left items-start">
             <div className="flex flex-col gap-4">
-              <h4 className="text-xs font-black uppercase tracking-[0.2em] mb-4 opacity-30">Docs</h4>
+              <HeroText className="text-lg md:text-xl lg:text-2xl mb-4 text-white md:mb-6 leading-[0.85] uppercase tracking-tighter">
+                Docs
+              </HeroText>
               {SITE_LINKS.CORE.map((link) => (
                 <Link key={link.href} href={link.href} className="text-sm font-black uppercase hover:text-secondary transition-colors no-underline text-white tracking-tight">
                   {link.label}
@@ -70,7 +72,9 @@ export const Footer = () => {
               ))}
             </div>
             <div className="flex flex-col gap-4">
-              <h4 className="text-xs font-black uppercase tracking-[0.2em] mb-4 opacity-30">Reference</h4>
+              <HeroText className="text-lg md:text-xl lg:text-2xl mb-4 text-white md:mb-6 leading-[0.85] uppercase tracking-tighter">
+                Reference
+              </HeroText>
               {SITE_LINKS.REFERENCE.map((link) => (
                 <Link key={link.href} href={link.href} className="text-sm font-black uppercase hover:text-secondary transition-colors no-underline text-white tracking-tight">
                   {link.label}
@@ -78,7 +82,9 @@ export const Footer = () => {
               ))}
             </div>
             <div className="flex flex-col gap-4">
-              <h4 className="text-xs font-black uppercase tracking-[0.2em] mb-4 opacity-30">Ecosystem</h4>
+              <HeroText className="text-lg md:text-xl lg:text-2xl mb-4 text-white md:mb-6 leading-[0.85] uppercase tracking-tighter">
+                Explore More
+              </HeroText>
               {SITE_LINKS.ECOSYSTEM.map((link) => (
                 <Link key={link.href} href={link.href} className="text-sm font-black uppercase hover:text-secondary transition-colors no-underline text-white tracking-tight">
                   {link.label}
@@ -96,7 +102,7 @@ export const Footer = () => {
 
       <div className="py-8 border-t-2 border-white/10 bg-black/20">
         <div className="container mx-auto px-8 flex flex-col md:flex-row justify-between items-center gap-8">
-          <p className="m-0 text-[10px] md:text-sm font-black uppercase tracking-wide text-left text-white opacity-40">
+          <p className="m-0 text-[10px] md:text-sm font-black uppercase tracking-wide text-left text-white ">
             © {year} DESIGNBYTE STUDIO | ALL RIGHTS RESERVED
           </p>
           <div className="flex items-center gap-4">
@@ -113,8 +119,8 @@ export const Footer = () => {
         </div>
       </div>
 
-      <div className="relative border-t-8 border-black select-none pointer-events-none pb-12 bg-primary">
-        <div className="flex animate-marquee whitespace-nowrap pt-12">
+      <div className="relative select-none pointer-events-none pb-12 bg-primary">
+        <div className="flex animate-marquee whitespace-nowrap py-8">
           {[1, 2].map((group) => (
             <div key={group} className="flex items-center">
               {[1, 2, 3, 4].map((i) => (

@@ -48,17 +48,17 @@ export const Compatibility = ({ className }: { className?: string }) => {
                 <div className="flex-1">
                   <div className="flex items-center gap-2 mb-1">
                     <h3 className="text-xl font-black uppercase text-primary tracking-tighter">ANDROID</h3>
-                    <span className="px-2 py-0.5 bg-black text-[#CCFF00] text-[8px] font-black rounded-lg tracking-widest uppercase">Native</span>
+                    <span className="px-2 py-0.5 bg-black text-[#CCFF00] text-[8px]  rounded-lg tracking-widest uppercase">Native</span>
                   </div>
-                  <p className="text-sm font-bold opacity-70 leading-relaxed max-w-[200px]">
+                  <p className="text-sm font-bold text-black opacity-70 leading-relaxed max-w-[200px]">
                     Perfect Vibration API integration for all mobile browsers.
                   </p>
                 </div>
-                
+
                 {/* Haptic Pulse Visualization */}
                 <div className="absolute right-4 bottom-4 flex items-center gap-1 opacity-20 group-hover/card:opacity-100 transition-opacity">
                   {[...Array(4)].map((_, i) => (
-                    <motion.div 
+                    <motion.div
                       key={i}
                       animate={{ height: [4, 16, 4] }}
                       transition={{ duration: 0.5, repeat: Infinity, delay: i * 0.1 }}
@@ -80,7 +80,7 @@ export const Compatibility = ({ className }: { className?: string }) => {
                       <h4 className="font-black text-[10px] uppercase tracking-widest text-primary">iOS</h4>
                       <span className="px-1.5 py-0.5 bg-black text-[#CCFF00] text-[6px] font-black rounded-md tracking-widest uppercase italic">CORE</span>
                     </div>
-                    <p className="font-bold text-[11px] leading-tight opacity-80 italic">WebKit support. <b>Native iPhone feel.</b></p>
+                    <p className="font-bold text-[11px] leading-tight opacity-80 text-black italic">WebKit support. <b>Native iPhone feel.</b></p>
                   </div>
                 </div>
 
@@ -95,7 +95,7 @@ export const Compatibility = ({ className }: { className?: string }) => {
                       <h4 className="font-black text-[10px] uppercase tracking-widest text-primary">Desktop</h4>
                       <span className="px-1.5 py-0.5 bg-black text-[#CCFF00] text-[6px] font-black rounded-md tracking-widest uppercase italic">Simulation</span>
                     </div>
-                    <p className="font-bold text-[11px] leading-tight opacity-80 italic">Full audio-haptic simulation experience.</p>
+                    <p className="font-bold text-[11px] leading-tight opacity-80 italic text-black">Full audio-haptic simulation experience.</p>
                   </div>
                 </div>
               </div>

@@ -9,7 +9,7 @@ import { cn } from '@/src/lib/utils';
 
 export const AdvancedFeatures = () => {
   return (
-    <section id="advanced" className="py-24 bg-secondary relative overflow-hidden">
+    <section id="advanced" className="py-24 bg-secondary relative overflow-hidden text-black">
       {/* Decorative Diagonal Stripes */}
       <div className="absolute inset-0 opacity-[0.05] pointer-events-none"
         style={{ backgroundImage: 'repeating-linear-gradient(45deg, #000 0, #000 2px, transparent 0, transparent 40px)' }} />
@@ -17,7 +17,7 @@ export const AdvancedFeatures = () => {
       <div className="max-w-7xl mx-auto px-6 relative z-10">
         <div className="flex flex-col md:flex-row items-center justify-between mb-16 gap-8">
           <div className="text-left">
-            <HeroText shadowColor="var(--color-black)" className="text-4xl md:text-7xl text-primary leading-none uppercase mb-2">
+            <HeroText className="text-4xl md:text-7xl leading-none uppercase mb-2 text-primary">
               AND MANY MORE...
             </HeroText>
             <p className="max-w-xl text-xl md:text-2xl font-black italic text-black/60">

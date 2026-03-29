@@ -73,7 +73,7 @@ export const Playground = ({
   };
 
   return (
-    <section id="playground" className="py-24 bg-white relative overflow-hidden">
+    <section id="playground" className="py-24 bg-white relative overflow-hidden text-black">
       {/* Blueprint Grid */}
       <div className="absolute inset-0 opacity-[0.03] pointer-events-none"
         style={{ backgroundImage: 'radial-gradient(circle, #000 1px, transparent 1px)', backgroundSize: '32px 32px' }} />
@@ -103,11 +103,11 @@ export const Playground = ({
               <div className="space-y-10 flex-1">
                 <div className="grid grid-cols-2 gap-3">
                   <ConfigSwitch label="Haptic Feedback" active={haptics} onClick={() => setHaptics(!haptics)} tiltClass="rotate-1" />
+                  <ConfigSwitch label="Debug Mode" active={hapticsDebug} onClick={() => setHapticsDebug(!hapticsDebug)} tiltClass="rotate-1" />
                   <ConfigSwitch label="Rich Colors" active={richColors} onClick={() => setRichColors(!richColors)} />
+                  <ConfigSwitch label="Close X" active={closeButton} onClick={() => setCloseButton(!closeButton)} tiltClass="-rotate-2" />
                   <ConfigSwitch label="Stack Stacks" active={expand} onClick={() => setExpand(!expand)} tiltClass="-rotate-1" />
                   <ConfigSwitch label="Manual Switch" active={hapticsShowSwitch} onClick={() => setHapticsShowSwitch(!hapticsShowSwitch)} />
-                  <ConfigSwitch label="Debug Mode" active={hapticsDebug} onClick={() => setHapticsDebug(!hapticsDebug)} tiltClass="rotate-1" />
-                  <ConfigSwitch label="Close X" active={closeButton} onClick={() => setCloseButton(!closeButton)} tiltClass="-rotate-2" />
                 </div>
 
                 <div className="space-y-4 pt-6">

@@ -60,7 +60,7 @@ const cards: CardItem[] = [
 
 export const FeatureOverview = () => {
   return (
-    <section id="features" aria-labelledby="features-heading" className="bg-primary">
+    <section id="features" aria-labelledby="features-heading" className="bg-primary text-black">
       <div className="bg-background text-foreground rounded-t-4xl px-6 py-12 md:px-10 md:py-16 relative z-20 shadow-[0_-20px_50px_rgba(0,0,0,0.1)] mt-auto w-full">
         <div className="container mx-auto flex flex-col items-center">
           <div className="flex flex-col items-center text-center mb-16 w-full max-w-4xl">

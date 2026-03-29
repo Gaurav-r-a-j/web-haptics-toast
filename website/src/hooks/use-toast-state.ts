@@ -22,9 +22,15 @@ export function useToastState() {
   const { resolvedTheme } = useTheme();
   const [mounted, setMounted] = React.useState(false);
 
-  // Sync mounting state for SSR-safe theme detection
+  // Sync mounting state for SSR-safe theme detection and desktop debug default
   React.useEffect(() => {
     setMounted(true);
+    if (typeof window !== 'undefined') {
+      const isMobile = /Mobi|Android|iPhone/i.test(navigator.userAgent);
+      if (!isMobile) {
+        setHapticsDebug(true);
+      }
+    }
   }, []);
 
   const toasterTheme = React.useMemo(() => {
