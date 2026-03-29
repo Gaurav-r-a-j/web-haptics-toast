@@ -92,7 +92,7 @@ export const Highlight = () => {
         <div className="relative z-10 max-w-7xl container mx-auto">
           <div className="flex flex-col md:flex-row md:items-end justify-between mb-24 gap-12">
             <div className="max-w-4xl">
-              <HeroText shadowColor="#cfd9fc" className="text-4xl md:text-6xl lg:text-7xl mb-0 text-primary leading-none uppercase">
+              <HeroText shadowColor="var(--secondary)" className="text-4xl md:text-6xl lg:text-7xl mb-0 text-primary leading-none uppercase">
                 COMPATIBILITY
               </HeroText>
             </div>

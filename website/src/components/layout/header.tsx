@@ -7,9 +7,10 @@ import { isHapticsSupported } from 'web-haptics-toast';
 import { useTheme } from 'next-themes';
 import { siteContainer } from '@/src/utils/site-ui';
 import { cn } from '@/src/lib/utils';
-import { Monitor, Moon, Sun, Slash, Volume2, VolumeX, Waves, Bell } from 'lucide-react';
-import { motion, useScroll, useMotionValueEvent, AnimatePresence } from 'motion/react';
+import { Slash, Volume2, VolumeX, Waves } from 'lucide-react';
+import { motion, useScroll, useMotionValueEvent } from 'motion/react';
 import { ThemeToggle } from '@/src/components/ui/theme-toggle';
+import { Logo } from '@/src/components/ui/logo';
 
 const LOGO_ROTATION = ['WEB', 'HAPTICS'];
 
@@ -88,26 +89,7 @@ export const Header = ({
       <nav className={`${siteContainer} relative z-20 flex items-center justify-between py-4 min-[480px]:py-5 max-w-[1440px] mx-auto w-full`}>
         {/* Logo (Left Aligned) */}
         <div className="flex flex-1 justify-start items-center">
-          <Link href="/" className="flex items-center gap-1 no-underline" aria-label="Home">
-            <div className={cn(
-              "font-black tracking-tight text-xs md:text-sm px-3 py-1.5 rounded-2xl rounded-bl-sm relative shadow-sm transition-colors duration-300 h-[34px] flex items-center min-w-[100px] justify-center",
-              isScrolled ? "bg-foreground text-background" : "bg-white text-black"
-            )}>
-              <div className="relative h-full flex items-center overflow-hidden w-full justify-center">
-                <LogoTextRotation />
-              </div>
-              <div className={cn(
-                "absolute -bottom-1.5 left-0 w-3 h-3 transition-colors duration-300",
-                isScrolled ? "bg-foreground" : "bg-white"
-              )} style={{ clipPath: 'polygon(0 0, 100% 0, 0 100%)' }}></div>
-            </div>
-            <div className={cn(
-              "bg-[#CCFF00] text-black font-black text-xs md:text-sm px-3 py-1.5 rounded-full border-[1.5px] shadow-sm transition-colors duration-300",
-              isScrolled ? "border-border" : "border-white/30"
-            )}>
-              TOAST
-            </div>
-          </Link>
+          <Logo isScrolled={isScrolled} />
         </div>
 
         {/* Desktop Links (Centered Navigation) */}
@@ -234,29 +216,4 @@ export const Header = ({
   );
 };
 
-const LogoTextRotation = () => {
-  const [index, setIndex] = React.useState(0);
 
-  React.useEffect(() => {
-    const timer = setInterval(() => {
-      setIndex((prev) => (prev + 1) % LOGO_ROTATION.length);
-    }, 2500);
-    return () => clearInterval(timer);
-  }, []);
-
-  return (
-    <AnimatePresence mode="wait">
-      <motion.span
-        key={index}
-        initial={{ y: 20, opacity: 0 }}
-        animate={{ y: 0, opacity: 1 }}
-        exit={{ y: -20, opacity: 0 }}
-        transition={{ duration: 0.4, ease: [0.23, 1, 0.32, 1] }}
-        className="flex items-center gap-1.5"
-      >
-        {index === 0 && <Bell size={12} className="fill-current" strokeWidth={3} />}
-        {LOGO_ROTATION[index]}
-      </motion.span>
-    </AnimatePresence>
-  );
-};

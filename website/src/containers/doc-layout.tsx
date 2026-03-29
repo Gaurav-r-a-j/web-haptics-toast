@@ -1,7 +1,8 @@
-import React, { ReactNode } from 'react';
+import React from 'react';
 import { Footer, Layout, Navbar } from 'nextra-theme-docs';
 import { getPageMap } from 'nextra/page-map';
 import { Search } from 'nextra/components';
+import { Logo } from '@/src/components/ui/logo';
 import 'nextra-theme-docs/style.css';
 
 const docsRepositoryBase = 'https://github.com/Gaurav-r-a-j/web-haptics-toast/tree/main/website';
@@ -10,7 +11,7 @@ const docsRepositoryBase = 'https://github.com/Gaurav-r-a-j/web-haptics-toast/tr
  * DocLayout Container
  * 
  * Centralized Nextra documentation layout component.
- * Moved to a separate container directory to follow project folder structure best practices.
+ * Simplified Server Component that handles page fetching for Nextra 4.
  */
 export default async function DocLayout({ children }: { children: any }) {
   let pageMap;
@@ -25,7 +26,7 @@ export default async function DocLayout({ children }: { children: any }) {
     <Layout
       navbar={
         <Navbar
-          logo={<strong>web-haptics-toast</strong>}
+          logo={<Logo />}
           projectLink="https://github.com/Gaurav-r-a-j/web-haptics-toast"
         >
           <Search />

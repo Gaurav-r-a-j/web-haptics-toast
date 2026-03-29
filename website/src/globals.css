@@ -98,7 +98,7 @@
   }
 
   .nextra-sidebar-container {
-    background: var(--secondary) !important;
+    background: var(--background) !important;
     border-right: 1px solid var(--border) !important;
   }
 
@@ -140,24 +140,32 @@
   }
 
   aside li.active a {
-    background: var(--secondary) !important;
+    background: var(--accent) !important;
     color: var(--foreground) !important;
   }
 
   aside li:not(.active) a:hover {
-    background: var(--secondary) !important;
+    background: var(--muted) !important;
   }
 
   pre {
-    background-color: var(--secondary) !important;
+    background-color: var(--muted) !important;
     border: 1px solid var(--border);
     margin-bottom: 2rem !important;
     border-radius: var(--radius);
   }
 
+  html.dark pre {
+    background-color: #0f1115 !important;
+  }
+
   button[title='Copy code'] {
-    background: var(--secondary);
+    background: var(--muted);
     color: var(--muted-foreground);
+  }
+
+  html.dark button[title='Copy code'] {
+    background: #1e1e20;
   }
 
   main>p {
@@ -208,11 +216,11 @@
 
   .nextra-container ul[role='listbox'] [role='option'][data-headlessui-state~='active'],
   .nextra-container ul[role='listbox'] li[role='option']:hover {
-    background-color: var(--secondary) !important;
+    background-color: var(--muted) !important;
   }
 
   .nextra-container button[aria-haspopup='listbox'] {
-    background-color: var(--secondary) !important;
+    background-color: var(--background) !important;
     color: var(--foreground) !important;
     border-color: var(--border) !important;
   }
@@ -230,7 +238,7 @@
   }
 
   .nx-bg-primary-500\/10 {
-    background: var(--secondary) !important;
+    background: var(--accent) !important;
   }
 
   @keyframes marquee {

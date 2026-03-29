@@ -5,36 +5,35 @@
 
 :root,
 .light {
-  --background: #fefefe;
-  --foreground: #111111;
+  --background: #ffffff;
+  --foreground: #000000;
 
   --card: #f8f9fa;
-  --card-foreground: #111111;
+  --card-foreground: #000000;
 
   --popover: #ffffff;
-  --popover-foreground: #111111;
+  --popover-foreground: #000000;
 
   /* Brand CTA */
   --primary: #0038FF;
   --primary-foreground: #ffffff;
 
   --secondary: #CCFF00;
-  --secondary-foreground: #111111;
+  --secondary-foreground: #000000;
 
-
-  --muted: #f1f3f5;
-  --muted-foreground: #495057;
+  --muted: #f4f4f5;
+  --muted-foreground: #71717a;
 
   /* Subtle hover / tint surfaces (not the brand button color) */
-  --accent: rgba(0, 56, 255, 0.14);
-  --accent-foreground: #332c28;
+  --accent: rgba(0, 56, 255, 0.08);
+  --accent-foreground: #000000;
 
   --destructive: oklch(0.577 0.245 27.325);
   --destructive-foreground: oklch(0.985 0 0);
 
-  --border: #eedcc8;
-  --input: #eedcc8;
-  --ring: #CCFF00;
+  --border: #e5e7eb;
+  --input: #e5e7eb;
+  --ring: #0038FF;
 
   --radius: 8px;
   --radius-sm: 6px;
@@ -71,49 +70,53 @@
   --rim-soft: rgba(51, 44, 40, 0.07);
   --rim-softer: rgba(51, 44, 40, 0.04);
 
-  /* Rich toasts: map to shadcn chart / destructive / card (package reads `--toast-*`) */
-  --toast-success-bg: color-mix(in oklch, var(--chart-2) 22%, var(--card));
-  --toast-success-border: color-mix(in oklch, var(--chart-2) 42%, var(--border));
-  --toast-success-text: var(--foreground);
-  --toast-error-bg: color-mix(in oklch, var(--destructive) 20%, var(--card));
-  --toast-error-border: color-mix(in oklch, var(--destructive) 38%, var(--border));
-  --toast-error-text: var(--foreground);
-  --toast-warning-bg: color-mix(in oklch, var(--chart-4) 22%, var(--card));
-  --toast-warning-border: color-mix(in oklch, var(--chart-4) 42%, var(--border));
-  --toast-warning-text: var(--foreground);
-  --toast-info-bg: color-mix(in oklch, var(--chart-3) 22%, var(--card));
-  --toast-info-border: color-mix(in oklch, var(--chart-3) 42%, var(--border));
-  --toast-info-text: var(--foreground);
+  /* Poeru-Grade Toast Tokens (Explicit, No Calculation) */
+  --toast-success-bg: #ecfdf5;
+  --toast-success-border: #10b981;
+  --toast-success-text: #064e3b;
+
+  --toast-error-bg: #fef2f2;
+  --toast-error-border: #ef4444;
+  --toast-error-text: #7f1d1d;
+
+  --toast-warning-bg: #fffbeb;
+  --toast-warning-border: #f59e0b;
+  --toast-warning-text: #78350f;
+
+  --toast-info-bg: #eff6ff;
+  --toast-info-border: #3b82f6;
+  --toast-info-text: #1e3a8a;
 }
 
 .dark {
-  --background: #141210;
-  --foreground: #f2ebe3;
+  --background: #09090b;
+  --foreground: #ffffff;
 
-  --card: #2a241f;
-  --card-foreground: #f2ebe3;
+  --card: #09090b;
+  --card-foreground: #ffffff;
 
-  --popover: #2a241f;
-  --popover-foreground: #f2ebe3;
+  --popover: #09090b;
+  --popover-foreground: #ffffff;
 
-  --primary: #CCFF00;
-  --primary-foreground: #000000;
+  /* Brand CTA */
+  --primary: #0038FF;
+  --primary-foreground: #ffffff;
 
-  --secondary: #1e1a17;
-  --secondary-foreground: #f2ebe3;
+  --secondary: #CCFF00;
+  --secondary-foreground: #000000;
 
-  --muted: #1e1a17;
-  --muted-foreground: #a6988c;
+  --muted: #18181b;
+  --muted-foreground: #a1a1aa;
 
-  --accent: rgba(204, 255, 0, 0.18);
-  --accent-foreground: #f2ebe3;
+  --accent: rgba(0, 56, 255, 0.15);
+  --accent-foreground: #ffffff;
 
   --destructive: oklch(0.704 0.191 22.216);
   --destructive-foreground: oklch(0.985 0 0);
 
-  --border: #3d3630;
-  --input: #3d3630;
-  --ring: #CCFF00;
+  --border: #1d1d20;
+  --input: #1d1d20;
+  --ring: #0038FF;
 
   --chart-1: oklch(0.488 0.243 264.376);
   --chart-2: oklch(0.696 0.17 162.48);
@@ -139,16 +142,20 @@
   --rim-soft: rgba(255, 248, 240, 0.1);
   --rim-softer: rgba(255, 248, 240, 0.05);
 
-  --toast-success-bg: color-mix(in oklch, var(--chart-2) 26%, var(--card));
-  --toast-success-border: color-mix(in oklch, var(--chart-2) 48%, var(--border));
-  --toast-success-text: var(--foreground);
-  --toast-error-bg: color-mix(in oklch, var(--destructive) 24%, var(--card));
-  --toast-error-border: color-mix(in oklch, var(--destructive) 42%, var(--border));
-  --toast-error-text: var(--foreground);
-  --toast-warning-bg: color-mix(in oklch, var(--chart-4) 26%, var(--card));
-  --toast-warning-border: color-mix(in oklch, var(--chart-4) 48%, var(--border));
-  --toast-warning-text: var(--foreground);
-  --toast-info-bg: color-mix(in oklch, var(--chart-3) 26%, var(--card));
-  --toast-info-border: color-mix(in oklch, var(--chart-3) 48%, var(--border));
-  --toast-info-text: var(--foreground);
+  /* Poeru-Grade Toast Tokens (Explicit, No Calculation) */
+  --toast-success-bg: #064e3b;
+  --toast-success-border: #10b981;
+  --toast-success-text: #ffffff;
+
+  --toast-error-bg: #7f1d1d;
+  --toast-error-border: #ef4444;
+  --toast-error-text: #ffffff;
+
+  --toast-warning-bg: #78350f;
+  --toast-warning-border: #f59e0b;
+  --toast-warning-text: #ffffff;
+
+  --toast-info-bg: #1e3a8a;
+  --toast-info-border: #3b82f6;
+  --toast-info-text: #ffffff;
 }
