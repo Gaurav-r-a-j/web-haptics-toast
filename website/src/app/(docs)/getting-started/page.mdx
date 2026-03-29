@@ -1,0 +1,151 @@
+import { Callout, Tabs, Steps } from 'nextra/components';
+
+
+# Getting Started
+
+<Callout emoji="📦">
+  **One package, everything included:** components, CSS, and the haptics engine (`WebHaptics`, presets, `triggerHaptic`, debug sound, optional on-screen toggle) ship **inside `web-haptics-toast`**. You do **not** install a second library for vibration.
+</Callout>
+
+**Sonner-compatible API** — same ``toast`()` helpers and `<Toaster />` props you already know, so you can migrate or start fresh without new patterns. Haptic feedback is **on by default** on supported devices. Turn it off globally with `<Toaster haptics={false} />`, or skip vibration for **one** toast with ``toast`('…', { haptics: false })` ([Toast options](/toast)).
+
+Coming from Sonner? See **[Migrate from Sonner](/migration-from-sonner)** (npm alias with zero import changes, or rename the package and update imports).
+
+<Steps>
+### Install
+
+<Tabs items={['pnpm', 'npm', 'yarn', 'bun']}>
+  <Tabs.Tab>
+    ```bash
+    pnpm i web-haptics-toast
+    ```
+
+  </Tabs.Tab>
+  <Tabs.Tab>
+    ```bash
+    npm i web-haptics-toast
+    ```
+  </Tabs.Tab>
+  <Tabs.Tab>
+    ```bash
+    yarn add web-haptics-toast
+    ```
+  </Tabs.Tab>
+  <Tabs.Tab>
+    ```bash
+    bun add web-haptics-toast
+    ```
+  </Tabs.Tab>
+</Tabs>
+
+### Add Toaster to your app
+
+Import the package styles **once** (typically in the same file as `<Toaster />` or your root layout). You can place `<Toaster />` anywhere; in the App Router it is often in `layout.tsx`.
+
+```tsx
+import { Toaster } from 'web-haptics-toast';
+import 'web-haptics-toast/dist/styles.css';
+
+export default function RootLayout({ children }: { children: React.ReactNode }) {
+  return (
+    <html lang="en">
+      <body>
+        {children}
+        <Toaster />
+      </body>
+    </html>
+  );
+}
+```
+
+**Haptics** run automatically when each toast appears (default `true`). To use vibration **only on certain buttons or actions** (not on every toast), see [Haptics → manual haptics](/haptics#manual-haptics) and [`<Toaster />` props](/toaster#haptics-api).
+
+### Render a toast
+
+```tsx
+
+
+function MyToast() {
+  return <button onClick={() => `toast`('This is a toast')}>Render my toast</button>;
+}
+```
+
+### (Optional) Enable production behaviors
+
+web-haptics-toast keeps Sonner-compatible behavior by default.
+If you want “production-grade” features that can change toast semantics (like dedupe/update), enable them from one place: `<Toaster system={...} />`.
+
+```tsx
+import { Toaster, toast } from 'web-haptics-toast';
+import 'web-haptics-toast/dist/styles.css';
+
+export default function App() {
+  return (
+    <>
+      <Toaster
+        system={{
+          dedupe: { enabled: true },
+          dismissReason: { enabled: true },
+        }}
+      />
+      <button
+        onClick={() =>
+          toast.error('Payment failed', {
+            dedupeKey: 'payment-error',
+            onClose: (_toast, reason) => {
+              console.log('Closed with reason:', reason);
+            },
+          })
+        }
+      >
+        Trigger toast
+      </button>
+    </>
+  );
+}
+```
+
+### Dedupe / update by `dedupeKey` (OFF by default)
+
+When enabled in `system`, calling `toast.*(..., { dedupeKey })` updates the existing toast with the same key instead of creating a new one.
+
+```tsx
+<Toaster system={{ dedupe: { enabled: true } }} />
+
+toast.error('Payment failed', { toasterId: 'global', dedupeKey: 'payment-error' });
+toast.error('Payment failed again', { toasterId: 'global', dedupeKey: 'payment-error' });
+```
+
+### Dismiss reason via `onClose` (OFF by default)
+
+When enabled in `system`, `toast.onClose` is called with a dismissal `reason`.
+
+Possible reasons:
+`timeout | swipe | close | cancel | action | dismiss`.
+
+```tsx
+<Toaster system={{ dismissReason: { enabled: true } }} />
+
+`toast`('Saved', {
+  onClose: (_toast, reason) => {
+    console.log(reason);
+  },
+});
+```
+
+</Steps>
+
+### Quick reference
+
+| Goal | What to do |
+| :--- | :--- |
+| Disable all toast haptics | `<Toaster haptics={false} />` |
+| Disable haptics for one toast | ``toast`('…', { haptics: false })` |
+| Haptic on a button **without** a toast | ``triggerHaptic`('success')` from `web-haptics-toast` ([Haptics](/haptics#manual-haptics)) |
+| Dedupe / update toasts | `<Toaster system={{ dedupe: { enabled: true } }} />` + `dedupeKey` on the toast |
+| Dismissal reason in `onClose` | `<Toaster system={{ dismissReason: { enabled: true } }} />` |
+
+### Credits
+
+- **Sonner** — API and toast UX this project tracks.
+- **Haptics** — preset names and engine behavior are **bundled in this package** (no separate npm dependency). They follow the same vocabulary as the open [web-haptics](https://github.com/lochie/web-haptics) project for familiarity, but you only depend on **`web-haptics-toast`**.
