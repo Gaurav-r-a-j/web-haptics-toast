@@ -1,4 +1,4 @@
-export default {
+const meta = {
   'getting-started': {
     title: 'Getting Started',
     href: '/getting-started',
@@ -32,3 +32,5 @@ export default {
     href: '/styling',
   },
 };
+
+export default meta;

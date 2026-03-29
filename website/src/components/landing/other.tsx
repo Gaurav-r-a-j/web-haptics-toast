@@ -27,7 +27,7 @@ export const Other = ({
   const allTypes = useMemo(
     () => [
       {
-        name: 'Rich Colors Success',
+        name: 'Warm Success',
         snippet: `toast.success('Event has been created')`,
         action: () => {
           toast.success('Event has been created');
@@ -35,7 +35,7 @@ export const Other = ({
         },
       },
       {
-        name: 'Rich Colors Error',
+        name: 'Critical Error',
         snippet: `toast.error('Event has not been created')`,
         action: () => {
           toast.error('Event has not been created');
@@ -43,7 +43,7 @@ export const Other = ({
         },
       },
       {
-        name: 'Rich Colors Info',
+        name: 'Subtle Info',
         snippet: `toast.info('Be at the area 10 minutes before the event time')`,
         action: () => {
           toast.info('Be at the area 10 minutes before the event time');
@@ -51,7 +51,7 @@ export const Other = ({
         },
       },
       {
-        name: 'Rich Colors Warning',
+        name: 'Soft Warning',
         snippet: `toast.warning('Event start time cannot be earlier than 8am')`,
         action: () => {
           toast.warning('Event start time cannot be earlier than 8am');
@@ -59,7 +59,7 @@ export const Other = ({
         },
       },
       {
-        name: 'Close Button',
+        name: 'Add Close Button',
         snippet: `toast('Event has been created', {
   description: 'Monday, January 3rd at 6:00pm',
 })`,
@@ -71,7 +71,7 @@ export const Other = ({
         },
       },
       {
-        name: 'Headless',
+        name: 'Headless / Custom',
         snippet: `toast.custom((t) => (
   <div>
     <h1>Custom toast</h1>
@@ -110,28 +110,34 @@ export const Other = ({
     <div className="p-8 md:p-16 lg:py-20 border-b border-border text-foreground bg-background">
       <div className="max-w-5xl mx-auto flex flex-col items-center">
         <HeroText shadowColor="#cfd9fc" className="text-4xl md:text-6xl lg:text-7xl mb-12 text-primary leading-none uppercase text-center w-full">
-          OPTIONS
+          RICH COLORS
         </HeroText>
         <p className="m-0 mb-12 max-w-2xl text-center text-lg md:text-xl font-bold leading-relaxed text-muted-foreground">
-          Toggle rich colors, global close buttons, and custom headless components. Global Toaster props update instantly via simple presets.
+          Expressive tones that signal intent instantly. From critical failures to smooth successes, these rich presets align physical vibration with high-impact visual color.
         </p>
-      <div className={`${chipScrollRow} justify-center mb-12`}>
-        {allTypes.map((type) => (
-          <button
-            className={otherChip}
-            onClick={() => {
-              type.action();
-              setActiveType(type);
-            }}
-            key={type.name}
-          >
-            {type.name}
-          </button>
-        ))}
-      </div>
-      <div className="max-w-3xl w-full">
-        <CodeBlock>{`${activeType.snippet}`}</CodeBlock>
-      </div>
+        <div className={`${chipScrollRow} justify-center mb-12 flex-wrap gap-4`}>
+          {allTypes.map((type) => (
+            <button
+              className={`${otherChip} px-8 py-3 text-sm font-black uppercase transition-all hover:-translate-y-1 hover:-translate-x-1 border-2 border-black/5`}
+              data-active={activeType.name === type.name}
+              style={{
+                boxShadow: activeType.name === type.name
+                  ? Array.from({ length: 6 }, (_, i) => `${i + 1}px ${i + 1}px 0 #cfd9fc`).join(', ')
+                  : Array.from({ length: 4 }, (_, i) => `${i + 1}px ${i + 1}px 0 rgba(0,0,0,0.05)`).join(', ')
+              }}
+              onClick={() => {
+                type.action();
+                setActiveType(type);
+              }}
+              key={type.name}
+            >
+              {type.name}
+            </button>
+          ))}
+        </div>
+        <div className="max-w-3xl w-full">
+          <CodeBlock>{`${activeType.snippet}`}</CodeBlock>
+        </div>
       </div>
     </div>
   );

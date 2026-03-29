@@ -273,13 +273,15 @@ export const ParticlesProvider = ({ children }: { children: React.ReactNode }) =
     const onResize = () => resizeCanvas(canvas);
     window.addEventListener('resize', onResize);
 
+    const timeoutIds = timeoutIdsRef.current;
+
     return () => {
       if (rafIdRef.current !== null) {
         cancelAnimationFrame(rafIdRef.current);
         rafIdRef.current = null;
       }
-      timeoutIdsRef.current.forEach((id) => clearTimeout(id));
-      timeoutIdsRef.current.clear();
+      timeoutIds.forEach((id) => clearTimeout(id));
+      timeoutIds.clear();
       window.removeEventListener('resize', onResize);
     };
   }, []);

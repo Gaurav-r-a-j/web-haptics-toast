@@ -1,4 +1,5 @@
 import React from 'react';
+import Image from 'next/image';
 import { motion } from 'motion/react';
 
 // --- Custom SVG Components for Hand-Drawn Accents ---
@@ -148,7 +149,7 @@ export const Hero = () => {
             >
               <div className="w-40 md:w-52 aspect-[3/3.5] bg-white/20 backdrop-blur-md border border-white/40 rounded-[2rem] p-5 flex flex-col items-center justify-center rotate-[-12deg] shadow-2xl hover:rotate-0 transition-transform duration-500">
                 <div className="w-16 h-16 md:w-24 md:h-24 bg-[#D2B48C] rounded-full flex items-center justify-center mb-4 shadow-inner border-[3px] border-white/50 overflow-hidden">
-                  <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Felix&backgroundColor=D2B48C" alt="Avatar" className="w-full h-full object-cover" />
+                  <Image src="https://api.dicebear.com/7.x/avataaars/svg?seed=Felix&backgroundColor=D2B48C" alt="Avatar" width={96} height={96} className="w-full h-full object-cover" />
                 </div>
                 <div className="text-center mt-2">
                   <p className="font-bold text-sm md:text-lg text-white">baseclub.eth</p>
@@ -165,7 +166,7 @@ export const Hero = () => {
             >
               <div className="w-40 md:w-52 aspect-[3/3.5] bg-white/20 backdrop-blur-md border border-white/40 rounded-[2rem] p-5 flex flex-col items-center justify-center rotate-[12deg] shadow-2xl hover:rotate-0 transition-transform duration-500">
                 <div className="w-16 h-16 md:w-24 md:h-24 bg-[#2C3E50] rounded-full flex items-center justify-center mb-4 shadow-inner border-[3px] border-white/50 overflow-hidden">
-                  <img src="https://api.dicebear.com/7.x/pixel-art/svg?seed=John" alt="Avatar" className="w-full h-full object-cover scale-150" />
+                  <Image src="https://api.dicebear.com/7.x/pixel-art/svg?seed=John" alt="Avatar" width={96} height={96} className="w-full h-full object-cover scale-150" />
                 </div>
                 <div className="text-center mt-2">
                   <p className="font-bold text-sm md:text-lg text-white">pearl.eth</p>
@@ -210,7 +211,7 @@ export const Hero = () => {
             <div className="relative w-full flex justify-center mt-6">
               <div className="flex items-center bg-[#0038FF] rounded-2xl p-2 pr-16 text-white shadow-lg relative z-10">
                 <div className="w-8 h-8 bg-[#D2B48C] rounded-full mr-3 border border-white/30 overflow-hidden flex-shrink-0">
-                  <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Felix&backgroundColor=D2B48C" alt="Avatar" className="w-full h-full object-cover" />
+                  <Image src="https://api.dicebear.com/7.x/avataaars/svg?seed=Felix&backgroundColor=D2B48C" alt="Avatar" width={32} height={32} className="w-full h-full object-cover" />
                 </div>
                 <div className="text-left">
                   <p className="text-[10px] font-bold leading-none">baseclub.eth</p>

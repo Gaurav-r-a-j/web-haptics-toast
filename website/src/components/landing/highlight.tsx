@@ -68,8 +68,8 @@ export const Highlight = () => {
                 Toasts are too easy to ignore. Vibration cuts through the noise.
               </p>
               <p className="m-0 text-base md:text-lg text-primary-foreground/70 mt-2 md:mt-4 font-semibold leading-relaxed max-w-xl">
-                Ever wonder why native apps feel "snappier"? It's the subtle physical feedback we don't consciously notice.
-                Bridge the gap. No more double-clicking because they "didn't see" the message.
+                Ever wonder why native apps feel &quot;snappier&quot;? It&apos;s the subtle physical feedback we don&apos;t consciously notice.
+                Bridge the gap. No more double-clicking because they &quot;didn&apos;t see&quot; the message.
               </p>
 
               <ul className="m-0 list-none mt-4 md:mt-8 lg:mt-10 space-y-4">

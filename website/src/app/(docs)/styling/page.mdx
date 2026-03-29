@@ -1,107 +1,90 @@
-# Styling
+# Styling & Creative Control
 
-Import the default stylesheet once in your app (if you have not already):
+Make your toasts feel at home. `web-haptics-toast` is designed to be as invisible as you need it to be, or as loud as your brand demands.
+
+Import the base styles once at your root layer:
 
 ```jsx
 import 'web-haptics-toast/dist/styles.css';
 ```
 
-Styling can be done globally via `toastOptions`, so every toast shares the same defaults.
+## Global Preferences
+
+Define your signature look globally. Every toast triggered will inherit these styles automatically, keeping your UI consistent and your code clean.
 
 ```jsx
 <Toaster
   toastOptions={{
     style: {
-      background: 'red',
+      background: '#09090b',
+      border: '1px solid rgba(255,255,255,0.1)',
+      color: '#fff',
     },
-    className: 'class',
+    className: 'my-toast-class',
   }}
 />
 ```
 
-You can also use the same props when calling `toast` to style a specific toast.
+## Quick Styling
+
+Need a one-off adjustment? You can pass style objects directly to any ``toast`()` call.
 
 ```jsx
-`toast`('Hello World', {
+toast('Hello World', {
   style: {
-    background: 'red',
+    background: 'var(--brand-primary)',
+    color: '#fff',
   },
-  className: 'class',
 });
 ```
 
-## Tailwind CSS
+## Rich Colors & Intent
 
-The preferred way to style the toasts with tailwind is by using the `unstyled` prop. That will give you an unstyled toast which you can then style with tailwind.
+Human users process color faster than text. By enabling `richColors`, you transform default toasts into vibrant signals that match their haptic profile—perfect for critical errors or smooth successes.
+
+```jsx
+<Toaster richColors />
+```
+
+You can even go unstyled to use your own design system (like Tailwind):
 
 ```jsx
 <Toaster
   toastOptions={{
     unstyled: true,
     classNames: {
-      toast: 'bg-blue-400',
-      title: 'text-red-400',
-      description: 'text-red-400',
-      actionButton: 'bg-zinc-400',
-      cancelButton: 'bg-orange-400',
-      closeButton: 'bg-lime-400',
+      toast: 'bg-zinc-950 border border-zinc-800 rounded-2xl p-4 flex items-center gap-3',
+      title: 'text-zinc-100 font-bold',
+      description: 'text-zinc-400 text-sm',
+      actionButton: 'bg-indigo-600 hover:bg-indigo-500 text-white rounded-lg px-3 py-1',
     },
   }}
 />
 ```
 
-You can do the same when calling ``toast`()`.
+## Tactical Layouts
+
+`web-haptics-toast` supports both `dir="ltr"` and `dir="rtl"` automatically. When building custom headless toasts, the close button will intelligently flip based on the document direction.
 
 ```jsx
-`toast`('Hello World', {
-  unstyled: true,
-  classNames: {
-    toast: 'bg-blue-400',
-    title: 'text-red-400 text-2xl',
-    description: 'text-red-400',
-    actionButton: 'bg-zinc-400',
-    cancelButton: 'bg-orange-400',
-    closeButton: 'bg-lime-400',
-  },
-});
+toast.custom((t) => (
+  <div className="bg-white p-4 rounded-xl shadow-2xl relative">
+    <h1 className="font-bold">Human-Centered Design</h1>
+    <p className="text-gray-500">Subtle vibration meets precise layout.</p>
+    <button onClick={() => toast.dismiss(t)}>Close</button>
+  </div>
+));
 ```
 
-Styling per toast type is also possible.
+## Iconography
 
-```jsx
-<Toaster
-  toastOptions={{
-    unstyled: true,
-    classNames: {
-      error: 'bg-red-400',
-      success: 'text-green-400',
-      warning: 'text-yellow-400',
-      info: 'bg-blue-400',
-    },
-  }}
-/>
-```
-
-## Changing Icons
-
-You can change the default icons using the `icons` prop:
+Icons are the visual anchor of a toast. Replace the defaults to match your brand's voice.
 
 ```jsx
 <Toaster
   icons={{
-    success: <SuccessIcon />,
-    info: <InfoIcon />,
-    warning: <WarningIcon />,
-    error: <ErrorIcon />,
-    loading: <LoadingIcon />,
+    success: <CheckIcon />,
+    loading: <Spinner />,
   }}
 />
-```
-
-You can also set an icon for each toast:
-
-```jsx
-`toast`('Hello World', {
-  icon: <Icon />,
-});
 ```

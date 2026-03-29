@@ -13,8 +13,8 @@ const docsRepositoryBase = 'https://github.com/Gaurav-r-a-j/web-haptics-toast/tr
  * Centralized Nextra documentation layout component.
  * Simplified Server Component that handles page fetching for Nextra 4.
  */
-export default async function DocLayout({ children }: { children: any }) {
-  let pageMap;
+export default async function DocLayout({ children }: { children: React.ReactNode }) {
+  let pageMap: any[];
   try {
     pageMap = await getPageMap('/(docs)');
   } catch (error) {
