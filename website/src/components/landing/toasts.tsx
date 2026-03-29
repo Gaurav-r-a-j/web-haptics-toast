@@ -13,29 +13,31 @@ export const Types = () => {
 
   return (
     <div className="p-8 md:p-16 lg:py-20 border-b border-border text-foreground bg-background">
-      <div className="max-w-7xl mx-auto">
-        <HeroText shadowColor="#cfd9fc" className="text-4xl md:text-6xl lg:text-7xl mb-12 text-primary leading-none uppercase">
+      <div className="max-w-5xl mx-auto flex flex-col items-center">
+        <HeroText shadowColor="#cfd9fc" className="text-4xl md:text-6xl lg:text-7xl mb-12 text-primary leading-none uppercase text-center w-full">
           API
         </HeroText>
-        <p className="m-0 mb-12 max-w-2xl text-lg md:text-xl font-bold leading-relaxed text-muted-foreground">
+        <p className="m-0 mb-12 max-w-2xl text-center text-lg md:text-xl font-bold leading-relaxed text-muted-foreground">
           Trigger different toast types with a single function call. Pass an options object for descriptions, actions, or promises.
         </p>
-      <div className={chipScrollRow}>
-        {allTypes.map((type) => (
-          <button
-            className={typeChip}
-            data-active={activeType.name === type.name}
-            onClick={() => {
-              type.action();
-              setActiveType(type);
-            }}
-            key={type.name}
-          >
-            {type.name}
-          </button>
-        ))}
-      </div>
-      <CodeBlock>{`${activeType.snippet}`}</CodeBlock>
+        <div className={`${chipScrollRow} justify-center mb-12`}>
+          {allTypes.map((type) => (
+            <button
+              className={typeChip}
+              data-active={activeType.name === type.name}
+              onClick={() => {
+                type.action();
+                setActiveType(type);
+              }}
+              key={type.name}
+            >
+              {type.name}
+            </button>
+          ))}
+        </div>
+        <div className="max-w-3xl w-full">
+          <CodeBlock>{`${activeType.snippet}`}</CodeBlock>
+        </div>
       </div>
     </div>
   );

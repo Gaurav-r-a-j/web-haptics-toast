@@ -52,14 +52,14 @@ export const Haptics = ({
 
   return (
     <div className="p-8 md:p-16 lg:py-20 border-b border-border text-foreground bg-background">
-      <div className="max-w-7xl mx-auto">
-        <HeroText shadowColor="#cfd9fc" className="text-4xl md:text-6xl lg:text-7xl mb-12 text-primary leading-none uppercase">
+      <div className="max-w-5xl mx-auto flex flex-col items-center">
+        <HeroText shadowColor="#cfd9fc" className="text-4xl md:text-6xl lg:text-7xl mb-12 text-primary leading-none uppercase text-center w-full">
           HAPTICS
         </HeroText>
-        <p className="m-0 mb-12 max-w-2xl text-lg md:text-xl font-bold leading-relaxed text-muted-foreground">
+        <p className="m-0 mb-12 max-w-2xl text-center text-lg md:text-xl font-bold leading-relaxed text-muted-foreground">
           Toggle rich colors, global close buttons, and custom headless components. Global Toaster props update instantly via simple presets.
         </p>
-      <div className={chipScrollRow}>
+      <div className={`${chipScrollRow} justify-center mb-12`}>
         <button className={toggleChip} data-active={haptics} onClick={() => setHaptics((v) => !v)}>
           Haptics {haptics ? 'on' : 'off'}
         </button>
@@ -93,7 +93,9 @@ export const Haptics = ({
           Toast info
         </button>
       </div>
-      <CodeBlock>{snippet}</CodeBlock>
+      <div className="max-w-3xl w-full">
+        <CodeBlock>{snippet}</CodeBlock>
+      </div>
       </div>
     </div>
   );

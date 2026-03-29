@@ -23,14 +23,14 @@ export const Position = ({
 
   return (
     <div className="p-8 md:p-16 lg:py-20 border-b border-border text-foreground bg-background">
-      <div className="max-w-7xl mx-auto">
-        <HeroText shadowColor="#cfd9fc" className="text-4xl md:text-6xl lg:text-7xl mb-12 text-primary leading-none uppercase">
+      <div className="max-w-5xl mx-auto flex flex-col items-center">
+        <HeroText shadowColor="#cfd9fc" className="text-4xl md:text-6xl lg:text-7xl mb-12 text-primary leading-none uppercase text-center w-full">
           POSITION
         </HeroText>
-        <p className="m-0 mb-12 max-w-2xl text-lg md:text-xl font-bold leading-relaxed text-muted-foreground">
-          Swipe-to-dismiss follows the corner you choose. Watch the stack move across the screen as you trigger different placement presets.
+        <p className="m-0 mb-12 max-w-2xl text-center text-lg md:text-xl font-bold leading-relaxed text-muted-foreground">
+          Swipe-to-dismiss follows the corner you choose. Watch the stack move across the screen as you trigger placement presets.
         </p>
-        <div className={chipScrollRow}>
+        <div className={`${chipScrollRow} justify-center mb-12`}>
           {positions.map((position) => (
             <button
               data-active={activePosition === position}
@@ -51,7 +51,9 @@ export const Position = ({
             </button>
           ))}
         </div>
-        <CodeBlock language="tsx">{`<Toaster position="${activePosition}" />`}</CodeBlock>
+        <div className="max-w-3xl w-full">
+          <CodeBlock>{`<Toaster position="${activePosition}" />`}</CodeBlock>
+        </div>
       </div>
     </div>
   );

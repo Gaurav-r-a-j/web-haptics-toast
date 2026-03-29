@@ -37,16 +37,16 @@ export const Installation = () => {
 
   return (
     <div className="p-8 md:p-16 lg:py-20 border-b border-border text-foreground bg-background">
-      <div className="max-w-7xl mx-auto">
-        <HeroText shadowColor="#cfd9fc" className="text-4xl md:text-5xl lg:text-7xl mb-12 text-primary leading-none uppercase">
+      <div className="max-w-5xl mx-auto flex flex-col items-center">
+        <HeroText shadowColor="#cfd9fc" className="text-4xl md:text-5xl lg:text-7xl mb-12 text-primary leading-none uppercase text-center w-full">
           INSTALLATION
         </HeroText>
-        <p className="m-0 mb-12 max-w-2xl text-lg md:text-xl font-bold leading-relaxed text-muted-foreground">
+        <p className="m-0 mb-12 max-w-2xl text-center text-lg md:text-xl font-bold leading-relaxed text-muted-foreground">
           Deploy the package, mount the provider near your root, and start triggering tactile feedback instantly.
         </p>
 
         <div
-          className="mb-3 flex w-full max-w-xl flex-wrap gap-2"
+          className="mb-3 flex w-full max-w-3xl flex-wrap gap-2"
           role="tablist"
           aria-label="Package manager"
         >
@@ -75,11 +75,12 @@ export const Installation = () => {
         id={`install-panel-${pm}`}
         role="tabpanel"
         aria-labelledby={`install-tab-${pm}`}
+        className="max-w-3xl w-full"
       >
         <button
           type="button"
           onClick={onCopy}
-          className="relative flex h-11 w-full max-w-xl cursor-pointer items-center overflow-hidden rounded-sm border border-border bg-secondary px-3 pr-12 text-left font-mono text-[0.875rem] leading-[1.5] text-foreground transition-[border-color,box-shadow] duration-200 hover:border-muted-foreground focus:outline-none focus-visible:shadow-focus-ring"
+          className="relative flex h-11 w-full cursor-pointer items-center overflow-hidden rounded-sm border border-border bg-secondary px-3 pr-12 text-left font-mono text-[0.875rem] leading-[1.5] text-foreground transition-[border-color,box-shadow] duration-200 hover:border-muted-foreground focus:outline-none focus-visible:shadow-focus-ring"
           aria-label={`Copy install command: ${line}`}
         >
           <span className="min-w-0 flex-1 select-all overflow-x-auto whitespace-nowrap pr-1 [-webkit-overflow-scrolling:touch]">
