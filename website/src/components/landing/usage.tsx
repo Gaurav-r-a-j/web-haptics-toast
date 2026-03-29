@@ -1,18 +1,16 @@
 import { CodeBlock } from '@/src/components/shared/code-block';
-import { sectionLabel, sectionTitle } from '@/src/utils/site-ui';
+import { HeroText } from '@/src/components/ui/hero-text';
 
 export const Usage = () => {
   return (
-    <div>
-      <p className={sectionLabel} aria-hidden>
-        Code
-      </p>
-      <h2 id="usage-heading" className={sectionTitle}>
-        Usage
-      </h2>
-      <p className="m-0 mb-1 max-w-[52ch] text-[0.9375rem] leading-[1.55] text-muted-foreground">
-        Render <code className="text-[0.8125rem]">Toaster</code> once at the root, then call <code className="text-[0.8125rem]">toast()</code> from anywhere in the tree.
-      </p>
+    <div className="p-8 md:p-16 lg:py-20 border-b border-border text-foreground bg-background">
+      <div className="max-w-7xl mx-auto">
+        <HeroText shadowColor="#cfd9fc" className="text-4xl md:text-6xl lg:text-7xl mb-12 text-primary leading-none uppercase">
+          USAGE
+        </HeroText>
+        <p className="m-0 mb-12 max-w-2xl text-lg md:text-xl font-bold leading-relaxed text-muted-foreground">
+          Mount <code className="text-secondary">Toaster</code> once at your app root, and trigger premium tactile toasts from any component in your tree.
+        </p>
       <CodeBlock initialHeight={270}>{`import { Toaster, toast } from 'web-haptics-toast'
 import 'web-haptics-toast/dist/styles.css'
 
@@ -26,6 +24,7 @@ function App() {
     </div>
   )
 }`}</CodeBlock>
+      </div>
     </div>
   );
 };

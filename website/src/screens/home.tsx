@@ -7,9 +7,8 @@ import { Header } from '@/src/components/layout/header';
 import { Footer } from '@/src/components/layout/footer';
 import { MainHero } from '@/src/components/landing/main-hero';
 import { FeatureOverview } from '@/src/components/landing/feature-overview';
-import { MobileDemo } from '@/src/components/landing/mobile-demo';
 import { Highlight } from '@/src/components/landing/highlight';
-import { Compatibility } from '@/src/components/landing/compatibility';
+// import { Compatibility } from '@/src/components/landing/compatibility';
 import { Installation } from '@/src/components/landing/installation';
 import { Usage } from '@/src/components/landing/usage';
 import { Haptics } from '@/src/components/landing/haptics';
@@ -17,7 +16,7 @@ import { Types as Toasts } from '@/src/components/landing/toasts';
 import { Position } from '@/src/components/landing/position';
 import { ExpandModes } from '@/src/components/landing/expand-modes';
 import { Other } from '@/src/components/landing/other';
-import { How } from '@/src/components/landing/how';
+// import { How } from '@/src/components/landing/how';
 import { sectionCard, siteContainer, siteContent, siteWrapper } from '@/src/utils/site-ui';
 import { useToastState } from '@/src/hooks/use-toast-state';
 
@@ -54,62 +53,30 @@ export function HomeScreen() {
         hapticPatternMap={config.hapticPatternMap}
       />
 
-      <main id="main" role="main" aria-label="Main content">
+      <main id="main" role="main" aria-label="Main content" className='bg-background'>
         <MainHero haptics={haptics} hapticsDebug={hapticsDebug} />
 
         <FeatureOverview />
 
-        <div className={siteContainer}>
-          <MobileDemo haptics={haptics} hapticsDebug={hapticsDebug} />
-        </div>
+        <Highlight />
 
-        <div className={siteContainer}>
-          <Highlight />
-        </div>
-
-        <div className={`${siteContent} ${siteContainer}`}>
-          <Compatibility />
-
-          <section className={sectionCard} id="install" aria-labelledby="install-heading">
-            <Installation />
-          </section>
-
-          <section className={sectionCard} id="usage" aria-labelledby="usage-heading">
-            <Usage />
-          </section>
-
-          <section className={sectionCard} id="haptics" aria-labelledby="haptics-heading">
-            <Haptics
-              haptics={haptics}
-              hapticsDebug={hapticsDebug}
-              hapticsShowSwitch={hapticsShowSwitch}
-              customHapticMap={customHapticMap}
-              setHaptics={setHaptics}
-              setHapticsDebug={setHapticsDebug}
-              setHapticsShowSwitch={setHapticsShowSwitch}
-              setCustomHapticMap={setCustomHapticMap}
-            />
-          </section>
-
-          <section className={sectionCard} id="types" aria-labelledby="types-heading">
-            <Toasts />
-          </section>
-
-          <section className={sectionCard} id="position" aria-labelledby="position-heading">
-            <Position position={position} setPosition={setPosition} />
-          </section>
-
-          <section className={sectionCard} id="expand" aria-labelledby="expand-heading">
-            <ExpandModes expand={expand} setExpand={setExpand} />
-          </section>
-
-          <section className={sectionCard} id="other" aria-labelledby="other-heading">
-            <Other setCloseButton={setCloseButton} setRichColors={setRichColors} />
-          </section>
-
-          <section className={sectionCard} id="how" aria-labelledby="how-heading">
-            <How />
-          </section>
+        <div className="flex flex-col gap-0 w-full">
+          <Installation />
+          <Usage />
+          <Haptics
+            haptics={haptics}
+            hapticsDebug={hapticsDebug}
+            hapticsShowSwitch={hapticsShowSwitch}
+            customHapticMap={customHapticMap}
+            setHaptics={setHaptics}
+            setHapticsDebug={setHapticsDebug}
+            setHapticsShowSwitch={setHapticsShowSwitch}
+            setCustomHapticMap={setCustomHapticMap}
+          />
+          <Toasts />
+          <Position position={position} setPosition={setPosition} />
+          <ExpandModes expand={expand} setExpand={setExpand} />
+          <Other setCloseButton={setCloseButton} setRichColors={setRichColors} />
         </div>
       </main>
 

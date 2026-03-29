@@ -1,7 +1,8 @@
 import React from 'react';
 import { toast } from 'web-haptics-toast';
-import { chipActiveStates, chipScrollRow, hapticChip, sectionLabel, sectionTitle } from '@/src/utils/site-ui';
+import { chipActiveStates, chipScrollRow, hapticChip } from '@/src/utils/site-ui';
 import { CodeBlock } from '@/src/components/shared/code-block';
+import { HeroText } from '@/src/components/ui/hero-text';
 
 const typeChip = `${hapticChip} ${chipActiveStates}`;
 
@@ -11,16 +12,14 @@ export const Types = () => {
   const [activeType, setActiveType] = React.useState(allTypes[0]);
 
   return (
-    <div>
-      <p className={sectionLabel} aria-hidden>
-        API
-      </p>
-      <h2 id="types-heading" className={sectionTitle}>
-        Types
-      </h2>
-      <p className="m-0 mb-1 max-w-[52ch] text-[0.9375rem] leading-[1.55] text-muted-foreground">
-        Pick a variant below; the snippet updates. Pass an options object as the second argument when you need descriptions, actions, or promises.
-      </p>
+    <div className="p-8 md:p-16 lg:py-20 border-b border-border text-foreground bg-background">
+      <div className="max-w-7xl mx-auto">
+        <HeroText shadowColor="#cfd9fc" className="text-4xl md:text-6xl lg:text-7xl mb-12 text-primary leading-none uppercase">
+          API
+        </HeroText>
+        <p className="m-0 mb-12 max-w-2xl text-lg md:text-xl font-bold leading-relaxed text-muted-foreground">
+          Trigger different toast types with a single function call. Pass an options object for descriptions, actions, or promises.
+        </p>
       <div className={chipScrollRow}>
         {allTypes.map((type) => (
           <button
@@ -37,6 +36,7 @@ export const Types = () => {
         ))}
       </div>
       <CodeBlock>{`${activeType.snippet}`}</CodeBlock>
+      </div>
     </div>
   );
 };
@@ -124,6 +124,6 @@ toast.promise(promise, {
   {
     name: 'Custom',
     snippet: `toast(<div>A custom toast with default styling</div>)`,
-    action: () => toast(<div>A custom toast with default styling</div>, { duration: 1000000 }),
+    action: () => toast(<div>A custom toast with default styling</div>),
   },
 ];

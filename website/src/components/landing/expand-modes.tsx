@@ -1,7 +1,8 @@
 import type { Dispatch, SetStateAction } from 'react';
 import { toast } from 'web-haptics-toast';
 import { CodeBlock } from '@/src/components/shared/code-block';
-import { chipActiveStates, chipScrollRow, hapticChip, sectionLabel, sectionTitle } from '@/src/utils/site-ui';
+import { chipActiveStates, chipScrollRow, hapticChip } from '@/src/utils/site-ui';
+import { HeroText } from '@/src/components/ui/hero-text';
 
 const expandChip = `${hapticChip} ${chipActiveStates}`;
 
@@ -13,43 +14,42 @@ export const ExpandModes = ({
   setExpand: Dispatch<SetStateAction<boolean>>;
 }) => {
   return (
-    <div>
-      <p className={sectionLabel} aria-hidden>
-        Behavior
-      </p>
-      <h2 id="expand-heading" className={sectionTitle}>
-        Expand
-      </h2>
-      <p className="m-0 mb-1 max-w-[52ch] text-[0.9375rem] leading-[1.55] text-muted-foreground">
-        With <code className="text-[0.8125rem]">expand</code>, the stack opens to show more toasts at once. You can still cap how many show with <code className="text-[0.8125rem]">visibleToasts</code>.
-      </p>
-      <div className={chipScrollRow}>
-        <button
-          data-active={expand}
-          className={expandChip}
-          onClick={() => {
-            toast('Event has been created', {
-              description: 'Monday, January 3rd at 6:00pm',
-            });
-            setExpand(true);
-          }}
-        >
-          Expand
-        </button>
-        <button
-          data-active={!expand}
-          className={expandChip}
-          onClick={() => {
-            toast('Event has been created', {
-              description: 'Monday, January 3rd at 6:00pm',
-            });
-            setExpand(false);
-          }}
-        >
-          Default
-        </button>
+    <div className="p-8 md:p-16 lg:py-20 border-b border-border text-foreground bg-background">
+      <div className="max-w-7xl mx-auto">
+        <HeroText shadowColor="#cfd9fc" className="text-4xl md:text-6xl lg:text-7xl mb-12 text-primary leading-none uppercase">
+          EXPAND
+        </HeroText>
+        <p className="m-0 mb-12 max-w-2xl text-lg md:text-xl font-bold leading-relaxed text-muted-foreground">
+          Force the stack to stay open to show more toasts at once. You can still cap the visibility with built-in controls.
+        </p>
+        <div className={chipScrollRow}>
+          <button
+            data-active={expand}
+            className={expandChip}
+            onClick={() => {
+              toast('Event has been created', {
+                description: 'Monday, January 3rd at 6:00pm',
+              });
+              setExpand(true);
+            }}
+          >
+            Expand
+          </button>
+          <button
+            data-active={!expand}
+            className={expandChip}
+            onClick={() => {
+              toast('Event has been created', {
+                description: 'Monday, January 3rd at 6:00pm',
+              });
+              setExpand(false);
+            }}
+          >
+            Default
+          </button>
+        </div>
+        <CodeBlock>{`<Toaster expand={${expand}} />`}</CodeBlock>
       </div>
-      <CodeBlock>{`<Toaster expand={${expand}} />`}</CodeBlock>
     </div>
   );
 };

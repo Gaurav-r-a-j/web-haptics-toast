@@ -7,10 +7,9 @@ import {
   chipActiveStates,
   chipScrollRow,
   hapticChip,
-  sectionLabel,
-  sectionTitle,
   toastVariantSurfaces,
 } from '@/src/utils/site-ui';
+import { HeroText } from '@/src/components/ui/hero-text';
 
 export const Haptics = ({
   haptics,
@@ -52,19 +51,14 @@ export const Haptics = ({
   const toastChip = `${hapticChip} ${toastVariantSurfaces}`;
 
   return (
-    <div>
-      <p className={sectionLabel} aria-hidden>
-        Features
-      </p>
-      <h2 id="haptics-heading" className={sectionTitle}>
-        Haptics
-      </h2>
-      <p className="m-0 mb-1 max-w-[52ch] text-[0.9375rem] leading-[1.55] text-muted-foreground">
-        Toasts trigger haptic feedback by default on supported devices. Use the toggles to match the live{' '}
-        <code className="text-[0.8125rem]">Toaster</code> on this page. On desktop, enable{' '}
-        <strong className="font-semibold text-foreground">Debug</strong> to hear the pattern as sound.{' '}
-        <strong className="font-semibold text-foreground">Built-in switch</strong> adds an on-screen control for end users.
-      </p>
+    <div className="p-8 md:p-16 lg:py-20 border-b border-border text-foreground bg-background">
+      <div className="max-w-7xl mx-auto">
+        <HeroText shadowColor="#cfd9fc" className="text-4xl md:text-6xl lg:text-7xl mb-12 text-primary leading-none uppercase">
+          HAPTICS
+        </HeroText>
+        <p className="m-0 mb-12 max-w-2xl text-lg md:text-xl font-bold leading-relaxed text-muted-foreground">
+          Toggle rich colors, global close buttons, and custom headless components. Global Toaster props update instantly via simple presets.
+        </p>
       <div className={chipScrollRow}>
         <button className={toggleChip} data-active={haptics} onClick={() => setHaptics((v) => !v)}>
           Haptics {haptics ? 'on' : 'off'}
@@ -100,6 +94,7 @@ export const Haptics = ({
         </button>
       </div>
       <CodeBlock>{snippet}</CodeBlock>
+      </div>
     </div>
   );
 };

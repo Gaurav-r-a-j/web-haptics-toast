@@ -2,7 +2,7 @@
 
 import React from 'react';
 import clsx from 'clsx';
-import { sectionLabel, sectionTitle } from '@/src/utils/site-ui';
+import { HeroText } from '@/src/components/ui/hero-text';
 import copy from 'copy-to-clipboard';
 import { motion, AnimatePresence, MotionConfig } from 'framer-motion';
 
@@ -36,22 +36,20 @@ export const Installation = () => {
   }, [line]);
 
   return (
-    <div>
-      <p className={sectionLabel} aria-hidden>
-        Quick start
-      </p>
-      <h2 id="install-heading" className={sectionTitle}>
-        Installation
-      </h2>
-      <p className="m-0 mb-3 max-w-[52ch] text-[0.9375rem] leading-[1.55] text-muted-foreground">
-        Add the package, import styles once, then mount <code className="text-[0.8125rem]">Toaster</code> near your app root.
-      </p>
+    <div className="p-8 md:p-16 lg:py-20 border-b border-border text-foreground bg-background">
+      <div className="max-w-7xl mx-auto">
+        <HeroText shadowColor="#cfd9fc" className="text-4xl md:text-5xl lg:text-7xl mb-12 text-primary leading-none uppercase">
+          INSTALLATION
+        </HeroText>
+        <p className="m-0 mb-12 max-w-2xl text-lg md:text-xl font-bold leading-relaxed text-muted-foreground">
+          Deploy the package, mount the provider near your root, and start triggering tactile feedback instantly.
+        </p>
 
-      <div
-        className="mb-3 flex w-full max-w-xl flex-wrap gap-2"
-        role="tablist"
-        aria-label="Package manager"
-      >
+        <div
+          className="mb-3 flex w-full max-w-xl flex-wrap gap-2"
+          role="tablist"
+          aria-label="Package manager"
+        >
         {MANAGERS.map((id) => (
           <button
             key={id}
@@ -134,6 +132,7 @@ export const Installation = () => {
             )}
           </span>
         </button>
+        </div>
       </div>
     </div>
   );

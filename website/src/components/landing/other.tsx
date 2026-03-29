@@ -2,7 +2,8 @@ import React from 'react';
 import { useMemo } from 'react';
 import { toast } from 'web-haptics-toast';
 import { CodeBlock } from '@/src/components/shared/code-block';
-import { chipScrollRow, focusRing, interactiveChip, sectionLabel, sectionTitle, transitionSurface } from '@/src/utils/site-ui';
+import { chipScrollRow, focusRing, interactiveChip, transitionSurface } from '@/src/utils/site-ui';
+import { HeroText } from '@/src/components/ui/hero-text';
 
 const otherChip = `${interactiveChip} ${transitionSurface} ${focusRing}`;
 
@@ -105,20 +106,15 @@ export const Other = ({
 
   const [activeType, setActiveType] = React.useState(allTypes[0]);
 
-  const richColorsActive = activeType?.name?.includes('Rich');
-  const closeButtonActive = activeType?.name?.includes('Close');
-
   return (
-    <div>
-      <p className={sectionLabel} aria-hidden>
-        Options
-      </p>
-      <h2 id="other-heading" className={sectionTitle}>
-        Other
-      </h2>
-      <p className="m-0 mb-1 max-w-[52ch] text-[0.9375rem] leading-[1.55] text-muted-foreground">
-        Rich colors, a global close button, and fully custom content. The live <code className="text-[0.8125rem]">Toaster</code> props update when you tap certain presets.
-      </p>
+    <div className="p-8 md:p-16 lg:py-20 border-b border-border text-foreground bg-background">
+      <div className="max-w-7xl mx-auto">
+        <HeroText shadowColor="#cfd9fc" className="text-4xl md:text-6xl lg:text-7xl mb-12 text-primary leading-none uppercase">
+          OPTIONS
+        </HeroText>
+        <p className="m-0 mb-12 max-w-2xl text-lg md:text-xl font-bold leading-relaxed text-muted-foreground">
+          Toggle rich colors, global close buttons, and custom headless components. Global Toaster props update instantly via simple presets.
+        </p>
       <div className={chipScrollRow}>
         {allTypes.map((type) => (
           <button
@@ -133,13 +129,8 @@ export const Other = ({
           </button>
         ))}
       </div>
-      <CodeBlock>
-        {`${activeType.snippet || ''}
-
-// ...
-
-<Toaster ${richColorsActive ? 'richColors ' : ''} ${closeButtonActive ? 'closeButton ' : ''}/>`}
-      </CodeBlock>
+      <CodeBlock>{`${activeType.snippet}`}</CodeBlock>
+      </div>
     </div>
   );
 };

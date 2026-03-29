@@ -7,7 +7,9 @@ import { Button } from '@/src/components/ui/button';
 import { ArrowGreenLeft, ArrowGreenRight, CircularBadge } from '../icons/arrows';
 import { HeroActionTray } from './hero-action-tray';
 import { ParticlesProvider } from '@/src/components/shared/emoji-particles';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import QRCode from 'qrcode';
+import Image from 'next/image';
 
 export const MainHero = ({ 
   haptics = true, 
@@ -16,12 +18,33 @@ export const MainHero = ({
   haptics?: boolean; 
   hapticsDebug?: boolean;
 }) => {
-  const [shaking, setShaking] = React.useState(false);
+  const [shaking, setShaking] = useState(false);
+  const [showQR, setShowQR] = useState(false);
+  const [qrCode, setQrCode] = useState<string>('');
 
   const handleBuzz = () => {
     setShaking(true);
     window.setTimeout(() => setShaking(false), 1000);
   };
+
+  useEffect(() => {
+    const url = typeof window !== 'undefined' ? window.location.href : '';
+    if (url) {
+      QRCode.toDataURL(url, {
+        margin: 2,
+        scale: 10,
+        color: {
+          dark: '#000000',
+          light: '#ffffff',
+        },
+      }).then(setQrCode);
+    }
+
+    const interval = setInterval(() => {
+      setShowQR((prev) => !prev);
+    }, 4000);
+    return () => clearInterval(interval);
+  }, []);
 
   return (
     <ParticlesProvider>
@@ -57,13 +80,44 @@ export const MainHero = ({
                   <ArrowGreenLeft />
                 </div>
 
-                {/* Badge flanking the button row on the right - Made smaller and linked */}
-                <Link
-                  href="/docs"
-                  className="absolute -right-[8%] md:-right-[18%] top-1/2 -translate-y-1/2 pointer-events-auto z-20 transition-transform active:scale-90"
-                >
-                  <CircularBadge className="w-16 h-16 md:w-24 md:h-24" />
-                </Link>
+                {/* Badge/QR Flip Container */}
+                <div className="absolute -right-[8%] md:-right-[18%] top-1/2 -translate-y-1/2 z-20 flex flex-col items-center gap-4">
+                  <div className="relative group cursor-pointer w-20 h-20 md:w-32 md:h-32 [perspective:1000px] mb-4">
+                    <div 
+                      className={`relative w-full h-full transition-all duration-700 [transform-style:preserve-3d] ${showQR ? '[transform:rotateY(180deg)]' : ''}`}
+                      onClick={() => setShowQR(!showQR)}
+                    >
+                      {/* Front: Circular Badge */}
+                      <div className="absolute inset-0 [backface-visibility:hidden]">
+                        <CircularBadge className="w-full h-full drop-shadow-xl" />
+                      </div>
+
+                      {/* Back: QR Code */}
+                      <div className="absolute inset-0 [backface-visibility:hidden] [transform:rotateY(180deg)] bg-white rounded-2xl p-2 shadow-2xl flex items-center justify-center border-2 border-secondary overflow-hidden">
+                        {qrCode && (
+                          <div className="relative w-full h-full">
+                            <Image 
+                              src={qrCode} 
+                              alt="Scan for mobile" 
+                              fill 
+                              className="object-contain"
+                            />
+                          </div>
+                        )}
+                      </div>
+                    </div>
+                    
+                    {/* Floating Text above badge - Mobile Demo style */}
+                    <div className="absolute -top-12 -right-8 w-32 hidden md:block pointer-events-none">
+                      <p className="font-['Coming_Soon',cursive] text-white text-sm rotate-12 leading-tight">
+                        Try it out <br /> on mobile
+                      </p>
+                      <svg className="w-8 h-8 text-secondary mt-1 ml-4 animate-bounce" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                        <path d="M7 13l5 5 5-5M12 18V6" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                      </svg>
+                    </div>
+                  </div>
+                </div>
 
                 <HeroActionTray 
                   onBuzz={handleBuzz} 
