@@ -128,13 +128,27 @@ Defaults (when you don’t pass a map) include e.g. `success` → `success`, `er
 
 Exports for use **outside** the toast pipeline (or alongside `<Toaster haptics={false} />`):
 
-- **`isHapticsSupported`** – whether `navigator.vibrate` is available.
-- **``triggerHaptic`(name, options?)`** – fire a built-in preset by name from any event handler. Options include **`debug?: boolean`** (sound on desktop) and **`intensity`** (see types). Uses a small internal singleton, separate from each `<Toaster />`’s engine.
+- **`isHapticsSupported`** – Returns `true` on modern browsers and iOS (via the switch workaround).
+- **`triggerHaptic(name, options?)`** – fire a built-in preset by name from any event handler. Options include **`debug?: boolean`** (sound on desktop) and **`intensity`** (see types). Uses a small internal singleton, separate from each `<Toaster />`’s engine.
 - **`WebHaptics`** / **`defaultPatterns`** – own your instance and timing; both are exported from **`web-haptics-toast`**.
+
+## Compatibility
+
+While official [MDN docs](https://developer.mozilla.org/en-US/docs/Web/API/Vibration_API) state that Safari doesn't support the Vibration API, this library implements a **sophisticated workaround** for iOS Safari that provides tactile feedback comparable to native apps.
+
+| Browser / Platform | Standard API | `web-haptics-toast` | Mechanism |
+| ------------------ | ------------ | ------------------- | --------- |
+| **Android Chrome** | ✅ Supported | ✅ Perfect          | Native `navigator.vibrate` |
+| **iOS Safari**     | ❌ Missing   | ✅ Supported        | **`switch-attribute` Trick** |
+| **Desktop Safari** | ❌ Missing   | ⚠️ Partially        | Taptic Engine (Mac-only hack) |
+| **Desktop Chrome** | ⚠️ Restricted | 🔊 Audio-only       | `hapticsDebug` feedback |
+
+<Callout type="info">
+  **The iOS Trick:** Since iOS 17.4+, Safari supports a native haptic response for the `switch` element. This library creates a hidden switch and programmatically toggles it at high speeds to create custom vibration patterns.
+</Callout>
 
 ## Tips
 
 - Keep patterns subtle for frequent toasts (e.g. `selection` / `light`).
 - Use stronger patterns for rare, important outcomes (`success` / `error`).
 - Offer a user-facing way to disable haptics where your product has accessibility or preference settings.
-

@@ -1,129 +1,115 @@
 'use client';
 
 import Link from 'next/link';
-import { toast } from 'web-haptics-toast';
-import { Check, AlertCircle, XCircle, Vibrate, ArrowRight } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 import { HeroText } from '@/src/components/ui/hero-text';
-import { Button } from '@/src/components/ui/button';
+import { CardContent, CardHeader, CardTitle, CardDescription } from '../ui/card';
+import clsx from 'clsx';
 
-type Card = {
+type CardItem = {
   title: string;
   description: string;
   href: string;
   linkLabel: string;
 };
 
-const cards: Card[] = [
+const cards: CardItem[] = [
   {
-    title: 'Haptics built in',
+    title: 'FEEL EVERY TOAST',
     description:
-      'Native vibration presets for every toast type. Seamlessly integrated with the Sonner core for a unified feedback experience.',
+      'Native presets for every notification. Because your users deserve more than just visual noise—give them something to actually feel.',
     href: '/haptics',
-    linkLabel: 'Haptics guide',
+    linkLabel: 'Learn Presets',
   },
   {
-    title: 'Per-toast haptics',
+    title: 'TOTAL CONTROL',
     description:
-      'Granular control at the call-site. Toggle feedback for individual notifications while maintaining your global haptic configuration.',
+      'Dial it in manually. Strong for critical errors, subtle for success. You decide the vibration vibe for every single alert.',
     href: '/toast',
-    linkLabel: 'Toast API',
+    linkLabel: 'Explore API',
   },
   {
-    title: 'Manual triggerHaptic',
+    title: 'GO ROGUE',
     description:
-      'Direct access to the haptic engine. Trigger precise vibration patterns from any UI element without relying on toast events.',
+      'Tap into the haptic system directly. Use tactical power for buttons, toggles, or whatever you want—not just toasts.',
     href: '/haptics#manual-haptics',
-    linkLabel: 'Manual haptics',
+    linkLabel: 'Manual Mode',
   },
   {
-    title: 'Sonner-compatible',
+    title: 'SWAP IN SECONDS',
     description:
-      'Zero-friction migration path. Drop-in replacement for Sonner with identical API signatures and optional npm aliasing support.',
+      'Already using Sonner? Just change the import. Zero friction, zero headache, and instantly upgraded feedback.',
     href: '/migration-from-sonner',
-    linkLabel: 'Migration',
+    linkLabel: 'Quick Swap',
   },
   {
-    title: 'Layout & polish',
+    title: 'STAY PRETTY',
     description:
-      'Highly customizable stacks. Fine-tune positioning, expansion behaviors, and rich color themes to match your application branding.',
+      'Chunky stacks, custom positions, and modern themes. It is not just a library—it is a premium design system enhancement.',
     href: '#position',
-    linkLabel: 'Position & more',
+    linkLabel: 'Layout Guide',
   },
   {
-    title: 'Types & promise',
+    title: 'SMART FEEDBACK',
     description:
-      'Comprehensive status support. Native haptic feedback for success, error, loading, and promise-based state transitions.',
+      'Loading states that feel like they are working. Success that satisfyingly pulses. It is the tactical edge your app needs.',
     href: '#types',
-    linkLabel: 'Toast types',
+    linkLabel: 'See Types',
   },
 ];
 
-import { ArrowBlack1, ArrowBlack2 } from '../icons/arrows';
-import { Card, CardContent, CardHeader, CardTitle, CardDescription, CardFooter } from '../ui/card';
-
 export const FeatureOverview = () => {
   return (
-    <section id="features" aria-labelledby="features-heading" className='bg-primary' >
+    <section id="features" aria-labelledby="features-heading" className="bg-primary text-black">
       <div className="bg-background text-foreground rounded-t-4xl px-6 py-12 md:px-10 md:py-16 relative z-20 shadow-[0_-20px_50px_rgba(0,0,0,0.1)] mt-auto w-full">
         <div className="container mx-auto flex flex-col items-center">
           <div className="flex flex-col items-center text-center mb-16 w-full max-w-4xl">
             <p className="mb-4 text-[10px] md:text-xs font-black uppercase tracking-[0.15em] text-muted-foreground" aria-hidden>
               Overview
             </p>
-            <HeroText shadowColor='#cfd9fc' className="text-4xl md:text-7xl mb-6 text-primary">
+            <HeroText shadowColor="var(--secondary)" className="text-4xl md:text-7xl mb-10 text-black">
               EVERYTHING BUILT IN
             </HeroText>
-            <p className="m-0 max-w-[60ch] text-[0.9375rem] md:text-lg leading-snug text-muted-foreground font-semibold">
-              Standardized tools for modern haptic experiences. Built to work properly with your existing Sonner implementations.
+            <p className="m-0 max-w-[50ch] text-xl md:text-2xl leading-snug text-black font-black ">
+              Simple tools for modern tactile experiences. <span className="text-primary">Native, reliable, and ridiculously easy to setup.</span>
             </p>
           </div>
 
-          <ul className="m-0 grid list-none gap-8 p-0 sm:grid-cols-2 lg:grid-cols-3 w-full pb-20 mt-10">
-            {cards.map((c, index) => {
-              const shadowColor = '#cfd9fc';
-              const boxShadow = Array.from({ length: 8 }, (_, i) => {
-                const val = i + 1;
-                return `${val}px ${val}px 0 ${shadowColor}`;
-              }).join(', ');
+          <div className="m-0 grid gap-8 sm:grid-cols-2 lg:grid-cols-3 w-full pb-20 mt-10">
+            {cards.map((c, index) => (
+              <div
+                key={c.title}
+                className={clsx(
+                  "flex flex-col items-start text-left transition-all hover:-translate-y-2 hover:-translate-x-1 rounded-4xl border-4 border-black group relative overflow-hidden p-6 md:p-8 lg:p-10 shadow-[8px_8px_0_black] bg-white",
+                  index % 3 === 0 ? "rotate-1" : index % 3 === 1 ? "-rotate-1" : "rotate-0"
+                )}
+              >
+                {/* Subtle Decorative Grid Pattern */}
+                <div className="absolute inset-0 opacity-[0.05] pointer-events-none"
+                  style={{ backgroundImage: 'linear-gradient(to right, #000 1px, transparent 1px), linear-gradient(to bottom, #000 1px, transparent 1px)', backgroundSize: '20px 20px' }} />
 
-              return (
-                <Card
-                  key={c.title}
-                  className="flex flex-col items-start text-left transition-all hover:-translate-y-1 hover:-translate-x-1 rounded-3xl border border-black/5 group relative overflow-hidden p-4 md:p-6 lg:p-8 bg-card"
-                  style={{ boxShadow }}
-                >
-                  {/* Subtle Decorative Haptic Pattern Background */}
-                  <div className="absolute inset-0 opacity-[0.03] group-hover:opacity-[0.06] transition-opacity pointer-events-none"
-                    style={{ backgroundImage: 'radial-gradient(circle, currentColor 1px, transparent 1px)', backgroundSize: '16px 16px' }}></div>
+                <CardHeader className="flex flex-col w-full items-start relative z-10 p-0 mb-6">
+                  <CardTitle className="font-[1000] uppercase w-full text-2xl md:text-3xl tracking-tighter text-black">
+                    {c.title}
+                  </CardTitle>
+                </CardHeader>
 
-                  <CardHeader className="flex flex-col w-full items-start relative z-10 p-0">
-                    <CardTitle className="font-black uppercase w-full text-xl md:text-2xl mb-4">
-                      {c.title}
-                    </CardTitle>
-                  </CardHeader>
+                <CardContent className="flex flex-col items-start flex-1 relative z-10 p-0 gap-8 w-full">
+                  <CardDescription className="w-full text-lg leading-relaxed font-bold text-black/60 italic">
+                    {c.description}
+                  </CardDescription>
 
-                  <CardContent className="flex flex-col items-start flex-1 relative z-10 p-0 gap-4 md:gap-8">
-                    <CardDescription className="w-full text-sm md:text-base leading-relaxed font-semibold text-muted-foreground/80">
-                      {c.description}
-                    </CardDescription>
-                    <Button
-                      variant="outline"
-                      size="lg"
-                      asChild
-                      className="rounded-full px-8 py-3 text-[11px] font-black tracking-widest uppercase border-2 border-primary/20 hover:bg-primary hover:text-primary-foreground transition-all w-full flex items-center justify-between mt-auto"
-                    >
-                      <Link href={c.href}>
-                        {c.linkLabel}
-                        <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1 shadow-none" />
-                      </Link>
-                    </Button>
-                  </CardContent>
-                </Card>
-              );
-            })}
-          </ul>
-
-
+                  <Link
+                    href={c.href}
+                    className="group/btn relative inline-flex items-center justify-between w-full p-4 px-6 mt-auto bg-black text-white font-black text-xs uppercase tracking-[0.2em] rounded-2xl transition-all hover:bg-primary active:scale-95 shadow-[4px_4px_0_rgba(0,0,0,0.3)]"
+                  >
+                    {c.linkLabel}
+                    <ArrowRight className="w-4 h-4 transition-transform group-hover/btn:translate-x-2" strokeWidth={4} />
+                  </Link>
+                </CardContent>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </section>

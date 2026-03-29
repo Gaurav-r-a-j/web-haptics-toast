@@ -1,33 +1,25 @@
 'use client';
 
 import React from 'react';
-import { useTheme } from 'next-themes';
 import { Toaster } from 'web-haptics-toast';
 import { Header } from '@/src/components/layout/header';
 import { Footer } from '@/src/components/layout/footer';
 import { MainHero } from '@/src/components/landing/main-hero';
 import { FeatureOverview } from '@/src/components/landing/feature-overview';
 import { Highlight } from '@/src/components/landing/highlight';
-// import { Compatibility } from '@/src/components/landing/compatibility';
 import { Installation } from '@/src/components/landing/installation';
-import { Usage } from '@/src/components/landing/usage';
-import { Haptics } from '@/src/components/landing/haptics';
-import { Types as Toasts } from '@/src/components/landing/toasts';
-import { Position } from '@/src/components/landing/position';
-import { ExpandModes } from '@/src/components/landing/expand-modes';
-import { Other } from '@/src/components/landing/other';
-// import { How } from '@/src/components/landing/how';
-import { sectionCard, siteContainer, siteContent, siteWrapper } from '@/src/utils/site-ui';
+import { Playground } from '@/src/components/landing/playground';
+import { AdvancedFeatures } from '@/src/components/landing/advanced';
+import { siteWrapper } from '@/src/utils/site-ui';
 import { useToastState } from '@/src/hooks/use-toast-state';
 
 /**
  * HomeScreen Component
- * 
  */
 export function HomeScreen() {
   const { config, state, actions } = useToastState();
-  const { haptics, hapticsDebug, hapticsShowSwitch, customHapticMap } = state;
-  const { setHaptics, setHapticsDebug, setHapticsShowSwitch, setCustomHapticMap, setRichColors, setCloseButton, setExpand, setPosition } = actions;
+  const { haptics, hapticsDebug, hapticsShowSwitch } = state;
+  const { setHaptics, setHapticsDebug, setHapticsShowSwitch, setRichColors, setCloseButton, setExpand, setPosition } = actions;
   const { richColors, closeButton, expand, position } = state;
 
   return (
@@ -53,7 +45,7 @@ export function HomeScreen() {
         hapticPatternMap={config.hapticPatternMap}
       />
 
-      <main id="main" role="main" aria-label="Main content" className='bg-background'>
+      <main id="main" role="main" aria-label="Main content" className="bg-background">
         <MainHero haptics={haptics} hapticsDebug={hapticsDebug} />
 
         <FeatureOverview />
@@ -61,24 +53,22 @@ export function HomeScreen() {
         <Highlight />
 
         <div className="flex flex-col gap-0 w-full">
-          <section id="install"><Installation /></section>
-          <section id="usage"><Usage /></section>
-          <section id="haptics">
-            <Haptics
-              haptics={haptics}
-              hapticsDebug={hapticsDebug}
-              hapticsShowSwitch={hapticsShowSwitch}
-              customHapticMap={customHapticMap}
-              setHaptics={setHaptics}
-              setHapticsDebug={setHapticsDebug}
-              setHapticsShowSwitch={setHapticsShowSwitch}
-              setCustomHapticMap={setCustomHapticMap}
-            />
+          <section id="install">
+            <Installation />
           </section>
-          <section id="types"><Toasts /></section>
-          <Position position={position} setPosition={setPosition} />
-          <ExpandModes expand={expand} setExpand={setExpand} />
-          <Other setCloseButton={setCloseButton} setRichColors={setRichColors} />
+
+          {/* Combined Tactical Playground replacing 6 separate sections */}
+          <Playground
+            richColors={richColors} setRichColors={setRichColors}
+            closeButton={closeButton} setCloseButton={setCloseButton}
+            expand={expand} setExpand={setExpand}
+            position={position} setPosition={setPosition}
+            haptics={haptics} setHaptics={setHaptics}
+            hapticsDebug={hapticsDebug} setHapticsDebug={setHapticsDebug}
+            hapticsShowSwitch={hapticsShowSwitch} setHapticsShowSwitch={setHapticsShowSwitch}
+          />
+
+          <AdvancedFeatures />
         </div>
       </main>
 

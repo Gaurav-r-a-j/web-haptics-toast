@@ -10,18 +10,15 @@ import { Card, CardHeader, CardTitle, CardContent, CardDescription } from '@/src
 const NavButton = ({ href, children, variant = "secondary" as const }: { href: string; children: React.ReactNode; variant?: "secondary" | "outline" }) => (
   <Button
     variant={variant}
-    size="lg"
+    size="sm"
     asChild
-    className={`rounded-full px-12 py-6 font-black uppercase text-sm h-auto transition-all active:scale-95 border-2 border-black/10 hover:-translate-y-1 hover:-translate-x-1 ${variant === 'outline' ? 'border-primary-foreground/30 text-primary-foreground hover:bg-primary-foreground/10' : 'bg-secondary text-secondary-foreground shadow-none'
+    className={`rounded-2xl px-8 py-4 font-black uppercase text-xs h-auto transition-all active:scale-95 border-2 border-black/10 hover:-translate-y-1 hover:-translate-x-1 ${variant === 'outline' ? 'border-primary-foreground/30 text-primary-foreground hover:bg-primary-foreground/10' : 'bg-secondary text-secondary-foreground shadow-none'
       }`}
     style={{
-      boxShadow: Array.from({ length: 8 }, (_, i) => {
-        const val = i + 1;
-        return `${val}px ${val}px 0 #000000`;
-      }).join(', ')
+      boxShadow: '4px 4px 0 #000000'
     }}
   >
-    <Link href={href} target={href.startsWith('http') ? '_blank' : undefined}>
+    <Link href={href} target={href.startsWith('http') ? '_blank' : undefined} className="flex items-center gap-2">
       {children}
     </Link>
   </Button>
@@ -50,21 +47,21 @@ export const Highlight = () => {
     <section aria-label="Tactile Experience Highlights" className="space-y-0 text-left w-full font-sans">
 
       {/* 🚀 PHILOSOPHY SECTION (FIRST) */}
-      <div id="why" className="overflow-hidden rounded-t-[4rem] border-0 bg-primary text-primary-foreground py-20 md:py-28 relative px-4">
+      <div id="why" className="overflow-hidden rounded-t-[2.5rem] md:rounded-t-[4rem] border-0 bg-primary text-primary-foreground py-16 md:py-28 relative px-6 md:px-10">
 
-        <div className="relative z-10 max-w-7xl container mx-auto">
-          <div className="flex flex-col lg:flex-row gap-20 items-start">
-            <div className="flex-1 space-y-4">
-              <HeroText shadowColor="#000000" className="text-4xl md:text-6xl lg:text-7xl mb-0 text-primary-foreground leading-none uppercase">
+        <div className="relative z-10 max-w-7xl mx-auto">
+          <div className="flex flex-col lg:flex-row gap-12 lg:gap-24 items-start">
+            <div className="flex-1 space-y-2 md:space-y-4 w-full">
+              <HeroText shadowColor="#000000" className="text-4xl md:text-6xl lg:text-7xl mb-0 text-primary-foreground leading-none uppercase tracking-tighter">
                 WHY TO USE
               </HeroText>
-              <HeroText shadowColor="#000000" className="text-6xl md:text-7xl lg:text-8xl mb-0 text-secondary leading-none uppercase">
+              <HeroText shadowColor="#000000" className="text-5xl md:text-7xl lg:text-8xl mb-0 text-secondary leading-none uppercase tracking-tighter">
                 WEB HAPTICS<br />TOAST
               </HeroText>
             </div>
 
-            <div className="flex-1">
-              <p className="m-0 text-2xl md:text-3xl lg:text-4xl  text-primary-foreground font-black leading-[1.1]">
+            <div className="flex-1 w-full">
+              <p className="m-0 text-xl md:text-2xl lg:text-4xl text-primary-foreground font-black leading-[1.1] tracking-tight">
                 Toasts are too easy to ignore. Vibration cuts through the noise.
               </p>
               <p className="m-0 text-base md:text-lg text-primary-foreground/70 mt-2 md:mt-4 font-semibold leading-relaxed max-w-xl">

@@ -138,8 +138,19 @@ export class WebHaptics {
     this.showSwitch = options?.showSwitch ?? false;
   }
 
-  static readonly isSupported: boolean =
-    typeof navigator !== "undefined" && typeof navigator.vibrate === "function";
+  static get isSupported(): boolean {
+    if (typeof navigator === "undefined" || typeof window === "undefined") return false;
+    
+    // Standard Vibration API support
+    const hasVibrate = typeof navigator.vibrate === "function";
+    
+    // iOS Safari / WebKit "switch" trick support
+    // (Modern iOS WebKit supports the switch attribute on checkboxes which triggers haptics)
+    const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !(window as any).MSStream;
+    const isWebKit = /AppleWebKit/i.test(navigator.userAgent) && !/Chrome/i.test(navigator.userAgent);
+    
+    return hasVibrate || isIOS;
+  }
 
   async trigger(
     input: HapticInput = [{ duration: 25, intensity: 0.7 }],
