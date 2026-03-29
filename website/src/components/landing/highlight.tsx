@@ -86,45 +86,7 @@ export const Highlight = () => {
           </div>
         </div>
       </div>
-
-      {/* 📱 COMPATIBILITY SECTION (SECOND) */}
-      <div id="compatibility" className="bg-background text-foreground p-8 md:p-16 lg:py-20 border-0 relative border-y border-border">
-        <div className="relative z-10 max-w-7xl container mx-auto">
-          <div className="flex flex-col md:flex-row md:items-end justify-between mb-24 gap-12">
-            <div className="max-w-4xl">
-              <HeroText shadowColor="var(--secondary)" className="text-4xl md:text-6xl lg:text-7xl mb-0 text-primary leading-none uppercase">
-                COMPATIBILITY
-              </HeroText>
-            </div>
-            <div className="md:text-right">
-              <p className="m-0 text-muted-foreground font-black uppercase text-[10px]">
-                CHECK <Link href="https://developer.mozilla.org/en-US/docs/Web/API/Vibration_API" target="_blank" className="text-primary underline">MDN VIBRATION API</Link>
-              </p>
-            </div>
-          </div>
-
-          <div className="grid gap-8 md:grid-cols-3 w-full">
-            <CompatibilityCard
-              title="Chrome / Edge / Firefox"
-              status="Pure Native"
-              desc="Full Vibration API support. Hardware-level haptic feedback for 3.5B+ devices."
-              color="text-primary border-primary/20"
-            />
-            <CompatibilityCard
-              title="Safari (iOS / macOS)"
-              status="Clean Fallback"
-              desc="Safari does not yet expose haptic engines. Components retain perfect visual state."
-              color="text-muted-foreground border-muted-foreground/20"
-            />
-            <CompatibilityCard
-              title="Desktop Environments"
-              status="Debug Simulation"
-              desc="Simulates tactile patterns via high-fidelity audio during development phases."
-              color="text-muted-foreground border-muted-foreground/20"
-            />
-          </div>
-        </div>
-      </div>
     </section>
   );
 };
+
