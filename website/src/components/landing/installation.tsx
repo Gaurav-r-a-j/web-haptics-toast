@@ -39,8 +39,8 @@ export const Installation = () => {
   }, [line]);
 
   return (
-    <section id="setup" className="p-8 md:p-16 lg:py-24 bg-secondary overflow-hidden text-black">
-      <div className="max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-12 lg:gap-24 items-start">
+    <section id="setup" className="py-14 p-0 md:py-16 lg:py-24 bg-secondary overflow-hidden text-black">
+      <div className="max-w-7xl mx-auto px-4 md:px-6 grid lg:grid-cols-2 gap-12 lg:gap-24 items-start">
 
         {/* Left Column: COMPATIBILITY (Extracted) */}
         <Compatibility className="w-full flex-1" />

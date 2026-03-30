@@ -52,6 +52,13 @@ export const AdvancedFeatures = () => {
             title="Global Override"
             desc="Map built-in types to your own custom rhythms at the root."
             code={`<Toaster hapticPatternMap={{\n  success: [50, 30]\n}} />`}
+            onAction={() => {
+              triggerHaptic('medium');
+              toast.success('hapticPatternMap', {
+                description: 'Set on <Toaster /> to remap success, error, etc. to custom patterns.',
+              });
+            }}
+            actionLabel="Try + hint toast"
           />
           <FeatureCard
             icon={<MousePointer2 size={24} strokeWidth={3} />}
@@ -66,6 +73,13 @@ export const AdvancedFeatures = () => {
             title="Total Control"
             desc="Programmatically dismiss, update, or pause toasts across the tactile system."
             code={`toast.dismiss(id);\ntoast.loading('Working...');`}
+            onAction={() => {
+              const id = toast.loading('Working…');
+              window.setTimeout(() => {
+                toast.success('Updated from loading', { id });
+              }, 1400);
+            }}
+            actionLabel="Try loading → success"
           />
 
           {/* Row 3: Small + Wide */}
@@ -92,27 +106,26 @@ export const AdvancedFeatures = () => {
   );
 };
 
+/** Same offset-shadow CTA as before; fill is primary instead of black. */
+const actionPrimaryClass =
+  'w-full rounded-2xl border-2 border-black bg-primary py-4 font-black uppercase text-[10px] tracking-widest text-primary-foreground shadow-[4px_4px_0_black] transition-all hover:brightness-110 active:translate-x-1 active:translate-y-1 active:shadow-none';
+
 const FeatureCard = ({ icon, title, desc, code, onAction, actionLabel, className }: any) => (
-  <div className={cn(
-    "bg-white border-4 border-primary rounded-4xl p-8 shadow-[8px_8px_0_var(--color-primary)] flex flex-col items-start transition-all hover:-translate-y-1 mb-0 h-full",
-    className
-  )}>
-    <div className="p-3 bg-black text-secondary rounded-2xl shadow-[4px_4px_0_var(--color-primary)] mb-6">
-      {icon}
-    </div>
-    <h3 className="text-3xl font-[1000] uppercase tracking-tighter mb-4 text-black leading-none">{title}</h3>
-    <p className="text-base font-bold text-black/80 mb-8 leading-relaxed">
-      {desc}
-    </p>
+  <div
+    className={cn(
+      'mb-0 flex h-full flex-col items-start rounded-4xl border-4 border-primary bg-white p-8 shadow-[8px_8px_0_var(--color-primary)] transition-all hover:-translate-y-1',
+      className,
+    )}
+  >
+    <div className="mb-6 rounded-2xl bg-black p-3 text-secondary shadow-[4px_4px_0_var(--color-primary)]">{icon}</div>
+    <h3 className="mb-4 text-3xl font-[1000] uppercase leading-none tracking-tighter text-black">{title}</h3>
+    <p className="mb-8 text-base font-bold leading-relaxed text-black/80">{desc}</p>
 
     <div className="mt-auto w-full space-y-8">
-      <CodeBlock >{code}</CodeBlock>
+      <CodeBlock>{code}</CodeBlock>
 
       {onAction && (
-        <button
-          onClick={onAction}
-          className="w-full py-4 rounded-2xl bg-black text-secondary font-black uppercase text-[10px] tracking-widest shadow-[4px_4px_0_var(--color-primary)] active:translate-y-1 active:translate-x-1 active:shadow-none transition-all"
-        >
+        <button type="button" onClick={onAction} className={actionPrimaryClass}>
           {actionLabel}
         </button>
       )}

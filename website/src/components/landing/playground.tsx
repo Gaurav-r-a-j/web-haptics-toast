@@ -1,7 +1,7 @@
 'use client';
 
 import React from 'react';
-import { toast } from 'web-haptics-toast';
+import { toast, triggerHaptic } from 'web-haptics-toast';
 import { HeroText } from '@/src/components/ui/hero-text';
 import { CodeBlock } from '@/src/components/shared/code-block';
 import { cn } from '@/src/lib/utils';
@@ -66,6 +66,17 @@ export const Playground = ({
           loading: 'Processing...',
           success: 'Task finalized!',
           error: 'Error occurred',
+        });
+        break;
+      case 'manualHaptic':
+        if (haptics) {
+          triggerHaptic('success', { debug: hapticsDebug });
+        }
+        toast.success('Manual haptic + toast', {
+          description: haptics
+            ? 'triggerHaptic() first, then toast(..., { haptics: false }).'
+            : 'Turn Haptic Feedback on to feel triggerHaptic; toast stays silent (haptics: false).',
+          haptics: false,
         });
         break;
       default: toast('Default Haptic Toast', { description: 'Simple, direct feedback.' });
@@ -153,13 +164,31 @@ export const Playground = ({
                 </div>
               </div>
 
-              <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 mb-10 relative z-10">
+              <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 mb-6 relative z-10">
                 <LaunchPadButton label="Success" icon={<Check size={20} />} color="secondary" onClick={() => triggerToast('success')} />
                 <LaunchPadButton label="Error" icon={<AlertCircle size={20} />} color="red" onClick={() => triggerToast('error')} />
                 <LaunchPadButton label="Info" icon={<Info size={20} />} color="blue" onClick={() => triggerToast('info')} />
                 <LaunchPadButton label="Warning" icon={<AlertTriangle size={20} />} color="yellow" onClick={() => triggerToast('warning')} />
                 <LaunchPadButton label="Custom" icon={<Cpu size={20} />} color="white" onClick={() => triggerToast('custom')} />
                 <LaunchPadButton label="Action" icon={<Zap size={20} />} color="white" onClick={() => triggerToast('action')} />
+              </div>
+
+              <p className="text-[11px] font-black uppercase tracking-widest text-black/45 mb-2 relative z-10">
+                Manual haptic (no double buzz)
+              </p>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-10 relative z-10">
+                <LaunchPadButton
+                  label="triggerHaptic + toast"
+                  icon={<MousePointer2 size={20} />}
+                  color="primary"
+                  onClick={() => triggerToast('manualHaptic')}
+                />
+                <LaunchPadButton
+                  label="Promise"
+                  icon={<Layers size={20} />}
+                  color="white"
+                  onClick={() => triggerToast('promise')}
+                />
               </div>
 
               <div className="mt-auto space-y-6 pt-5 relative z-10">

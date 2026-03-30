@@ -3,6 +3,7 @@ import { Footer, Layout, Navbar } from 'nextra-theme-docs';
 import { getPageMap } from 'nextra/page-map';
 import { Search } from 'nextra/components';
 import { Logo } from '@/src/components/ui/logo';
+import { DocsToaster } from '@/src/components/shared/docs-toaster';
 import 'nextra-theme-docs/style.css';
 
 const docsRepositoryBase = 'https://github.com/Gaurav-r-a-j/web-haptics-toast/tree/main/website';
@@ -36,6 +37,7 @@ export default async function DocLayout({ children }: { children: React.ReactNod
       docsRepositoryBase={docsRepositoryBase}
       footer={<Footer>MIT {new Date().getFullYear()} © web-haptics-toast</Footer>}
     >
+      <DocsToaster />
       {children}
     </Layout>
   );

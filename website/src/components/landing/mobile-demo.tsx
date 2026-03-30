@@ -215,9 +215,9 @@ const DemoTiles = ({
             ? 'Haptic: error'
             : 'Haptic: buzz';
 
-    toast(title, { description, haptics: false });
-
+    // Haptic first (same event turn as the tap), then toast — avoids losing iOS activation before switch clicks.
     triggerHaptic(name, { debug: hapticsDebug });
+    toast(title, { description, haptics: false });
   };
 
   const tileBase =
