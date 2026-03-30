@@ -147,8 +147,7 @@ export class WebHaptics {
     // iOS Safari / WebKit "switch" trick support
     // (Modern iOS WebKit supports the switch attribute on checkboxes which triggers haptics)
     const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !(window as any).MSStream;
-    const isWebKit = /AppleWebKit/i.test(navigator.userAgent) && !/Chrome/i.test(navigator.userAgent);
-    
+
     return hasVibrate || isIOS;
   }
 
@@ -183,27 +182,41 @@ export class WebHaptics {
       }
     }
 
-    if (WebHaptics.isSupported) {
-      navigator.vibrate(toVibratePattern(vibrations, defaultIntensity));
+    // `isSupported` is true on iOS even without `navigator.vibrate`. Only call vibrate when it exists,
+    // otherwise we skip the iOS switch fallback entirely (`!isSupported` is never true on iOS).
+    const canVibrate =
+      typeof navigator !== "undefined" && typeof navigator.vibrate === "function";
+    if (canVibrate) {
+      try {
+        navigator.vibrate(toVibratePattern(vibrations, defaultIntensity));
+      } catch {
+        /* ignore */
+      }
     }
-    // When unsupported or debug: use DOM label (iOS) and optionally play sound for desktop testing.
-    if (!WebHaptics.isSupported || this.debug) {
+
+    // No Vibration API (iOS WebKit) and/or debug: DOM switch + optional desktop sound.
+    if (!canVibrate || this.debug) {
       this.ensureDOM();
       if (!this.hapticLabel) return;
-
-      if (this.debug) {
-        await this.ensureAudio();
-      }
 
       this.stopPattern();
 
       const firstDelay = vibrations[0]?.delay ?? 0;
       const firstClickFired = firstDelay === 0;
 
-      // Fire first click synchronously to stay within user gesture context
-      // (only when the first vibration has no delay)
-      if (firstClickFired) {
+      // First switch toggle before any `await` (e.g. `ensureAudio`) so WebKit keeps user activation.
+      if (!canVibrate && firstClickFired) {
         this.hapticLabel.click();
+      }
+
+      if (this.debug) {
+        await this.ensureAudio();
+      }
+
+      if (firstClickFired) {
+        if (canVibrate) {
+          this.hapticLabel.click();
+        }
         if (this.debug && this.audioCtx) {
           const firstIntensity = Math.max(
             0,
@@ -219,7 +232,13 @@ export class WebHaptics {
 
   cancel(): void {
     this.stopPattern();
-    if (WebHaptics.isSupported) navigator.vibrate(0);
+    if (typeof navigator !== "undefined" && typeof navigator.vibrate === "function") {
+      try {
+        navigator.vibrate(0);
+      } catch {
+        /* ignore */
+      }
+    }
   }
 
   destroy(): void {

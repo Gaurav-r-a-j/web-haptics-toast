@@ -6,7 +6,6 @@ import { Card, CardContent } from '@/src/components/ui/card';
 import { motion } from 'framer-motion';
 import { CheckCircle2, ExternalLink } from 'lucide-react';
 import Link from 'next/link';
-import Image from 'next/image';
 
 export const Compatibility = ({ className }: { className?: string }) => {
   return (
@@ -125,5 +124,4 @@ export const Compatibility = ({ className }: { className?: string }) => {
     </div>
   );
 };
-
 

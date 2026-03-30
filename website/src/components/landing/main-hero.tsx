@@ -1,6 +1,6 @@
 import { motion } from 'motion/react';
 import Link from 'next/link';
-import { toast, triggerHaptic } from 'web-haptics-toast';
+import { toast } from 'web-haptics-toast';
 import { Copy, Check } from 'lucide-react';
 import { HeroText } from '@/src/components/ui/hero-text';
 import { Button } from '@/src/components/ui/button';
@@ -119,11 +119,7 @@ export const MainHero = ({
                   </div>
                 </div>
 
-                <HeroActionTray 
-                  onBuzz={handleBuzz} 
-                  haptics={haptics} 
-                  hapticsDebug={hapticsDebug} 
-                />
+                <HeroActionTray onBuzz={handleBuzz} haptics={haptics} />
 
                 {/* NPM Command Bar */}
                 <div className="mt-8 md:mt-10 relative z-10">

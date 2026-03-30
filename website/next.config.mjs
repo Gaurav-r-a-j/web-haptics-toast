@@ -14,6 +14,8 @@ const withNextra = nextra({
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
+  // Workspace package must be transpiled so the client bundle gets one consistent copy (state + haptics).
+  transpilePackages: ['web-haptics-toast'],
   images: {
     unoptimized: true,
   },
