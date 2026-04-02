@@ -6,6 +6,7 @@ import { Card, CardContent } from '@/src/components/ui/card';
 import { motion } from 'framer-motion';
 import { CheckCircle2, ExternalLink } from 'lucide-react';
 import Link from 'next/link';
+import { neoPressShadow6 } from '@/src/utils/site-ui';
 
 export const Compatibility = ({ className }: { className?: string }) => {
   return (
@@ -103,14 +104,14 @@ export const Compatibility = ({ className }: { className?: string }) => {
               <div className="flex items-center gap-4 w-full pt-4">
                 <Link
                   href="/haptics"
-                  className="flex-1 px-6 py-4 bg-primary text-primary-foreground rounded-2xl font-black text-xs uppercase tracking-[0.2em] hover:scale-[1.02] transition-transform shadow-[6px_6px_0_var(--secondary-foreground)] border-2 border-black text-center"
+                  className={`flex-1 px-6 py-4 bg-primary text-primary-foreground rounded-2xl font-black text-xs uppercase tracking-[0.2em] border-2 border-black text-center shadow-[6px_6px_0_var(--secondary-foreground)] transition-[transform,box-shadow] hover:scale-[1.02] ${neoPressShadow6}`}
                 >
                   Read Docs
                 </Link>
                 <Link
                   href="https://developer.mozilla.org/en-US/docs/Web/API/Vibration_API"
                   target="_blank"
-                  className="flex-1 px-6 py-4 bg-[#CCFF00] text-black rounded-2xl font-black text-xs uppercase tracking-[0.2em] hover:scale-[1.02] transition-transform shadow-[6px_6px_0_var(--secondary-foreground)] border-2 border-black flex items-center justify-center gap-2"
+                  className={`flex-1 px-6 py-4 bg-[#CCFF00] text-black rounded-2xl font-black text-xs uppercase tracking-[0.2em] border-2 border-black flex items-center justify-center gap-2 shadow-[6px_6px_0_var(--secondary-foreground)] transition-[transform,box-shadow] hover:scale-[1.02] ${neoPressShadow6}`}
                 >
                   MDN <ExternalLink className="size-4" strokeWidth={3} />
                 </Link>

@@ -5,6 +5,7 @@ import { ArrowRight } from 'lucide-react';
 import { HeroText } from '@/src/components/ui/hero-text';
 import { CardContent, CardHeader, CardTitle, CardDescription } from '../ui/card';
 import clsx from 'clsx';
+import { neoPressShadow4 } from '@/src/utils/site-ui';
 
 type CardItem = {
   title: string;
@@ -101,7 +102,10 @@ export const FeatureOverview = () => {
 
                   <Link
                     href={c.href}
-                    className="group/btn relative inline-flex items-center justify-between w-full p-4 px-6 mt-auto bg-black text-white font-black text-xs uppercase tracking-[0.2em] rounded-2xl transition-all hover:bg-primary active:scale-95 shadow-[4px_4px_0_rgba(0,0,0,0.3)]"
+                    className={clsx(
+                      'group/btn relative inline-flex w-full items-center justify-between rounded-2xl bg-black p-4 px-6 mt-auto font-black text-xs uppercase tracking-[0.2em] text-white shadow-[4px_4px_0_rgba(0,0,0,0.3)] transition-[transform,box-shadow,background-color] hover:bg-primary',
+                      neoPressShadow4,
+                    )}
                   >
                     {c.linkLabel}
                     <ArrowRight className="w-4 h-4 transition-transform group-hover/btn:translate-x-2" strokeWidth={4} />

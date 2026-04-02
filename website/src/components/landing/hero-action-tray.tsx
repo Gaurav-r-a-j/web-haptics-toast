@@ -4,6 +4,7 @@ import React from 'react';
 import { toast, triggerHaptic } from 'web-haptics-toast';
 import { Button } from '@/src/components/ui/button';
 import { useParticles, type EmojiOption } from '@/src/components/shared/emoji-particles';
+import { neoPressShadow3 } from '@/src/utils/site-ui';
 
 type EmojiEntry = [emoji: string, weight: number, canFlip?: boolean];
 
@@ -95,7 +96,7 @@ export const HeroActionTray = ({
       <Button
         variant="outline"
         size="lg"
-        className="rounded-full text-base md:text-xl font-black h-auto px-6 py-3 min-w-[140px] md:min-w-[180px]"
+        className={`rounded-full border-2 border-black text-base shadow-[3px_3px_0_black] transition-[transform,box-shadow] md:text-xl font-black h-auto px-6 py-3 min-w-[140px] md:min-w-[180px] ${neoPressShadow3}`}
         onClick={(e) => handleTrigger('success', e)}
       >
         <span className="text-xl md:text-2xl leading-none">✅</span> Success
@@ -103,7 +104,7 @@ export const HeroActionTray = ({
       <Button
         variant="secondary"
         size="lg"
-        className="rounded-full text-base md:text-xl font-black h-auto px-6 py-3 min-w-[140px] md:min-w-[180px]"
+        className={`rounded-full border-2 border-black text-base shadow-[3px_3px_0_black] transition-[transform,box-shadow] md:text-xl font-black h-auto px-6 py-3 min-w-[140px] md:min-w-[180px] ${neoPressShadow3}`}
         onClick={(e) => handleTrigger('nudge', e)}
       >
         <span className="text-xl md:text-2xl leading-none">👉</span> Nudge
@@ -111,7 +112,7 @@ export const HeroActionTray = ({
       <Button
         variant="secondary"
         size="lg"
-        className="rounded-full text-base md:text-xl font-black h-auto px-6 py-3 min-w-[140px] md:min-w-[180px]"
+        className={`rounded-full border-2 border-black text-base shadow-[3px_3px_0_black] transition-[transform,box-shadow] md:text-xl font-black h-auto px-6 py-3 min-w-[140px] md:min-w-[180px] ${neoPressShadow3}`}
         onClick={(e) => handleTrigger('error', e)}
       >
         <span className="text-xl md:text-2xl leading-none">🚨</span> Error
@@ -119,7 +120,7 @@ export const HeroActionTray = ({
       <Button
         variant="outline"
         size="lg"
-        className="rounded-full text-base md:text-xl font-black h-auto px-6 py-3 min-w-[140px] md:min-w-[180px]"
+        className={`rounded-full border-2 border-black text-base shadow-[3px_3px_0_black] transition-[transform,box-shadow] md:text-xl font-black h-auto px-6 py-3 min-w-[140px] md:min-w-[180px] ${neoPressShadow3}`}
         onClick={(e) => handleTrigger('buzz', e)}
       >
         <span className="text-xl md:text-2xl leading-none">🐝</span> Buzz

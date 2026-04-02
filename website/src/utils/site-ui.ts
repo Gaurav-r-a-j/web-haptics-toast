@@ -39,7 +39,7 @@ export const transitionSurface =
 
 /** Base chip / pill control — uses theme surfaces (avoid secondary since it is bright green) */
 export const interactiveChip =
-  'cursor-pointer whitespace-nowrap rounded-full border border-border bg-muted px-[0.875rem] py-[0.5rem] text-[0.8125rem] font-medium font-sans text-foreground hover:bg-background hover:border-muted-foreground';
+  'cursor-pointer whitespace-nowrap rounded-full border border-border bg-muted px-[0.875rem] py-[0.5rem] text-[0.8125rem] font-medium font-sans text-foreground hover:bg-background hover:border-muted-foreground active:translate-x-px active:translate-y-px active:brightness-[0.97]';
 
 /** Selected state for toggle chips (`data-active`) */
 export const chipActiveStates =
@@ -55,3 +55,16 @@ export const chipScrollRow =
 
 /** Composes a full haptic/demo chip (toggle or toast row) */
 export const hapticChip = `${interactiveChip} ${transitionSurface} ${focusRing}`;
+
+/**
+ * Neobrutalist “pressed” affordance: translate by the hard-shadow depth and drop the shadow.
+ * Use with matching shadow utilities (e.g. shadow-[4px_4px_0_black]).
+ */
+export const neoPressShadow4 =
+  'active:translate-x-1 active:translate-y-1 active:shadow-none motion-reduce:active:translate-x-0 motion-reduce:active:translate-y-0';
+
+export const neoPressShadow6 =
+  'active:translate-x-1.5 active:translate-y-1.5 active:shadow-none motion-reduce:active:translate-x-0 motion-reduce:active:translate-y-0';
+
+export const neoPressShadow3 =
+  'active:translate-x-0.5 active:translate-y-0.5 active:shadow-none motion-reduce:active:translate-x-0 motion-reduce:active:translate-y-0';

@@ -131,7 +131,7 @@ export const Installation = () => {
                       <span className="text-[#0038FF] font-[1000]">$</span> {line}
                     </span>
                     <span
-                      className="absolute right-2 top-1/2 flex size-10 -translate-y-1/2 items-center justify-center rounded-xl border-4 border-black bg-[#CCFF00] text-black shadow-[4px_4px_0_black] transition-all group-hover:scale-110 group-hover:rotate-6 sm:right-4 sm:size-12 sm:rounded-2xl md:right-5"
+                      className="absolute right-2 top-1/2 flex size-10 -translate-y-1/2 items-center justify-center rounded-xl border-4 border-black bg-[#CCFF00] text-black shadow-[4px_4px_0_black] transition-[transform,box-shadow] group-hover:scale-110 group-hover:rotate-6 active:translate-x-1 active:shadow-none active:brightness-95 sm:right-4 sm:size-12 sm:rounded-2xl md:right-5"
                       aria-hidden
                     >
                       {mounted ? (

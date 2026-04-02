@@ -5,6 +5,7 @@ import { toast, triggerHaptic } from 'web-haptics-toast';
 import { HeroText } from '@/src/components/ui/hero-text';
 import { CodeBlock } from '@/src/components/shared/code-block';
 import { cn } from '@/src/lib/utils';
+import { neoPressShadow4, neoPressShadow6 } from '@/src/utils/site-ui';
 import {
   Check, AlertCircle, Info, AlertTriangle, Play,
   Settings2, Layout, SlidersHorizontal, Zap, Terminal,
@@ -132,8 +133,10 @@ export const Playground = ({
                         key={p}
                         onClick={() => setPosition(p)}
                         className={cn(
-                          "h-12 rounded-xl border-2 border-black text-xs font-[1000] uppercase transition-all active:scale-95",
-                          position === p ? "bg-primary text-white shadow-[4px_4px_0_black] -translate-y-1" : "bg-black/5 text-black/40 hover:bg-black/10"
+                          "h-12 rounded-xl border-2 border-black text-xs font-[1000] uppercase transition-[transform,box-shadow,background-color]",
+                          position === p
+                            ? cn("bg-primary text-white shadow-[4px_4px_0_black] -translate-y-1", neoPressShadow4)
+                            : cn("bg-black/5 text-black/40 hover:bg-black/10 active:translate-x-0.5 active:translate-y-0.5 active:brightness-95")
                         )}
                       >
                         {p.replace('-', ' ')}
@@ -216,7 +219,8 @@ const LaunchPadButton = ({ label, icon, color, onClick }: any) => {
     <button
       onClick={onClick}
       className={cn(
-        "group flex flex-col items-center justify-center p-5 rounded-3xl border-4 border-black transition-all active:scale-95 text-center gap-3 shadow-[6px_6px_0_black]",
+        "group flex flex-col items-center justify-center p-5 rounded-3xl border-4 border-black transition-[transform,box-shadow] text-center gap-3 shadow-[6px_6px_0_black]",
+        neoPressShadow6,
         colorMap[color]
       )}
     >
@@ -232,7 +236,8 @@ const ConfigSwitch = ({ label, active, onClick, tiltClass }: any) => (
   <button
     onClick={onClick}
     className={cn(
-      "flex flex-col items-center justify-center p-4 rounded-3xl border-4 transition-all active:scale-95 text-center gap-4 h-full",
+      "flex flex-col items-center justify-center p-4 rounded-3xl border-4 transition-[transform,box-shadow,background-color,border-color] text-center gap-4 h-full",
+      neoPressShadow6,
       active
         ? cn("bg-primary border-black text-white shadow-[6px_6px_0_black] -translate-y-1", tiltClass)
         : "bg-white border-black/10 text-black/20 hover:border-black/30 hover:bg-black/2 shadow-[6px_6px_0_black]"

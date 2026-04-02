@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { HeroText } from '@/src/components/ui/hero-text';
 import { Button } from '@/src/components/ui/button';
 import { Card, CardHeader, CardTitle, CardContent, CardDescription } from '@/src/components/ui/card';
+import { neoPressShadow4 } from '@/src/utils/site-ui';
 
 
 const NavButton = ({ href, children, variant = "secondary" as const }: { href: string; children: React.ReactNode; variant?: "secondary" | "outline" }) => (
@@ -12,11 +13,8 @@ const NavButton = ({ href, children, variant = "secondary" as const }: { href: s
     variant={variant}
     size="sm"
     asChild
-    className={`rounded-2xl px-8 py-4 font-black uppercase text-xs h-auto transition-all active:scale-95 border-2 border-black/10 hover:-translate-y-1 hover:-translate-x-1 ${variant === 'outline' ? 'border-primary-foreground/30 text-primary-foreground hover:bg-primary-foreground/10' : 'bg-secondary text-secondary-foreground shadow-none'
+    className={`rounded-2xl px-8 py-4 font-black uppercase text-xs h-auto border-2 border-black/10 shadow-[4px_4px_0_#000000] transition-[transform,box-shadow] hover:-translate-y-1 hover:-translate-x-1 ${neoPressShadow4} ${variant === 'outline' ? 'border-primary-foreground/30 text-primary-foreground hover:bg-primary-foreground/10' : 'bg-secondary text-secondary-foreground'
       }`}
-    style={{
-      boxShadow: '4px 4px 0 #000000'
-    }}
   >
     <Link href={href} target={href.startsWith('http') ? '_blank' : undefined} className="flex items-center gap-2">
       {children}
