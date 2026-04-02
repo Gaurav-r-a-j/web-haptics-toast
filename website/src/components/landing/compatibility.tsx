@@ -10,7 +10,7 @@ import Link from 'next/link';
 export const Compatibility = ({ className }: { className?: string }) => {
   return (
     <div className={className}>
-      <div className="px-4 mb-10 md:mb-16">
+      <div className="mb-8 px-0 sm:px-1 md:mb-16 md:px-2">
         <HeroText
           shadowColor="#000000"
           className="mb-6 text-4xl md:text-5xl lg:text-7xl text-primary leading-none uppercase tracking-tight -rotate-2"
@@ -35,7 +35,7 @@ export const Compatibility = ({ className }: { className?: string }) => {
             }).join(', ')
           }}
         >
-          <CardContent className="relative flex flex-col md:flex-row items-stretch gap-8 md:p-12 p-6">
+          <CardContent className="relative flex flex-col items-stretch gap-6 p-4 sm:gap-8 sm:p-6 md:flex-row md:p-12">
             {/* Platform Grid */}
             <div className="flex-1 space-y-6">
               <div className="group/card flex items-start gap-4 p-6 rounded-3xl bg-white border-4 border-black hover:bg-white transition-all shadow-[8px_8px_0_black] rotate-1 relative overflow-hidden">

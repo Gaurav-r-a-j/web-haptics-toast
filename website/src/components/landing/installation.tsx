@@ -39,15 +39,15 @@ export const Installation = () => {
   }, [line]);
 
   return (
-    <section id="setup" className="py-14 p-0 md:py-16 lg:py-24 bg-secondary overflow-hidden text-black">
-      <div className="max-w-7xl mx-auto px-4 md:px-6 grid lg:grid-cols-2 gap-12 lg:gap-24 items-start">
+    <section id="setup" className="bg-secondary py-10 text-black md:py-16 lg:py-24">
+      <div className="mx-auto grid max-w-7xl items-start gap-8 px-3 sm:px-4 md:gap-12 md:px-6 lg:gap-24 lg:grid-cols-2">
 
         {/* Left Column: COMPATIBILITY (Extracted) */}
         <Compatibility className="w-full flex-1" />
 
         {/* Right Column: INSTALLATION */}
-        <div className="lg:pt-2 w-full flex-1 mb-20">
-          <div className="mb-20 pr-4">
+        <div className="mb-12 w-full flex-1 md:mb-20 lg:pt-2">
+          <div className="mb-12 pr-0 sm:pr-2 md:mb-20 md:pr-4">
             <HeroText
               shadowColor="#000000"
               className="mb-10 text-4xl md:text-5xl lg:text-7xl text-primary leading-none uppercase tracking-tight text-right rotate-1"
@@ -65,7 +65,7 @@ export const Installation = () => {
 
             <div className="relative overflow-hidden border-4 border-black bg-white rounded-[2.5rem] shadow-[12px_12px_0_black] transition-all hover:scale-[1.01] w-full">
               {/* Terminal Header */}
-              <div className="flex items-center gap-2 p-6 border-b-4 border-black bg-black/5">
+              <div className="flex items-center gap-2 border-b-4 border-black bg-black/5 p-3.5 sm:p-4 md:p-6">
                 <div className="flex gap-1.5 shrink-0">
                   <div className="size-3 rounded-full bg-red-500 border-2 border-black" />
                   <div className="size-3 rounded-full bg-yellow-500 border-2 border-black" />
@@ -78,7 +78,7 @@ export const Installation = () => {
                 </div>
               </div>
 
-              <div className="p-8 space-y-8">
+              <div className="space-y-5 p-4 sm:space-y-6 sm:p-5 md:space-y-8 md:p-8">
                 <div
                   className="flex w-full flex-wrap gap-2 justify-start"
                   role="tablist"
@@ -112,7 +112,7 @@ export const Installation = () => {
                     type="button"
                     onClick={onCopy}
                     className={clsx(
-                      "group relative flex h-20 md:h-24 w-full cursor-pointer items-center overflow-hidden rounded-4xl border-4 border-black px-4 md:px-8 md:pr-20 text-left font-mono text-[0.85rem] sm:text-[1.1rem] md:text-[1.2rem] font-bold transition-all active:scale-[0.98]",
+                      "group relative flex h-[4.25rem] w-full cursor-pointer items-center overflow-hidden rounded-3xl border-4 border-black px-3 pr-14 text-left font-mono text-[0.8rem] font-bold transition-all active:scale-[0.98] sm:h-20 sm:rounded-4xl sm:px-4 sm:text-[0.9rem] sm:pr-16 md:h-24 md:px-8 md:pr-20 md:text-[1.1rem] lg:text-[1.2rem]",
                       copying ? "bg-[#CCFF00] text-black" : "bg-black/5 text-black hover:bg-black/10"
                     )}
                     aria-label={`Copy install command: ${line}`}
@@ -131,7 +131,7 @@ export const Installation = () => {
                       <span className="text-[#0038FF] font-[1000]">$</span> {line}
                     </span>
                     <span
-                      className="absolute right-5 top-1/2 flex h-12 w-12 -translate-y-1/2 items-center justify-center rounded-2xl bg-[#CCFF00] text-black border-4 border-black transition-all group-hover:scale-110 group-hover:rotate-6 shadow-[4px_4px_0_black]"
+                      className="absolute right-2 top-1/2 flex size-10 -translate-y-1/2 items-center justify-center rounded-xl border-4 border-black bg-[#CCFF00] text-black shadow-[4px_4px_0_black] transition-all group-hover:scale-110 group-hover:rotate-6 sm:right-4 sm:size-12 sm:rounded-2xl md:right-5"
                       aria-hidden
                     >
                       {mounted ? (
@@ -157,7 +157,7 @@ export const Installation = () => {
               </div>
 
               {/* Usage Guideline Footer */}
-              <div className="pt-6 border-t-4 border-black/5 flex items-start gap-4 bg-black/2 p-8">
+              <div className="flex items-start gap-3 border-t-4 border-black/5 bg-black/2 p-4 pt-4 sm:gap-4 sm:p-5 sm:pt-5 md:p-8 md:pt-6">
                 <div className="p-3 bg-primary/10 rounded-2xl border-2 border-primary/20 shadow-[2px_2px_0_var(--primary)]">
                   <AlertCircle size={20} className="text-primary" strokeWidth={4} />
                 </div>

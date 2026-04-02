@@ -61,7 +61,7 @@ const cards: CardItem[] = [
 export const FeatureOverview = () => {
   return (
     <section id="features" aria-labelledby="features-heading" className="bg-primary text-black">
-      <div className="bg-background text-foreground rounded-t-4xl px-6 py-12 md:px-10 md:py-16 relative z-20 shadow-[0_-20px_50px_rgba(0,0,0,0.1)] mt-auto w-full">
+      <div className="relative z-20 mt-auto w-full rounded-t-3xl bg-background px-3 py-8 text-foreground shadow-[0_-20px_50px_rgba(0,0,0,0.1)] sm:rounded-t-4xl sm:px-5 sm:py-10 md:px-10 md:py-16">
         <div className="container mx-auto flex flex-col items-center">
           <div className="flex flex-col items-center text-center mb-16 w-full max-w-4xl">
             <p className="mb-4 text-[10px] md:text-xs font-black uppercase tracking-[0.15em] text-muted-foreground" aria-hidden>
@@ -80,7 +80,7 @@ export const FeatureOverview = () => {
               <div
                 key={c.title}
                 className={clsx(
-                  "flex flex-col items-start text-left transition-all hover:-translate-y-2 hover:-translate-x-1 rounded-4xl border-4 border-black group relative overflow-hidden p-6 md:p-8 lg:p-10 shadow-[8px_8px_0_black] bg-white",
+                  "group relative flex flex-col items-start overflow-hidden rounded-3xl border-4 border-black bg-white p-4 text-left shadow-[8px_8px_0_black] transition-all hover:-translate-x-1 hover:-translate-y-2 sm:rounded-4xl sm:p-5 md:p-8 lg:p-10",
                   index % 3 === 0 ? "rotate-1" : index % 3 === 1 ? "-rotate-1" : "rotate-0"
                 )}
               >

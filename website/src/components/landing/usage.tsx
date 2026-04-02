@@ -3,7 +3,7 @@ import { HeroText } from '@/src/components/ui/hero-text';
 
 export const Usage = () => {
   return (
-    <div className="p-8 md:p-16 lg:py-20 border-b border-border text-foreground bg-background">
+    <div className="border-b border-border bg-background px-3 py-10 text-foreground sm:px-4 md:p-16 lg:py-20">
       <div className="max-w-5xl mx-auto flex flex-col items-center">
         <HeroText shadowColor="#cfd9fc" className="text-4xl md:text-6xl lg:text-7xl mb-12 text-primary leading-none uppercase text-center w-full">
           USAGE

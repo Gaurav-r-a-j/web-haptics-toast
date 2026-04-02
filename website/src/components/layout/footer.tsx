@@ -34,7 +34,7 @@ export const Footer = () => {
 
   return (
     <footer className="mt-auto border-t-8 border-black bg-primary pt-24 pb-0 overflow-hidden text-white relative">
-      <div className="container mx-auto px-8 mb-6">
+      <div className="container mx-auto mb-6 px-3 sm:px-4 md:px-8">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
           <div className="lg:col-span-4 flex flex-col justify-start">
             <div className="flex flex-col gap-1">
@@ -100,8 +100,8 @@ export const Footer = () => {
         </div>
       </div>
 
-      <div className="py-8 border-t-2 border-white/10 bg-black/20">
-        <div className="container mx-auto px-8 flex flex-col md:flex-row justify-between items-center gap-8">
+      <div className="border-t-2 border-white/10 bg-black/20 py-6 md:py-8">
+        <div className="container mx-auto flex flex-col items-center justify-between gap-6 px-3 sm:px-4 md:flex-row md:gap-8 md:px-8">
           <p className="m-0 text-[10px] md:text-sm font-black uppercase tracking-wide text-left text-white ">
             © {year} DESIGNBYTE STUDIO | ALL RIGHTS RESERVED
           </p>

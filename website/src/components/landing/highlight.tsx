@@ -25,7 +25,7 @@ const NavButton = ({ href, children, variant = "secondary" as const }: { href: s
 );
 
 const CompatibilityCard = ({ title, status, desc, color }: { title: string; status: string; desc: string; color: string }) => (
-  <Card className="p-8 border-border bg-card hover:border-primary/40 transition-all group rounded-3xl shadow-none flex flex-col justify-between h-full">
+  <Card className="flex h-full flex-col justify-between rounded-2xl border-border bg-card p-4 shadow-none transition-all group hover:border-primary/40 sm:rounded-3xl sm:p-6 md:p-8">
     <CardHeader className="p-0 mb-2 flex-row items-center justify-between">
       <CardTitle className="text-xs font-black uppercase leading-none text-foreground">
         {title}
@@ -47,7 +47,7 @@ export const Highlight = () => {
     <section aria-label="Tactile Experience Highlights" className="space-y-0 text-left w-full font-sans">
 
       {/* 🚀 PHILOSOPHY SECTION (FIRST) */}
-      <div id="why" className="overflow-hidden rounded-t-[2.5rem] md:rounded-t-[4rem] border-0 bg-primary text-primary-foreground py-16 md:py-28 relative px-6 md:px-10">
+      <div id="why" className="relative overflow-hidden rounded-t-[2rem] border-0 bg-primary px-3 py-12 text-primary-foreground sm:rounded-t-[2.5rem] sm:px-5 sm:py-14 md:rounded-t-[4rem] md:px-10 md:py-28">
 
         <div className="relative z-10 max-w-7xl mx-auto">
           <div className="flex flex-col lg:flex-row gap-12 lg:gap-24 items-start">
