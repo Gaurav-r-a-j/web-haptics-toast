@@ -4,7 +4,7 @@ import Link from 'next/link';
 import { ArrowRight } from 'lucide-react';
 import { HeroText } from '@/src/components/ui/hero-text';
 import { CardContent, CardHeader, CardTitle, CardDescription } from '../ui/card';
-import clsx from 'clsx';
+import { cn } from '@/src/lib/utils';
 import { neoPressShadow4 } from '@/src/utils/site-ui';
 
 type CardItem = {
@@ -80,7 +80,7 @@ export const FeatureOverview = () => {
             {cards.map((c, index) => (
               <div
                 key={c.title}
-                className={clsx(
+                className={cn(
                   "group relative flex flex-col items-start overflow-hidden rounded-3xl border-4 border-black bg-white p-4 text-left shadow-[8px_8px_0_black] transition-all hover:-translate-x-1 hover:-translate-y-2 sm:rounded-4xl sm:p-5 md:p-8 lg:p-10",
                   index % 3 === 0 ? "rotate-1" : index % 3 === 1 ? "-rotate-1" : "rotate-0"
                 )}
@@ -102,7 +102,7 @@ export const FeatureOverview = () => {
 
                   <Link
                     href={c.href}
-                    className={clsx(
+                    className={cn(
                       'group/btn relative inline-flex w-full items-center justify-between rounded-2xl bg-black p-4 px-6 mt-auto font-black text-xs uppercase tracking-[0.2em] text-white shadow-[4px_4px_0_rgba(0,0,0,0.3)] transition-[transform,box-shadow,background-color] hover:bg-primary',
                       neoPressShadow4,
                     )}
