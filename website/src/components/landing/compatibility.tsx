@@ -6,11 +6,12 @@ import { Card, CardContent } from '@/src/components/ui/card';
 import { motion } from 'framer-motion';
 import { CheckCircle2, ExternalLink } from 'lucide-react';
 import Link from 'next/link';
+import { neoPressShadow6 } from '@/src/utils/site-ui';
 
 export const Compatibility = ({ className }: { className?: string }) => {
   return (
     <div className={className}>
-      <div className="px-4 mb-10 md:mb-16">
+      <div className="mb-8 px-0 sm:px-1 md:mb-16 md:px-2">
         <HeroText
           shadowColor="#000000"
           className="mb-6 text-4xl md:text-5xl lg:text-7xl text-primary leading-none uppercase tracking-tight -rotate-2"
@@ -35,7 +36,7 @@ export const Compatibility = ({ className }: { className?: string }) => {
             }).join(', ')
           }}
         >
-          <CardContent className="relative flex flex-col md:flex-row items-stretch gap-8 md:p-12 p-6">
+          <CardContent className="relative flex flex-col items-stretch gap-6 p-4 sm:gap-8 sm:p-6 md:flex-row md:p-12">
             {/* Platform Grid */}
             <div className="flex-1 space-y-6">
               <div className="group/card flex items-start gap-4 p-6 rounded-3xl bg-white border-4 border-black hover:bg-white transition-all shadow-[8px_8px_0_black] rotate-1 relative overflow-hidden">
@@ -103,14 +104,14 @@ export const Compatibility = ({ className }: { className?: string }) => {
               <div className="flex items-center gap-4 w-full pt-4">
                 <Link
                   href="/haptics"
-                  className="flex-1 px-6 py-4 bg-primary text-primary-foreground rounded-2xl font-black text-xs uppercase tracking-[0.2em] hover:scale-[1.02] transition-transform shadow-[6px_6px_0_var(--secondary-foreground)] border-2 border-black text-center"
+                  className={`flex-1 px-6 py-4 bg-primary text-primary-foreground rounded-2xl font-black text-xs uppercase tracking-[0.2em] border-2 border-black text-center shadow-[6px_6px_0_var(--secondary-foreground)] transition-[transform,box-shadow] hover:scale-[1.02] ${neoPressShadow6}`}
                 >
                   Read Docs
                 </Link>
                 <Link
                   href="https://developer.mozilla.org/en-US/docs/Web/API/Vibration_API"
                   target="_blank"
-                  className="flex-1 px-6 py-4 bg-[#CCFF00] text-black rounded-2xl font-black text-xs uppercase tracking-[0.2em] hover:scale-[1.02] transition-transform shadow-[6px_6px_0_var(--secondary-foreground)] border-2 border-black flex items-center justify-center gap-2"
+                  className={`flex-1 px-6 py-4 bg-[#CCFF00] text-black rounded-2xl font-black text-xs uppercase tracking-[0.2em] border-2 border-black flex items-center justify-center gap-2 shadow-[6px_6px_0_var(--secondary-foreground)] transition-[transform,box-shadow] hover:scale-[1.02] ${neoPressShadow6}`}
                 >
                   MDN <ExternalLink className="size-4" strokeWidth={3} />
                 </Link>

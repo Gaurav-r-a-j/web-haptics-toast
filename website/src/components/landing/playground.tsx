@@ -5,6 +5,7 @@ import { toast, triggerHaptic } from 'web-haptics-toast';
 import { HeroText } from '@/src/components/ui/hero-text';
 import { CodeBlock } from '@/src/components/shared/code-block';
 import { cn } from '@/src/lib/utils';
+import { neoPressShadow4, neoPressShadow6 } from '@/src/utils/site-ui';
 import {
   Check, AlertCircle, Info, AlertTriangle, Play,
   Settings2, Layout, SlidersHorizontal, Zap, Terminal,
@@ -84,13 +85,13 @@ export const Playground = ({
   };
 
   return (
-    <section id="playground" className="py-24 bg-white relative overflow-hidden text-black">
+    <section id="playground" className="bg-white py-12 text-black md:py-24 relative overflow-hidden">
       {/* Blueprint Grid */}
       <div className="absolute inset-0 opacity-[0.03] pointer-events-none"
         style={{ backgroundImage: 'radial-gradient(circle, #000 1px, transparent 1px)', backgroundSize: '32px 32px' }} />
 
-      <div className="max-w-7xl mx-auto px-6">
-        <div className="flex flex-col items-center text-center mb-16">
+      <div className="mx-auto max-w-7xl px-3 sm:px-4 md:px-6">
+        <div className="mb-10 flex flex-col items-center text-center md:mb-16">
           <HeroText className="text-5xl md:text-8xl text-primary leading-none uppercase mb-6 tracking-wide">
             PLAYGROUND
           </HeroText>
@@ -99,11 +100,11 @@ export const Playground = ({
           </p>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+        <div className="grid grid-cols-1 items-start gap-5 sm:gap-6 lg:grid-cols-12 lg:gap-8">
 
           {/* Left: Configuration Station */}
           <div className="lg:col-span-5 space-y-6">
-            <div className="bg-white border-4 border-primary rounded-[2.5rem] p-8 shadow-[12px_12px_0_black] h-full flex flex-col">
+            <div className="flex h-full flex-col rounded-[1.75rem] border-4 border-primary bg-white p-4 shadow-[12px_12px_0_black] sm:rounded-[2.5rem] sm:p-6 md:p-8">
               <div className="flex items-center gap-3 mb-12">
                 <div className="p-3 bg-black text-white rounded-2xl shadow-[4px_4px_0_black]">
                   <Settings2 size={24} strokeWidth={3} />
@@ -132,8 +133,10 @@ export const Playground = ({
                         key={p}
                         onClick={() => setPosition(p)}
                         className={cn(
-                          "h-12 rounded-xl border-2 border-black text-xs font-[1000] uppercase transition-all active:scale-95",
-                          position === p ? "bg-primary text-white shadow-[4px_4px_0_black] -translate-y-1" : "bg-black/5 text-black/40 hover:bg-black/10"
+                          "h-12 rounded-xl border-2 border-black text-xs font-[1000] uppercase transition-[transform,box-shadow,background-color]",
+                          position === p
+                            ? cn("bg-primary text-white shadow-[4px_4px_0_black] -translate-y-1", neoPressShadow4)
+                            : cn("bg-black/5 text-black/40 hover:bg-black/10 active:translate-x-0.5 active:translate-y-0.5 active:brightness-95")
                         )}
                       >
                         {p.replace('-', ' ')}
@@ -147,7 +150,7 @@ export const Playground = ({
 
           {/* Right: Tactical Command */}
           <div className="lg:col-span-7 space-y-6">
-            <div className="bg-black/5 border-4 border-black rounded-[2.5rem] p-8 md:p-10 shadow-[12px_12px_0_black] relative overflow-hidden h-full flex flex-col">
+            <div className="relative flex h-full flex-col overflow-hidden rounded-[1.75rem] border-4 border-black bg-black/5 p-4 shadow-[12px_12px_0_black] sm:rounded-[2.5rem] sm:p-6 md:p-8 lg:p-10">
               <div className="flex items-center justify-between mb-10 relative z-10">
                 <div className="flex items-center gap-4">
                   <div className="p-3 bg-secondary text-black rounded-2xl shadow-[4px_4px_0_black]">
@@ -216,7 +219,8 @@ const LaunchPadButton = ({ label, icon, color, onClick }: any) => {
     <button
       onClick={onClick}
       className={cn(
-        "group flex flex-col items-center justify-center p-5 rounded-3xl border-4 border-black transition-all active:scale-95 text-center gap-3 shadow-[6px_6px_0_black]",
+        "group flex flex-col items-center justify-center p-5 rounded-3xl border-4 border-black transition-[transform,box-shadow] text-center gap-3 shadow-[6px_6px_0_black]",
+        neoPressShadow6,
         colorMap[color]
       )}
     >
@@ -232,7 +236,8 @@ const ConfigSwitch = ({ label, active, onClick, tiltClass }: any) => (
   <button
     onClick={onClick}
     className={cn(
-      "flex flex-col items-center justify-center p-4 rounded-3xl border-4 transition-all active:scale-95 text-center gap-4 h-full",
+      "flex flex-col items-center justify-center p-4 rounded-3xl border-4 transition-[transform,box-shadow,background-color,border-color] text-center gap-4 h-full",
+      neoPressShadow6,
       active
         ? cn("bg-primary border-black text-white shadow-[6px_6px_0_black] -translate-y-1", tiltClass)
         : "bg-white border-black/10 text-black/20 hover:border-black/30 hover:bg-black/2 shadow-[6px_6px_0_black]"

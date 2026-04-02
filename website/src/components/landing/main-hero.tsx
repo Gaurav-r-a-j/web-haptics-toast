@@ -54,7 +54,7 @@ export const MainHero = ({
         <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff15_1px,transparent_1px),linear-gradient(to_bottom,#ffffff15_1px,transparent_1px)] bg-size-[4rem_4rem] pointer-events-none z-0"></div>
 
         {/* Hero Section */}
-        <main className="flex-1 relative z-10 pt-8 pb-32 md:pt-12 md:pb-48 px-4 flex flex-col items-center justify-center w-full max-w-[1440px] mx-auto">
+        <main className="relative z-10 mx-auto flex w-full max-w-[1440px] flex-1 flex-col items-center justify-center px-3 pb-28 pt-8 sm:px-4 md:pb-48 md:pt-12">
 
           {/* Massive Typography & Elements Container */}
           <div className="relative w-full max-w-5xl mx-auto flex flex-col items-center justify-center text-center z-10 mt-4 mb-16">
@@ -119,7 +119,7 @@ export const MainHero = ({
                   </div>
                 </div>
 
-                <HeroActionTray onBuzz={handleBuzz} haptics={haptics} />
+                <HeroActionTray onBuzz={handleBuzz} haptics={haptics} hapticsDebug={hapticsDebug} />
 
                 {/* NPM Command Bar */}
                 <div className="mt-8 md:mt-10 relative z-10">

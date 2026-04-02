@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { HeroText } from '@/src/components/ui/hero-text';
 import { Button } from '@/src/components/ui/button';
 import { Card, CardHeader, CardTitle, CardContent, CardDescription } from '@/src/components/ui/card';
+import { neoPressShadow4 } from '@/src/utils/site-ui';
 
 
 const NavButton = ({ href, children, variant = "secondary" as const }: { href: string; children: React.ReactNode; variant?: "secondary" | "outline" }) => (
@@ -12,11 +13,8 @@ const NavButton = ({ href, children, variant = "secondary" as const }: { href: s
     variant={variant}
     size="sm"
     asChild
-    className={`rounded-2xl px-8 py-4 font-black uppercase text-xs h-auto transition-all active:scale-95 border-2 border-black/10 hover:-translate-y-1 hover:-translate-x-1 ${variant === 'outline' ? 'border-primary-foreground/30 text-primary-foreground hover:bg-primary-foreground/10' : 'bg-secondary text-secondary-foreground shadow-none'
+    className={`rounded-2xl px-8 py-4 font-black uppercase text-xs h-auto border-2 border-black/10 shadow-[4px_4px_0_#000000] transition-[transform,box-shadow] hover:-translate-y-1 hover:-translate-x-1 ${neoPressShadow4} ${variant === 'outline' ? 'border-primary-foreground/30 text-primary-foreground hover:bg-primary-foreground/10' : 'bg-secondary text-secondary-foreground'
       }`}
-    style={{
-      boxShadow: '4px 4px 0 #000000'
-    }}
   >
     <Link href={href} target={href.startsWith('http') ? '_blank' : undefined} className="flex items-center gap-2">
       {children}
@@ -25,7 +23,7 @@ const NavButton = ({ href, children, variant = "secondary" as const }: { href: s
 );
 
 const CompatibilityCard = ({ title, status, desc, color }: { title: string; status: string; desc: string; color: string }) => (
-  <Card className="p-8 border-border bg-card hover:border-primary/40 transition-all group rounded-3xl shadow-none flex flex-col justify-between h-full">
+  <Card className="flex h-full flex-col justify-between rounded-2xl border-border bg-card p-4 shadow-none transition-all group hover:border-primary/40 sm:rounded-3xl sm:p-6 md:p-8">
     <CardHeader className="p-0 mb-2 flex-row items-center justify-between">
       <CardTitle className="text-xs font-black uppercase leading-none text-foreground">
         {title}
@@ -47,7 +45,7 @@ export const Highlight = () => {
     <section aria-label="Tactile Experience Highlights" className="space-y-0 text-left w-full font-sans">
 
       {/* 🚀 PHILOSOPHY SECTION (FIRST) */}
-      <div id="why" className="overflow-hidden rounded-t-[2.5rem] md:rounded-t-[4rem] border-0 bg-primary text-primary-foreground py-16 md:py-28 relative px-6 md:px-10">
+      <div id="why" className="relative overflow-hidden rounded-t-[2rem] border-0 bg-primary px-3 py-12 text-primary-foreground sm:rounded-t-[2.5rem] sm:px-5 sm:py-14 md:rounded-t-[4rem] md:px-10 md:py-28">
 
         <div className="relative z-10 max-w-7xl mx-auto">
           <div className="flex flex-col lg:flex-row gap-12 lg:gap-24 items-start">

@@ -9,13 +9,13 @@ import { cn } from '@/src/lib/utils';
 
 export const AdvancedFeatures = () => {
   return (
-    <section id="advanced" className="py-24 bg-secondary relative overflow-hidden text-black">
+    <section id="advanced" className="bg-secondary py-12 text-black md:py-24 relative overflow-hidden">
       {/* Decorative Diagonal Stripes */}
       <div className="absolute inset-0 opacity-[0.05] pointer-events-none"
         style={{ backgroundImage: 'repeating-linear-gradient(45deg, #000 0, #000 2px, transparent 0, transparent 40px)' }} />
 
-      <div className="max-w-7xl mx-auto px-6 relative z-10">
-        <div className="flex flex-col md:flex-row items-center justify-between mb-16 gap-8">
+      <div className="relative z-10 mx-auto max-w-7xl px-3 sm:px-4 md:px-6">
+        <div className="mb-10 flex flex-col items-center justify-between gap-6 md:mb-16 md:flex-row md:gap-8">
           <div className="text-left">
             <HeroText className="text-4xl md:text-7xl leading-none uppercase mb-2 text-primary">
               AND MANY MORE...
@@ -26,7 +26,7 @@ export const AdvancedFeatures = () => {
           </div>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 gap-5 sm:gap-6 lg:grid-cols-3 lg:gap-8">
           {/* Row 1: Wide + Small */}
           <FeatureCard
             icon={<Zap size={24} strokeWidth={3} />}
@@ -113,15 +113,15 @@ const actionPrimaryClass =
 const FeatureCard = ({ icon, title, desc, code, onAction, actionLabel, className }: any) => (
   <div
     className={cn(
-      'mb-0 flex h-full flex-col items-start rounded-4xl border-4 border-primary bg-white p-8 shadow-[8px_8px_0_var(--color-primary)] transition-all hover:-translate-y-1',
+      'mb-0 flex h-full flex-col items-start rounded-4xl border-4 border-primary bg-white p-4 shadow-[8px_8px_0_var(--color-primary)] transition-all hover:-translate-y-1 sm:p-5 md:p-8',
       className,
     )}
   >
-    <div className="mb-6 rounded-2xl bg-black p-3 text-secondary shadow-[4px_4px_0_var(--color-primary)]">{icon}</div>
-    <h3 className="mb-4 text-3xl font-[1000] uppercase leading-none tracking-tighter text-black">{title}</h3>
-    <p className="mb-8 text-base font-bold leading-relaxed text-black/80">{desc}</p>
+    <div className="mb-4 rounded-2xl bg-black p-3 text-secondary shadow-[4px_4px_0_var(--color-primary)] sm:mb-6">{icon}</div>
+    <h3 className="mb-3 text-2xl font-[1000] uppercase leading-none tracking-tighter text-black sm:mb-4 sm:text-3xl">{title}</h3>
+    <p className="mb-6 text-sm font-bold leading-relaxed text-black/80 sm:mb-8 sm:text-base">{desc}</p>
 
-    <div className="mt-auto w-full space-y-8">
+    <div className="mt-auto w-full space-y-5 sm:space-y-8">
       <CodeBlock>{code}</CodeBlock>
 
       {onAction && (
