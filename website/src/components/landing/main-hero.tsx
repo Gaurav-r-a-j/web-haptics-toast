@@ -119,7 +119,7 @@ export const MainHero = ({
                   </div>
                 </div>
 
-                <HeroActionTray onBuzz={handleBuzz} haptics={haptics} />
+                <HeroActionTray onBuzz={handleBuzz} haptics={haptics} hapticsDebug={hapticsDebug} />
 
                 {/* NPM Command Bar */}
                 <div className="mt-8 md:mt-10 relative z-10">

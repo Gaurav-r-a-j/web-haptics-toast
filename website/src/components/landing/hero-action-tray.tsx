@@ -1,7 +1,7 @@
 'use client';
 
 import React from 'react';
-import { toast } from 'web-haptics-toast';
+import { toast, triggerHaptic } from 'web-haptics-toast';
 import { Button } from '@/src/components/ui/button';
 import { useParticles, type EmojiOption } from '@/src/components/shared/emoji-particles';
 
@@ -43,9 +43,11 @@ function expandWeighted(entries: EmojiEntry[]): EmojiOption[] {
 export const HeroActionTray = ({
   onBuzz,
   haptics = true,
+  hapticsDebug = false,
 }: {
   onBuzz: () => void;
   haptics?: boolean;
+  hapticsDebug?: boolean;
 }) => {
   const { create } = useParticles();
   const [isDesktop, setIsDesktop] = React.useState(true);
@@ -78,10 +80,14 @@ export const HeroActionTray = ({
 
     const title = name.charAt(0).toUpperCase() + name.slice(1);
     const description = `Preset: ${name}`;
-    // Normal toast API only — haptics follow `<Toaster haptics={…} />` (see Playground for manual + haptics: false).
-    if (name === 'success') toast.success(title, { description });
-    else if (name === 'error') toast.error(title, { description });
-    else toast(title, { description });
+    if (haptics) {
+      triggerHaptic(name, { debug: hapticsDebug });
+    }
+
+    // Trigger the named preset directly, then keep the toast silent to avoid double-firing.
+    if (name === 'success') toast.success(title, { description, haptics: false });
+    else if (name === 'error') toast.error(title, { description, haptics: false });
+    else toast(title, { description, haptics: false });
   };
 
   return (
