@@ -5,6 +5,8 @@ interface HeroTextProps {
   children: React.ReactNode;
   className?: string;
   shadowColor?: string;
+  /** Number of stacked shadow layers (depth of the 3D effect). Default 14. */
+  layers?: number;
 }
 
 /**
@@ -16,10 +18,11 @@ interface HeroTextProps {
 export const HeroText: React.FC<HeroTextProps> = ({
   children,
   className = "",
-  shadowColor = "#001A99"
+  shadowColor = "#001A99",
+  layers = 14
 }) => {
-  // Generate the 14-layer text shadow string
-  const textShadow = Array.from({ length: 14 }, (_, i) => {
+  // Generate the layered text shadow string
+  const textShadow = Array.from({ length: layers }, (_, i) => {
     const val = i + 1;
     return `${val}px ${val}px 0 ${shadowColor}`;
   }).join(', ');

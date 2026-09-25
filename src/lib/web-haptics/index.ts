@@ -53,7 +53,9 @@ function modulateVibration(duration: number, intensity: number): number[] {
   const offTime = PWM_CYCLE - onTime;
   const result: number[] = [];
 
-  let remaining = duration;
+  // Round to whole ms up front: fractional durations (e.g. 0.5) would never
+  // reach the `remaining >= PWM_CYCLE` exit condition below and loop forever.
+  let remaining = Math.round(duration);
   while (remaining >= PWM_CYCLE) {
     result.push(onTime);
     result.push(offTime);
@@ -166,9 +168,9 @@ export class WebHaptics {
       Math.min(1, options?.intensity ?? 0.5),
     );
 
-    // Validate and clamp durations
+    // Validate first, then clamp: clamping Infinity/NaN before the check would
+    // silently turn invalid input into a MAX_PHASE_MS vibration.
     for (const vib of vibrations) {
-      if (vib.duration > MAX_PHASE_MS) vib.duration = MAX_PHASE_MS;
       if (
         !Number.isFinite(vib.duration) ||
         vib.duration < 0 ||
@@ -180,6 +182,7 @@ export class WebHaptics {
         );
         return;
       }
+      if (vib.duration > MAX_PHASE_MS) vib.duration = MAX_PHASE_MS;
     }
 
     // `isSupported` is true on iOS even without `navigator.vibrate`. Only call vibrate when it exists,
@@ -322,8 +325,11 @@ export class WebHaptics {
 
         if (elapsed >= totalDuration) {
           this.rafId = null;
+          // Null the handle before resolving so a cancel() issued from the
+          // awaiting continuation can't re-enter a already-finished pattern.
+          const done = this.patternResolve;
           this.patternResolve = null;
-          resolve();
+          done?.();
           return;
         }
 
@@ -388,7 +394,13 @@ export class WebHaptics {
   // Lazy-init AudioContext + bandpass filter + gain for playClick (debug mode).
   private async ensureAudio(): Promise<void> {
     if (!this.audioCtx && typeof AudioContext !== "undefined") {
-      this.audioCtx = new AudioContext();
+      // Construction can reject under strict autoplay policies; leave state
+      // clean so the next user-gesture trigger can retry.
+      try {
+        this.audioCtx = new AudioContext();
+      } catch {
+        return;
+      }
 
       this.audioFilter = this.audioCtx.createBiquadFilter();
       this.audioFilter.type = "bandpass";

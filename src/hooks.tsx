@@ -1,7 +1,10 @@
 import React from 'react';
 
 export const useIsDocumentHidden = () => {
-  const [isDocumentHidden, setIsDocumentHidden] = React.useState(document.hidden);
+  // Guard for SSR: `document` doesn't exist on the server.
+  const [isDocumentHidden, setIsDocumentHidden] = React.useState(
+    () => typeof document !== 'undefined' && document.hidden,
+  );
 
   React.useEffect(() => {
     const callback = () => {

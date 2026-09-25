@@ -12,12 +12,14 @@
     "@types/node": "18.15.0",
     "@types/react": "19.2.14",
     "@types/react-dom": "19.2.3",
+    "ai": "^3.4.9",
     "eslint": "^9.21.0",
     "eslint-config-next": "^15.1.0",
-    "next": "^15.1.0",
+    "next": "^15.5.26",
     "react": "^19.2.4",
     "react-dom": "^19.2.4",
+    "typescript": "4.9.5",
     "web-haptics-toast": "workspace:*",
-    "typescript": "4.9.5"
+    "zod": "^3.25.76"
   }
 }

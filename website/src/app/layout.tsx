@@ -1,9 +1,20 @@
 import type { Metadata } from 'next';
 import type { ReactNode } from 'react';
+import { Raleway } from 'next/font/google';
 import '@/src/theme.css';
 import '../../../src/styles.css';
 import '@/src/globals.css';
 import { Providers } from '@/src/app/providers';
+
+/**
+ * Raleway — primary site font. next/font self-hosts it (no external requests,
+ * CSP stays strict) and exposes it as the --font-raleway CSS variable.
+ */
+const raleway = Raleway({
+  subsets: ['latin'],
+  display: 'swap',
+  variable: '--font-raleway',
+});
 
 export const metadata: Metadata = {
   title: {
@@ -38,7 +49,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
-    <html lang="en" dir="ltr" suppressHydrationWarning>
+    <html lang="en" dir="ltr" suppressHydrationWarning className={raleway.variable}>
       <body>
         <Providers>{children}</Providers>
       </body>

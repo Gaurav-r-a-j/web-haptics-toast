@@ -6,6 +6,8 @@ import ReactDOM from 'react-dom';
 import { CloseIcon, getAsset, Loader } from './assets';
 import { useIsDocumentHidden } from './hooks';
 import { toast, ToastState } from './state';
+import { resolveToastAppearance } from './toast-appearance';
+import { sanitizeClassNames, sanitizeToasterId } from './security';
 import './styles.css';
 import {
   defaultPatterns,
@@ -121,7 +123,7 @@ const Toast = (props: ToastProps) => {
   const toastDescriptionClassname = toast.descriptionClassName || '';
   // Height index is used to calculate the offset as it gets updated before the toast array, which means we can calculate the new layout faster.
   const heightIndex = React.useMemo(
-    () => heights.findIndex((height) => height.toastId === toast.id) || 0,
+    () => Math.max(0, heights.findIndex((height) => height.toastId === toast.id)),
     [heights, toast.id],
   );
   const closeButton = React.useMemo(
@@ -153,7 +155,11 @@ const Toast = (props: ToastProps) => {
   const invert = toast.invert || ToasterInvert;
   const disabled = toastType === 'loading';
 
-  offset.current = React.useMemo(() => heightIndex * gap + toastsHeightBefore, [heightIndex, toastsHeightBefore]);
+  const offsetValue = React.useMemo(
+    () => heightIndex * gap + toastsHeightBefore,
+    [heightIndex, toastsHeightBefore],
+  );
+  offset.current = offsetValue;
 
   React.useEffect(() => {
     remainingTime.current = duration;
@@ -665,14 +671,16 @@ const Toaster = React.forwardRef<HTMLElement, ToasterProps>(function Toaster(pro
     hapticsShowSwitch = false,
     system,
   } = props;
+  // Multi-toaster scope id, validated to safe characters (invalid values are ignored).
+  const safeId = sanitizeToasterId(id);
   const hapticsRef = React.useRef<WebHaptics | null>(null);
   const [toasts, setToasts] = React.useState<ToastT[]>([]);
   const filteredToasts = React.useMemo(() => {
-    if (id) {
-      return toasts.filter((toast) => toast.toasterId === id);
+    if (safeId) {
+      return toasts.filter((toast) => toast.toasterId === safeId);
     }
     return toasts.filter((toast) => !toast.toasterId);
-  }, [toasts, id]);
+  }, [toasts, safeId]);
   const possiblePositions = React.useMemo(() => {
     return Array.from(
       new Set([position].concat(filteredToasts.filter((toast) => toast.position).map((toast) => toast.position))),
@@ -681,7 +689,7 @@ const Toaster = React.forwardRef<HTMLElement, ToasterProps>(function Toaster(pro
   const [heights, setHeights] = React.useState<HeightT[]>([]);
   const [expanded, setExpanded] = React.useState(false);
   const [interacting, setInteracting] = React.useState(false);
-  const [actualTheme, setActualTheme] = React.useState(
+  const [actualTheme, setActualTheme] = React.useState<'light' | 'dark'>(
     theme !== 'system'
       ? theme
       : typeof window !== 'undefined'
@@ -690,6 +698,12 @@ const Toaster = React.forwardRef<HTMLElement, ToasterProps>(function Toaster(pro
         : 'light'
       : 'light',
   );
+
+  // `richColors` prop always wins; otherwise the `toastAppearance` preset decides.
+  const defaultRichColors = React.useMemo(() => {
+    const resolved = resolveToastAppearance({ toastAppearance: props.toastAppearance, richColors });
+    return resolved.effectiveRichColors;
+  }, [props.toastAppearance, richColors]);
 
   const listRef = React.useRef<HTMLOListElement>(null);
   const hotkeyLabel = hotkey.join('+').replace(/Key/g, '').replace(/Digit/g, '');
@@ -709,11 +723,11 @@ const Toaster = React.forwardRef<HTMLElement, ToasterProps>(function Toaster(pro
 
   // Register system feature flags for this toaster.
   React.useEffect(() => {
-    ToastState.setSystemConfig(id, system);
+    ToastState.setSystemConfig(safeId, system);
     return () => {
-      ToastState.setSystemConfig(id, undefined);
+      ToastState.setSystemConfig(safeId, undefined);
     };
-  }, [id, system]);
+  }, [safeId, system]);
 
   const removeToast = React.useCallback((toastToRemove: ToastT, reason?: ToastCloseReason) => {
     setToasts((toasts) => {
@@ -787,29 +801,25 @@ const Toaster = React.forwardRef<HTMLElement, ToasterProps>(function Toaster(pro
     if (typeof window === 'undefined') return;
     const darkMediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
 
+    const onMediaChange = ({ matches }: MediaQueryListEvent) => {
+      setActualTheme(matches ? 'dark' : 'light');
+    };
+
     try {
       // Chrome & Firefox
-      darkMediaQuery.addEventListener('change', ({ matches }) => {
-        if (matches) {
-          setActualTheme('dark');
-        } else {
-          setActualTheme('light');
-        }
-      });
-    } catch (error) {
+      darkMediaQuery.addEventListener('change', onMediaChange);
+    } catch {
       // Safari < 14
-      darkMediaQuery.addListener(({ matches }) => {
-        try {
-          if (matches) {
-            setActualTheme('dark');
-          } else {
-            setActualTheme('light');
-          }
-        } catch (e) {
-          console.error(e);
-        }
-      });
+      darkMediaQuery.addListener(onMediaChange);
     }
+
+    return () => {
+      try {
+        darkMediaQuery.removeEventListener('change', onMediaChange);
+      } catch {
+        darkMediaQuery.removeListener(onMediaChange);
+      }
+    };
   }, [theme]);
 
   React.useEffect(() => {
@@ -882,7 +892,7 @@ const Toaster = React.forwardRef<HTMLElement, ToasterProps>(function Toaster(pro
             data-x-position={x}
             style={
               {
-                '--front-toast-height': `${heights[0]?.height || 0}px`,
+                '--front-toast-height': `${heights.find((h) => h.position === position)?.height || 0}px`,
                 '--width': `${TOAST_WIDTH}px`,
                 '--gap': `${gap}px`,
                 ...style,
@@ -935,7 +945,7 @@ const Toaster = React.forwardRef<HTMLElement, ToasterProps>(function Toaster(pro
                   icons={icons}
                   index={index}
                   toast={toast}
-                  defaultRichColors={richColors}
+                  defaultRichColors={defaultRichColors}
                   duration={toastOptions?.duration ?? duration}
                   className={toastOptions?.className}
                   descriptionClassName={toastOptions?.descriptionClassName}
@@ -946,7 +956,7 @@ const Toaster = React.forwardRef<HTMLElement, ToasterProps>(function Toaster(pro
                   position={position}
                   style={toastOptions?.style}
                   unstyled={toastOptions?.unstyled}
-                  classNames={toastOptions?.classNames}
+                  classNames={sanitizeClassNames(toastOptions?.classNames)}
                   cancelButtonStyle={toastOptions?.cancelButtonStyle}
                   actionButtonStyle={toastOptions?.actionButtonStyle}
                   closeButtonAriaLabel={toastOptions?.closeButtonAriaLabel}

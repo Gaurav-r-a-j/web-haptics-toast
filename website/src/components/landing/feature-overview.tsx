@@ -2,118 +2,108 @@
 
 import Link from 'next/link';
 import { ArrowRight } from 'lucide-react';
-import { HeroText } from '@/src/components/ui/hero-text';
-import { CardContent, CardHeader, CardTitle, CardDescription } from '../ui/card';
-import { cn } from '@/src/lib/utils';
-import { neoPressShadow4 } from '@/src/utils/site-ui';
+import { Reveal } from '@/src/components/shared/section';
 
 type CardItem = {
   title: string;
   description: string;
   href: string;
-  linkLabel: string;
 };
 
 const cards: CardItem[] = [
   {
-    title: 'FEEL EVERY TOAST',
+    title: 'Feel every toast',
     description:
-      'Native presets for every notification. Because your users deserve more than just visual noise—give them something to actually feel.',
+      'Every toast type ships with a vibration preset that just works. Successes feel like successes; errors actually get your attention.',
     href: '/haptics',
-    linkLabel: 'Learn Presets',
   },
   {
-    title: 'TOTAL CONTROL',
+    title: 'Total control',
     description:
-      'Dial it in manually. Strong for critical errors, subtle for success. You decide the vibration vibe for every single alert.',
+      'Pass any pattern you like — a long buzz for errors, a double-tap for chat messages. Your call, per toast.',
     href: '/toast',
-    linkLabel: 'Explore API',
   },
   {
-    title: 'GO ROGUE',
+    title: 'Go rogue',
     description:
-      'Tap into the haptic system directly. Use tactical power for buttons, toggles, or whatever you want—not just toasts.',
+      'You don\u2019t need a toast to buzz. Call triggerHaptic() on any button, toggle, or flow you like.',
     href: '/haptics#manual-haptics',
-    linkLabel: 'Manual Mode',
   },
   {
-    title: 'SWAP IN SECONDS',
+    title: 'Swap in seconds',
     description:
-      'Already using Sonner? Just change the import. Zero friction, zero headache, and instantly upgraded feedback.',
+      'Already on Sonner? Change the import line and you\u2019re done. Same API, same props — plus haptics.',
     href: '/migration-from-sonner',
-    linkLabel: 'Quick Swap',
   },
   {
-    title: 'STAY PRETTY',
+    title: 'Stay pretty',
     description:
-      'Chunky stacks, custom positions, and modern themes. It is not just a library—it is a premium design system enhancement.',
-    href: '#position',
-    linkLabel: 'Layout Guide',
+      'Stacks, positions, themes — the toast styling you already know, kept intact. Haptics ride along on top.',
+    href: '#playground',
   },
   {
-    title: 'SMART FEEDBACK',
+    title: 'Smart feedback',
     description:
-      'Loading states that feel like they are working. Success that satisfyingly pulses. It is the tactical edge your app needs.',
-    href: '#types',
-    linkLabel: 'See Types',
+      'Promises can buzz the moment they resolve. Loading feels alive, and success lands with a satisfying pulse.',
+    href: '#advanced',
   },
 ];
 
+/**
+ * Editorial index: no cards, no borders — a calm numbered list on a tonal band.
+ * Two-column on desktop, single column on mobile; rows light up on hover.
+ */
 export const FeatureOverview = () => {
   return (
-    <section id="features" aria-labelledby="features-heading" className="bg-primary text-black">
-      <div className="relative z-20 mt-auto w-full rounded-t-3xl bg-background px-3 py-8 text-foreground shadow-[0_-20px_50px_rgba(0,0,0,0.1)] sm:rounded-t-4xl sm:px-5 sm:py-10 md:px-10 md:py-16">
-        <div className="container mx-auto flex flex-col items-center">
-          <div className="flex flex-col items-center text-center mb-16 w-full max-w-4xl">
-            <p className="mb-4 text-[10px] md:text-xs font-black uppercase tracking-[0.15em] text-muted-foreground" aria-hidden>
+    <section id="features" aria-labelledby="features-heading" className="bg-muted text-foreground">
+      <div className="mx-auto w-full max-w-7xl px-3 py-16 sm:px-5 md:px-10 md:py-24">
+        {/* Asymmetric header: title left, lede right */}
+        <div className="mb-10 grid gap-6 md:mb-14 md:grid-cols-12 md:items-end">
+          <Reveal className="md:col-span-7">
+            <p className="m-0 mb-4 text-[11px] font-semibold uppercase tracking-[0.22em] text-primary">
               Overview
             </p>
-            <HeroText shadowColor="var(--secondary)" className="text-4xl md:text-7xl mb-10 text-black">
-              EVERYTHING BUILT IN
-            </HeroText>
-            <p className="m-0 max-w-[50ch] text-xl md:text-2xl leading-snug text-black font-black ">
-              Simple tools for modern tactile experiences. <span className="text-primary">Native, reliable, and ridiculously easy to setup.</span>
+            <h2
+              id="features-heading"
+              className="m-0 text-balance text-4xl font-semibold leading-[1.05] tracking-tight text-foreground sm:text-5xl"
+            >
+              Everything <span className="text-primary">built in</span>
+            </h2>
+          </Reveal>
+          <Reveal delay={0.08} className="md:col-span-5">
+            <p className="m-0 max-w-[46ch] text-pretty text-base font-normal leading-relaxed text-muted-foreground md:text-lg">
+              Haptics for your toasts, without the ceremony. One import, it works on the
+              browsers people actually use, and it stays quiet everywhere else.
             </p>
-          </div>
+          </Reveal>
+        </div>
 
-          <div className="m-0 grid gap-8 sm:grid-cols-2 lg:grid-cols-3 w-full pb-20 mt-10">
-            {cards.map((c, index) => (
-              <div
-                key={c.title}
-                className={cn(
-                  "group relative flex flex-col items-start overflow-hidden rounded-3xl border-4 border-black bg-white p-4 text-left shadow-[8px_8px_0_black] transition-all hover:-translate-x-1 hover:-translate-y-2 sm:rounded-4xl sm:p-5 md:p-8 lg:p-10",
-                  index % 3 === 0 ? "rotate-1" : index % 3 === 1 ? "-rotate-1" : "rotate-0"
-                )}
+        {/* Numbered index cards — generous gaps, number aligned to title */}
+        <div className="grid gap-x-6 gap-y-4 md:gap-x-8 lg:grid-cols-2">
+          {cards.map((c, index) => (
+            <Reveal key={c.title} delay={(index % 2) * 0.06}>
+              <Link
+                href={c.href}
+                className="group flex h-full items-start gap-4 rounded-2xl bg-card px-5 py-6 shadow-card transition-[box-shadow] duration-300 hover:shadow-float sm:gap-5 sm:px-7"
               >
-                {/* Subtle Decorative Grid Pattern */}
-                <div className="absolute inset-0 opacity-[0.05] pointer-events-none"
-                  style={{ backgroundImage: 'linear-gradient(to right, #000 1px, transparent 1px), linear-gradient(to bottom, #000 1px, transparent 1px)', backgroundSize: '20px 20px' }} />
-
-                <CardHeader className="flex flex-col w-full items-start relative z-10 p-0 mb-6">
-                  <CardTitle className="font-[1000] uppercase w-full text-2xl md:text-3xl tracking-tighter text-black">
+                <span className="w-7 shrink-0 pt-1 text-sm font-medium tabular-nums leading-none text-primary/60">
+                  {String(index + 1).padStart(2, '0')}
+                </span>
+                <span className="min-w-0 flex-1">
+                  <span className="block text-lg font-semibold leading-snug tracking-tight text-foreground">
                     {c.title}
-                  </CardTitle>
-                </CardHeader>
-
-                <CardContent className="flex flex-col items-start flex-1 relative z-10 p-0 gap-8 w-full">
-                  <CardDescription className="w-full text-lg leading-relaxed font-bold text-black/60 italic">
+                  </span>
+                  <span className="mt-2 block text-sm font-normal leading-relaxed text-muted-foreground">
                     {c.description}
-                  </CardDescription>
-
-                  <Link
-                    href={c.href}
-                    className={cn(
-                      'group/btn relative inline-flex w-full items-center justify-between rounded-2xl bg-black p-4 px-6 mt-auto font-black text-xs uppercase tracking-[0.2em] text-white shadow-[4px_4px_0_rgba(0,0,0,0.3)] transition-[transform,box-shadow,background-color] hover:bg-primary',
-                      neoPressShadow4,
-                    )}
-                  >
-                    {c.linkLabel}
-                    <ArrowRight className="w-4 h-4 transition-transform group-hover/btn:translate-x-2" strokeWidth={4} />
-                  </Link>
-                </CardContent>
-              </div>
-            ))}
-          </div>
+                  </span>
+                </span>
+                <ArrowRight
+                  className="mt-1 size-4 shrink-0 text-primary opacity-0 transition-[opacity,transform] duration-200 group-hover:translate-x-1 group-hover:opacity-100 motion-reduce:transition-none motion-reduce:group-hover:translate-x-0"
+                  strokeWidth={2}
+                />
+              </Link>
+            </Reveal>
+          ))}
         </div>
       </div>
     </section>

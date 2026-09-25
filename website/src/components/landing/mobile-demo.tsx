@@ -221,7 +221,7 @@ const DemoTiles = ({
   };
 
   const tileBase =
-    'cursor-pointer rounded-[14px] border border-border bg-clip-padding px-[10px] py-[14px] text-[13px] font-semibold text-foreground shadow-card active:scale-[0.99] motion-safe:transition-[transform,box-shadow] motion-safe:duration-120 motion-safe:hover:-translate-y-px motion-safe:hover:shadow-float focus-visible:outline-none focus-visible:shadow-focus-ring motion-reduce:transition-none';
+    'cursor-pointer rounded-[14px] border border-rim-soft bg-clip-padding px-[10px] py-[14px] text-[13px] font-semibold text-foreground shadow-card active:scale-[0.99] active:shadow-pressed motion-safe:transition-[transform,box-shadow] motion-safe:duration-120 motion-safe:hover:-translate-y-px motion-safe:hover:shadow-float focus-visible:outline-none focus-visible:shadow-focus-ring motion-reduce:transition-none';
 
   return (
     <div className="grid grid-cols-2 gap-[10px]" role="group" aria-label="Haptic demo presets">

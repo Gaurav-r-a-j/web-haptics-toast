@@ -32,6 +32,9 @@ yarn-error.log*
 # vercel
 .vercel
 
+# scraped debug artifacts
+/page_source.html
+
 # typescript
 *.tsbuildinfo
 next-env.d.ts

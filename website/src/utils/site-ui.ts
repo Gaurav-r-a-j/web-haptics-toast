@@ -23,9 +23,9 @@ export const sectionLabel =
 export const sectionTitle =
   'm-0 mb-2 text-xl font-semibold tracking-tight text-foreground';
 
-/** Card section: scroll margin for sticky header, border, shadow */
+/** Card section: scroll margin for sticky header, soft rim + neumorphic duo shadow */
 export const sectionCard =
-  'scroll-mt-[5.5rem] rounded-[2.5rem] md:rounded-[3rem] border border-border bg-card p-6 max-[480px]:scroll-mt-[4.75rem] max-[480px]:p-6 sm:px-10 sm:py-12 shadow-sm';
+  'scroll-mt-[5.5rem] rounded-[2.5rem] md:rounded-[3rem] border border-rim-softer bg-card p-6 max-[480px]:scroll-mt-[4.75rem] max-[480px]:p-6 sm:px-10 sm:py-12 shadow-card';
 
 /** External links */
 export const linkExternal = 'underline underline-offset-2';
@@ -37,9 +37,9 @@ export const focusRing = 'focus:outline-none focus-visible:shadow-focus-ring';
 export const transitionSurface =
   'transition-[border-color,background,box-shadow] duration-200 motion-reduce:transition-none';
 
-/** Base chip / pill control — uses theme surfaces (avoid secondary since it is bright green) */
+/** Base chip / pill control — neumorphic: soft rim, duo shadow, pressed-inset when active */
 export const interactiveChip =
-  'cursor-pointer whitespace-nowrap rounded-full border border-border bg-muted px-[0.875rem] py-[0.5rem] text-[0.8125rem] font-medium font-sans text-foreground hover:bg-background hover:border-muted-foreground active:translate-x-px active:translate-y-px active:brightness-[0.97]';
+  'cursor-pointer whitespace-nowrap rounded-xl border border-rim-soft bg-muted px-[0.875rem] py-[0.5rem] text-[0.8125rem] font-medium font-sans text-foreground shadow-card hover:bg-background hover:border-muted-foreground active:translate-x-px active:translate-y-px active:shadow-pressed active:brightness-[0.97]';
 
 /** Selected state for toggle chips (`data-active`) */
 export const chipActiveStates =
