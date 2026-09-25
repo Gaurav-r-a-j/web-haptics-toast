@@ -106,7 +106,7 @@ export const Playground = ({
   };
 
   return (
-    <section id="playground" className="scroll-mt-24 bg-muted py-16 text-foreground md:py-24">
+    <section id="playground" className="scroll-mt-24 bg-muted py-16 text-foreground md:py-24 dark:bg-transparent">
       <div className="mx-auto max-w-7xl px-3 sm:px-4 md:px-6">
         <SectionHeading
           eyebrow="Playground"

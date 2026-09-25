@@ -212,7 +212,7 @@ export const Installation = () => {
         <div className="mt-6 grid gap-4 sm:grid-cols-3">
           {PLATFORMS.map((p, i) => (
             <Reveal key={p.name} delay={i * 0.06}>
-              <div className="group relative h-full rounded-2xl bg-card p-5 shadow-card transition-[box-shadow,background-color] duration-300 hover:shadow-float dark:bg-white/5 dark:shadow-none dark:hover:bg-white/[0.07]">
+              <div className="group relative h-full rounded-2xl bg-card p-5 shadow-card transition-[box-shadow,background-color] duration-300 hover:shadow-float dark:hover:bg-white/[0.08] dark:hover:shadow-none">
                 <div className="mb-2 flex items-center gap-2">
                   <h3 className="m-0 text-sm font-semibold tracking-tight text-foreground dark:text-zinc-100">
                     {p.name}
@@ -252,7 +252,7 @@ export const Installation = () => {
               href="https://developer.mozilla.org/en-US/docs/Web/API/Vibration_API"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center justify-center gap-2 rounded-xl bg-card px-6 py-3.5 text-xs font-semibold uppercase tracking-[0.14em] text-foreground shadow-card transition-[box-shadow,background-color,transform] duration-200 hover:shadow-float hover:-translate-y-0.5 active:translate-y-0 dark:bg-white/10 dark:text-zinc-50 dark:shadow-none dark:hover:bg-white/15 motion-reduce:transition-none motion-reduce:hover:translate-y-0"
+              className="inline-flex items-center justify-center gap-2 rounded-xl bg-card px-6 py-3.5 text-xs font-semibold uppercase tracking-[0.14em] text-foreground shadow-card transition-[box-shadow,background-color,transform] duration-200 hover:shadow-float hover:-translate-y-0.5 active:translate-y-0 dark:text-zinc-50 dark:hover:bg-white/10 dark:hover:shadow-none motion-reduce:transition-none motion-reduce:hover:translate-y-0"
             >
               MDN Vibration API
               <ExternalLink className="size-3.5" strokeWidth={2.5} />

@@ -55,7 +55,7 @@ const cards: CardItem[] = [
  */
 export const FeatureOverview = () => {
   return (
-    <section id="features" aria-labelledby="features-heading" className="bg-muted text-foreground">
+    <section id="features" aria-labelledby="features-heading" className="bg-muted text-foreground dark:bg-transparent">
       <div className="mx-auto w-full max-w-7xl px-3 py-16 sm:px-5 md:px-10 md:py-24">
         {/* Asymmetric header: title left, lede right */}
         <div className="mb-10 grid gap-6 md:mb-14 md:grid-cols-12 md:items-end">

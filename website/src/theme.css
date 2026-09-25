@@ -118,8 +118,11 @@
 
 /*
  * Soft-graphite dark theme: cool blue undertone instead of pitch black, with a
- * real elevation ladder (background → card → popover → muted) so tonal surfaces
- * and neumorphic shadows keep their depth in dark mode.
+ * real elevation ladder so surfaces keep their depth in dark mode.
+ *
+ * CARD SYSTEM (dark): every card is the SAME translucent white/5 tile — flat,
+ * no neumorphic duo shadow (shadows don't read on dark). Tone does the work;
+ * hover lifts tone to white/[0.07] or adds --shadow-float. One rule everywhere.
  */
 .dark {
   /* Ladder widened so each surface step is actually visible in dark mode
@@ -127,7 +130,7 @@
   --background: #0d0f15;
   --foreground: #f5f7fa;
 
-  --card: #1a1f30;
+  --card: rgba(255, 255, 255, 0.05);
   --card-foreground: #f5f7fa;
 
   --popover: #202639;
@@ -173,9 +176,8 @@
   --sidebar-border: #262b3a;
   --sidebar-ring: #CCFF00;
 
-  /* Neumorphic dark variants: cool sheen top-left + deep shadow bottom-right */
-  --shadow-card:
-    -3px -3px 8px rgba(226, 232, 240, 0.05), 4px 4px 10px rgba(0, 0, 0, 0.55);
+  /* Cards are flat translucent tiles in dark — no duo shadow. */
+  --shadow-card: none;
   --shadow-float:
     -6px -6px 14px rgba(226, 232, 240, 0.06), 12px 16px 34px rgba(0, 0, 0, 0.6);
   --shadow-strong: 0 32px 72px rgba(0, 0, 0, 0.5);
