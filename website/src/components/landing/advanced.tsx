@@ -14,7 +14,7 @@ import { cn } from '@/src/lib/utils';
  */
 export const AdvancedFeatures = () => {
   return (
-    <section id="advanced" className="scroll-mt-24 bg-muted py-16 text-foreground md:py-24">
+    <section id="advanced" className="scroll-mt-24 bg-background py-16 text-foreground md:py-24">
       <div className="relative z-10 mx-auto max-w-7xl px-3 sm:px-4 md:px-6">
         <SectionHeading
           eyebrow="And many more"

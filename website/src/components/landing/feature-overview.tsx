@@ -61,7 +61,7 @@ export const FeatureOverview = () => {
         <div className="mb-10 grid gap-6 md:mb-14 md:grid-cols-12 md:items-end">
           <Reveal className="md:col-span-7">
             <p className="m-0 mb-4 text-[11px] font-semibold uppercase tracking-[0.22em] text-primary">
-              Overview
+              What you get
             </p>
             <h2
               id="features-heading"

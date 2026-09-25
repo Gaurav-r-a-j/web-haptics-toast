@@ -36,10 +36,10 @@ export const Highlight = () => {
           <div className="grid gap-12 lg:grid-cols-12 lg:gap-16">
             <Reveal className="lg:col-span-5">
               <p className="m-0 text-[11px] font-semibold uppercase tracking-[0.22em] text-secondary/90">
-                Why
+                Why haptics
               </p>
               <h2 className="m-0 mt-5 text-4xl font-semibold leading-[1.05] tracking-tight sm:text-5xl">
-                Why use <span className="bg-linear-to-r from-secondary to-zinc-50 bg-clip-text text-transparent">Web&nbsp;Haptics Toast</span>
+                Toasts people can <span className="text-secondary">feel</span>
               </h2>
               <p className="m-0 mt-6 max-w-[44ch] text-pretty text-lg font-normal leading-relaxed text-zinc-400">
                 People swipe toasts away without reading them. A buzz is a lot harder to
