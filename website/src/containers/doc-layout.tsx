@@ -27,7 +27,7 @@ export default async function DocLayout({ children }: { children: React.ReactNod
     <Layout
       navbar={
         <Navbar
-          logo={<Logo />}
+          logo={<Logo linked={false} />}
           projectLink="https://github.com/Gaurav-r-a-j/web-haptics-toast"
         >
           <Search />

@@ -131,6 +131,7 @@ class Observer {
       );
     } else {
       this.toasts.forEach((toast) => {
+        this.dismissedToasts.add(toast.id);
         this.subscribers.forEach((subscriber) => subscriber({ id: toast.id, dismiss: true, reason } as ToastToDismiss));
       });
     }
@@ -311,14 +312,10 @@ export const ToastState = getToastState();
 
 // bind this to the toast function
 const toastFunction = (message: titleT, data?: ExternalToast) => {
-  const id = data?.id || toastsCounter++;
-
-  ToastState.addToast({
-    title: message,
-    ...data,
-    id,
-  });
-  return id;
+  // Route through `create` so plain `toast()` calls get the same handling as
+  // the typed helpers: dedupe ids, explicit-id updates (no duplicate history
+  // rows), and cleanup of previously dismissed ids.
+  return ToastState.create({ message, ...data });
 };
 
 const isHttpResponse = (data: any): data is Response => {

@@ -118,7 +118,7 @@
     color: var(--foreground) !important;
     background: var(--background) !important;
     border: 1px solid var(--border) !important;
-    border-radius: var(--radius-sm) !important;
+    border-radius: 0.75rem !important;
   }
 
   .nextra-toc {
@@ -148,24 +148,40 @@
     background: var(--muted) !important;
   }
 
+  /*
+   * Code blocks: ALWAYS black in both themes (docs examples + landing CodeBlock).
+   * This `pre` rule must NOT carry !important — the landing CodeBlock relies on
+   * its own bg-[#0b0b0f] utility; docs blocks get the black bg via the figure rule below.
+   */
   pre {
-    background-color: var(--muted) !important;
-    border: 1px solid var(--border);
+    background-color: #0a0c12;
+    color: #e4e4e7;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: var(--shadow-float);
     margin-bottom: 2rem !important;
-    border-radius: var(--radius);
+    border-radius: 1rem;
   }
 
-  html.dark pre {
-    background-color: #0f1115 !important;
+  figure[data-rehype-pretty-code-figure] pre {
+    background-color: #0a0c12 !important;
+    color: #e4e4e7;
+    box-shadow: var(--shadow-float);
+  }
+
+  /*
+   * Nextra/rehype-pretty-code emits a dual theme (github-light / github-dark) and
+   * nextra-theme-docs switches token colors per .dark. Force the DARK palette in
+   * both themes so tokens stay readable on the always-black background, and keep
+   * spans transparent so the light-theme white span background can't cover it.
+   */
+  figure[data-rehype-pretty-code-figure] pre code span {
+    background-color: transparent !important;
+    color: var(--shiki-dark, #e4e4e7) !important;
   }
 
   button[title='Copy code'] {
-    background: var(--muted);
-    color: var(--muted-foreground);
-  }
-
-  html.dark button[title='Copy code'] {
-    background: #1e1e20;
+    background: rgba(255, 255, 255, 0.08);
+    color: #a1a1aa;
   }
 
   main>p {
@@ -179,10 +195,6 @@
 
   footer>div {
     padding: 1.5rem var(--side-padding) !important;
-  }
-
-  :root {
-    --shiki-token-comment: var(--muted-foreground) !important;
   }
 
   ul[role='listbox']>li[role='option'],

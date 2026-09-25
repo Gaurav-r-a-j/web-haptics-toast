@@ -19,6 +19,44 @@ const nextConfig = {
   images: {
     unoptimized: true,
   },
+  async headers() {
+    return [
+      {
+        source: '/(.*)',
+        headers: [
+          // Clickjacking, MIME sniffing and referrer-leak defenses on every route.
+          { key: 'X-Frame-Options', value: 'DENY' },
+          { key: 'X-Content-Type-Options', value: 'nosniff' },
+          { key: 'Referrer-Policy', value: 'strict-origin-when-cross-origin' },
+          { key: 'Permissions-Policy', value: 'camera=(), microphone=(), geolocation=()' },
+          // CSP tuned for Next.js + Nextra + Pagefind:
+          // - 'unsafe-inline' scripts: Next.js inline bootstrap (no nonce without middleware)
+          // - 'wasm-unsafe-eval': Pagefind client-side search (WASM)
+          // - va.vercel-scripts.com: Vercel Analytics
+          // - 'unsafe-eval' + ws: are DEV-ONLY (React Refresh / HMR); prod stays strict.
+          {
+            key: 'Content-Security-Policy',
+            value: [
+              "default-src 'self'",
+              `script-src 'self' 'unsafe-inline' 'wasm-unsafe-eval'${
+                process.env.NODE_ENV === 'development' ? " 'unsafe-eval'" : ''
+              } https://va.vercel-scripts.com`,
+              "style-src 'self' 'unsafe-inline'",
+              "img-src 'self' data: blob:",
+              "font-src 'self' data:",
+              `connect-src 'self' https://va.vercel-scripts.com https://vitals.vercel-insights.com${
+                process.env.NODE_ENV === 'development' ? ' ws: wss:' : ''
+              }`,
+              "object-src 'none'",
+              "base-uri 'self'",
+              "form-action 'self'",
+              "frame-ancestors 'none'",
+            ].join('; '),
+          },
+        ],
+      },
+    ];
+  },
   webpack: (config) => {
     config.resolve.alias = {
       ...config.resolve.alias,

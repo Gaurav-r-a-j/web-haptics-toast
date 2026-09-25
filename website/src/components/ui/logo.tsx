@@ -8,9 +8,20 @@ import { cn } from '@/src/lib/utils';
 
 const LOGO_ROTATION = ['WEB', 'HAPTICS'];
 
-export const Logo = ({ isScrolled = true, className }: { isScrolled?: boolean; className?: string }) => {
-  return (
-    <Link href="/" className={cn("flex items-center gap-1 no-underline group", className)} aria-label="Home">
+export const Logo = ({
+  isScrolled = true,
+  className,
+  linked = true,
+}: {
+  isScrolled?: boolean;
+  className?: string;
+  /** Render the link wrapper. Set false when nested inside another <a>
+   *  (e.g. Nextra's navbar wraps the logo slot in its own link) — otherwise
+   *  the invalid <a> inside <a> causes a hydration error. */
+  linked?: boolean;
+}) => {
+  const content = (
+    <>
       <div className={cn(
         "font-black tracking-tight text-xs px-3 py-1.5 rounded-2xl rounded-bl-sm relative shadow-sm h-[30px] flex items-center min-w-[85px] justify-center transition-colors duration-300",
         isScrolled ? "bg-foreground text-background" : "bg-white text-black"
@@ -29,6 +40,16 @@ export const Logo = ({ isScrolled = true, className }: { isScrolled?: boolean; c
       )}>
         TOAST
       </div>
+    </>
+  );
+
+  if (!linked) {
+    return <span className={cn("flex items-center gap-1 no-underline group", className)} aria-label="Home">{content}</span>;
+  }
+
+  return (
+    <Link href="/" className={cn("flex items-center gap-1 no-underline group", className)} aria-label="Home">
+      {content}
     </Link>
   );
 };

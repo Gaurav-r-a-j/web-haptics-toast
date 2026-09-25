@@ -16,11 +16,10 @@ const LOGO_ROTATION = ['WEB', 'HAPTICS'];
 
 const menuLinks = [
   { href: '#features', label: 'Features' },
+  { href: '#why', label: 'Why haptics' },
   { href: '#install', label: 'Install' },
-  { href: '#usage', label: 'Usage' },
-  { href: '#haptics', label: 'Haptics' },
-  { href: '#types', label: 'Types' },
-  { href: '#compatibility', label: 'Compatibility' },
+  { href: '#playground', label: 'Playground' },
+  { href: '#advanced', label: 'Advanced' },
 ];
 
 export const Header = ({
@@ -98,7 +97,7 @@ export const Header = ({
             <Link
               href="/docs"
               className={cn(
-                "px-4 py-1.5 rounded-full border text-xs font-semibold transition-colors duration-200",
+                "px-4 py-1.5 rounded-xl border text-xs font-semibold transition-colors duration-200",
                 isScrolled ? "border-border text-foreground hover:bg-secondary" : "border-white/30 text-white hover:bg-white/10"
               )}
             >
@@ -108,14 +107,14 @@ export const Header = ({
             <details ref={menuRef} className="relative group">
               <summary
                 className={cn(
-                  "cursor-pointer select-none list-none px-4 py-1.5 rounded-full border text-xs font-semibold transition-colors duration-200 [&::-webkit-details-marker]:hidden",
+                  "cursor-pointer select-none list-none px-4 py-1.5 rounded-xl border text-xs font-semibold transition-colors duration-200 [&::-webkit-details-marker]:hidden",
                   isScrolled ? "border-border text-foreground hover:bg-secondary" : "border-white/30 text-white hover:bg-white/10"
                 )}
               >
                 Menu
               </summary>
               <div
-                className="absolute left-1/2 -translate-x-1/2 top-[calc(100%+8px)] z-50 min-w-[200px] rounded-2xl border border-border bg-popover p-2 shadow-float"
+                className="absolute left-1/2 -translate-x-1/2 top-[calc(100%+8px)] z-50 min-w-[200px] rounded-2xl border border-rim-soft bg-popover p-2 shadow-float"
                 role="menu"
                 aria-label="Sections"
               >
@@ -143,7 +142,7 @@ export const Header = ({
           <Link
             href="/docs"
             className={cn(
-              "min-[860px]:hidden px-4 py-1.5 rounded-full border text-xs font-semibold transition-colors duration-200",
+              "min-[860px]:hidden px-4 py-1.5 rounded-xl border text-xs font-semibold transition-colors duration-200",
               isScrolled ? "border-border text-foreground hover:bg-secondary" : "border-white/30 text-white hover:bg-white/10"
             )}
           >
@@ -157,7 +156,7 @@ export const Header = ({
           <button
             type="button"
             className={cn(
-              "inline-flex h-[34px] w-[34px] items-center justify-center gap-0 rounded-full border transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-primary data-[on=true]:border-primary data-[on=true]:bg-primary data-[on=true]:text-primary-foreground",
+              "inline-flex h-[34px] w-[34px] items-center justify-center gap-0 rounded-xl border transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-primary data-[on=true]:border-primary data-[on=true]:bg-primary data-[on=true]:text-primary-foreground",
               isScrolled ? "border-border bg-transparent text-foreground hover:border-muted-foreground hover:bg-secondary" : "border-white/30 bg-transparent text-white hover:bg-white/10"
             )}
             aria-pressed={haptics}
@@ -180,7 +179,7 @@ export const Header = ({
             <button
               type="button"
               className={cn(
-                "inline-flex h-[34px] w-[34px] items-center justify-center gap-0 rounded-full border transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-primary data-[on=true]:border-primary data-[on=true]:bg-primary data-[on=true]:text-primary-foreground",
+                "inline-flex h-[34px] w-[34px] items-center justify-center gap-0 rounded-xl border transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-primary data-[on=true]:border-primary data-[on=true]:bg-primary data-[on=true]:text-primary-foreground",
                 isScrolled ? "border-border bg-transparent text-foreground hover:border-muted-foreground hover:bg-secondary" : "border-white/30 bg-transparent text-white hover:bg-white/10"
               )}
               aria-pressed={hapticsDebug}
@@ -200,7 +199,7 @@ export const Header = ({
             target="_blank"
             rel="noopener noreferrer"
             className={cn(
-              "inline-flex h-[34px] w-[34px] items-center justify-center rounded-full border transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-primary",
+              "inline-flex h-[34px] w-[34px] items-center justify-center rounded-xl border transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-primary",
               isScrolled ? "border-border bg-transparent text-muted-foreground hover:bg-secondary hover:text-foreground" : "border-white/30 bg-transparent text-white hover:bg-white hover:text-primary"
             )}
             aria-label="GitHub repository"

@@ -54,7 +54,7 @@ export const MainHero = ({
         <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff15_1px,transparent_1px),linear-gradient(to_bottom,#ffffff15_1px,transparent_1px)] bg-size-[4rem_4rem] pointer-events-none z-0"></div>
 
         {/* Hero Section */}
-        <main className="relative z-10 mx-auto flex w-full max-w-[1440px] flex-1 flex-col items-center justify-center px-3 pb-28 pt-8 sm:px-4 md:pb-48 md:pt-12">
+        <main className="relative z-10 mx-auto flex w-full max-w-[1440px] flex-1 flex-col items-center justify-center px-3 pb-16 pt-8 sm:px-4 md:pb-24 md:pt-12">
 
           {/* Massive Typography & Elements Container */}
           <div className="relative w-full max-w-5xl mx-auto flex flex-col items-center justify-center text-center z-10 mt-4 mb-16">
@@ -124,7 +124,7 @@ export const MainHero = ({
                 {/* NPM Command Bar */}
                 <div className="mt-8 md:mt-10 relative z-10">
                   <div
-                    className="bg-background rounded-full px-5 py-2.5 md:px-8 md:py-4 flex items-center gap-3 md:gap-4 shadow-lg hover:shadow-xl transition-all cursor-pointer group"
+                    className="bg-background rounded-full px-5 py-2.5 md:px-8 md:py-4 flex items-center gap-3 md:gap-4 border border-rim-soft shadow-card hover:shadow-float transition-[box-shadow] cursor-pointer group"
                     onClick={() => {
                       const command = 'npm i web-haptics-toast';
                       navigator.clipboard.writeText(command);

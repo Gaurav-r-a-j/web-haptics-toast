@@ -4,7 +4,7 @@
  */
 
 import { WebHaptics } from "./lib/web-haptics";
-import type { TriggerOptions } from "./lib/web-haptics/types";
+import type { HapticInput, TriggerOptions } from "./lib/web-haptics/types";
 
 export { WebHaptics } from "./lib/web-haptics";
 export { defaultPatterns } from "./lib/web-haptics/patterns";
@@ -36,8 +36,8 @@ export interface TriggerHapticOptions extends TriggerOptions {
   debug?: boolean;
 }
 
-/** Trigger a haptic pattern by name. For standalone use; Toaster uses its own WebHaptics instance. */
-export function triggerHaptic(input: string, options?: TriggerHapticOptions): void {
+/** Trigger a haptic pattern by name, custom array, or duration. For standalone use; Toaster uses its own WebHaptics instance. */
+export function triggerHaptic(input: HapticInput, options?: TriggerHapticOptions): void {
   const instance = getDefaultInstance(options?.debug);
   const { debug: _d, ...triggerOpts } = options ?? {};
   instance.trigger(input, triggerOpts);

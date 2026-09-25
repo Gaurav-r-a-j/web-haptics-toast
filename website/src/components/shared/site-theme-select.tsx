@@ -21,7 +21,7 @@ export const SiteThemeSelect = ({ className = '' }: { className?: string }) => {
     <select
       value={theme ?? 'system'}
       onChange={(e) => setTheme(e.target.value)}
-      className={`h-9 min-w-[5.5rem] cursor-pointer rounded-md border border-border bg-secondary px-2 text-xs font-medium text-foreground outline-none transition-[border-color,background] hover:border-muted-foreground focus-visible:shadow-focus-ring ${className}`}
+      className={`h-9 min-w-[5.5rem] cursor-pointer rounded-md border border-rim-soft bg-secondary px-2 text-xs font-medium text-foreground shadow-card outline-none transition-[border-color,background,box-shadow] hover:border-muted-foreground focus-visible:shadow-focus-ring ${className}`}
       aria-label="Site color theme"
     >
       <option value="light">Light</option>

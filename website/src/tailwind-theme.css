@@ -54,6 +54,7 @@
   --shadow-float: var(--shadow-float);
   --shadow-strong: var(--shadow-strong);
   --shadow-stacked: var(--shadow-stacked);
+  --shadow-pressed: var(--shadow-pressed);
   --shadow-focus-ring: 0 0 0 2px var(--background), 0 0 0 4px var(--primary);
   --shadow-focus-accent: 0 0 0 2px var(--primary);
 

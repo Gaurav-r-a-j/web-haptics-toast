@@ -80,7 +80,7 @@ export const CodeBlock = ({ children, initialHeight = 0 }: { children: string; i
         type="button"
         onClick={onCopy}
         aria-label="Copy code"
-        className="absolute right-[0.75rem] top-[0.75rem] z-[1] flex h-[28px] w-[28px] items-center justify-center rounded-sm border border-border bg-background text-foreground opacity-0 transition-[background,box-shadow,opacity] duration-200 hover:bg-secondary group-hover:opacity-100 focus-visible:opacity-100 focus-visible:shadow-focus-accent"
+        className="absolute right-[0.85rem] top-[0.85rem] z-[1] flex h-8 w-8 items-center justify-center rounded-lg border border-white/15 bg-white/10 text-white opacity-0 backdrop-blur-md transition-[background-color,opacity] duration-200 hover:bg-white/20 group-hover:opacity-100 focus-visible:opacity-100 focus-visible:shadow-focus-accent"
       >
         <MotionConfig transition={{ duration: 0.15 }}>
           <AnimatePresence initial={false} mode="wait">
@@ -124,18 +124,22 @@ export const CodeBlock = ({ children, initialHeight = 0 }: { children: string; i
       <Highlight {...defaultProps} theme={theme} code={children} language="jsx">
         {({ className, tokens, getLineProps, getTokenProps }) => (
           <motion.pre
-            className="relative mt-[1rem] overflow-hidden rounded-2xl border-2 border-primary/20 bg-[#09090b] !p-0 transition-all hover:-translate-y-1 hover:-translate-x-1"
+            className="relative mt-[1rem] overflow-hidden rounded-2xl border border-white/10 bg-[#0a0c12] !p-0 transition-[border-color,box-shadow] duration-300 hover:border-white/20"
             animate={{ height: bounds.height || initialHeight }}
             transition={{ type: 'easeOut', duration: 0.2 }}
             style={{
-              boxShadow: Array.from({ length: 14 }, (_, i) => {
-                const val = i + 1;
-                return `${val}px ${val}px 0 #000000`;
-              }).join(', ')
+              boxShadow:
+                'inset 0 1px 0 0 rgba(255,255,255,0.06), 0 1px 2px rgba(0,0,0,0.2), 0 24px 48px -24px rgba(0,0,0,0.45)',
             }}
           >
+            {/* Hairline glow along the top edge */}
             <div
-              className="relative m-0 overflow-x-auto rounded-xl bg-[#09090b] p-6 leading-[1.6] whitespace-pre [-webkit-overflow-scrolling:touch]"
+              aria-hidden
+              className="pointer-events-none absolute inset-x-0 top-0 h-px"
+              style={{ background: 'linear-gradient(90deg, transparent, rgba(255,255,255,0.18), transparent)' }}
+            />
+            <div
+              className="relative m-0 overflow-x-auto p-5 leading-[1.65] whitespace-pre [-webkit-overflow-scrolling:touch] sm:p-6"
               ref={ref}
               style={{ color: '#e4e4e7' }}
             >

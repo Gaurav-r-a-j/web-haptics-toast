@@ -2,11 +2,9 @@
 
 import React from 'react';
 import clsx from 'clsx';
-import { HeroText } from '@/src/components/ui/hero-text';
-import { Button } from '@/src/components/ui/button';
 import copy from 'copy-to-clipboard';
-import { motion, AnimatePresence, MotionConfig } from 'framer-motion';
-import { CheckCircle2, AlertCircle, Copy } from 'lucide-react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { CheckCircle2, Copy, Terminal } from 'lucide-react';
 import { Compatibility } from './compatibility';
 
 const variants = {
@@ -24,6 +22,10 @@ const INSTALL_LINES: Record<PackageManager, string> = {
   bun: 'bun add web-haptics-toast',
 };
 
+/**
+ * Full-width calm header, then terminal (wide) + compatibility (narrow).
+ * Everything is tonal surfaces + shadows — no borders.
+ */
 export const Installation = () => {
   const [pm, setPm] = React.useState<PackageManager>('npm');
   const [copying, setCopying] = React.useState(0);
@@ -39,48 +41,39 @@ export const Installation = () => {
   }, [line]);
 
   return (
-    <section id="setup" className="bg-secondary py-10 text-black md:py-16 lg:py-24">
-      <div className="mx-auto grid max-w-7xl items-start gap-8 px-3 sm:px-4 md:gap-12 md:px-6 lg:gap-24 lg:grid-cols-2">
+    <section id="setup" className="bg-background py-16 text-foreground md:py-24">
+      <div className="mx-auto max-w-7xl px-3 sm:px-4 md:px-6">
+        <div className="mb-10 max-w-2xl md:mb-14">
+          <p className="m-0 mb-4 text-[11px] font-semibold uppercase tracking-[0.22em] text-primary">
+            Install
+          </p>
+          <h2 className="m-0 text-4xl font-semibold leading-[1.05] tracking-tight text-foreground md:text-6xl">
+            One command. <span className="text-primary">You&apos;re done.</span>
+          </h2>
+          <p className="mt-4 text-lg font-normal leading-relaxed text-muted-foreground">
+            Install it, drop the Toaster in your root layout, and every toast can buzz.
+            No providers, no config files, nothing to wire up.
+          </p>
+        </div>
 
-        {/* Left Column: COMPATIBILITY (Extracted) */}
-        <Compatibility className="w-full flex-1" />
-
-        {/* Right Column: INSTALLATION */}
-        <div className="mb-12 w-full flex-1 md:mb-20 lg:pt-2">
-          <div className="mb-12 pr-0 sm:pr-2 md:mb-20 md:pr-4">
-            <HeroText
-              shadowColor="#000000"
-              className="mb-10 text-4xl md:text-5xl lg:text-7xl text-primary leading-none uppercase tracking-tight text-right rotate-1"
-            >
-              INSTALL
-            </HeroText>
-            <p className="text-xl font-bold max-w-lg text-black/80 leading-relaxed text-right ml-auto">
-              One command. Zero config. Just add the provider and start <span className="text-[#0038FF] italic">vibrating</span> your users&apos; worlds.
-            </p>
-          </div>
-
-          <div className="relative group">
-            {/* Redesigned Installation Card - Terminal Style */}
-            <div className="absolute -inset-1 bg-black rounded-[2.5rem] blur-sm opacity-10 group-hover:opacity-20 transition duration-1000"></div>
-
-            <div className="relative overflow-hidden border-4 border-black bg-white rounded-[2.5rem] shadow-[12px_12px_0_black] transition-all hover:scale-[1.01] w-full">
-              {/* Terminal Header */}
-              <div className="flex items-center gap-2 border-b-4 border-black bg-black/5 p-3.5 sm:p-4 md:p-6">
-                <div className="flex gap-1.5 shrink-0">
-                  <div className="size-3 rounded-full bg-red-500 border-2 border-black" />
-                  <div className="size-3 rounded-full bg-yellow-500 border-2 border-black" />
-                  <div className="size-3 rounded-full bg-green-500 border-2 border-black" />
-                </div>
-                <div className="ml-4 font-black text-[10px] uppercase tracking-widest opacity-40 truncate">System Setup</div>
-                <div className="ml-auto flex items-center gap-2 shrink-0">
-                  <span className="hidden sm:inline-flex px-2 py-0.5 bg-[#0038FF] text-white text-[8px] font-black rounded-lg rotate-3 shadow-[2px_2px_0_black]">v1.0.1</span>
-                  <span className="px-2 py-0.5 bg-[#CCFF00] text-black text-[8px] font-black rounded-lg -rotate-2 border border-black/10">VERIFIED</span>
-                </div>
+        <div className="grid items-start gap-8 lg:grid-cols-12 lg:gap-10">
+          {/* Terminal (wide, left) */}
+          <div className="lg:col-span-7">
+            <div className="overflow-hidden rounded-3xl bg-card shadow-card">
+              {/* Terminal header */}
+              <div className="flex items-center gap-3 bg-muted/70 px-5 py-3.5 sm:px-6">
+                <Terminal className="size-4 text-muted-foreground" strokeWidth={2.5} />
+                <span className="text-[10px] font-semibold uppercase tracking-[0.14em] text-muted-foreground">
+                  Quick start
+                </span>
+                <span className="ml-auto rounded-md bg-primary/10 px-2.5 py-0.5 text-[9px] font-semibold uppercase tracking-widest text-primary">
+                  v1.0.1 · verified
+                </span>
               </div>
 
-              <div className="space-y-5 p-4 sm:space-y-6 sm:p-5 md:space-y-8 md:p-8">
+              <div className="space-y-6 p-5 sm:p-7 md:p-8">
                 <div
-                  className="flex w-full flex-wrap gap-2 justify-start"
+                  className="flex w-full flex-wrap gap-1.5 rounded-2xl bg-muted p-1"
                   role="tablist"
                   aria-label="Package manager"
                 >
@@ -88,8 +81,10 @@ export const Installation = () => {
                     <button
                       key={id}
                       className={clsx(
-                        'h-9 min-w-22 rounded-xl text-[10px] font-[1000] uppercase tracking-widest transition-all border-2 border-black shadow-[3px_3px_0_black] active:translate-x-0.5 active:translate-y-0.5 active:shadow-none',
-                        pm === id ? 'bg-primary dark:bg-primary text-white' : 'bg-white dark:tex-whi text-black/60 hover:text-black hover:bg-black/5'
+                        'h-8 flex-1 rounded-xl px-4 text-[10px] font-semibold uppercase tracking-widest transition-colors duration-200',
+                        pm === id
+                          ? 'bg-background text-foreground shadow-card'
+                          : 'text-muted-foreground hover:text-foreground',
                       )}
                       onClick={() => setPm(id)}
                       role="tab"
@@ -106,72 +101,64 @@ export const Installation = () => {
                   id={`install-panel-${pm}`}
                   role="tabpanel"
                   aria-labelledby={`install-tab-${pm}`}
-                  className="w-full relative"
+                  className="w-full"
                 >
                   <button
                     type="button"
                     onClick={onCopy}
                     className={clsx(
-                      "group relative flex h-[4.25rem] w-full cursor-pointer items-center overflow-hidden rounded-3xl border-4 border-black px-3 pr-14 text-left font-mono text-[0.8rem] font-bold transition-all active:scale-[0.98] sm:h-20 sm:rounded-4xl sm:px-4 sm:text-[0.9rem] sm:pr-16 md:h-24 md:px-8 md:pr-20 md:text-[1.1rem] lg:text-[1.2rem]",
-                      copying ? "bg-[#CCFF00] text-black" : "bg-black/5 text-black hover:bg-black/10"
+                      'group flex h-16 w-full items-center overflow-hidden rounded-xl px-4 text-left font-mono text-[0.9rem] font-semibold transition-colors duration-200 sm:h-[4.5rem] sm:px-5 md:text-[1.05rem]',
+                      copying
+                        ? 'bg-primary/10 text-foreground'
+                        : 'bg-muted text-foreground hover:bg-accent',
                     )}
                     aria-label={`Copy install command: ${line}`}
                   >
-                    <AnimatePresence>
-                      {copying && (
-                        <motion.div
-                          className="absolute inset-0 bg-[#CCFF00]/20"
-                          initial={{ opacity: 0 }}
-                          animate={{ opacity: 1 }}
-                          exit={{ opacity: 0 }}
-                        />
-                      )}
-                    </AnimatePresence>
-                    <span className="min-w-0 flex-1 select-all overflow-x-auto whitespace-nowrap pr-1 [-webkit-overflow-scrolling:touch] relative z-10">
-                      <span className="text-[#0038FF] font-[1000]">$</span> {line}
+                    <span className="min-w-0 flex-1 select-all overflow-x-auto whitespace-nowrap pr-3 [-webkit-overflow-scrolling:touch]">
+                      <span className="mr-2 font-semibold text-primary">$</span>
+                      {line}
                     </span>
                     <span
-                      className="absolute right-2 top-1/2 flex size-10 -translate-y-1/2 items-center justify-center rounded-xl border-4 border-black bg-[#CCFF00] text-black shadow-[4px_4px_0_black] transition-[transform,box-shadow] group-hover:scale-110 group-hover:rotate-6 active:translate-x-1 active:shadow-none active:brightness-95 sm:right-4 sm:size-12 sm:rounded-2xl md:right-5"
+                      className={clsx(
+                        'flex size-10 shrink-0 items-center justify-center rounded-lg transition-colors duration-200',
+                        copying ? 'bg-primary text-primary-foreground' : 'bg-background text-muted-foreground',
+                      )}
                       aria-hidden
                     >
                       {mounted ? (
-                        <MotionConfig transition={{ duration: 0.15 }}>
-                          <AnimatePresence initial={false} mode="wait">
-                            {copying ? (
-                              <motion.div animate="visible" exit="hidden" initial="hidden" key="check" variants={variants}>
-                                <CheckCircle2 size={22} strokeWidth={4} />
-                              </motion.div>
-                            ) : (
-                              <motion.div animate="visible" exit="hidden" initial="hidden" key="copy" variants={variants}>
-                                <Copy size={22} strokeWidth={4} />
-                              </motion.div>
-                            )}
-                          </AnimatePresence>
-                        </MotionConfig>
+                        <AnimatePresence initial={false} mode="wait">
+                          {copying ? (
+                            <motion.div animate="visible" exit="hidden" initial="hidden" key="check" variants={variants}>
+                              <CheckCircle2 size={18} strokeWidth={2.5} />
+                            </motion.div>
+                          ) : (
+                            <motion.div animate="visible" exit="hidden" initial="hidden" key="copy" variants={variants}>
+                              <Copy size={18} strokeWidth={2.5} />
+                            </motion.div>
+                          )}
+                        </AnimatePresence>
                       ) : (
-                        <span className="h-12 w-12" />
+                        <span className="size-5" />
                       )}
                     </span>
                   </button>
                 </div>
-              </div>
 
-              {/* Usage Guideline Footer */}
-              <div className="flex items-start gap-3 border-t-4 border-black/5 bg-black/2 p-4 pt-4 sm:gap-4 sm:p-5 sm:pt-5 md:p-8 md:pt-6">
-                <div className="p-3 bg-primary/10 rounded-2xl border-2 border-primary/20 shadow-[2px_2px_0_var(--primary)]">
-                  <AlertCircle size={20} className="text-primary" strokeWidth={4} />
-                </div>
-                <div className="space-y-1">
-                  <p className="font-black text-[10px] uppercase tracking-widest text-primary opacity-50">Usage Guideline</p>
-                  <p className="font-bold text-sm lg:text-[15px] leading-tight text-black italic">
-                    Mount the provider at the root level to enjoy tactile feedback across any component instantly.
+                {/* Usage note */}
+                <div className="flex items-start gap-3 rounded-xl bg-muted/50 p-4">
+                  <div className="mt-0.5 size-1.5 shrink-0 rounded-full bg-primary" />
+                  <p className="m-0 text-sm font-normal leading-relaxed text-muted-foreground">
+                    That&apos;s it — add <code>&lt;Toaster /&gt;</code> to your root layout and
+                    every toast fires with haptics out of the box.
                   </p>
                 </div>
               </div>
             </div>
           </div>
-        </div>
 
+          {/* Compatibility (narrow, right) */}
+          <Compatibility className="lg:col-span-5" />
+        </div>
       </div>
     </section>
   );

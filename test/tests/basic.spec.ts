@@ -130,8 +130,27 @@ test.describe('Basic functionality', () => {
     // Wait a bit to ensure hover is registered
     await page.waitForTimeout(100);
 
-    // Create a longer timeout to verify toast persists
-    await page.waitForTimeout(5000);
+    // Verify hover actually engaged the toaster (pauses the close timer).
+    // Without this, worker contention can delay the mouseenter past the
+    // timer start and the toast auto-closes during the wait below.
+    await expect(page.locator('[data-sonner-toast]')).toHaveAttribute('data-expanded', 'true');
+
+    // Keep the pointer alive inside the toast for the whole window: tiny
+    // synthetic moves defeat spurious `mouseleave` (layout shifts during the
+    // toast's settle animation resume the close timer even with the cursor
+    // parked). Polls until the default 4s lifetime would have elapsed.
+    await expect
+      .poll(
+        async () => {
+          const box = await page.locator('[data-sonner-toast]').boundingBox();
+          if (box) {
+            await page.mouse.move(box.x + box.width / 2, box.y + Math.min(8, box.height / 2));
+          }
+          return page.locator('[data-sonner-toast]').count();
+        },
+        { timeout: 5000, intervals: [400] },
+      )
+      .toBe(1);
 
     // Verify toast is still visible
     await expect(page.locator('[data-sonner-toast]')).toBeVisible();
@@ -289,7 +308,8 @@ test.describe('Basic functionality', () => {
     await page.getByTestId('custom-with-empty-id').click();
 
     await expect(page.locator('[data-sonner-toast]')).toHaveCount(1);
-    await page.locator('[data-dismiss]').click();
+    // The fixture renders `data-testid="dismiss-button"` (upstream test used a stale selector).
+    await page.getByTestId('dismiss-button').click();
     await expect(page.locator('[data-sonner-toast]')).toHaveCount(0);
   });
 
