@@ -1,8 +1,11 @@
 import React from 'react';
+import type { HapticPattern } from './lib/web-haptics/types';
 
 export type ToastTypes = 'normal' | 'action' | 'success' | 'info' | 'warning' | 'error' | 'loading' | 'default';
 
 export type PromiseT<Data = any> = Promise<Data> | (() => Promise<Data>);
+
+export type { HapticPattern } from './lib/web-haptics/types';
 
 export interface PromiseIExtendedResult extends ExternalToast {
   message: React.ReactNode;
@@ -109,6 +112,16 @@ export interface ToastT {
    * When omitted, follows the toaster’s global `haptics` setting.
    */
   haptics?: boolean;
+  /**
+   * Per-toast vibration intensity 0–1 (overrides the toaster-level value).
+   * 0.3 ≈ subtle, 0.7 ≈ firm, 1 ≈ maximum.
+   */
+  hapticIntensity?: number;
+  /**
+   * Per-toast pattern override: a preset name (`'success'`) or a raw ms array
+   * (on/off alternating, e.g. `[80, 40, 80]`). Overrides `hapticPatternMap`.
+   */
+  hapticPattern?: HapticPatternName | HapticPattern;
 }
 
 export function isAction(action: Action | React.ReactNode): action is Action {
@@ -202,10 +215,11 @@ export interface ToasterProps {
    */
   haptics?: boolean;
   /**
-   * Optional map from toast type to haptic pattern name.
+   * Optional map from toast type to haptic pattern. Values are preset names
+   * (`'success'`) or raw ms arrays (on/off alternating, e.g. `[50, 30, 50]`).
    * Override which pattern is used for each type (e.g. info -> 'selection').
    */
-  hapticPatternMap?: Partial<Record<ToastTypes, HapticPatternName>>;
+  hapticPatternMap?: Partial<Record<ToastTypes, HapticPatternName | HapticPattern>>;
   /**
    * When true, play haptic pattern as sound on desktop so you can test without a device
    * (same as web-haptics debug mode). No effect on devices that support vibration.

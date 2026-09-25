@@ -22,6 +22,7 @@
     "dist",
     "LICENSE"
   ],
+  "sideEffects": false,
   "scripts": {
     "dev": "bunchee --watch",
     "build": "bunchee && cp src/styles.css dist/styles.css",
@@ -29,7 +30,10 @@
     "dev:website": "turbo run dev --filter=website...",
     "dev:test": "turbo run dev --filter=test...",
     "format": "prettier --write .",
-    "test": "playwright test"
+    "test": "vitest run && playwright test",
+    "test:unit": "vitest run",
+    "changeset": "changeset",
+    "version-packages": "changeset version"
   },
   "keywords": [
     "react",
@@ -81,6 +85,7 @@
     "url": "https://github.com/Gaurav-r-a-j/web-haptics-toast/issues"
   },
   "devDependencies": {
+    "@changesets/cli": "^3.0.3",
     "@playwright/test": "^1.49.1",
     "@types/node": "^18.11.13",
     "@types/react": "19.2.14",
@@ -89,7 +94,8 @@
     "react": "^19.2.4",
     "react-dom": "^19.2.4",
     "turbo": "^2.9.14",
-    "typescript": "^5.7.2"
+    "typescript": "^5.7.2",
+    "vitest": "^5.0.1"
   },
   "peerDependencies": {
     "react": "^18.0.0 || ^19.0.0 || ^19.0.0-rc",
