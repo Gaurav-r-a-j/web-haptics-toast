@@ -1,17 +1,21 @@
 import type { Metadata } from 'next';
 import type { ReactNode } from 'react';
-import { Raleway } from 'next/font/google';
+import localFont from 'next/font/local';
 import '@/src/theme.css';
 import '../../../src/styles.css';
 import '@/src/globals.css';
 import { Providers } from '@/src/app/providers';
 
 /**
- * Raleway — primary site font. next/font self-hosts it (no external requests,
- * CSP stays strict) and exposes it as the --font-raleway CSS variable.
+ * Raleway — primary site font, self-hosted (OFL license in src/fonts/OFL.txt).
+ * next/font/local: no build-time network fetch (CI-safe), no external requests,
+ * CSP stays strict. Variable font covers weights 100–900 + italic.
  */
-const raleway = Raleway({
-  subsets: ['latin'],
+const raleway = localFont({
+  src: [
+    { path: '../fonts/Raleway-Variable.ttf', style: 'normal' },
+    { path: '../fonts/Raleway-Italic-Variable.ttf', style: 'italic' },
+  ],
   display: 'swap',
   variable: '--font-raleway',
 });
