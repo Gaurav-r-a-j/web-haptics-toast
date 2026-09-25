@@ -61,7 +61,7 @@ export function SectionHeading({
     >
       <p
         className={cn(
-          'mb-4 text-[11px] font-semibold uppercase tracking-[0.22em] text-primary',
+          'mb-4 bg-linear-to-r from-primary to-indigo-500 bg-clip-text text-[11px] font-semibold uppercase tracking-[0.22em] text-transparent',
           align === 'center' && 'mx-auto',
         )}
       >

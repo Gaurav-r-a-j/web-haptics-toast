@@ -20,7 +20,7 @@ export const Highlight = () => {
     <section aria-label="Tactile Experience Highlights" className="w-full">
       <div
         id="why"
-        className="relative overflow-hidden bg-[#0a0c12] px-3 py-16 text-zinc-50 sm:px-5 md:px-10 md:py-24 dark:bg-[#0a0c12]"
+        className="relative overflow-hidden bg-[#0a0c12] px-3 py-16 text-zinc-50 sm:px-5 md:px-10 md:py-24"
       >
         {/* Ambient depth: lime + blue glows so the band never reads as a flat void */}
         <div

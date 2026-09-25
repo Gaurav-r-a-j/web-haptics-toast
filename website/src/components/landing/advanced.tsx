@@ -20,7 +20,10 @@ export const AdvancedFeatures = () => {
           eyebrow="And many more"
           title={
             <>
-              Beyond the <span className="text-primary">basics</span>
+              Beyond the{' '}
+              <span className="bg-linear-to-r from-primary to-indigo-500 bg-clip-text text-transparent">
+                basics
+              </span>
             </>
           }
           lede="The smaller things that add up. Every button below actually fires — tap around."

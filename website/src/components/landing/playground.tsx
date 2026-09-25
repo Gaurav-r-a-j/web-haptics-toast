@@ -112,7 +112,10 @@ export const Playground = ({
           eyebrow="Playground"
           title={
             <>
-              Dial in your <span className="text-primary">tactical experience</span>
+              Dial in your{' '}
+              <span className="bg-linear-to-r from-primary to-indigo-500 bg-clip-text text-transparent">
+                tactical experience
+              </span>
             </>
           }
           lede="Flip the switches, fire some toasts, feel what changes. Everything on this page is real — no mocks."
