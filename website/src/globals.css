@@ -254,17 +254,27 @@
   }
 
   @keyframes marquee {
-    0% {
-      transform: translateX(0);
+    from {
+      transform: translate3d(0, 0, 0);
     }
 
-    100% {
-      transform: translateX(-50%);
+    to {
+      transform: translate3d(-50%, 0, 0);
     }
   }
 
+  /* Fast crawl, GPU-composited (translate3d) so heavy text shadows don't
+     trigger layout/paint every frame. Reduced motion: slow, calm drift. */
   .animate-marquee {
-    animation: marquee 60s linear infinite;
+    animation: marquee 22s linear infinite;
+    will-change: transform;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .animate-marquee {
+      animation-duration: 90s;
+      will-change: auto;
+    }
   }
 
   .animate-marquee:hover {

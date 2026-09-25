@@ -14,13 +14,16 @@ import { cn } from '@/src/lib/utils';
  */
 export const AdvancedFeatures = () => {
   return (
-    <section id="advanced" className="scroll-mt-24 bg-muted py-16 text-foreground md:py-24">
+    <section id="advanced" className="scroll-mt-24 bg-background py-16 text-foreground md:py-24">
       <div className="relative z-10 mx-auto max-w-7xl px-3 sm:px-4 md:px-6">
         <SectionHeading
           eyebrow="And many more"
           title={
             <>
-              Beyond the <span className="text-primary">basics</span>
+              Beyond the{' '}
+              <span className="bg-linear-to-r from-primary to-indigo-500 bg-clip-text text-transparent">
+                basics
+              </span>
             </>
           }
           lede="The smaller things that add up. Every button below actually fires — tap around."

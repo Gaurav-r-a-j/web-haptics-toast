@@ -13,6 +13,7 @@ import {
   defaultPatterns,
   isHapticsSupported,
   triggerHaptic,
+  useHapticsSupported,
   WebHaptics,
   type TriggerHapticOptions,
 } from './haptics';
@@ -21,6 +22,7 @@ import {
   SwipeDirection,
   type ExternalToast,
   type HeightT,
+  type HapticPattern,
   type HapticPatternName,
   type ToasterProps,
   type ToastProps,
@@ -635,10 +637,13 @@ const DEFAULT_HAPTIC_MAP: Partial<Record<ToastTypes, HapticPatternName>> = {
 };
 
 // Resolve which haptic pattern to use for a toast type; overridable via hapticPatternMap.
+// Values may be preset names or raw ms arrays; per-toast hapticPattern wins over the map.
 function getHapticPatternForType(
   type: ToastTypes | undefined,
-  map?: Partial<Record<ToastTypes, HapticPatternName>>,
-): HapticPatternName {
+  map?: Partial<Record<ToastTypes, HapticPatternName | HapticPattern>>,
+  perToast?: HapticPatternName | HapticPattern,
+): HapticPatternName | HapticPattern {
+  if (perToast !== undefined) return perToast;
   const key = type ?? 'default';
   return (map?.[key] ?? DEFAULT_HAPTIC_MAP[key] ?? 'light') as HapticPatternName;
 }
@@ -755,8 +760,9 @@ const Toaster = React.forwardRef<HTMLElement, ToasterProps>(function Toaster(pro
 
       const t = toast as ToastT;
       if (haptics && hapticsRef.current && t.haptics !== false) {
-        const pattern = getHapticPatternForType(t.type, hapticPatternMap);
-        hapticsRef.current.trigger(pattern);
+        const pattern = getHapticPatternForType(t.type, hapticPatternMap, t.hapticPattern);
+        const intensity = t.hapticIntensity !== undefined ? { intensity: t.hapticIntensity } : undefined;
+        hapticsRef.current.trigger(pattern, intensity);
       }
 
       // Prevent batching (temp solution).
@@ -978,7 +984,7 @@ const Toaster = React.forwardRef<HTMLElement, ToasterProps>(function Toaster(pro
   );
 });
 
-export { toast, Toaster, useSonner, isHapticsSupported, triggerHaptic, WebHaptics, defaultPatterns };
+export { toast, Toaster, useSonner, isHapticsSupported, useHapticsSupported, triggerHaptic, WebHaptics, defaultPatterns };
 export type { TriggerHapticOptions } from './haptics';
 export type { ExternalToast, ToastT, ToasterProps, ToastSystemConfig, HapticPatternName, ToastTypes };
 export { type ToastClassnames, type ToastToDismiss, type Action } from './types';

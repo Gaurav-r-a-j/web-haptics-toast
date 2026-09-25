@@ -106,13 +106,16 @@ export const Playground = ({
   };
 
   return (
-    <section id="playground" className="scroll-mt-24 bg-muted py-16 text-foreground md:py-24">
+    <section id="playground" className="scroll-mt-24 bg-muted py-16 text-foreground md:py-24 dark:bg-transparent">
       <div className="mx-auto max-w-7xl px-3 sm:px-4 md:px-6">
         <SectionHeading
           eyebrow="Playground"
           title={
             <>
-              Dial in your <span className="text-primary">tactical experience</span>
+              Dial in your{' '}
+              <span className="bg-linear-to-r from-primary to-indigo-500 bg-clip-text text-transparent">
+                tactical experience
+              </span>
             </>
           }
           lede="Flip the switches, fire some toasts, feel what changes. Everything on this page is real — no mocks."
@@ -215,11 +218,12 @@ export const Playground = ({
 
 type LaunchPadTone = 'secondary' | 'red' | 'blue' | 'yellow' | 'primary' | 'white';
 
+/* Brand tones stay solid; type-color tiles are tints so the stage stays calm. */
 const LAUNCH_TONE_CLASSES: Record<LaunchPadTone, string> = {
   secondary: 'bg-secondary text-secondary-foreground hover:brightness-105',
-  red: 'bg-red-500 text-white hover:brightness-105',
-  blue: 'bg-blue-500 text-white hover:brightness-105',
-  yellow: 'bg-yellow-400 text-black hover:brightness-105',
+  red: 'bg-red-500/10 text-red-600 hover:bg-red-500/20 dark:text-red-400',
+  blue: 'bg-blue-500/10 text-blue-600 hover:bg-blue-500/20 dark:text-blue-400',
+  yellow: 'bg-yellow-400/15 text-yellow-700 hover:bg-yellow-400/25 dark:text-yellow-400',
   primary: 'bg-primary text-primary-foreground hover:brightness-110',
   white: 'bg-card text-foreground shadow-card hover:shadow-float',
 };

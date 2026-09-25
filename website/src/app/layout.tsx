@@ -7,14 +7,14 @@ import '@/src/globals.css';
 import { Providers } from '@/src/app/providers';
 
 /**
- * Raleway — primary site font, self-hosted (OFL license in src/fonts/OFL.txt).
+ * Raleway — primary site font, self-hosted as WOFF2 (OFL license in src/fonts/OFL.txt).
  * next/font/local: no build-time network fetch (CI-safe), no external requests,
  * CSP stays strict. Variable font covers weights 100–900 + italic.
  */
 const raleway = localFont({
   src: [
-    { path: '../fonts/Raleway-Variable.ttf', style: 'normal' },
-    { path: '../fonts/Raleway-Italic-Variable.ttf', style: 'italic' },
+    { path: '../fonts/Raleway-Variable.woff2', style: 'normal' },
+    { path: '../fonts/Raleway-Italic-Variable.woff2', style: 'italic' },
   ],
   display: 'swap',
   variable: '--font-raleway',

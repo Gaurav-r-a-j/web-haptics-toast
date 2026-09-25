@@ -55,19 +55,22 @@ const cards: CardItem[] = [
  */
 export const FeatureOverview = () => {
   return (
-    <section id="features" aria-labelledby="features-heading" className="bg-muted text-foreground">
+    <section id="features" aria-labelledby="features-heading" className="bg-muted text-foreground dark:bg-transparent">
       <div className="mx-auto w-full max-w-7xl px-3 py-16 sm:px-5 md:px-10 md:py-24">
         {/* Asymmetric header: title left, lede right */}
         <div className="mb-10 grid gap-6 md:mb-14 md:grid-cols-12 md:items-end">
           <Reveal className="md:col-span-7">
-            <p className="m-0 mb-4 text-[11px] font-semibold uppercase tracking-[0.22em] text-primary">
-              Overview
+            <p className="m-0 mb-4 bg-linear-to-r from-primary to-indigo-500 bg-clip-text text-[11px] font-semibold uppercase tracking-[0.22em] text-transparent">
+              What you get
             </p>
             <h2
               id="features-heading"
               className="m-0 text-balance text-4xl font-semibold leading-[1.05] tracking-tight text-foreground sm:text-5xl"
             >
-              Everything <span className="text-primary">built in</span>
+              Everything{' '}
+              <span className="bg-linear-to-r from-primary to-indigo-500 bg-clip-text text-transparent">
+                built in
+              </span>
             </h2>
           </Reveal>
           <Reveal delay={0.08} className="md:col-span-5">
@@ -86,7 +89,7 @@ export const FeatureOverview = () => {
                 href={c.href}
                 className="group flex h-full items-start gap-4 rounded-2xl bg-card px-5 py-6 shadow-card transition-[box-shadow] duration-300 hover:shadow-float sm:gap-5 sm:px-7"
               >
-                <span className="w-7 shrink-0 pt-1 text-sm font-medium tabular-nums leading-none text-primary/60">
+                <span className="w-7 shrink-0 pt-1 text-sm font-medium tabular-nums leading-none text-primary">
                   {String(index + 1).padStart(2, '0')}
                 </span>
                 <span className="min-w-0 flex-1">
